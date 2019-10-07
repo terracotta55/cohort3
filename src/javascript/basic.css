@@ -1,0 +1,47 @@
+body {
+  background-image: url(image.jpeg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Trebuchet MS";
+  text-align: center;
+}
+
+h1 {
+  color: aquamarine;
+}
+
+p {
+  font-size: 20px;
+  text-align: center;
+  color: aquamarine;
+}
+
+#input {
+  width: 600px;
+  margin: auto;
+}
+
+button {
+  width: 150px;
+  margin: auto;
+}
+
+.btn-dark:hover {
+  color: black;
+  background-color: greenyellow;
+}
+
+.btn-dark {
+  color: aquamarine;
+  background-color: black;
+  border-color: white;
+}
