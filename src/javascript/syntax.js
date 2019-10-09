@@ -1,3 +1,86 @@
+const functions = {
+  checkType: inputValue => {
+    return typeof inputValue;
+  },
+
+  ifElse: name => {
+    if (typeof name === "string") {
+      return `Hello ${name}`;
+    } else return "I don't know you";
+  },
+
+  paramReturns: (para1, para2) => {
+    return `${para1}, ${para2}`;
+  },
+
+  arrayAddToFront: (arr, elemAdd) => {
+    arr.unshift(elemAdd);
+    return arr;
+  },
+  arrayAddToEnd: (arr, elemAdd) => {
+    arr.push(elemAdd);
+    return arr;
+  },
+
+  arrayUpdate: (arr, index, value) => {
+    arr[index] = value;
+    return arr;
+  },
+
+  forLoop: (smallNum, largeNum) => {
+    let sum = 0;
+    for (let i = smallNum; i <= largeNum; i++) {
+      sum += i;
+    }
+    return sum;
+  },
+
+  reverseStr: str => {
+    let newStr = "",
+      i = str.length;
+    while (i > 0) {
+      newStr += str.substring(i - 1, i);
+      i--;
+    }
+    return newStr;
+  },
+
+  forInDemo: obj => {
+    let propList = [];
+    for (let prop in obj) {
+      propList.push(obj[prop]);
+    }
+    // console.log(propList);
+    return propList;
+  },
+
+  forEachDemo: arr => {
+    let elemList = [];
+    arr.forEach(function(arrElem) {
+      elemList.push(arrElem);
+    });
+    // console.log(arrElem);
+    return elemList;
+  },
+
+  doWhileDemo: countUpTo => {
+    let countArr = [];
+    let i = 1;
+    do {
+      countArr.push(i);
+      i++;
+    } while (i <= countUpTo);
+    // console.log(countArr);
+    return countArr;
+  },
+
+  retrieveValue: (obj, value) => {
+    return Object.keys(obj).find(key => obj[key] === value);
+  }
+};
+
+export default functions;
+
 /*
 define attributes / variables
     number
@@ -23,9 +106,7 @@ loops
 Objects / Dictionaries
     declare object
     lookup key to retrieve value
-
  */
-// define attributes/ variables
 const num1 = 15,
   num2 = 25,
   num3 = 35;
@@ -74,7 +155,7 @@ const obj1 = {
     }
   };
 
-// for loop
+/*
 function sumNum(smallNum, largeNum) {
   let sum = 0;
   for (i = smallNum; i <= largeNum; i++) {
@@ -84,11 +165,8 @@ function sumNum(smallNum, largeNum) {
   return sum;
 }
 
-// sumNum(50, 100);
-
-// while loop
-function printArrayValues(arr) {
-  return 0;
-}
-
-console.log("area", obj3.area());
+sumNum(10, 100);
+*/
+/*
+console.log("area", obj1.area());
+*/
