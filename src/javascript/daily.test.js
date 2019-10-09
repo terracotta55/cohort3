@@ -1,7 +1,13 @@
 import { assertEquals } from "./daily";
 
-test("Compare these numbers", () => {
+test("Welcome text", () => {
+  console.log("Hello World");
+});
+
+test("Comparing numbers", () => {
   expect(assertEquals(3, 3)).toBe(true);
+  expect(assertEquals("five", "five")).toBe(true);
+  expect(assertEquals("20", 20)).toBe(false);
   expect(assertEquals("five", 5)).toBe(false);
 });
 

@@ -16,18 +16,17 @@
 
 function assertEquals(a, b) {
   if (a === b) {
-    console.log(`$$$ the two values are the same`);
+    console.log(`*** the two values are the same`);
     return true;
   } else {
-    console.log(`*** the two values are not the same
-      p1--> ${a} parameter 1
-      p2--> ${b} parameter 2`);
+    console.log(`*** the two values are NOT the same
+      p1--> ${a} (parameter 1)
+      p2--> ${b} (parameter 2)`);
     return false;
   }
 }
 
 export { assertEquals };
-
 // and before this comment ---
 
 assertEquals("a", "b");
