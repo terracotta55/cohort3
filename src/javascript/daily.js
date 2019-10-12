@@ -32,7 +32,6 @@ const functions = {
     return `${first}.${last}@evolveu.ca`;
   }
 };
-``;
 
 export default functions;
 // and before this comment ---
