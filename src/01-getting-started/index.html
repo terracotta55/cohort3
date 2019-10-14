@@ -8,8 +8,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="./index.css" />
-		<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 		<title>Full-Stack</title>
@@ -58,7 +58,7 @@
 
 		<!-- Container (About The Tools) -->
 
-		<div class="w3-content w3-container w3-padding-64 info-box" id="about">
+		<div class="w3-content w3-container w3-padding-32 info-box" id="about">
 			<h1 class="w3-center">ABOUT THE TOOLS & PRACTICES</h1>
 			<p>
 				Here, we describe at a high level the basic tools of the trade and best practices in using the tools. We are a little nervous about using the
@@ -111,7 +111,7 @@
 		<!-- ---------- Third Parallax Image with Calculator------------------ -->
 		<div class="bgimg-2 w3-display-container w3-opacity-min">
 			<div class="w3-display-middle">
-				<span class="w3-xxlarge w3-wide">Calculator App</span>
+				<span class="w3-xxlarge w3-wide">My Calculator</span>
 			</div>
 		</div>
 
@@ -127,6 +127,13 @@
 				<button class="w3-button w3-round-large w3-black" id="btn-mul">mul (x)</button>
 				<button class="w3-button w3-round-large w3-black" id="btn-dvd">dvd (&#247;)</button>
 			</div>
+			<br />
+			<div class="row" id="calc-disp-parent">
+				<div class="column">
+					<div class="column-btn column-disp" id="calc-display-val">calc...</div>
+					<button class="column-btn w3-button w3-round-large w3-teal" id="btn-calc-clear">clear</button>
+				</div>
+			</div>
 			<p id="calc-result"></p>
 		</div>
 
@@ -138,14 +145,46 @@
 		</div>
 
 		<div class="w3-content w3-container w3-padding-32 w3-center" id="idSize">
-			This app would caculate your taxes <br /><br />
+			This app would calculate your taxes <br /><br />
 
 			<input id="tax-input" placeholder="enter income" />
 			<br /><br />
-			<div class="btn-calc-opr">
+			<div class="btn-tax-opr">
 				<button class="w3-button w3-round-large w3-black" id="btn-tax">Press to Compute Taxes</button>
 			</div>
-			<p id="tax-result"></p>
+			<br />
+			<div class="row" id="tax-disp-parent">
+				<div class="column" id="tax-display-val">taxes...</div>
+			</div>
+			
+		</div>
+
+		<!-- ---------- Fifth Parallax Image for Working with Arrays------------------ -->
+		<div class="bgimg-2 w3-display-container w3-opacity-min">
+			<div class="w3-display-middle">
+				<span class="w3-xxlarge w3-wide">Working with Arrays</span>
+			</div>
+		</div>
+
+		<div class="w3-content w3-container w3-padding-32 w3-center" id="idSize">
+			Simple app that manipulates arrays<br /><br />
+
+			<input type = "" id="arr-input" placeholder="enter array element" />
+			<br /><br />
+			<div class="btn-arr-opr">
+				<button class="w3-button w3-round-large w3-black" id="btn-arr-add">add</button>
+				<button class="w3-button w3-round-large w3-black" id="btn-arr-show">show</button>
+				<button class="w3-button w3-round-large w3-black" id="btn-arr-total">total</button>
+      </div>
+      <br />
+      <div class="row" id="arr-disp-parent">
+        <div class="column">
+          <div class="column-btn column-disp" id="arr-display-val">array...</div>
+          <button class="column-btn w3-button w3-round-large w3-teal" id="btn-arr-clear">clear</button>
+        </div>
+      </div>
+      
+      </div>
 		</div>
 
 		<!-- Footer -->
