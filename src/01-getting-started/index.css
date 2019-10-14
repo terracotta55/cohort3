@@ -21,6 +21,10 @@ input {
 	line-height: 1.8;
 }
 
+/* input {
+	width: 200px;
+} */
+
 /* Create a Parallax Effect */
 
 .bgimg-1,
@@ -92,21 +96,22 @@ input {
 	font-size: 1.5rem;
 }
 
-/* #btn-tax:hover {
-	background-color: greenyellow !important;
-} */
-
-#tax-input {
-	width: 300px;
+#calc-input-1,
+#calc-input-2,
+#tax-input,
+#arr-input,
+#obj-input {
+	width: 250px;
 }
 
 .w3-wide {
-	letter-spacing: 5px;
+	letter-spacing: 1px;
 }
 
 #tax-display-val,
 #calc-display-val,
-#arr-display-val {
+#arr-display-val,
+#obj-display-val {
 	/* height: 20px; */
 	width: 500px;
 	color: greenyellow;
@@ -135,10 +140,11 @@ input {
 
 #calc-disp-parent,
 #arr-disp-parent {
-	margin-left: calc(50% - 300px); /* 50% of screen width */
-	/* width: 500px; */
+	margin-left: calc(50% - 300px);
 }
-#tax-disp-parent {
+
+#tax-disp-parent,
+#obj-disp-parent {
 	margin-left: calc(50% - 250px);
 }
 .w3-teal {
