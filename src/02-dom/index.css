@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Ubuntu", sans-serif;
+}
+
+.w3-top {
+	font-weight: bold !important;
+}
+
+body,
+html,
+input {
+	height: 100%;
+	color: #777;
+	line-height: 1.8;
+}
+#tax-display-val,
+#calc-display-val,
+#arr-display-val,
+#obj-display-val {
+	/* height: 20px; */
+	width: 500px;
+	color: greenyellow;
+	text-align: center;
+	border-left: 1px solid gray;
+	border-right: 1px solid gray;
+	border-top: 1px solid gray;
+	font-size: 1.5rem;
+	background-color: #000000;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 6px;
+	border-radius: 9px 9px 9px 9px;
+	/* margin-right: 100px; */
+}
+.row {
+	display: table;
+	table-layout: fixed;
+}
+.column {
+	display: table;
+}
+.column-btn {
+	display: table-cell;
+}
+
+#calc-disp-parent,
+#arr-disp-parent {
+	margin-left: calc(50% - 300px);
+}
