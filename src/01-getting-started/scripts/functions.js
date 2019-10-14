@@ -1,3 +1,7 @@
+let inputOne = document.querySelector("#calc-input-1");
+let inputTwo = document.querySelector("#calc-input-2");
+let calcDisplayElement = document.getElementById("calc-display-val");
+
 let tax = 0;
 let taxInput = document.querySelector("#tax-input");
 let taxDisplayVal = document.getElementById("tax-display-val");
@@ -5,7 +9,6 @@ let taxDisplayVal = document.getElementById("tax-display-val");
 let numArray = [];
 let arrInput = document.querySelector("#arr-input");
 let arrDisplayVal = document.querySelector("#arr-display-val");
-// let arrClearBtn = document.getElementById("btn-arr-clear");
 
 const functions = {
 	size: num => {
@@ -15,15 +18,49 @@ const functions = {
 		if (num <= 100) return "large";
 		return "extra large";
 	},
-
 	add: (num1, num2) => {
 		return num1 + num2;
 	},
-
-	subtract: (num1, num2) => {
+	calculatorAdd: (num1, num2) => {
+		return num1 + num2;
+	},
+	calculatorSub: (num1, num2) => {
 		return num1 - num2;
 	},
-
+	calculatorMul: (num1, num2) => {
+		return num1 * num2;
+	},
+	calculatorDvd: (num1, num2) => {
+		return num1 / num2;
+	},
+	onAddButtonClicked: () => {
+		let addResult = functions.calculatorAdd(Number(inputOne.value), Number(inputTwo.value));
+		calcDisplayElement.textContent = `the sum of ${inputOne.value} and ${inputTwo.value} is ${addResult}`;
+		inputOne.value = "";
+		inputTwo.value = "";
+	},
+	onSubButtonClicked: () => {
+		let subResult = functions.calculatorSub(Number(inputOne.value), Number(inputTwo.value));
+		calcDisplayElement.textContent = `the difference between ${inputOne.value} and ${inputTwo.value} is ${subResult}`;
+		inputOne.value = "";
+		inputTwo.value = "";
+	},
+	onMulButtonClicked: () => {
+		let mulResult = functions.calculatorMul(Number(inputOne.value), Number(inputTwo.value));
+		calcDisplayElement.textContent = `the product of ${inputOne.value} and ${inputTwo.value} is ${mulResult}`;
+		inputOne.value = "";
+		inputTwo.value = "";
+	},
+	onDvdButtonClicked: () => {
+		let dvdResult = functions.calculatorDvd(Number(inputOne.value), Number(inputTwo.value));
+		calcDisplayElement.textContent = `the quotient of ${inputOne.value} and ${inputTwo.value} is ${dvdResult}`;
+		inputOne.value = "";
+		inputTwo.value = "";
+	},
+	onClearCalcClicked: () => {
+		let displayVal = "cleared...";
+		calcDisplayElement.innerHTML = displayVal;
+	},
 	taxes: income => {
 		const taxBracket_01 = 47630,
 			taxBracket_02 = 95259,
@@ -53,33 +90,27 @@ const functions = {
 		}
 		return Number(tax);
 	},
-
 	onTaxButtonClicked: () => {
 		let taxResult = functions.taxes(Number(taxInput.value));
 		taxDisplayVal.innerHTML = `your 2019 taxes would be $${taxResult.toFixed(2)}`;
 		taxInput.value = "";
 	},
-
 	arrayAdd: num => {
 		if (typeof num === "number") {
 			return `${num} was added to your array`;
 		}
 		return `${num} is not a number`;
 	},
-
 	arrayShow: arr => {
 		return `${arr.join()}`;
 	},
-
 	arrayTotal: arr => {
 		return `${arr.reduce((a, b) => a + b, 0)}`;
 	},
-
 	arrayClear: arr => {
 		arr = null;
 		return arr;
 	},
-
 	onAddToArrayClicked: () => {
 		let arrInputVal = parseFloat(arrInput.value);
 		if (typeof arrInputVal === "number" && isNaN(arrInputVal) !== true) {
@@ -113,10 +144,16 @@ const functions = {
  **** comment this out to run test
  */
 
-// document.getElementById("btn-tax").addEventListener("click", functions.onTaxButtonClicked);
-// document.getElementById("btn-arr-add").addEventListener("click", functions.onAddToArrayClicked);
-// document.getElementById("btn-arr-show").addEventListener("click", functions.onShowArrayClicked);
-// document.getElementById("btn-arr-total").addEventListener("click", functions.onTotalArrayClicked);
-// document.getElementById("btn-arr-clear").addEventListener("click", functions.onClearArrayClicked);
+document.getElementById("btn-add").addEventListener("click", functions.onAddButtonClicked);
+document.getElementById("btn-sub").addEventListener("click", functions.onSubButtonClicked);
+document.getElementById("btn-mul").addEventListener("click", functions.onMulButtonClicked);
+document.getElementById("btn-dvd").addEventListener("click", functions.onDvdButtonClicked);
+document.getElementById("btn-calc-clear").addEventListener("click", functions.onClearCalcClicked);
+
+document.getElementById("btn-tax").addEventListener("click", functions.onTaxButtonClicked);
+document.getElementById("btn-arr-add").addEventListener("click", functions.onAddToArrayClicked);
+document.getElementById("btn-arr-show").addEventListener("click", functions.onShowArrayClicked);
+document.getElementById("btn-arr-total").addEventListener("click", functions.onTotalArrayClicked);
+document.getElementById("btn-arr-clear").addEventListener("click", functions.onClearArrayClicked);
 
 export default functions;
