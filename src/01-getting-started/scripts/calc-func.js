@@ -1,5 +1,7 @@
 let inputOne = document.querySelector("#calc-input-1");
 let inputTwo = document.querySelector("#calc-input-2");
+let calcDisplaylElement = document.getElementById("calc-display-val");
+let calcClearBtn = document.getElementById("btn-calc-clear");
 
 const calculator = {
 	add: (num1, num2) => {
@@ -18,28 +20,36 @@ const calculator = {
 
 function onAddButtonClicked() {
 	let addResult = calculator.add(Number(inputOne.value), Number(inputTwo.value));
-	document.getElementById("calc-result").innerHTML = `the sum of ${inputOne.value} and ${inputTwo.value} is ${addResult}`;
+	document.getElementById("calc-display-val").textContent = `the sum of ${inputOne.value} and ${inputTwo.value} is ${addResult}`;
 	inputOne.value = "";
 	inputTwo.value = "";
 }
 function onSubButtonClicked() {
 	let subResult = calculator.sub(Number(inputOne.value), Number(inputTwo.value));
-	document.getElementById("calc-result").innerHTML = `the difference between ${inputOne.value} and ${inputTwo.value} is ${subResult}`;
+	document.getElementById("calc-display-val").textContent = `the difference between ${inputOne.value} and ${inputTwo.value} is ${subResult}`;
 	inputOne.value = "";
 	inputTwo.value = "";
 }
 function onMulButtonClicked() {
 	let mulResult = calculator.mul(Number(inputOne.value), Number(inputTwo.value));
-	document.getElementById("calc-result").innerHTML = `the product of ${inputOne.value} and ${inputTwo.value} is ${mulResult}`;
+	document.getElementById("calc-display-val").textContent = `the product of ${inputOne.value} and ${inputTwo.value} is ${mulResult}`;
 	inputOne.value = "";
 	inputTwo.value = "";
 }
 function onDvdButtonClicked() {
 	let dvdResult = calculator.dvd(Number(inputOne.value), Number(inputTwo.value));
-	document.getElementById("calc-result").innerHTML = `the quotient of ${inputOne.value} and ${inputTwo.value} is ${dvdResult}`;
+	document.getElementById("calc-display-val").textContent = `the quotient of ${inputOne.value} and ${inputTwo.value} is ${dvdResult}`;
 	inputOne.value = "";
 	inputTwo.value = "";
 }
+
+/*
+ **** comment this out to run test
+ */
+calcClearBtn.onclick = () => {
+	displayVal = "cleared...";
+	calcDisplaylElement.innerHTML = displayVal;
+};
 
 /*
  **** comment this out to run test
@@ -52,4 +62,4 @@ document.getElementById("btn-dvd").addEventListener("click", onDvdButtonClicked)
 /*
  **** comment this out to run javascript
  */
-// export default calculator;
+export default calculator;
