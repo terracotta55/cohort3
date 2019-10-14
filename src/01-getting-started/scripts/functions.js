@@ -1,3 +1,12 @@
+let tax = 0;
+let taxInput = document.querySelector("#tax-input");
+let taxDisplayVal = document.getElementById("tax-display-val");
+
+let numArray = [];
+let arrInput = document.querySelector("#arr-input");
+let arrDisplayVal = document.querySelector("#arr-display-val");
+// let arrClearBtn = document.getElementById("btn-arr-clear");
+
 const functions = {
 	size: num => {
 		if (num < 0) return "negative";
@@ -16,7 +25,6 @@ const functions = {
 	},
 
 	taxes: income => {
-		let tax = 0;
 		const taxBracket_01 = 47630,
 			taxBracket_02 = 95259,
 			taxBracket_03 = 147667,
@@ -47,12 +55,68 @@ const functions = {
 	},
 
 	onTaxButtonClicked: () => {
-		let taxInput = document.querySelector("#tax-input");
 		let taxResult = functions.taxes(Number(taxInput.value));
-		document.getElementById("tax-result").innerHTML = `your 2019 taxes would be $${taxResult}`;
+		taxDisplayVal.innerHTML = `your 2019 taxes would be $${taxResult.toFixed(2)}`;
 		taxInput.value = "";
+	},
+
+	arrayAdd: num => {
+		if (typeof num === "number") {
+			return `${num} was added to your array`;
+		}
+		return `${num} is not a number`;
+	},
+
+	arrayShow: arr => {
+		return `${arr.join()}`;
+	},
+
+	arrayTotal: arr => {
+		return `${arr.reduce((a, b) => a + b, 0)}`;
+	},
+
+	arrayClear: arr => {
+		arr = null;
+		return arr;
+	},
+
+	onAddToArrayClicked: () => {
+		let arrInputVal = parseFloat(arrInput.value);
+		if (typeof arrInputVal === "number" && isNaN(arrInputVal) !== true) {
+			numArray.push(arrInputVal);
+			arrDisplayVal.textContent = `${arrInputVal} was added to your array`;
+		} else {
+			arrInputVal = arrInput.value;
+			arrDisplayVal.textContent = `"${arrInputVal}" is not a number`;
+		}
+		console.log("add clicked", numArray);
+		arrInput.value = "";
+		return numArray;
+	},
+	onShowArrayClicked: () => {
+		console.log(`show clicked`, numArray);
+		arrDisplayVal.textContent = `your array is ==> "${numArray.join(", ")}"`;
+		return numArray;
+	},
+	onTotalArrayClicked: () => {
+		let arrTotal = numArray.reduce((accum, curr) => accum + curr, 0);
+		console.log(`total clicked`, arrTotal);
+		arrDisplayVal.textContent = `your array total is ==> ${arrTotal}`;
+		return arrTotal;
+	},
+	onClearArrayClicked: () => {
+		arrDisplayVal.innerHTML = "cleared arr...";
 	}
 };
 
-document.getElementById("btn-tax").addEventListener("click", functions.onTaxButtonClicked);
+/*
+ **** comment this out to run test
+ */
+
+// document.getElementById("btn-tax").addEventListener("click", functions.onTaxButtonClicked);
+// document.getElementById("btn-arr-add").addEventListener("click", functions.onAddToArrayClicked);
+// document.getElementById("btn-arr-show").addEventListener("click", functions.onShowArrayClicked);
+// document.getElementById("btn-arr-total").addEventListener("click", functions.onTotalArrayClicked);
+// document.getElementById("btn-arr-clear").addEventListener("click", functions.onClearArrayClicked);
+
 export default functions;
