@@ -31,3 +31,10 @@ test("testing tax calc", () => {
 	expect(functions.taxes(150000)).toEqual(31211.1);
 	expect(functions.taxes(250000)).toEqual(61796.25);
 });
+
+test("testing array functions", () => {
+	expect(functions.arrayAdd(30)).toBe("30 was added to your array");
+	expect(functions.arrayShow([10, 20, 30])).toBe("10,20,30");
+	expect(functions.arrayTotal([10, 20, 30])).toBe("60");
+	expect(functions.arrayClear([10, 20, 30])).toBeNull();
+});
