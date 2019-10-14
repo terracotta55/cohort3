@@ -1,6 +1,6 @@
 let inputOne = document.querySelector("#calc-input-1");
 let inputTwo = document.querySelector("#calc-input-2");
-let calcDisplaylElement = document.getElementById("calc-display-val");
+let calcDisplayElement = document.getElementById("calc-display-val");
 let calcClearBtn = document.getElementById("btn-calc-clear");
 
 const calculator = {
@@ -48,7 +48,7 @@ function onDvdButtonClicked() {
  */
 calcClearBtn.onclick = () => {
 	displayVal = "cleared...";
-	calcDisplaylElement.innerHTML = displayVal;
+	calcDisplayElement.innerHTML = displayVal;
 };
 
 /*
