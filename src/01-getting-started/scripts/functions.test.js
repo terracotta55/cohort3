@@ -38,3 +38,10 @@ test("testing array functions", () => {
 	expect(functions.arrayTotal([10, 20, 30])).toBe("60");
 	expect(functions.arrayClear([10, 20, 30])).toBeNull();
 });
+
+test("testing object functions", () => {
+	expect(functions.canadaProv("mb")).toBe("Manitoba");
+	expect(functions.canadaProv("yt")).toBe("Yukon");
+	expect(functions.canadaProv("ns")).toBe("Nova Scotia");
+	expect(functions.canadaProv("n5")).toBe("n5 is not a province");
+});

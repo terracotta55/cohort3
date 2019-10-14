@@ -10,6 +10,26 @@ let numArray = [];
 let arrInput = document.querySelector("#arr-input");
 let arrDisplayVal = document.querySelector("#arr-display-val");
 
+const canadaProvincesObj = {
+	ab: "Alberta",
+	bc: "British Columbia",
+	mb: "Manitoba",
+	nb: "New Brunswick",
+	nl: "Newfoundland and Labrador",
+	ns: "Nova Scotia",
+	nt: "Northwest Territories",
+	nu: "Nunavut",
+	on: "Ontario",
+	pe: "Prince Edward Island",
+	qc: "Quebec",
+	sk: "Saskatchewan",
+	yt: "Yukon"
+};
+let objResult = "";
+let newStr = "";
+let objDisplayVal = document.querySelector("#obj-display-val");
+let objInput = document.querySelector("#obj-input");
+
 const functions = {
 	size: num => {
 		if (num < 0) return "negative";
@@ -137,6 +157,56 @@ const functions = {
 	},
 	onClearArrayClicked: () => {
 		arrDisplayVal.innerHTML = "cleared arr...";
+	},
+	canadaProv: str => {
+		newStr = str.toLowerCase();
+		if (newStr === "ab") {
+			objResult = canadaProvincesObj.ab;
+			return objResult;
+		} else if (newStr === "bc") {
+			objResult = canadaProvincesObj.bc;
+			return objResult;
+		} else if (newStr === "mb") {
+			objResult = canadaProvincesObj.mb;
+			return objResult;
+		} else if (newStr === "nb") {
+			objResult = canadaProvincesObj.nb;
+			return objResult;
+		} else if (newStr === "nl") {
+			objResult = canadaProvincesObj.nl;
+			return objResult;
+		} else if (newStr === "ns") {
+			objResult = canadaProvincesObj.ns;
+			return objResult;
+		} else if (newStr === "nt") {
+			objResult = canadaProvincesObj.nt;
+			return objResult;
+		} else if (newStr === "nu") {
+			objResult = canadaProvincesObj.nu;
+			return objResult;
+		} else if (newStr === "on") {
+			objResult = canadaProvincesObj.on;
+			return objResult;
+		} else if (newStr === "pe") {
+			objResult = canadaProvincesObj.pe;
+			return objResult;
+		} else if (newStr === "qc") {
+			objResult = canadaProvincesObj.qc;
+			return objResult;
+		} else if (newStr === "sk") {
+			objResult = canadaProvincesObj.sk;
+			return objResult;
+		} else if (newStr === "yt") {
+			objResult = canadaProvincesObj.yt;
+			return objResult;
+		}
+		return `${newStr} is not a province`;
+	},
+	onObjLookupClicked: () => {
+		objResult = functions.canadaProv(objInput.value);
+		console.log(`lookup clicked`);
+		objDisplayVal.textContent = `${objResult}`;
+		return objResult;
 	}
 };
 
@@ -155,5 +225,7 @@ document.getElementById("btn-arr-add").addEventListener("click", functions.onAdd
 document.getElementById("btn-arr-show").addEventListener("click", functions.onShowArrayClicked);
 document.getElementById("btn-arr-total").addEventListener("click", functions.onTotalArrayClicked);
 document.getElementById("btn-arr-clear").addEventListener("click", functions.onClearArrayClicked);
+
+document.getElementById("btn-obj-lookup").addEventListener("click", functions.onObjLookupClicked);
 
 export default functions;
