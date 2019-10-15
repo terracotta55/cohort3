@@ -5,6 +5,10 @@ html,
 .container {
 	font-family: "Ubuntu", sans-serif;
 }
+input {
+	outline: 1px solid grey;
+	margin-right: 10px;
+}
 
 .container {
 	display: grid;

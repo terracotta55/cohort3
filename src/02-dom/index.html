@@ -50,22 +50,27 @@
 			<div class="list-child">
 				<h1><strong>Document Object Model (DOM)</strong></h1>
 			</div>
+			<br />
 			<div class="list-child">
-				<p>This is a simple list of stuff to do</p>
+				<p>This is a simple list of stuff to be done:</p>
 			</div>
 			<div class="list-child">
 				<ol id="list-parent">
-					<li>one</li>
-					<li>one</li>
-					<li>one</li>
-					<li>one</li>
-					<li>one</li>
+					<li><input type="checkbox" id="list-item" /><label for="list-item">item-1</label></li>
+					<li><input type="checkbox" id="list-item" /><label for="list-item">item-2</label></li>
+					<li><input type="checkbox" id="list-item" /><label for="list-item">item-3</label></li>
+					<li><input type="checkbox" id="list-item" /><label for="list-item">item-4</label></li>
+					<li><input type="checkbox" id="list-item" /><label for="list-item">item-5</label></li>
 				</ol>
 			</div>
 			<div class="list-child">
+				<p>Enter your new items here:</p>
+			</div>
+			<div class="list-child">
 				<input id="input-add" class="mr-sm-2" type="text" placeholder="enter here..." />
-				<button id="btn-add" type="button" class="btn btn-success">Add Item</button>
+				<button id="btn-add" type="button" class="btn btn-primary">Add Item</button>
 				<button id="btn-del" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+				<button id="btn-del" class="btn btn-success"><i class="fa fa-check"></i></button>
 			</div>
 			<br />
 		</div>

@@ -14,8 +14,19 @@ const functions = {
 	},
 	addListItem: () => {
 		let li = document.createElement("li");
-		li.appendChild(document.createTextNode(inputField.value));
+		let input = document.createElement("input");
+		input.setAttribute("type", "checkbox");
+		input.setAttribute("id", "list-item");
+		let inputLabel = document.createElement("label");
+		inputLabel.setAttribute("for", "list-item");
+
 		orderedList.appendChild(li);
+		li.appendChild(input);
+		li.appendChild(inputLabel);
+		// input.appendChild(inputLabel);
+		inputLabel.appendChild(document.createTextNode(inputField.value));
+		// li.appendChild(document.createTextNode(inputField.value));
+		// orderedList.appendChild(li);
 		inputField.value = "";
 	},
 	onAddButtonClicked: () => {
