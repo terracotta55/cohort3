@@ -79,7 +79,7 @@ const functions = {
 	},
 	onClearCalcClicked: () => {
 		let displayVal = "cleared...";
-		calcDisplayElement.innerHTML = displayVal;
+		calcDisplayElement.textContent = displayVal;
 	},
 	taxes: income => {
 		const taxBracket_01 = 47630,
@@ -112,7 +112,7 @@ const functions = {
 	},
 	onTaxButtonClicked: () => {
 		let taxResult = functions.taxes(Number(taxInput.value));
-		taxDisplayVal.innerHTML = `your 2019 taxes would be $${taxResult.toFixed(2)}`;
+		taxDisplayVal.textContent = `your 2019 taxes would be $${taxResult.toFixed(2)}`;
 		taxInput.value = "";
 	},
 	arrayAdd: num => {
@@ -156,7 +156,7 @@ const functions = {
 		return arrTotal;
 	},
 	onClearArrayClicked: () => {
-		arrDisplayVal.innerHTML = "cleared arr...";
+		arrDisplayVal.textContent = "cleared arr...";
 	},
 	canadaProv: str => {
 		newStr = str.toLowerCase();
