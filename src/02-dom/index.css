@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
 
-body,
-html,
-.container {
+.body-class-index,
+.body-class-cards {
 	font-family: "Ubuntu", sans-serif;
 }
 input {
@@ -26,6 +25,6 @@ h1 {
 	justify-self: center;
 	align-self: center;
 }
-.list-child {
+.container-index-child {
 	display: inline-block;
 }

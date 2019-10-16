@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>Basic DOM</title>
+		<title>Cards</title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<!-- Bootstrap CSS -->
@@ -21,7 +21,13 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link href="./index.css" rel="stylesheet" type="text/css" />
 	</head>
-	<body class="body-class-index">
+	<body class="body-class-cards">
+		<!--[if lt IE 7]>
+			<p class="browsehappy">
+				You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.
+			</p>
+		<![endif]-->
+		<!-- Nav Bar -->
 		<div>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<a class="navbar-brand" href="#">Comp-110</a>
@@ -38,49 +44,33 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a class="nav-item nav-link active" href="#">DOM<span class="sr-only">(current)</span></a>
-						<a class="nav-item nav-link" href="./cards.html">Cards</a>
+						<a class="nav-item nav-link" href="./index.html">DOM</a>
+						<a class="nav-item nav-link active" href="./cards.html">Cards<span class="sr-only">(current)</span></a>
 						<a class="nav-item nav-link disabled" href="#">State</a>
 						<a class="nav-item nav-link disabled" href="#">React</a>
 					</div>
 				</div>
 			</nav>
 		</div>
-		<div class="container container-index">
-			<div class="container-index-child">
-				<h1><strong>Document Object Model (DOM)</strong></h1>
+		<div class="container container-cards">
+			<div class="container-cards-child">
+				<h1><strong>Cards Exercise</strong></h1>
 			</div>
 			<br />
-			<div class="container-index-child">
-				<p>This is a simple list of stuff to be done:</p>
+			<div class="container-cards-child">
+				<p>I really don't what this is yet:</p>
 			</div>
-			<div class="container-index-child">
-				<ol id="list-parent">
-					<li>item-1</li>
-					<li>item-2</li>
-					<li>item-3</li>
-					<li>item-4</li>
-					<li>item-5</li>
-					<!-- <li><input type="checkbox" class="list-item" /><label for="list-item">item-5</label></li> -->
-				</ol>
+			<div class="container-cards-child">
+				<p>Card-1</p>
 			</div>
-			<div class="container-index-child">
-				<p>Enter your new items here:</p>
+			<div class="container-cards-child">
+				<p>Card-2</p>
 			</div>
-			<div class="container-index-child">
-				<input id="input-add" class="mr-sm-2" type="text" placeholder="enter here..." />
-				<button id="btn-add" type="button" class="btn btn-primary">Add Item</button>
-				<button id="btn-del" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-				<button id="btn-del" class="btn btn-success"><i class="fa fa-check"></i></button>
+			<div class="container-cards-child">
+				<p>Card-3</p>
 			</div>
 			<br />
 		</div>
-
-		<!--[if lt IE 7]>
-			<p class="browsehappy">
-				You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.
-			</p>
-		<![endif]-->
 
 		<script src="./scripts/main.js" type="module" async defer></script>
 		<!-- Optional JavaScript -->
