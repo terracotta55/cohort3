@@ -24,20 +24,28 @@ test("email builder from an object / map", () => {
 	expect(functions.makeEmailObj({ fname: "First", lname: "Last" })).toEqual("first.last@evolveu.ca");
 	expect(functions.makeEmailObj({ fname: "Bill", lname: "Smith" })).toEqual("bill.smith@evolveu.ca");
 });
-
-/*
-test("Check the sizes", () => {
-  expect(functions.size(-1)).toBe("negative"); // Consider the edge cases
-  expect(functions.size(0)).toBe("small");
-  expect(functions.size(10)).toBe("medium");
-  expect(functions.size(15)).toBe("medium");
-  expect(functions.size(20)).toBe("large");
-  expect(functions.size(101)).toBe("extra large");
-  expect(functions.size(2000000)).toBe("extra large");
+test("for loop demo", () => {
+	expect(functions.forLoop(0, 5)).toBe(15);
+	expect(functions.forLoop(0, 10)).toBe(55);
+	expect(functions.forLoop(0, 100)).toBe(5050);
 });
 
-test("Does that add function work?", () => {
-  expect(functions.add(1, 2)).toBe(3);
-  expect(functions.add(101, 202)).toBe(303);
+test("while loop demo", () => {
+	expect(functions.whileLoop("hello")).toBe("olleh");
+	expect(functions.whileLoop("history")).toBe("yrotsih");
+	expect(functions.whileLoop("all")).toBe("lla");
 });
-*/
+
+test("do while loop demo", () => {
+	expect(functions.doWhile(5)).toEqual([1, 2, 3, 4, 5]);
+});
+
+test("for of demo", () => {
+	expect(functions.forOfLoop([1, 2, 3])).toEqual([1, 2, 3]);
+	expect(functions.forOfLoop(["cat", "dog", "fish"])).toEqual(["cat", "dog", "fish"]);
+	expect(functions.forOfLoop([11, 22, 33])).toEqual([11, 22, 33]);
+});
+
+test("for in demo", () => {
+	expect(functions.forInLoop({ a: "first", b: "second", c: "third" })).toEqual(["first", "second", "third"]);
+});

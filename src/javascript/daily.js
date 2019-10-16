@@ -21,6 +21,47 @@ const functions = {
 		let first = obj.fname.toLowerCase();
 		let last = obj.lname.toLowerCase();
 		return `${first}.${last}@evolveu.ca`;
+	},
+	forLoop: (smallNum, largeNum) => {
+		let sum = 0;
+		for (let i = smallNum; i <= largeNum; i++) {
+			sum += i;
+		}
+		return sum;
+	},
+	whileLoop: str => {
+		let newStr = "",
+			i = str.length;
+		while (i > 0) {
+			newStr += str.substring(i - 1, i);
+			i--;
+		}
+		return newStr;
+	},
+	doWhile: countUpTo => {
+		let countArr = [];
+		let i = 1;
+		do {
+			countArr.push(i);
+			i++;
+		} while (i <= countUpTo);
+		// console.log(countArr);
+		return countArr;
+	},
+	forOfLoop: arr => {
+		let elemList = [];
+		for (const elem of arr) {
+			elemList.push(elem);
+		}
+		return elemList;
+	},
+	forInLoop: obj => {
+		let propList = [];
+		for (let prop in obj) {
+			propList.push(obj[prop]);
+		}
+		// console.log(propList);
+		return propList;
 	}
 };
 
