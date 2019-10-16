@@ -1,10 +1,10 @@
 let btnAdd = document.getElementById("btn-add");
 let btnDel = document.getElementById("btn-del");
+let btnShow = document.getElementById("btn-show");
 let inputField = document.getElementById("input-add");
 let orderedList = document.getElementById("list-parent");
 let listOfItems = document.getElementById("list-parent").getElementsByTagName("li");
-
-// let checkbox = document.querySelector("input[type=checkbox]");
+let showListOl = document.getElementById("final-list");
 
 const functions = {
 	add: (num1, num2) => {
@@ -39,54 +39,32 @@ const functions = {
 	removeListItem: () => {
 		let lastItem = listOfItems[listOfItems.length - 1];
 		lastItem.parentNode.removeChild(lastItem);
-		// list.removeChild(list.childNodes[listLength - 1]);
-		// listLength -= listLength;
 		return true;
 	},
 	onDelButtonClicked: () => {
 		console.log("delete button clicked");
 		functions.removeListItem();
-		// let list = document.getElementById("list-parent");
-		// let listLength = list.childElementCount;
-		// console.log("delete clicked", list.childElementCount);
-		// listLength -= listLength;
-		// functions.removeListItem();
 		return true;
+	},
+	showListItems: () => {
+		for (var i = 0; i < listOfItems.length; ++i) {
+			let li = document.createElement("li");
+			showListOl.appendChild(li);
+			li.appendChild(document.createTextNode(listOfItems[i].innerText));
+			// do something with items[i], which is a <li> element
+		}
+		listOfItems = []; //to prevent repeat on click
+		return true;
+	},
+	onShowButtonClicked: () => {
+		console.log("show clicked");
+		functions.showListItems();
 	}
 };
 
 btnAdd.addEventListener("click", functions.onAddButtonClicked);
 inputField.addEventListener("keypress", functions.addOnKeypress);
 btnDel.addEventListener("click", functions.onDelButtonClicked);
+btnShow.addEventListener("click", functions.onShowButtonClicked);
 
 export default functions;
-/*
-checkbox playground
-using checkboxes and labels
-*/
-
-/*
-	let input = document.createElement("input");
-	input.setAttribute("type", "checkbox");
-	input.setAttribute("id", "list-item");
-	let inputLabel = document.createElement("label");
-	inputLabel.setAttribute("for", "list-item");
-	li.appendChild(input);
-	li.appendChild(inputLabel);
-	input.appendChild(inputLabel);
-	inputLabel.appendChild(document.createTextNode(inputField.value));
-	li.appendChild(document.createTextNode(inputField.value));
-	orderedList.appendChild(li);
-*/
-
-/*
-checkbox.addEventListener("change", function() {
-	if (this.checked) {
-		// Checkbox is checked..
-		console.log("this item is checked");
-		this.style.color = "red";
-	} else {
-		// Checkbox is not checked..
-	}
-});
-*/
