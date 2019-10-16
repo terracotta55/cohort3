@@ -9,22 +9,22 @@ input {
 	margin-right: 10px;
 }
 
-.container {
-	display: grid;
+.container-index {
+	border: 5px solid gray;
+	margin: auto;
+	width: 600px;
+
+	/* display: grid;
 	border-right: 5px solid gray;
 	border-left: 5px solid gray;
 	border-top: 5px solid gray;
 	border-bottom: 5px solid gray;
-	grid-template-columns: minmax(500px, 1fr);
+	grid-template-columns: minmax(500px, 1fr); */
 	/* grid-template-rows: 100vh;
 	justify-content: center;
 	align-content: center; */
 }
 h1 {
 	/* display: subgrid; */
-	justify-self: center;
-	align-self: center;
-}
-.container-index-child {
-	display: inline-block;
+	text-align: center;
 }
