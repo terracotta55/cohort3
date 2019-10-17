@@ -48,12 +48,12 @@ const functions = {
 	},
 	showListItems: () => {
 		for (var i = 0; i < listOfItems.length; ++i) {
+			// do something with items[i], which is a <li> element
 			let li = document.createElement("li");
 			showListOl.appendChild(li);
 			li.appendChild(document.createTextNode(listOfItems[i].innerText));
-			// do something with items[i], which is a <li> element
 		}
-		listOfItems = []; //to prevent repeat on click
+		listOfItems = []; //to prevent repeat paste on click
 		return true;
 	},
 	onShowButtonClicked: () => {
@@ -61,7 +61,6 @@ const functions = {
 		functions.showListItems();
 	}
 };
-
 btnAdd.addEventListener("click", functions.onAddButtonClicked);
 inputField.addEventListener("keypress", functions.addOnKeypress);
 btnDel.addEventListener("click", functions.onDelButtonClicked);
