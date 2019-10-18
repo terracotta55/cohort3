@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
+
+body {
+	background-color: lightgray;
+	font-family: "Ubuntu", sans-serif;
+}
+#container {
+	display: flex;
+	justify-content: space-evenly;
+}
+#left {
+	overflow: scroll;
+	width: 40%;
+	background-color: whitesmoke;
+	text-align: center;
+}
+#right {
+	width: 40%;
+	background-color: whitesmoke;
+	text-align: center;
+}
+.card {
+	box-sizing: border-box;
+	display: inline-block;
+	margin: auto;
+	padding: 8px;
+	background-color: burlywood;
+	min-height: 180px;
+	text-align: center;
+	margin: 0px 0 20px 0;
+	width: 90%;
+}
+.card button {
+	margin: 4px;
+}
+.page-title {
+	text-align: center;
+}
+#btn-top-add {
+	margin: 20px;
+}

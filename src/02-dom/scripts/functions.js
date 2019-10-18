@@ -53,7 +53,9 @@ const functions = {
 			showListOl.appendChild(li);
 			li.appendChild(document.createTextNode(listOfItems[i].innerText));
 		}
+
 		listOfItems = []; //to prevent repeat paste on click
+
 		return true;
 	},
 	onShowButtonClicked: () => {
