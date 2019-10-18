@@ -8,3 +8,9 @@
 /node_modules
 src/.DS_Store
 .vscode/settings.json
+src/02-dom/.DS_Store
+src/gitignore
+src/02-dom/sandbox/.DS_Store
+src/02-dom/sandbox/scripts/.DS_Store
+src/02-dom/scripts/.DS_Store
+
