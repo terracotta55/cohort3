@@ -7,6 +7,6 @@ test("testing addition", () => {
 });
 
 test("testing subtraction", () => {
-	expect(functionsCards.sub(15, 45)).toBe(-30);
-	expect(functionsCards.sub(100, 80)).toBe(20);
+	expect(functions.sub(15, 45)).toBe(-30);
+	expect(functions.sub(100, 80)).toBe(20);
 });

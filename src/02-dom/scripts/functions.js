@@ -1,10 +1,10 @@
-let btnAdd = document.getElementById("btn-add");
-let btnDel = document.getElementById("btn-del");
-let btnShow = document.getElementById("btn-show");
 let inputField = document.getElementById("input-add");
 let orderedList = document.getElementById("list-parent");
-let listOfItems = document.getElementById("list-parent").getElementsByTagName("li");
+let list = document.getElementById("list-parent");
 let showListOl = document.getElementById("final-list");
+// let btnAdd = document.getElementById("btn-add");
+// let btnDel = document.getElementById("btn-del");
+// let btnShow = document.getElementById("btn-show");
 
 const functions = {
 	add: (num1, num2) => {
@@ -37,6 +37,7 @@ const functions = {
 		return true;
 	},
 	removeListItem: () => {
+		let listOfItems = list.getElementsByTagName("li");
 		let lastItem = listOfItems[listOfItems.length - 1];
 		lastItem.parentNode.removeChild(lastItem);
 		return true;
@@ -47,6 +48,7 @@ const functions = {
 		return true;
 	},
 	showListItems: () => {
+		let listOfItems = list.getElementsByTagName("li");
 		for (var i = 0; i < listOfItems.length; ++i) {
 			// do something with items[i], which is a <li> element
 			let li = document.createElement("li");
@@ -63,9 +65,9 @@ const functions = {
 		functions.showListItems();
 	}
 };
-btnAdd.addEventListener("click", functions.onAddButtonClicked);
-inputField.addEventListener("keypress", functions.addOnKeypress);
-btnDel.addEventListener("click", functions.onDelButtonClicked);
-btnShow.addEventListener("click", functions.onShowButtonClicked);
+// btnAdd.addEventListener("click", functions.onAddButtonClicked);
+// inputField.addEventListener("keypress", functions.addOnKeypress);
+// btnDel.addEventListener("click", functions.onDelButtonClicked);
+// btnShow.addEventListener("click", functions.onShowButtonClicked);
 
 export default functions;
