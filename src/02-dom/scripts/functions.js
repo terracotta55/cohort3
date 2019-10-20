@@ -2,16 +2,10 @@ let inputField = document.getElementById("input-add");
 let orderedList = document.getElementById("list-parent");
 let list = document.getElementById("list-parent");
 let showListOl = document.getElementById("final-list");
-// let btnAdd = document.getElementById("btn-add");
-// let btnDel = document.getElementById("btn-del");
-// let btnShow = document.getElementById("btn-show");
 
 const functions = {
 	add: (num1, num2) => {
 		return num1 + num2;
-	},
-	sub: (num1, num2) => {
-		return num1 - num2;
 	},
 	checkInputLength: () => {
 		return inputField.value.length;
@@ -65,9 +59,5 @@ const functions = {
 		functions.showListItems();
 	}
 };
-// btnAdd.addEventListener("click", functions.onAddButtonClicked);
-// inputField.addEventListener("keypress", functions.addOnKeypress);
-// btnDel.addEventListener("click", functions.onDelButtonClicked);
-// btnShow.addEventListener("click", functions.onShowButtonClicked);
 
 export default functions;
