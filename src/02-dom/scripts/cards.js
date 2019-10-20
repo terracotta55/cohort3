@@ -1,11 +1,8 @@
 let left = document.getElementById("left");
 let cardIndex = 0;
 /*
-let cardsList = document.getElementsByClassName("btn-card-del");
-let leftClass = document.getElementsByClassName("card-parent");
 const origCard = document.getElementsByClassName("card")[0];
 */
-
 const functionsCards = {
 	sub: (num1, num2) => {
 		return num1 - num2;
@@ -62,7 +59,7 @@ const functionsCards = {
 		if (e.target.tagName == "BUTTON") {
 			let btnClass = e.target.getAttribute("class");
 			console.log("removeCurrCard function:", btnClass);
-			e.target.parentNode.remove(); //adding another parentNode will delete id:left
+			e.target.parentNode.remove(); //adding another parentNode will delete div id=left
 		}
 		return true;
 	},
