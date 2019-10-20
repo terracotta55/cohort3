@@ -8,8 +8,8 @@ body {
 	display: flex;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
-	flex-direction: row;
-	overflow: scroll;
+	/* flex-direction: row;
+	overflow: scroll; */
 }
 #left {
 	width: 40%;
@@ -28,7 +28,6 @@ body {
 	height: 670px;
 	border-radius: 15px;
 }
-
 .card-one {
 	box-sizing: border-box;
 	display: inline-block;
