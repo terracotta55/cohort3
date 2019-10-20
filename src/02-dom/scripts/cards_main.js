@@ -11,14 +11,12 @@ Array.from(cardsList).forEach(function(e) {
 let btnAddCard = document.getElementById("btn-top-add");
 btnAddCard.addEventListener("click", functionsCards.onAddCardClicked);
 left.addEventListener("click", function(e) {
-	// this is called event delegation
+	// this is called event delegation e.target is the clicked element
 	if (e.target && e.target.className == "btn-card-del") {
-		// e.target is the clicked element
 		console.log("event listener: delete"); // button with class name found!
 		functionsCards.removeCurrCard(e);
 	}
 });
-
 left.addEventListener("click", function(e) {
 	if (e.target && e.target.className == "btn-card-before") {
 		console.log("event listener: before");
