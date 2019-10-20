@@ -7,19 +7,20 @@ body {
 #container {
 	display: flex;
 	justify-content: space-evenly;
+	flex-wrap: wrap;
+	flex-direction: row;
 }
 #left {
-	overflow: scroll;
 	width: 40%;
 	background-color: whitesmoke;
 	text-align: center;
-	will-change: auto;
 }
 #right {
 	width: 40%;
 	background-color: whitesmoke;
 	text-align: center;
 }
+
 .card {
 	box-sizing: border-box;
 	display: inline-block;
