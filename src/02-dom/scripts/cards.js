@@ -7,6 +7,9 @@ const origCard = document.getElementsByClassName("card")[0];
 */
 
 const functionsCards = {
+	sub: (num1, num2) => {
+		return num1 - num2;
+	},
 	addNewCard: () => {
 		const div = document.createElement("div");
 		div.className = "card-one";
