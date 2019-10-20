@@ -9,19 +9,27 @@ body {
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 	flex-direction: row;
+	overflow: scroll;
 }
 #left {
 	width: 40%;
 	background-color: whitesmoke;
 	text-align: center;
+	border: solid black 1px;
+	height: 670px;
+	overflow: scroll;
+	border-radius: 15px;
 }
 #right {
 	width: 40%;
 	background-color: whitesmoke;
 	text-align: center;
+	border: solid black 1px;
+	height: 670px;
+	border-radius: 15px;
 }
 
-.card {
+.card-one {
 	box-sizing: border-box;
 	display: inline-block;
 	margin: auto;
@@ -31,13 +39,21 @@ body {
 	text-align: center;
 	margin: 0px 0 20px 0;
 	width: 90%;
+	border: solid black 1px;
+	border-radius: 15px;
 }
-.card button {
-	margin: 4px;
+.card-one button {
+	margin: 2px;
+	outline: none;
 }
 .page-title {
 	text-align: center;
 }
 #btn-top-add {
 	margin: 20px;
+}
+.btn-card {
+	border: solid black 1px;
+	margin: 5px;
+	border-radius: 5px;
 }
