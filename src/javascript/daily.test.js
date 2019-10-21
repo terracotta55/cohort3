@@ -1,5 +1,12 @@
 import functions from "./daily";
 
+test("email builder for company", () => {
+	const staffEmail = functions.loopStaff(data.staff);
+	expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+	expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+	expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
+
 test("sort numbers in ascending order", () => {
 	expect(functions.sortAscending([40, 100, 1, 5, 25, 10])).toEqual([1, 5, 10, 25, 40, 100]);
 });
