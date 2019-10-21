@@ -16,7 +16,6 @@ test("check an array see if it is the same", () => {
 	expect([1, 2, 3, 4]).toEqual([1, 2, 3, 4]);
 });
 
-test("email builder from tdd", () => {
-	const name = ["Larry", "Shumlich"];
-	expect(functions.emailBuilder(name)).toBe("l.shumlich@evolveu.ca");
+test("emailBuilder test", () => {
+	expect(functions.emailBuilder("larry", "shumlich")).toEqual("l.shumlich@evolveu.ca");
 });
