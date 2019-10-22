@@ -34,14 +34,25 @@ test("testing tax calc", () => {
 
 test("testing array functions", () => {
 	expect(functions.arrayAdd(30)).toBe("30 was added to your array");
+	expect(functions.arrayAdd("hello")).toBe("hello is not a number");
 	expect(functions.arrayShow([10, 20, 30])).toBe("10,20,30");
 	expect(functions.arrayTotal([10, 20, 30])).toBe("60");
 	expect(functions.arrayClear([10, 20, 30])).toBeNull();
 });
 
 test("testing object functions", () => {
+	expect(functions.canadaProv("ab")).toBe("Alberta");
+	expect(functions.canadaProv("bc")).toBe("British Columbia");
 	expect(functions.canadaProv("mb")).toBe("Manitoba");
-	expect(functions.canadaProv("yt")).toBe("Yukon");
+	expect(functions.canadaProv("nb")).toBe("New Brunswick");
+	expect(functions.canadaProv("nl")).toBe("Newfoundland and Labrador");
 	expect(functions.canadaProv("ns")).toBe("Nova Scotia");
+	expect(functions.canadaProv("nt")).toBe("Northwest Territories");
+	expect(functions.canadaProv("nu")).toBe("Nunavut");
+	expect(functions.canadaProv("on")).toBe("Ontario");
+	expect(functions.canadaProv("pe")).toBe("Prince Edward Island");
+	expect(functions.canadaProv("qc")).toBe("Quebec");
+	expect(functions.canadaProv("sk")).toBe("Saskatchewan");
+	expect(functions.canadaProv("yt")).toBe("Yukon");
 	expect(functions.canadaProv("n5")).toBe("n5 is not a province");
 });

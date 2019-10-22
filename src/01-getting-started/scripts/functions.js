@@ -1,14 +1,4 @@
-let inputOne = document.querySelector("#calc-input-1");
-let inputTwo = document.querySelector("#calc-input-2");
-let calcDisplayElement = document.getElementById("calc-display-val");
-
 let tax = 0;
-let taxInput = document.querySelector("#tax-input");
-let taxDisplayVal = document.getElementById("tax-display-val");
-
-let numArray = [];
-let arrInput = document.querySelector("#arr-input");
-let arrDisplayVal = document.querySelector("#arr-display-val");
 
 const canadaProvincesObj = {
 	ab: "Alberta",
@@ -27,8 +17,6 @@ const canadaProvincesObj = {
 };
 let objResult = "";
 let newStr = "";
-let objDisplayVal = document.querySelector("#obj-display-val");
-let objInput = document.querySelector("#obj-input");
 
 const functions = {
 	size: num => {
@@ -53,34 +41,7 @@ const functions = {
 	calculatorDvd: (num1, num2) => {
 		return num1 / num2;
 	},
-	onAddButtonClicked: () => {
-		let addResult = functions.calculatorAdd(Number(inputOne.value), Number(inputTwo.value));
-		calcDisplayElement.textContent = `the sum of ${inputOne.value} and ${inputTwo.value} is ${addResult}`;
-		inputOne.value = "";
-		inputTwo.value = "";
-	},
-	onSubButtonClicked: () => {
-		let subResult = functions.calculatorSub(Number(inputOne.value), Number(inputTwo.value));
-		calcDisplayElement.textContent = `the difference between ${inputOne.value} and ${inputTwo.value} is ${subResult}`;
-		inputOne.value = "";
-		inputTwo.value = "";
-	},
-	onMulButtonClicked: () => {
-		let mulResult = functions.calculatorMul(Number(inputOne.value), Number(inputTwo.value));
-		calcDisplayElement.textContent = `the product of ${inputOne.value} and ${inputTwo.value} is ${mulResult}`;
-		inputOne.value = "";
-		inputTwo.value = "";
-	},
-	onDvdButtonClicked: () => {
-		let dvdResult = functions.calculatorDvd(Number(inputOne.value), Number(inputTwo.value));
-		calcDisplayElement.textContent = `the quotient of ${inputOne.value} and ${inputTwo.value} is ${dvdResult}`;
-		inputOne.value = "";
-		inputTwo.value = "";
-	},
-	onClearCalcClicked: () => {
-		let displayVal = "cleared...";
-		calcDisplayElement.textContent = displayVal;
-	},
+
 	taxes: income => {
 		const taxBracket_01 = 47630,
 			taxBracket_02 = 95259,
@@ -110,11 +71,6 @@ const functions = {
 		}
 		return Number(tax);
 	},
-	onTaxButtonClicked: () => {
-		let taxResult = functions.taxes(Number(taxInput.value));
-		taxDisplayVal.textContent = `your 2019 taxes would be $${taxResult.toFixed(2)}`;
-		taxInput.value = "";
-	},
 	arrayAdd: num => {
 		if (typeof num === "number") {
 			return `${num} was added to your array`;
@@ -131,33 +87,7 @@ const functions = {
 		arr = null;
 		return arr;
 	},
-	onAddToArrayClicked: () => {
-		let arrInputVal = parseFloat(arrInput.value);
-		if (typeof arrInputVal === "number" && isNaN(arrInputVal) !== true) {
-			numArray.push(arrInputVal);
-			arrDisplayVal.textContent = `${arrInputVal} was added to your array`;
-		} else {
-			arrInputVal = arrInput.value;
-			arrDisplayVal.textContent = `"${arrInputVal}" is not a number`;
-		}
-		console.log("add clicked", numArray);
-		arrInput.value = "";
-		return numArray;
-	},
-	onShowArrayClicked: () => {
-		console.log(`show clicked`, numArray);
-		arrDisplayVal.textContent = `your array is ==> "${numArray.join(", ")}"`;
-		return numArray;
-	},
-	onTotalArrayClicked: () => {
-		let arrTotal = numArray.reduce((accum, curr) => accum + curr, 0);
-		console.log(`total clicked`, arrTotal);
-		arrDisplayVal.textContent = `your array total is ==> ${arrTotal}`;
-		return arrTotal;
-	},
-	onClearArrayClicked: () => {
-		arrDisplayVal.textContent = "cleared arr...";
-	},
+
 	canadaProv: str => {
 		newStr = str.toLowerCase();
 		if (newStr === "ab") {
@@ -201,17 +131,7 @@ const functions = {
 			return objResult;
 		}
 		return `${newStr} is not a province`;
-	},
-	onObjLookupClicked: () => {
-		objResult = functions.canadaProv(objInput.value);
-		console.log(`lookup clicked`);
-		objDisplayVal.textContent = `${objResult}`;
-		return objResult;
 	}
 };
-
-/*
- **** comment this out to run test
- */
 
 export default functions;
