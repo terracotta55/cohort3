@@ -1,8 +1,4 @@
-const functions = {
-	accounts: () => {
-		console.log("hello from accounts");
-		return true;
-	}
+export const helloWorld = () => {
+	console.log("hello from functions");
+	return `hello from functions`;
 };
-
-export default functions;

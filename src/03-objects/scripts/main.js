@@ -1,3 +1,6 @@
 import * as functions from "./functions.js";
+import * as accounts from "./accounts.js";
+import { myAccount } from "./accounts.js";
 
-functions.accounts();
+functions.helloWorld();
+accounts.helloAccounts();
