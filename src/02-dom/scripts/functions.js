@@ -1,44 +1,19 @@
-let inputField = document.getElementById("input-add");
-let orderedList = document.getElementById("list-parent");
 let list = document.getElementById("list-parent");
 let showListOl = document.getElementById("final-list");
 
 const functions = {
-	add: (num1, num2) => {
-		return num1 + num2;
-	},
-	checkInputLength: () => {
-		return inputField.value.length;
-	},
 	addListItem: () => {
+		let orderedList = document.getElementById("list-parent");
+		let inputField = document.getElementById("input-add");
 		let li = document.createElement("li");
 		orderedList.appendChild(li);
 		li.appendChild(document.createTextNode(inputField.value));
 		inputField.value = "";
 	},
-	onAddButtonClicked: () => {
-		if (functions.checkInputLength() > 0) {
-			console.log("add button clicked");
-			functions.addListItem();
-		}
-		return true;
-	},
-	addOnKeypress: event => {
-		if (functions.checkInputLength() > 0 && event.keyCode === 13) {
-			console.log("enter key pressed");
-			functions.addListItem();
-		}
-		return true;
-	},
 	removeListItem: () => {
 		let listOfItems = list.getElementsByTagName("li");
 		let lastItem = listOfItems[listOfItems.length - 1];
 		lastItem.parentNode.removeChild(lastItem);
-		return true;
-	},
-	onDelButtonClicked: () => {
-		console.log("delete button clicked");
-		functions.removeListItem();
 		return true;
 	},
 	showListItems: () => {
@@ -49,14 +24,10 @@ const functions = {
 			showListOl.appendChild(li);
 			li.appendChild(document.createTextNode(listOfItems[i].innerText));
 		}
-
-		listOfItems = []; //to prevent repeat paste on click
-
-		return true;
-	},
-	onShowButtonClicked: () => {
-		console.log("show clicked");
-		functions.showListItems();
+		/*
+		listOfItems = []; 
+		*/
+		return listOfItems;
 	}
 };
 

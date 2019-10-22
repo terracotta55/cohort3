@@ -1,15 +1,9 @@
 import functionsCards from "./cards.js";
-/*
-let btnDel = document.getElementById("btn-del-1");
-let cardsList = document.getElementsByClassName("btn-card-del");
-btnDel.addEventListener("click", functionsCards.onDelBtnClicked);
-// adding event listener to a class (see cardList)
-Array.from(cardsList).forEach(function(e) {
-	e.addEventListener("click", functionsCards.onDelBtnClicked);
-});
-*/
+
 let btnAddCard = document.getElementById("btn-top-add");
+
 btnAddCard.addEventListener("click", functionsCards.onAddCardClicked);
+
 left.addEventListener("click", function(e) {
 	// this is called event delegation e.target is the clicked element
 	if (e.target && e.target.className == "btn-card-del") {
@@ -29,3 +23,13 @@ left.addEventListener("click", function(e) {
 		functionsCards.addAfterCard(e);
 	}
 });
+
+/*
+let btnDel = document.getElementById("btn-del-1");
+let cardsList = document.getElementsByClassName("btn-card-del");
+btnDel.addEventListener("click", functionsCards.onDelBtnClicked);
+// adding event listener to a class (see cardList)
+Array.from(cardsList).forEach(function(e) {
+	e.addEventListener("click", functionsCards.onDelBtnClicked);
+});
+*/

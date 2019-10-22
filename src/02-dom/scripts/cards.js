@@ -1,12 +1,7 @@
 let left = document.getElementById("left");
 let cardIndex = 0;
-/*
-const origCard = document.getElementsByClassName("card")[0];
-*/
+
 const functionsCards = {
-	sub: (num1, num2) => {
-		return num1 - num2;
-	},
 	addNewCard: () => {
 		const div = document.createElement("div");
 		div.className = "card-one";
@@ -35,19 +30,6 @@ const functionsCards = {
 		console.log(div);
 
 		return div;
-		/*
-		let origCard = e.target.parentNode.parentNode.childNodes[3];
-		let dupCard = origCard.cloneNode(true);
-		console.log(e.target.parentNode.parentNode.childNodes[3]);
-		console.log(dupCard);
-		left.appendChild(dupCard);
-		document.getElementsByClassName("card")[cardIndex].setAttribute("id", `box-${cardIndex}`);
-		document.getElementsByClassName("card-text-content")[cardIndex].textContent = `Card-${cardIndex}`;
-		document.getElementsByClassName("btn-card-before")[cardIndex].setAttribute("id", `btn-before-${cardIndex}`);
-		document.getElementsByClassName("btn-card-after")[cardIndex].setAttribute("id", `btn-after-${cardIndex}`);
-		document.getElementsByClassName("btn-card-del")[cardIndex].setAttribute("id", `btn-del-${cardIndex}`);
-		cardIndex++;
-		*/
 	},
 	onAddCardClicked: () => {
 		cardIndex++;
@@ -88,3 +70,17 @@ const functionsCards = {
 };
 
 export default functionsCards;
+
+/*
+let origCard = e.target.parentNode.parentNode.childNodes[3];
+let dupCard = origCard.cloneNode(true);
+console.log(e.target.parentNode.parentNode.childNodes[3]);
+console.log(dupCard);
+left.appendChild(dupCard);
+document.getElementsByClassName("card")[cardIndex].setAttribute("id", `box-${cardIndex}`);
+document.getElementsByClassName("card-text-content")[cardIndex].textContent = `Card-${cardIndex}`;
+document.getElementsByClassName("btn-card-before")[cardIndex].setAttribute("id", `btn-before-${cardIndex}`);
+document.getElementsByClassName("btn-card-after")[cardIndex].setAttribute("id", `btn-after-${cardIndex}`);
+document.getElementsByClassName("btn-card-del")[cardIndex].setAttribute("id", `btn-del-${cardIndex}`);
+cardIndex++;
+*/
