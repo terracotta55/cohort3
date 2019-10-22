@@ -42,7 +42,8 @@ body {
 	border-radius: 15px;
 }
 .card-one button {
-	margin: 2px;
+	align-content: center;
+	margin: 5px;
 	outline: none;
 }
 .card-one:nth-child(odd) {
