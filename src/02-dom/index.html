@@ -47,41 +47,46 @@
 			</nav>
 		</div>
 		<!-- new layout -->
-<div id="container">
-	<div id="leftPanel">
-		<p>left panel</p>
-	</div>
-	<div id="middlePanel">
-		<div id="userPanel">
-			<img id="bankLogo" src="./images/logo.svg" alt="" />
-			<p><em>Deposit, Withdraw, Check Balance</em></p>
-			<input id="amountInput" placeholder="enter amt" /><br /><br />
-			<div id="trxButtons">
-				<button type="button" class="btn btn-dark" id="depBtn">Dep <i class="fa fa-plus-square"></i></button>
-				<button type="button" class="btn btn-dark" id="balBtn">Bal <i class="fa fa-check-square"></i></button>
-				<button type="button" class="btn btn-dark" id="wthBtn">Wth <i class="fa fa-minus-square"></i></button> <br />
+		<div id="container">
+			<div id="leftPanel">
+				left panel
 			</div>
-
-			<div class="row" id="amtDispParent">
-				<div class="column">
-					<div class="column-btn column-disp" id="amtDispValue">... ... ...</div>
+			<div id="middlePanel">
+				<div id="userPanel">
+					<div class="title-div">
+						<h1><strong>Document Object Model (DOM)</strong></h1>
+					</div>
+					<div class="text-div">
+						<p>This is just a simple list:</p>
+					</div>
+					<div class="list-div">
+						<ol id="listParent">
+							<li>item-1</li>
+							<li>item-2</li>
+						</ol>
+					</div>
+					<div id="buttonsDiv">
+						<button id="btnAdd" type="button" class="btn btn-primary">Add Item</button>
+						<button id="btnDel" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+						<button id="btnShow" class="btn btn-success"><i class="fa fa-check"></i></button>
+					</div>
+					<div class = "footer-div">
+						<p>Here are your final items:</p>
+						<ol id="showList"></ol>
+					</div>
+						
 				</div>
 			</div>
+			<div id="rightPanel">
+				right panel
+			</div>
+			</div>
+			
 		</div>
-	</div>
-
-	<div id="rightPanel">
-		<p>right panel</p>
-	</div>
-</div>
-
-
-
-
-
 
 		<!-- old layout -->
-		<div class="container container-index">
+
+		<!-- <div class="container container-index">
 			<div class="container-index-child">
 				<h1><strong>Document Object Model (DOM)</strong></h1>
 			</div>
@@ -109,7 +114,7 @@
 			<p>These are your final items:</p>
 			<ol id="final-list"></ol>
 			<br />
-		</div>
+		</div> -->
 
 		<!--[if lt IE 7]>
 			<p class="browsehappy">

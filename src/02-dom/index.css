@@ -8,85 +8,49 @@ body {
 .heading {
 	text-align: center;
 }
+p,
+ol {
+	text-align: left;
+	margin-left: 10px;
+}
 #container {
 	display: flex;
 	justify-content: space-evenly;
+	height: 100vh;
 }
 #leftPanel {
-	width: 22.5%;
+	width: 17.5%;
 	background-color: whitesmoke;
 	text-align: center;
-	height: 380px;
-	overflow: scroll;
+	height: 500px;
+	color: gray;
 }
 #middlePanel {
 	display: flex;
-	width: 45%;
+	width: 55%;
 	background-color: whitesmoke;
-	align-content: center;
+	align-content: flex-start;
 	justify-content: center;
 	align-items: center;
-	height: 380px;
+	height: 500px;
+}
+#rightPanel {
+	width: 17.5%;
+	background-color: whitesmoke;
+	text-align: center;
+	height: 500px;
+	color: gray;
 }
 #userPanel {
-	width: 80%;
+	width: 85%;
 	background-color: lightgray;
 	text-align: center;
 	align-self: center;
 	justify-content: space-evenly;
-	border: solid black 1px;
-	height: 300px;
+	border: solid gray 3px;
+	height: 400px;
 	overflow: scroll;
 	border-radius: 15px;
-}
-#rightPanel {
-	width: 22.5%;
-	background-color: whitesmoke;
-	text-align: center;
-	height: 380px;
-}
-#bankLogo {
-	width: 80px;
-	height: 80px;
-}
-#balResult {
-	font-size: 1.5rem;
-}
-#amountInput {
-	width: 180px;
-	outline: none;
-}
-.btn-dark {
-	background-color: black;
-	margin: 5px;
-	color: yellow;
-}
-.btn-dark:hover {
-	background-color: lightseagreen;
-}
-#amtDispValue {
-	width: 245px;
-	color: yellow;
-	text-align: center;
-	border-left: 1px solid gray;
-	border-right: 1px solid gray;
-	border-top: 1px solid gray;
-	font-size: 1.25rem;
-	background-color: black;
-	overflow: hidden;
-	white-space: nowrap;
-	padding: 6px;
-	border-radius: 9px 9px 9px 9px;
-}
-.row {
-	display: table;
-	table-layout: fixed;
-}
-.column {
-	display: table;
-}
-.column-btn {
-	display: table-cell;
 }
 #trxButtons {
 	text-align: center;
@@ -98,6 +62,8 @@ body {
 }
 
 /* old css */
+
+/*
 .body-class-index {
 	font-family: "Ubuntu", sans-serif;
 }
@@ -115,10 +81,11 @@ h1 {
 }
 main {
 	height: 100vh;
-	display: grid;
+	display: grid; 
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: auto;
 	border: 5px solid gray;
 	margin: auto;
 	width: 600px;
 }
+*/
