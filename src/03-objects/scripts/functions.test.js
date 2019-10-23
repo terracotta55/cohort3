@@ -1,5 +1,5 @@
-import * as functions from "./functions.js";
+import functions from "./functions.js";
 
-test("testing hello world", () => {
+test("testing hello functions", () => {
 	expect(functions.helloWorld()).toBe("hello from functions");
 });

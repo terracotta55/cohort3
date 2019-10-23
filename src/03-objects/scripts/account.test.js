@@ -1,11 +1,16 @@
-import * as account from "./account.js";
-import { myAccount } from "./account.js";
+import Account from "./account.js";
+import functions from "./functions.js";
 
-test("testing hello accounts", () => {
-	expect(account.helloAccounts()).toBe("hello from accounts");
+test("testing hello functions", () => {
+	expect(functions.helloWorld()).toBe("hello from functions");
+});
+
+test("testing input converter", () => {
+	expect(functions.convUserInput("45.567").toBe(45.57));
 });
 
 test("testing account app", () => {
+	let myAccount = new Account("checkingAccount", 100);
 	expect(myAccount.balance()).toEqual(100);
 	expect(myAccount.withdraw(500)).toEqual("insufficient funds");
 	expect(myAccount.withdraw(50)).toEqual(50);

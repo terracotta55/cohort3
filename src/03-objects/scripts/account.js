@@ -1,8 +1,3 @@
-export const helloAccounts = () => {
-	console.log("hello from accounts");
-	return `hello from accounts`;
-};
-
 class Account {
 	constructor(accountName, accountBalance) {
 		this.accountName = accountName;
@@ -24,6 +19,4 @@ class Account {
 	}
 }
 
-let myAccount = new Account("checkingAccount", 100);
-
-export { myAccount };
+export default Account;
