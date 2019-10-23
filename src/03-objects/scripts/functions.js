@@ -4,6 +4,7 @@ const functions = {
 	},
 	convUserInput: userInput => {
 		// return parseFloat(userInput.tofixed(2));
+
 		return Math.round(userInput * 100) / 100;
 	}
 };
