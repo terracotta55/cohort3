@@ -1,7 +1,7 @@
 let left = document.getElementById("left");
 let cardIndex = 0;
 
-const functionsCards = {
+const cardsFunctions = {
 	addNewCard: () => {
 		const div = document.createElement("div");
 		div.className = "card-one";
@@ -34,7 +34,7 @@ const functionsCards = {
 	onAddCardClicked: () => {
 		cardIndex++;
 		console.log("event listener: add");
-		left.appendChild(functionsCards.addNewCard());
+		left.appendChild(cardsFunctions.addNewCard());
 	},
 	removeCurrCard: e => {
 		// e.target is the clicked element
@@ -50,7 +50,7 @@ const functionsCards = {
 			cardIndex++;
 			let btnClass = e.target.getAttribute("class");
 			let currCard = e.target.parentNode; // parentnode of the button i.e the card
-			let beforeCard = functionsCards.addNewCard();
+			let beforeCard = cardsFunctions.addNewCard();
 			console.log("addBeforeCard function:", btnClass);
 			left.insertBefore(beforeCard, currCard);
 		}
@@ -61,7 +61,7 @@ const functionsCards = {
 			cardIndex++;
 			let btnClass = e.target.getAttribute("class");
 			let nextCard = e.target.parentNode.nextSibling; // sibling of the parent (uncle/aunt)
-			let cardToBeAdded = functionsCards.addNewCard();
+			let cardToBeAdded = cardsFunctions.addNewCard();
 			console.log("addAfterCard function:", btnClass);
 			left.insertBefore(cardToBeAdded, nextCard);
 		}
@@ -69,7 +69,7 @@ const functionsCards = {
 	}
 };
 
-export default functionsCards;
+export default cardsFunctions;
 
 /*
 let origCard = e.target.parentNode.parentNode.childNodes[3];

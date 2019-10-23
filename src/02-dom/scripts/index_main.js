@@ -1,4 +1,4 @@
-import functions from "./functions.js";
+import indexFunctions from "./index.js";
 //====================define variables====================
 let btnAdd = document.getElementById("btn-add");
 let btnDel = document.getElementById("btn-del");
@@ -12,7 +12,7 @@ function checkInputLength() {
 btnAdd.addEventListener("click", () => {
 	if (checkInputLength() > 0) {
 		console.log("add button clicked");
-		functions.addListItem();
+		indexFunctions.addListItem();
 	}
 	return true;
 });
@@ -20,18 +20,18 @@ btnAdd.addEventListener("click", () => {
 inputField.addEventListener("keypress", e => {
 	if (checkInputLength() > 0 && e.keyCode === 13) {
 		console.log("enter key pressed");
-		functions.addListItem();
+		indexFunctions.addListItem();
 	}
 	return true;
 });
 
 btnDel.addEventListener("click", () => {
 	console.log("delete button clicked");
-	functions.removeListItem();
+	indexFunctions.removeListItem();
 	return true;
 });
 
 btnShow.addEventListener("click", () => {
 	console.log("show clicked");
-	functions.showListItems();
+	indexFunctions.showListItems();
 });

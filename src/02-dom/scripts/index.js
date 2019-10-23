@@ -1,7 +1,7 @@
 let list = document.getElementById("list-parent");
 let showListOl = document.getElementById("final-list");
 
-const functions = {
+const indexFunctions = {
 	addListItem: () => {
 		let orderedList = document.getElementById("list-parent");
 		let inputField = document.getElementById("input-add");
@@ -31,4 +31,4 @@ const functions = {
 	}
 };
 
-export default functions;
+export default indexFunctions;

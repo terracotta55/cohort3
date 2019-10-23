@@ -46,6 +46,41 @@
 				</div>
 			</nav>
 		</div>
+		<!-- new layout -->
+<div id="container">
+	<div id="leftPanel">
+		<p>left panel</p>
+	</div>
+	<div id="middlePanel">
+		<div id="userPanel">
+			<img id="bankLogo" src="./images/logo.svg" alt="" />
+			<p><em>Deposit, Withdraw, Check Balance</em></p>
+			<input id="amountInput" placeholder="enter amt" /><br /><br />
+			<div id="trxButtons">
+				<button type="button" class="btn btn-dark" id="depBtn">Dep <i class="fa fa-plus-square"></i></button>
+				<button type="button" class="btn btn-dark" id="balBtn">Bal <i class="fa fa-check-square"></i></button>
+				<button type="button" class="btn btn-dark" id="wthBtn">Wth <i class="fa fa-minus-square"></i></button> <br />
+			</div>
+
+			<div class="row" id="amtDispParent">
+				<div class="column">
+					<div class="column-btn column-disp" id="amtDispValue">... ... ...</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="rightPanel">
+		<p>right panel</p>
+	</div>
+</div>
+
+
+
+
+
+
+		<!-- old layout -->
 		<div class="container container-index">
 			<div class="container-index-child">
 				<h1><strong>Document Object Model (DOM)</strong></h1>
@@ -82,7 +117,7 @@
 			</p>
 		<![endif]-->
 
-		<script src="./scripts/functions_main.js" type="module" async defer></script>
+		<script src="./scripts/index_main.js" type="module" async defer></script>
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script

@@ -1,5 +1,103 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
 
+/* new css */
+body {
+	font-family: "Ubuntu", sans-serif;
+	background-color: lightgray;
+}
+.heading {
+	text-align: center;
+}
+#container {
+	display: flex;
+	justify-content: space-evenly;
+}
+#leftPanel {
+	width: 22.5%;
+	background-color: whitesmoke;
+	text-align: center;
+	height: 380px;
+	overflow: scroll;
+}
+#middlePanel {
+	display: flex;
+	width: 45%;
+	background-color: whitesmoke;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	height: 380px;
+}
+#userPanel {
+	width: 80%;
+	background-color: lightgray;
+	text-align: center;
+	align-self: center;
+	justify-content: space-evenly;
+	border: solid black 1px;
+	height: 300px;
+	overflow: scroll;
+	border-radius: 15px;
+}
+#rightPanel {
+	width: 22.5%;
+	background-color: whitesmoke;
+	text-align: center;
+	height: 380px;
+}
+#bankLogo {
+	width: 80px;
+	height: 80px;
+}
+#balResult {
+	font-size: 1.5rem;
+}
+#amountInput {
+	width: 180px;
+	outline: none;
+}
+.btn-dark {
+	background-color: black;
+	margin: 5px;
+	color: yellow;
+}
+.btn-dark:hover {
+	background-color: lightseagreen;
+}
+#amtDispValue {
+	width: 245px;
+	color: yellow;
+	text-align: center;
+	border-left: 1px solid gray;
+	border-right: 1px solid gray;
+	border-top: 1px solid gray;
+	font-size: 1.25rem;
+	background-color: black;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 6px;
+	border-radius: 9px 9px 9px 9px;
+}
+.row {
+	display: table;
+	table-layout: fixed;
+}
+.column {
+	display: table;
+}
+.column-btn {
+	display: table-cell;
+}
+#trxButtons {
+	text-align: center;
+	border-radius: 9px 9px 9px 9px;
+	outline: none;
+}
+#amtDispParent {
+	margin-left: calc(50% - 122.5px);
+}
+
+/* old css */
 .body-class-index {
 	font-family: "Ubuntu", sans-serif;
 }
