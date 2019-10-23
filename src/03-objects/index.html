@@ -8,21 +8,53 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>Accounts</title>
+		<title>Comp-130</title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
-		<link rel="stylesheet" href="./index.css" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+
+		<link href="./index.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div>
-			<h1>Accounts Exercise</h1>
-		</div>
 		<!--[if lt IE 7]>
 			<p class="browsehappy">
 				You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.
 			</p>
 		<![endif]-->
+		<div id="container">
+			<div id="leftPanel">
+				<p>left panel</p>
+			</div>
+			<div id="middlePanel">
+				<div id="userPanel">
+					<img id="bankLogo" src="./images/logo.svg" alt="" />
+					<p><em>Deposit, Withdraw, Check Balance</em></p>
+					<input id="amountInput" placeholder="enter amt" /><br /><br />
+					<div id="trxButtons">
+						<button type="button" class="btn btn-dark">Dep <i class="fa fa-plus-square"></i></button>
+						<button type="button" class="btn btn-dark">Bal <i class="fa fa-check-square"></i></button>
+						<button type="button" class="btn btn-dark">Wth <i class="fa fa-minus-square"></i></button> <br />
+					</div>
+
+					<div class="row" id="amtDispParent">
+						<div class="column">
+							<div class="column-btn column-disp" id="amtDispValue">... ... ...</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="rightPanel">
+				<p>right panel</p>
+			</div>
+		</div>
 
 		<script src="./scripts/main.js" type="module" async defer></script>
 	</body>
