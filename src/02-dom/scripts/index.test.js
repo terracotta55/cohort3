@@ -14,20 +14,22 @@ afterEach(() => {
 	jest.resetModules();
 });
 
-test("testing addListItem in functions", () => {
-	document.body.innerHTML = `<ol id="list-parent"><li>item-1</li></ol>`;
-
-	let newItem = document.getElementsByTagName("li");
-	expect(indexFunctions.addListItem()).toBe(newItem);
+test("testing addListItem in indexFunctions", () => {
+	let listForTesting = document.getElementById("listParent");
+	let countForTesting = listForTesting.childElementCount;
+	indexFunctions.addListItem();
+	expect(listForTesting.childElementCount).toEqual(countForTesting + 1);
 });
 
-test("testing addListItem in functions", () => {
-	document.body.innerHTML = `<ol id="list-parent"><li>item-1</li></ol>`;
-
-	let newItem = document.getElementsByTagName("li");
-	expect(indexFunctions.removeListItem()).toBe(newItem);
+test("testing removeListItem in indexFunctions", () => {
+	let listForTesting = document.getElementById("listParent");
+	let countForTesting = listForTesting.childElementCount;
+	indexFunctions.removeListItem();
+	expect(listForTesting.childElementCount).toEqual(countForTesting - 1);
 });
 
-test("show list items", function() {
-	expect(indexFunctions.showListItems()).toEqual(["item-1", "item-2", "item-3", "item-4"]);
+test("testing showListItems in indexFunctions", () => {
+	let showListForTesting = document.getElementById("showList");
+	indexFunctions.showListItems();
+	expect(showList.children).toBe(showListForTesting.children);
 });
