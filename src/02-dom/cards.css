@@ -9,6 +9,10 @@ body {
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 }
+#containerChild {
+	display: flex;
+	flex-direction: column;
+}
 #left {
 	width: 40%;
 	background-color: whitesmoke;

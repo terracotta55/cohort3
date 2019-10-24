@@ -82,10 +82,6 @@ const cardsFunctions = {
 		}
 		*/
 		currentCard.remove();
-	},
-
-	addAfterCard: e => {
-		return true;
 	}
 };
 
