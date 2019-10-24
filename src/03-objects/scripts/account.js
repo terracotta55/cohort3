@@ -1,4 +1,4 @@
-class Account {
+export class Account {
 	constructor(accountName, accountBalance) {
 		this.accountName = accountName;
 		this.accountBalance = accountBalance;
@@ -17,6 +17,17 @@ class Account {
 	balance() {
 		return this.accountBalance;
 	}
+	static formatDisplayValue(userInput) {
+		return Math.round(userInput * 100) / 100;
+	}
 }
 
-export default Account;
+export class AccountController {
+	constructor(accountHolder = "", accountName = []) {
+		this.accountHolder = accountHolder;
+		this.accountName = accountName;
+	}
+	addAccount(newAccountName) {
+		return this.accountName.push(newAccountName);
+	}
+}
