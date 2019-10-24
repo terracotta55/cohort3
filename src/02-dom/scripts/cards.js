@@ -1,51 +1,40 @@
-let left = document.getElementById("left");
-let cardIndex = 0;
-
 const cardsFunctions = {
-	addNewCard: () => {
-		const div = document.createElement("div");
-		div.className = "card-one";
-		div.id = "box-one";
+	createCardDiv: () => {
+		// create only dive first because of childElementCount
+		let newCardDiv = document.createElement("div");
+		newCardDiv.className = "card-div";
+		left.appendChild(newCardDiv);
+		newCardDiv.textContent = `Card - ${left.childElementCount}`;
+		newCardDiv.appendChild(document.createElement("br"));
 
-		let p = document.createElement("p");
-		p.className = "card-text-content";
-		p.textContent = `Card ${cardIndex}`;
-		div.appendChild(p);
+		cardsFunctions.createCardBtns(newCardDiv);
+		console.log(newCardDiv);
+		return newCardDiv;
+	},
+	createCardBtns: newCardDiv => {
+		newCardDiv.appendChild(document.createElement("br"));
 
 		let buttonBefore = document.createElement("button");
 		buttonBefore.className = "btn-card-before";
 		buttonBefore.textContent = "Add Card Before";
-		div.appendChild(buttonBefore);
+		newCardDiv.appendChild(buttonBefore);
 
 		let buttonAfter = document.createElement("button");
 		buttonAfter.className = "btn-card-after";
 		buttonAfter.textContent = "Add Card After";
-		div.appendChild(buttonAfter);
+		newCardDiv.appendChild(buttonAfter);
+
+		newCardDiv.appendChild(document.createElement("br"));
 
 		let buttonDel = document.createElement("button");
 		buttonDel.className = "btn-card-del";
 		buttonDel.textContent = "Delete Card";
-		div.appendChild(buttonDel);
+		newCardDiv.appendChild(buttonDel);
 
-		console.log(div);
-
-		return div;
+		return newCardDiv;
 	},
-	onAddCardClicked: () => {
-		cardIndex++;
-		console.log("event listener: add");
-		left.appendChild(cardsFunctions.addNewCard());
-	},
-	removeCurrCard: e => {
-		// e.target is the clicked element
-		if (e.target.tagName == "BUTTON") {
-			let btnClass = e.target.getAttribute("class");
-			console.log("removeCurrCard function:", btnClass);
-			e.target.parentNode.remove(); //adding another parentNode will delete div id=left
-		}
-		return true;
-	},
-	addBeforeCard: e => {
+	addCardBeforeCurrent: currentCard => {
+		/*
 		if (e.target.tagName == "BUTTON") {
 			cardIndex++;
 			let btnClass = e.target.getAttribute("class");
@@ -54,9 +43,18 @@ const cardsFunctions = {
 			console.log("addBeforeCard function:", btnClass);
 			left.insertBefore(beforeCard, currCard);
 		}
-		return true;
+		*/
+		let newBeforeCard = document.createElement("div");
+		newBeforeCard.className = "card-div";
+		left.insertBefore(newBeforeCard, currentCard);
+		newBeforeCard.textContent = `Card - ${left.childElementCount}`;
+
+		cardsFunctions.createCardBtns(newBeforeCard);
+
+		return newBeforeCard;
 	},
-	addAfterCard: e => {
+	addCardAfterCurrent: currentCard => {
+		/*
 		if (e.target.tagName == "BUTTON") {
 			cardIndex++;
 			let btnClass = e.target.getAttribute("class");
@@ -65,22 +63,30 @@ const cardsFunctions = {
 			console.log("addAfterCard function:", btnClass);
 			left.insertBefore(cardToBeAdded, nextCard);
 		}
+		*/
+		let newAfterCard = document.createElement("div");
+		newAfterCard.className = "card-div";
+		left.insertBefore(newAfterCard, currentCard.nextSibling);
+		newAfterCard.textContent = `Card - ${left.childElementCount}`;
+
+		cardsFunctions.createCardBtns(newAfterCard);
+
+		return newAfterCard;
+	},
+	removeCurrentCard: currentCard => {
+		/*
+		if (e.target.tagName == "BUTTON") {
+			let btnClass = e.target.getAttribute("class");
+			console.log("removeCurrCard function:", btnClass);
+			e.target.parentNode.remove(); //adding another parentNode will delete div id=left
+		}
+		*/
+		currentCard.remove();
+	},
+
+	addAfterCard: e => {
 		return true;
 	}
 };
 
 export default cardsFunctions;
-
-/*
-let origCard = e.target.parentNode.parentNode.childNodes[3];
-let dupCard = origCard.cloneNode(true);
-console.log(e.target.parentNode.parentNode.childNodes[3]);
-console.log(dupCard);
-left.appendChild(dupCard);
-document.getElementsByClassName("card")[cardIndex].setAttribute("id", `box-${cardIndex}`);
-document.getElementsByClassName("card-text-content")[cardIndex].textContent = `Card-${cardIndex}`;
-document.getElementsByClassName("btn-card-before")[cardIndex].setAttribute("id", `btn-before-${cardIndex}`);
-document.getElementsByClassName("btn-card-after")[cardIndex].setAttribute("id", `btn-after-${cardIndex}`);
-document.getElementsByClassName("btn-card-del")[cardIndex].setAttribute("id", `btn-del-${cardIndex}`);
-cardIndex++;
-*/

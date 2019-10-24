@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
 
-/* new css */
 body {
 	font-family: "Ubuntu", sans-serif;
 	background-color: lightgray;
@@ -60,32 +59,3 @@ ol {
 #amtDispParent {
 	margin-left: calc(50% - 122.5px);
 }
-
-/* old css */
-
-/*
-.body-class-index {
-	font-family: "Ubuntu", sans-serif;
-}
-input {
-	outline: 1px solid grey;
-	margin-right: 10px;
-}
-.container-index {
-	border: 5px solid gray;
-	margin: auto;
-	width: 600px;
-}
-h1 {
-	text-align: center;
-}
-main {
-	height: 100vh;
-	display: grid; 
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto;
-	border: 5px solid gray;
-	margin: auto;
-	width: 600px;
-}
-*/
