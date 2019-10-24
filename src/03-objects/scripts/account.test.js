@@ -6,7 +6,7 @@ test("testing hello functions", () => {
 });
 
 test("testing input converter", () => {
-	expect(functions.convUserInput("45.567").toBe(45.57));
+	expect(functions.convUserInput("29.567").toBe(29.57));
 });
 
 test("testing account app", () => {
