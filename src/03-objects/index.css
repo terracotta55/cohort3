@@ -8,72 +8,72 @@ body {
 #container {
 	display: flex;
 	justify-content: space-evenly;
+	height: 100vh;
 }
 #leftPanel {
-	width: 22.5%;
+	width: 17.5%;
 	background-color: whitesmoke;
 	text-align: center;
-	height: 380px;
-	overflow: scroll;
+	height: 500px;
+	color: gray;
 }
 #middlePanel {
 	display: flex;
-	width: 45%;
+	width: 55%;
 	background-color: whitesmoke;
-	align-content: center;
+	align-content: flex-start;
 	justify-content: center;
 	align-items: center;
-	height: 380px;
+	height: 500px;
+	overflow: scroll;
 }
 #userPanel {
-	width: 80%;
-	background-color: lightgray;
+	width: 85%;
+	background-color: gray;
 	text-align: center;
 	align-self: center;
 	justify-content: space-evenly;
-	border: solid black 1px;
-	height: 300px;
-	overflow: scroll;
+	border: solid gray 3px;
+	height: 400px;
 	border-radius: 15px;
 }
 #rightPanel {
-	width: 22.5%;
+	width: 17.5%;
 	background-color: whitesmoke;
 	text-align: center;
-	height: 380px;
+	height: 500px;
+	color: gray;
 }
 #bankLogo {
-	width: 80px;
-	height: 80px;
+	width: 150px;
+	height: 150px;
 }
 #balResult {
 	font-size: 1.5rem;
 }
 #amountInput {
-	width: 180px;
+	width: 350px;
 	outline: none;
+	border: solid gray 2px;
+	border-radius: 5px;
+	height: 40px;
+	border-radius: 10px 10px 10px 10px;
 }
-.btn-dark {
-	background-color: black;
+.btn {
 	margin: 5px;
-	color: yellow;
-}
-.btn-dark:hover {
-	background-color: lightseagreen;
+	border-radius: 10px 10px 10px 10px;
 }
 #amtDispValue {
-	width: 245px;
-	color: yellow;
+	width: 350px;
+	height: 40px;
+	color: greenyellow;
 	text-align: center;
-	border-left: 1px solid gray;
-	border-right: 1px solid gray;
-	border-top: 1px solid gray;
 	font-size: 1.25rem;
 	background-color: black;
 	overflow: hidden;
 	white-space: nowrap;
 	padding: 6px;
-	border-radius: 9px 9px 9px 9px;
+	border-radius: 10px 10px 10px 10px;
 }
 .row {
 	display: table;
@@ -82,14 +82,16 @@ body {
 .column {
 	display: table;
 }
-.column-btn {
-	display: table-cell;
-}
-#trxButtons {
-	text-align: center;
-	border-radius: 9px 9px 9px 9px;
-	outline: none;
-}
 #amtDispParent {
-	margin-left: calc(50% - 122.5px);
+	margin-left: calc(50% - 175px);
+}
+p {
+	color: white;
+}
+#depBtn,
+#balBtn,
+#wthBtn,
+.btn:focus,
+.btn:active:focus {
+	outline: none;
 }
