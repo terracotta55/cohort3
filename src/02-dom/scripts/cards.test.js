@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-	jest.resetModules();
+	jest.resetModules(); // restore function after test
 });
 
 test("testing creating a new div appended to leftChild", function() {
@@ -76,4 +76,7 @@ test("testing add new card fn in functionsCards", () => {
 	let newCard = document.querySelector(".card-one");
 	expect(cardsFunctions.addNewCard()).toEqual(newCard);
 });
+*/
+/*
+testing info: https://dev.to/snowleo208/things-i-learned-after-writing-tests-for-js-and-html-page-4lja
 */
