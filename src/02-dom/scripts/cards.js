@@ -1,11 +1,10 @@
 const cardsFunctions = {
 	createCardDiv: () => {
-		// create only dive first because of childElementCount
+		// create only div first because of childElementCount
 		let newCardDiv = document.createElement("div");
 		newCardDiv.className = "card-div";
-		left.appendChild(newCardDiv);
-		newCardDiv.textContent = `Card - ${left.childElementCount}`;
-		newCardDiv.appendChild(document.createElement("br"));
+		leftChild.appendChild(newCardDiv);
+		newCardDiv.textContent = `Card - ${leftChild.childElementCount}`;
 
 		cardsFunctions.createCardBtns(newCardDiv);
 		console.log(newCardDiv);
@@ -13,6 +12,7 @@ const cardsFunctions = {
 	},
 	createCardBtns: newCardDiv => {
 		newCardDiv.appendChild(document.createElement("br"));
+		newCardDiv.appendChild(document.createElement("br")); // additional for aesthetics
 
 		let buttonBefore = document.createElement("button");
 		buttonBefore.className = "btn-card-before";
@@ -46,8 +46,8 @@ const cardsFunctions = {
 		*/
 		let newBeforeCard = document.createElement("div");
 		newBeforeCard.className = "card-div";
-		left.insertBefore(newBeforeCard, currentCard);
-		newBeforeCard.textContent = `Card - ${left.childElementCount}`;
+		leftChild.insertBefore(newBeforeCard, currentCard);
+		newBeforeCard.textContent = `Card - ${leftChild.childElementCount}`;
 
 		cardsFunctions.createCardBtns(newBeforeCard);
 
@@ -66,8 +66,8 @@ const cardsFunctions = {
 		*/
 		let newAfterCard = document.createElement("div");
 		newAfterCard.className = "card-div";
-		left.insertBefore(newAfterCard, currentCard.nextSibling);
-		newAfterCard.textContent = `Card - ${left.childElementCount}`;
+		leftChild.insertBefore(newAfterCard, currentCard.nextSibling);
+		newAfterCard.textContent = `Card - ${leftChild.childElementCount}`;
 
 		cardsFunctions.createCardBtns(newAfterCard);
 

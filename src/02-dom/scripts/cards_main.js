@@ -2,13 +2,16 @@ import cardsFunctions from "./cards.js";
 
 left.addEventListener("click", e => {
 	if (e.target.id === "btn-top-add") {
-		console.log(`add card clicked`);
+		console.log(`add clicked`);
 		cardsFunctions.createCardDiv();
 	} else if (e.target.className === "btn-card-before") {
+		console.log(`before clicked`);
 		cardsFunctions.addCardBeforeCurrent(e.target.parentNode);
 	} else if (e.target.className === "btn-card-after") {
+		console.log(`after clicked`);
 		cardsFunctions.addCardAfterCurrent(e.target.parentNode);
-	} else if (event.target.className === "btn-card-del") {
+	} else if (e.target.className === "btn-card-del") {
+		console.log(`delete clicked`);
 		cardsFunctions.removeCurrentCard(e.target.parentNode);
 	}
 });

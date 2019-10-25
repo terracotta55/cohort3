@@ -9,16 +9,21 @@ body {
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 }
-#containerChild {
+#left {
 	display: flex;
 	flex-direction: column;
-}
-#left {
 	width: 40%;
 	background-color: whitesmoke;
-	text-align: center;
 	border: solid gray 3px;
 	height: 100vh;
+	border-radius: 15px;
+}
+#leftChild {
+	width: 100%;
+	background-color: rosybrown;
+	text-align: center;
+	border: 0px;
+	height: 100%;
 	overflow: scroll;
 	border-radius: 15px;
 }
@@ -39,6 +44,7 @@ body {
 	background-color: burlywood;
 	min-height: 180px;
 	text-align: center;
+	align-self: center;
 	margin: 0px 0 20px 0;
 	width: 90%;
 	border: solid gray 2px;
@@ -65,4 +71,6 @@ body {
 	outline: none;
 	margin: 20px;
 	border-radius: 5px;
+	width: 100px;
+	align-self: center;
 }

@@ -14,9 +14,9 @@ afterEach(() => {
 	jest.resetModules();
 });
 
-test("testing creating a new div appended to left", function() {
-	let testLeft = document.getElementById("left");
-	let testChildCount = left.childElementCount;
+test("testing creating a new div appended to leftChild", function() {
+	let testLeft = document.getElementById("leftChild");
+	let testChildCount = leftChild.childElementCount;
 
 	cardsFunctions.createCardDiv();
 
@@ -28,49 +28,46 @@ test("testing appending card buttons", function() {
 
 	cardsFunctions.createCardBtns(testNewCard);
 
-	expect(testNewCard.children[1].firstChild.nodeValue).toBe("Add Card Before");
-	expect(testNewCard.children[2].firstChild.nodeValue).toBe("Add Card After");
-	expect(testNewCard.children[4].firstChild.nodeValue).toBe("Delete Card");
+	expect(testNewCard.children[2].firstChild.nodeValue).toBe("Add Card Before");
+	expect(testNewCard.children[3].firstChild.nodeValue).toBe("Add Card After");
+	expect(testNewCard.children[5].firstChild.nodeValue).toBe("Delete Card");
 });
 
 test("testing adding new card before current card", function() {
-	let testLeft = document.getElementById("left");
+	let testLeft = document.getElementById("leftChild");
 	cardsFunctions.createCardDiv();
-	let childCount = testLeft.childElementCount;
-	let cardCount = childCount - 1;
-	let currentCard = testLeft.children[1]; // i.e. last card
+	let cardCount = testLeft.childElementCount;
+	let currentCard = testLeft.children[0]; // i.e. last card
 
 	cardsFunctions.addCardBeforeCurrent(currentCard);
 
-	expect(testLeft.childElementCount).toBe(childCount + 1);
-	expect(currentCard.previousElementSibling.firstChild.textContent).toBe(`Card - ${cardCount + 2}`); //check this again, should be +1 (bug?)
+	expect(testLeft.childElementCount).toBe(cardCount + 1);
+	expect(currentCard.previousElementSibling.firstChild.textContent).toBe(`Card - ${cardCount + 1}`); //bug fixed in git branch
 });
 
 test("testing adding new card after current card", function() {
-	let testLeft = document.getElementById("left");
+	let testLeft = document.getElementById("leftChild");
 	cardsFunctions.createCardDiv();
-	let childCount = testLeft.childElementCount;
-	let cardCount = childCount - 1;
-	let currentCard = testLeft.children[1];
+	let cardCount = testLeft.childElementCount;
+	let currentCard = testLeft.children[0];
 
 	cardsFunctions.addCardAfterCurrent(currentCard);
 
-	expect(testLeft.childElementCount).toBe(childCount + 1);
-	expect(currentCard.nextElementSibling.firstChild.textContent).toBe(`Card - ${cardCount + 2}`); //check this again, should be +1 (bug?)
+	expect(testLeft.childElementCount).toBe(cardCount + 1);
+	expect(currentCard.nextElementSibling.firstChild.textContent).toBe(`Card - ${cardCount + 1}`);
 });
 
 test("testing delete current card", function() {
-	let testLeft = document.getElementById("left");
+	let testLeft = document.getElementById("leftChild");
 	cardsFunctions.createCardDiv();
 	cardsFunctions.createCardDiv();
-	let childCount = testLeft.childElementCount;
-	let cardCount = childCount - 1;
+	let cardCount = testLeft.childElementCount;
 	let currentCard = testLeft.children[1];
 
 	cardsFunctions.removeCurrentCard(currentCard);
 
-	expect(testLeft.childElementCount).toBe(childCount - 1);
-	expect(testLeft.children[1].firstChild.textContent).toBe(`Card - 3`); //check this again, should be 'Card -3'
+	expect(testLeft.childElementCount).toBe(cardCount - 1);
+	expect(testLeft.children[0].firstChild.textContent).toBe(`Card - 1`);
 });
 /*
 test("testing add new card fn in functionsCards", () => {
