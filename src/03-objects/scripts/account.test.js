@@ -16,5 +16,5 @@ test("testing account app", () => {
 
 test("testing account controller", () => {
 	let daltonAccounts = new AccountController("savings", []);
-	expect(daltonAccounts.addAccount("savings", 500)).toEqual({ accountBalance: 500, accountName: "savings" });
+	expect(daltonAccounts.addAccount("savings", 500)).toEqual({ accountBalance: 500, accountName: "savings" }); // check this test, needs work!
 });
