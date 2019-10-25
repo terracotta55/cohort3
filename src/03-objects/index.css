@@ -28,7 +28,7 @@ body {
 	overflow: scroll;
 }
 #userPanel {
-	width: 85%;
+	width: 82.5%;
 	background-color: gray;
 	text-align: center;
 	align-self: center;
@@ -58,10 +58,12 @@ body {
 	border-radius: 5px;
 	height: 40px;
 	border-radius: 10px 10px 10px 10px;
+	background: lightgrey;
 }
 .btn {
-	margin: 5px;
+	margin: 3px;
 	border-radius: 10px 10px 10px 10px;
+	width: auto;
 }
 #amtDispValue {
 	width: 350px;
@@ -86,7 +88,8 @@ body {
 	margin-left: calc(50% - 175px);
 }
 p {
-	color: white;
+	color: lightgrey;
+	font-size: 1.25rem;
 }
 #depBtn,
 #balBtn,

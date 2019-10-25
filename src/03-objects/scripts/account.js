@@ -23,11 +23,13 @@ export class Account {
 }
 
 export class AccountController {
-	constructor(accountHolder = "", accountName = []) {
+	constructor(accountHolder, accountNamesArray = []) {
 		this.accountHolder = accountHolder;
-		this.accountName = accountName;
+		this.accountNamesArray = accountNamesArray;
 	}
-	addAccount(newAccountName) {
-		return this.accountName.push(newAccountName);
+	addAccount(newAccountName, newAccountBalance) {
+		let myNewAccount = new Account(newAccountName, newAccountBalance);
+		this.accountNamesArray.push(myNewAccount);
+		return myNewAccount;
 	}
 }

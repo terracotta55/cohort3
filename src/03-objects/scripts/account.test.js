@@ -15,6 +15,6 @@ test("testing account app", () => {
 });
 
 test("testing account controller", () => {
-	let daltonAccount = new AccountController("Dalton Okechukwu", []);
-	expect(daltonAccount.addAccount("savings account")).toEqual(["savings account"]);
+	let daltonAccounts = new AccountController("savings", []);
+	expect(daltonAccounts.addAccount("savings", 500)).toEqual({ accountBalance: 500, accountName: "savings" });
 });
