@@ -1,26 +1,57 @@
 import functions from "./daily";
+const data = {
+	staff: [
+		{ fname: "Jane", lname: "Smith", balance: 10 },
+		{ fname: "Liam", lname: "Henry", balance: 1000 },
+		{ fname: "Emma", lname: "Jones", balance: 1330 },
+		{ fname: "Olivia", lname: "Notly", balance: 310 },
+		{ fname: "Noah", lname: "Ho", balance: 503 },
+		{ fname: "William", lname: "Lee", balance: 520 },
+		{ fname: "Benjamin", lname: "Amis", balance: 150 }
+	],
+	company: "EvolveU",
+	city: "Calgary",
+	prov: "Alberta"
+};
+// 25-Oct-2019 Daily Exercises
+test("testing loopStaffForEach using forEach callback", () => {
+	const staffEmail = functions.loopStaffForEach(data.staff);
+	expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+	expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+	expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
 
+test("testing loopStaffMap using map callback", () => {
+	const staffEmail = functions.loopStaffMap(data.staff);
+	expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+	expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+	expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
+
+// 24-Oct-2019 Daily Exercises
+test("testing loopStaffIn using for-in", () => {
+	const staffEmail = functions.loopStaffIn(data.staff);
+	expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+	expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+	expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
+
+test("testing loopStaffOf using for-of", () => {
+	const staffEmail = functions.loopStaffOf(data.staff);
+	expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+	expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+	expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
+
+// 21-Oct-2019 Daily Exercises
 test("email builder for company", () => {
-	const data = {
-		staff: [
-			{ fname: "Jane", lname: "Smith", balance: 10 },
-			{ fname: "Liam", lname: "Henry", balance: 1000 },
-			{ fname: "Emma", lname: "Jones", balance: 1330 },
-			{ fname: "Olivia", lname: "Notly", balance: 310 },
-			{ fname: "Noah", lname: "Ho", balance: 503 },
-			{ fname: "William", lname: "Lee", balance: 520 },
-			{ fname: "Benjamin", lname: "Amis", balance: 150 }
-		],
-		company: "EvolveU",
-		city: "Calgary",
-		prov: "Alberta"
-	};
 	const staffEmail = functions.loopStaff(data.staff);
 	expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
 	expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
 	expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
 });
 
+//16-Oct-2019 Daily Exercises
 test("sort numbers in ascending order", () => {
 	expect(functions.sortAscending([40, 100, 1, 5, 25, 10])).toEqual([1, 5, 10, 25, 40, 100]);
 });

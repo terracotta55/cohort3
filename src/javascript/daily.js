@@ -1,9 +1,38 @@
 const functions = {
-	// 21-Oct-2019 Daily Exercise
+	// 25-Oct-2019 Daily Exercises
+	loopStaffForEach: arr => {
+		let staffEmail = [];
+		arr.forEach(arrayElement => staffEmail.push(functions.makeEmailObj(arrayElement)));
+		return staffEmail;
+	},
+
+	loopStaffMap: arr => {
+		let staffEmail = [];
+		arr.map(element => staffEmail.push(functions.makeEmailObj(element)));
+		return staffEmail;
+	},
+	// 24-Oct-2019 Daily Exercises
+	loopStaffIn: arr => {
+		let staffEmail = [];
+		for (let i in arr) {
+			let email = functions.makeEmailObj(arr[i]);
+			staffEmail.push(email);
+		}
+		return staffEmail;
+	},
+	loopStaffOf: arr => {
+		let staffEmail = [];
+		for (let elem of arr) {
+			let email = functions.makeEmailObj(elem);
+			staffEmail.push(email);
+		}
+		return staffEmail;
+	},
+	// 21-Oct-2019 Daily Exercises
 	loopStaff: arr => {
 		let staffEmail = [];
-		arr.forEach(function(emailObj) {
-			let email = functions.makeEmailObj(emailObj);
+		arr.forEach(function(arrayOfEmailObjs) {
+			let email = functions.makeEmailObj(arrayOfEmailObjs);
 			staffEmail.push(email);
 		});
 		return staffEmail;
@@ -110,24 +139,21 @@ const functions = {
 		}
 	}
 };
-
-/*
-slice;
-splice;
-
-forEach;
-map;
-reduce;
-filter;
-sort;
-*/
-
 export default functions;
-/*
-assertEquals("a", "b");
-assertEquals("a", "a");
-assertEquals(1, 2);
-assertEquals(2, 2);
-assertEquals("2", 2);
-assertEquals("This value", "This value");
-*/
+
+const data = {
+	staff: [
+		{ fname: "Jane", lname: "Smith", balance: 10 },
+		{ fname: "Liam", lname: "Henry", balance: 1000 },
+		{ fname: "Emma", lname: "Jones", balance: 1330 },
+		{ fname: "Olivia", lname: "Notly", balance: 310 },
+		{ fname: "Noah", lname: "Ho", balance: 503 },
+		{ fname: "William", lname: "Lee", balance: 520 },
+		{ fname: "Benjamin", lname: "Amis", balance: 150 }
+	],
+	company: "EvolveU",
+	city: "Calgary",
+	prov: "Alberta"
+};
+
+// functions.loopStaffForEach(data.staff);
