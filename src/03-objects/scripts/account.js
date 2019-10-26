@@ -29,7 +29,7 @@ export class AccountController {
 	}
 	addAccount(newAccountName, newAccountBalance) {
 		let myNewAccount = new Account(newAccountName, newAccountBalance);
-		this.accountNamesArray.push(myNewAccount);
+		this.accountNamesArray.push(myNewAccount.newAccountName);
 		return myNewAccount;
 	}
 }
