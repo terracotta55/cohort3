@@ -41,32 +41,40 @@ const functions = {
 	calculatorDvd: (num1, num2) => {
 		return num1 / num2;
 	},
-
 	taxes: income => {
 		const taxBracket_01 = 47630,
 			taxBracket_02 = 95259,
 			taxBracket_03 = 147667,
-			taxBracket_04 = 210371;
+			taxBracket_04 = 210371,
+			taxBracket_01_rate = 0.15,
+			taxBracket_02_rate = 0.205,
+			taxBracket_03_rate = 0.26,
+			taxBracket_04_rate = 0.29,
+			taxBracket_05_rate = 0.33;
 		if (income <= taxBracket_01) {
-			tax = (income * 0.15).toFixed(2);
+			tax = (income * taxBracket_01_rate).toFixed(2);
 		} else if (income > taxBracket_01 && income <= taxBracket_02) {
-			tax = (taxBracket_01 * 0.15 + (income - taxBracket_01) * 0.205).toFixed(2);
+			tax = (taxBracket_01 * taxBracket_01_rate + (income - taxBracket_01) * taxBracket_02_rate).toFixed(2);
 		} else if (income > taxBracket_02 && income <= taxBracket_03) {
-			tax = (taxBracket_01 * 0.15 + (taxBracket_02 - taxBracket_01) * 0.205 + (income - taxBracket_02) * 0.26).toFixed(2);
+			tax = (
+				taxBracket_01 * taxBracket_01_rate +
+				(taxBracket_02 - taxBracket_01) * taxBracket_02_rate +
+				(income - taxBracket_02) * taxBracket_03_rate
+			).toFixed(2);
 		} else if (income > taxBracket_03 && income <= taxBracket_04) {
 			tax = (
-				taxBracket_01 * 0.15 +
-				(taxBracket_02 - taxBracket_01) * 0.205 +
-				(taxBracket_03 - taxBracket_02) * 0.26 +
-				(income - taxBracket_03) * 0.29
+				taxBracket_01 * taxBracket_01_rate +
+				(taxBracket_02 - taxBracket_01) * taxBracket_02_rate +
+				(taxBracket_03 - taxBracket_02) * taxBracket_03_rate +
+				(income - taxBracket_03) * taxBracket_04_rate
 			).toFixed(2);
 		} else if (income > taxBracket_04) {
 			tax = (
-				taxBracket_01 * 0.15 +
-				(taxBracket_02 - taxBracket_01) * 0.205 +
-				(taxBracket_03 - taxBracket_02) * 0.26 +
-				(taxBracket_04 - taxBracket_03) * 0.29 +
-				(income - taxBracket_04) * 0.33
+				taxBracket_01 * taxBracket_01_rate +
+				(taxBracket_02 - taxBracket_01) * taxBracket_02_rate +
+				(taxBracket_03 - taxBracket_02) * taxBracket_03_rate +
+				(taxBracket_04 - taxBracket_03) * taxBracket_04_rate +
+				(income - taxBracket_04) * taxBracket_05_rate
 			).toFixed(2);
 		}
 		return Number(tax);
