@@ -20,9 +20,17 @@
 		</style>
 	</head>
 	<body>
-		<h1>Javascript Classes Practice</h1>
+		<h1>Sandbox: Javascript Classes</h1>
 		<script>
 			console.log("hello from html");
+			function sumNum(smallNum, largeNum) {
+				let sum = 0;
+				for (i = smallNum; i <= largeNum; i++) {
+					sum += i;
+				}
+				console.log(`sum of numbers from ${smallNum} to ${largeNum} is - `, sum);
+				return sum;
+			}
 		</script>
 		<script src="./scripts/sandbox.js" async defer></script>
 	</body>
