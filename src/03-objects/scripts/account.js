@@ -21,8 +21,14 @@ export class Account {
 }
 
 export class AccountController {
-	constructor() {
-		this.accountNamesArr = [];
+	constructor(accountOwner, accountNamesArr = []) {
+		const _accountsList = new WeakMap();
+		_accountsList.set(this, _accountsList);
+		this.accountNamesArr = accountNamesArr;
+		this.accountOwner = accountOwner;
+	}
+	get accountsList() {
+		return this.accountNamesArr;
 	}
 	addAccount(accountName, accountBalance) {
 		let newAccount = new Account(accountName, accountBalance);
