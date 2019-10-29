@@ -4,6 +4,7 @@ const checkingAccount = new Account("Checking Account", 100);
 const userInput = document.getElementById("amountInput");
 const displayScreen = document.getElementById("amtDispValue");
 // let userInputVal = Account.formatDisplayValue(userInput.value);
+const myAccount = new AccountController("Checking Account", "dalton");
 
 depBtn.addEventListener("click", () => {
 	console.log("deposit clicked");
