@@ -7,11 +7,20 @@ test("testing display value formatter", () => {
 });
 
 test("testing account app", () => {
-	let myAccount = new Account("Checking Account", 100);
-	expect(myAccount.balance()).toEqual(100);
-	expect(myAccount.withdraw(500)).toEqual("insufficient funds");
-	expect(myAccount.withdraw(50)).toEqual(50);
-	expect(myAccount.deposit(500)).toEqual(550);
+	let checkingAccount = new Account("Checking Account", 100);
+	expect(checkingAccount.balance()).toEqual(100);
+	expect(checkingAccount.withdraw(50)).toBe(undefined);
+	expect(checkingAccount.balance()).toEqual(50);
+	expect(checkingAccount.deposit(500)).toBe(undefined);
+	expect(checkingAccount.balance()).toEqual(550);
+});
+
+test("testing throws insufficient funds error", () => {
+	let checkingAccount = new Account("Checking Account", 100);
+	const insufficientFunds = () => {
+		checkingAccount.withdraw(500);
+	};
+	expect(insufficientFunds).toThrowError(new Error("Insufficient Funds!"));
 });
 
 test("testing account controller", () => {
