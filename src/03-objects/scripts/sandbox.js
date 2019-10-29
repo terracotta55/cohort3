@@ -116,10 +116,10 @@ class Account {
 
 // const _accountBalance = new WeakMap();
 class AccountController {
-	constructor() {
+	constructor(accountOwner, accountNamesArr = []) {
 		const _accountsList = new WeakMap();
-		// this.accountOwner = accountOwner;
-		this.accountNamesArr = [];
+		this.accountOwner = accountOwner;
+		this.accountNamesArr = accountNamesArr;
 		_accountsList.set(this, _accountsList);
 		// this.currAccount;
 		// _currAccount.set(this, currAccount);
@@ -184,7 +184,7 @@ filterFunction: arr => {
 		return newArr;
 	},
 */
-const myAccount = new AccountController("checking account", "dalton");
+const myAccount = new AccountController("dalton");
 myAccount.addAccount("checking account 1", 150);
 myAccount.addAccount("checking account 2", 200);
 myAccount.addAccount("checking account 3", 900);
@@ -196,4 +196,4 @@ console.log(myAccount.totalBalance());
 console.log(myAccount.highestBalance());
 console.log(myAccount.lowestBalance());
 console.log(myAccount.removeAccount("checking account 2"));
-console.log(myAccount.accountsList);
+console.log(myAccount.accountsList.length);
