@@ -20,17 +20,36 @@ export class Account {
 	}
 }
 
-const _accountName = new WeakMap();
-// const _accountBalance = new WeakMap();
 export class AccountController {
-	constructor(accountName = [], accountOwner) {
-		_accountName.set(this, accountName);
-		this.accountOwner = accountOwner;
+	constructor() {
+		this.accountNamesArr = [];
 	}
 	addAccount(accountName, accountBalance) {
 		let newAccount = new Account(accountName, accountBalance);
-		_accountName.get(this).push(newAccount);
-		console.log(newAccount);
+		this.accountNamesArr.push(newAccount);
 		return newAccount;
+	}
+	totalBalance() {
+		const total = this.accountNamesArr.reduce((accumulator, account) => accumulator + account.accountBalance, 0);
+		return total;
+	}
+	highestBalance() {
+		const highest = this.accountNamesArr.reduce((accumulator, account) => {
+			if (account.accountBalance > accumulator) return account.accountBalance;
+			else return accumulator;
+		}, 0);
+		return highest;
+	}
+	lowestBalance() {
+		const lowest = this.accountNamesArr.reduce((accumulator, account) => {
+			if (account.accountBalance < accumulator) return account.accountBalance;
+			else return accumulator;
+		}, this.accountNamesArr[0].accountBalance);
+		return lowest;
+	}
+	removeAccount(toBeRemoved) {
+		const accountNamesArr = this.accountNamesArr.filter(account => account.accountName != toBeRemoved);
+		this.accountNamesArr = accountNamesArr;
+		return this.accountNamesArr;
 	}
 }
