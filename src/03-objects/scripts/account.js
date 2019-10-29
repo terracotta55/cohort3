@@ -20,14 +20,17 @@ export class Account {
 	}
 }
 
+const _accountName = new WeakMap();
+// const _accountBalance = new WeakMap();
 export class AccountController {
-	constructor(accountHolder, accountNamesArray = []) {
-		this.accountHolder = accountHolder;
-		this.accountNamesArray = accountNamesArray;
+	constructor(accountName = [], accountOwner) {
+		_accountName.set(this, accountName);
+		this.accountOwner = accountOwner;
 	}
-	addAccount(newAccountName, newAccountBalance) {
-		let myNewAccount = new Account(newAccountName, newAccountBalance);
-		this.accountNamesArray.push(myNewAccount.newAccountName);
-		return myNewAccount;
+	addAccount(accountName, accountBalance) {
+		let newAccount = new Account(accountName, accountBalance);
+		_accountName.get(this).push(newAccount);
+		console.log(newAccount);
+		return newAccount;
 	}
 }
