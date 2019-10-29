@@ -1,27 +1,34 @@
 import { Account, AccountController } from "./account.js";
 
-const myAccount = new Account("checkingAccount", 100);
+const checkingAccount = new Account("Checking Account", 100);
 const userInput = document.getElementById("amountInput");
 const displayScreen = document.getElementById("amtDispValue");
+// let userInputVal = Account.formatDisplayValue(userInput.value);
 
 depBtn.addEventListener("click", () => {
 	console.log("deposit clicked");
 	let userInputVal = Account.formatDisplayValue(userInput.value);
-	displayScreen.textContent = `Balance: $${myAccount.deposit(userInputVal)}`;
+	displayScreen.textContent = `Deposit: $${userInputVal}`;
+	checkingAccount.deposit(userInputVal);
 	userInput.value = "";
 });
 
 wthBtn.addEventListener("click", () => {
 	console.log("withdraw clicked");
 	let userInputVal = Account.formatDisplayValue(userInput.value);
-	displayScreen.textContent = `Balance: $${myAccount.withdraw(userInputVal)}`;
+	if (userInputVal > checkingAccount.balance()) {
+		displayScreen.textContent = `Insufficient Funds!`;
+	} else {
+		checkingAccount.withdraw(userInputVal);
+		displayScreen.textContent = `Withdrawal: $${userInputVal}`;
+	}
 	userInput.value = "";
 });
 
 balBtn.addEventListener("click", () => {
 	console.log("balance clicked");
 	let userInputVal = Account.formatDisplayValue(userInput.value);
-	displayScreen.textContent = `Balance: $${myAccount.balance(userInputVal)}`;
+	displayScreen.textContent = `Balance: $${checkingAccount.balance(userInputVal)}`;
 	userInput.value = "";
 });
 
