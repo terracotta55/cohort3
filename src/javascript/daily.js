@@ -1,10 +1,13 @@
 const functions = {
 	// 29-Oct-2019 Daily Exercises
-	loopStaffTotalBalance: arr => {
+	staffTotalBalance: arr => {
 		const total = arr.reduce((accumulator, staff) => accumulator + staff.balance, 0);
 		return total;
 	},
-	loopStaffAvgBalance: arr => {},
+	staffAvgBalance: arr => {
+		const total = arr.reduce((accumulator, staff) => accumulator + staff.balance, 0);
+		return total / arr.length;
+	},
 	// 25-Oct-2019 Daily Exercises
 	loopStaffForEach: arr => {
 		let staffEmail = [];

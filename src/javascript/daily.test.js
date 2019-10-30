@@ -16,8 +16,12 @@ const data = {
 
 describe("testing company email builder functions", () => {
 	// 29-Oct-2019
-	test("testing loopStaffTotalBalance using reduce", () => {
-		expect(functions.loopStaffTotalBalance(data.staff)).toEqual(3823);
+	test("testing staffTotalBalance using reduce", () => {
+		expect(functions.staffTotalBalance(data.staff)).toEqual(3823);
+	});
+
+	test("testing staffAvgBalance using reduce", () => {
+		expect(functions.staffAvgBalance(data.staff)).toEqual(546.142857142857143);
 	});
 	// 25-Oct-2019 Daily Exercises
 	test("testing loopStaffForEach using forEach callback", () => {
