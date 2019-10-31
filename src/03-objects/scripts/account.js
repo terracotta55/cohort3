@@ -5,6 +5,7 @@ export class Account {
 	}
 	deposit(depAmt) {
 		this.accountBalance += depAmt;
+		console.log(this.accountBalance);
 	}
 	withdraw(wthAmt) {
 		if (wthAmt > this.accountBalance) {
@@ -21,11 +22,12 @@ export class Account {
 }
 
 export class AccountController {
-	constructor(accountOwner, accountNamesArr = []) {
+	constructor(accountOwner) {
 		const _accountsList = new WeakMap();
 		_accountsList.set(this, _accountsList);
-		this.accountNamesArr = accountNamesArr;
+		this.accountNamesArr = [];
 		this.accountOwner = accountOwner;
+		// this.Accounts = [];
 	}
 	get accountsList() {
 		return this.accountNamesArr;
@@ -59,3 +61,79 @@ export class AccountController {
 		return this.accountNamesArr;
 	}
 }
+
+export const accountCards = {
+	createCardDiv: () => {
+		let newCardDiv = document.createElement("div");
+		newCardDiv.className = "card-div";
+		leftChild.appendChild(newCardDiv);
+		newCardDiv.textContent = `${inputName.value}`;
+		// inputName.value = "";
+		accountCards.createCardBtns(newCardDiv);
+		console.log(newCardDiv);
+		return newCardDiv;
+	},
+	createCardBtns: newCardDiv => {
+		newCardDiv.appendChild(document.createElement("br"));
+		// newCardDiv.appendChild(document.createElement("br"));
+		let cardInput = document.createElement("input");
+		cardInput.className = "card-input";
+		newCardDiv.appendChild(cardInput);
+
+		newCardDiv.appendChild(document.createElement("br"));
+		// newCardDiv.appendChild(document.createElement("br"));
+
+		let buttonDeposit = document.createElement("button");
+		buttonDeposit.className = "btn-card-dep";
+		buttonDeposit.textContent = "Deposit";
+		newCardDiv.appendChild(buttonDeposit);
+
+		let buttonWithdraw = document.createElement("button");
+		buttonWithdraw.className = "btn-card-wth";
+		buttonWithdraw.textContent = "Withdraw";
+		newCardDiv.appendChild(buttonWithdraw);
+
+		let buttonBalance = document.createElement("button");
+		buttonBalance.className = "btn-card-bal";
+		buttonBalance.textContent = "Balance";
+		newCardDiv.appendChild(buttonBalance);
+
+		newCardDiv.appendChild(document.createElement("br"));
+
+		let buttonDelete = document.createElement("button");
+		buttonDelete.className = "btn-card-del";
+		buttonDelete.textContent = "Delete";
+		newCardDiv.appendChild(buttonDelete);
+
+		let pTag = document.createElement("p");
+		pTag.className = "para-left-card-output";
+		newCardDiv.appendChild(pTag);
+		pTag.textContent = `Account Balance: $${inputBalance.value}`;
+		// inputBalance.value = "";
+
+		return newCardDiv;
+	},
+	addCardBeforeCurrent: currentCard => {
+		let newBeforeCard = document.createElement("div");
+		newBeforeCard.className = "card-div";
+		leftChild.insertBefore(newBeforeCard, currentCard);
+		newBeforeCard.textContent = `Card - ${leftChild.childElementCount}`;
+
+		cardsFunctions.createCardBtns(newBeforeCard);
+
+		return newBeforeCard;
+	},
+	addCardAfterCurrent: currentCard => {
+		let newAfterCard = document.createElement("div");
+		newAfterCard.className = "card-div";
+		leftChild.insertBefore(newAfterCard, currentCard.nextSibling);
+		newAfterCard.textContent = `Card - ${leftChild.childElementCount}`;
+
+		cardsFunctions.createCardBtns(newAfterCard);
+
+		return newAfterCard;
+	},
+	removeCurrentCard: currentCard => {
+		currentCard.remove();
+	}
+};

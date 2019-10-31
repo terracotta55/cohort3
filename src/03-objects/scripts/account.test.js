@@ -1,4 +1,4 @@
-import { Account, AccountController } from "./account.js";
+import { Account, AccountController, accountCards } from "./account.js";
 const accountData = [
 	{ accountName: "checking account 1", accountBalance: 150 },
 	{ accountName: "checking account 2", accountBalance: 200 },

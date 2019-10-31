@@ -1,4 +1,117 @@
 body {
+	background-color: lightgray;
+	font-family: "Ubuntu", sans-serif;
+}
+#container {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+#left {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	background-color: whitesmoke;
+	border: solid gray 3px;
+	height: 100vh;
+	border-radius: 15px;
+}
+#leftChild {
+	width: 100%;
+	background-color: whitesmoke;
+	text-align: center;
+	border: 0px;
+	height: 100%;
+	overflow: scroll;
+	border-radius: 15px;
+}
+#right {
+	width: 35%;
+	background-color: whitesmoke;
+	/* text-align: center; */
+	border: solid gray 3px;
+	height: 100vh;
+	border-radius: 15px;
+	color: gray;
+}
+.card-div {
+	box-sizing: border-box;
+	display: inline-block;
+	margin: auto;
+	padding: 8px;
+	background-color: burlywood;
+	min-height: 180px;
+	text-align: center;
+	align-self: center;
+	margin: 0px 0 20px 0;
+	width: 90%;
+	border: solid gray 2px;
+	border-radius: 15px;
+}
+.card-div button {
+	align-content: center;
+	margin: 5px;
+	outline: none;
+	border: solid gray 1px;
+	color: white;
+	border-radius: 5px;
+	background-color: gray;
+}
+.card-div .card-input {
+	align-content: center;
+	display: inline-block;
+}
+.card-div:nth-child(odd) {
+	background-color: lightgoldenrodyellow;
+}
+.page-title,
+h2 {
+	text-align: center;
+	color: grey;
+}
+#right-btns {
+	border-radius: 5px;
+	width: auto;
+	align-self: center;
+	color: gray;
+}
+
+#btn-right-add,
+#btn-right-total,
+#btn-right-highest,
+#btn-right-lowest,
+#btn-right-length {
+	border: solid gray 2px;
+	outline: none;
+	margin: 5px;
+	border-radius: 5px;
+	width: 175px;
+	align-self: center;
+	color: gray;
+}
+label {
+	/* display: inline-block; */
+	float: left;
+	clear: left;
+	width: 150px;
+	text-align: right;
+}
+#inputName,
+#inputBalance {
+	/* display: inline-block; */
+	float: left;
+	width: 220px;
+}
+form {
+	margin: 10px;
+}
+.results-header {
+	font-size: 1.2em;
+	color: royalblue;
+}
+
+/*
+body {
 	font-family: "Ubuntu", sans-serif;
 	background-color: lightgray;
 }
@@ -100,3 +213,4 @@ p {
 .btn:active:focus {
 	outline: none;
 }
+*/
