@@ -1,4 +1,4 @@
-import { Account, AccountController, accountCards } from "./account.js";
+import { Account, AccountController } from "./account.js";
 
 describe("testing Account class methods", () => {
 	test("testing display value formatter", () => {
