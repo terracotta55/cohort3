@@ -114,40 +114,32 @@ class Account {
 	}
 }
 
-// const _accountBalance = new WeakMap();
 class AccountController {
 	constructor(accountOwner, accountNamesArr = []) {
 		const _accountsList = new WeakMap();
 		this.accountOwner = accountOwner;
 		this.accountNamesArr = accountNamesArr;
 		_accountsList.set(this, _accountsList);
-		// this.currAccount;
-		// _currAccount.set(this, currAccount);
 	}
-	/*
-	setCurrAccount(accName) {
-		this.accountNamesArr.forEach(accNameItem => {
-			if (accNameItem.name === accName) {
-				this.currAccount = accNameItem;
-			}
-		});
-		console.log(this.currAccount);
-	}
-*/
 	get accountsList() {
-		// _accountsList.get(this) = this.accountNamesArr;
-		// return _accountsList.get(this);
 		return this.accountNamesArr;
 	}
-
 	addAccount(accountName, accountBalance) {
 		let newAccount = new Account(accountName, accountBalance);
-		this.accountNamesArr.push(newAccount);
+		if (this.accountNamesArr.length === 0) {
+			this.accountNamesArr.push(newAccount);
+		} else {
+			this.accountNamesArr.forEach(arrElem => {
+				if (arrElem.accountName === newAccount.accountName) {
+					throw new Error(`account already exists`);
+				}
+			});
+			this.accountNamesArr.push(newAccount);
+		}
 		// console.log(newAccount);
 		// console.log(this.accountNamesArr);
 		return newAccount;
 	}
-
 	totalBalance() {
 		const total = this.accountNamesArr.reduce((accumulator, account) => accumulator + account.accountBalance, 0);
 		// account is like the equivalent of the elem in the daily exercise
@@ -178,22 +170,18 @@ class AccountController {
 		return this.accountNamesArr;
 	}
 }
-/*
-filterFunction: arr => {
-		const newArr = arr.filter(currValue => currValue > 2);
-		return newArr;
-	},
-*/
+
 const myAccount = new AccountController("dalton");
 myAccount.addAccount("checking account 1", 150);
 myAccount.addAccount("checking account 2", 200);
+// myAccount.addAccount("checking account 3", 900);
 myAccount.addAccount("checking account 3", 900);
 myAccount.addAccount("checking account 4", 115);
 myAccount.addAccount("checking account 5", 500);
 myAccount.addAccount("checking account 6", 135);
 console.log(myAccount.accountNamesArr);
-console.log(myAccount.totalBalance());
-console.log(myAccount.highestBalance());
-console.log(myAccount.lowestBalance());
-console.log(myAccount.removeAccount("checking account 2"));
+// console.log(myAccount.totalBalance());
+// console.log(myAccount.highestBalance());
+// console.log(myAccount.lowestBalance());
+// console.log(myAccount.removeAccount("checking account 2"));
 console.log(myAccount.accountsList.length);
