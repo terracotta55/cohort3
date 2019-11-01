@@ -1,4 +1,5 @@
-import { Account, AccountController, accountCards } from "./account.js";
+import { Account, AccountController } from "./scripts/account.js";
+import { accountCards } from "./scripts/functions.js";
 
 const acctDisplayOutput = document.querySelector(".para-right-card-output");
 const newAccountController = new AccountController("Dalton-Accounts");
@@ -34,15 +35,6 @@ leftChild.addEventListener("click", e => {
 		if (amount > 0) {
 			let currentCardName = currentCard.children[0].textContent;
 			let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.accountName === currentCardName);
-			/*
-			let currentCardIndex = -1;
-			for (let i = 0; i < newAccountController.accountNamesArr.length; ++i) {
-				if (newAccountController.accountNamesArr[i].accountName == currentCardName) {
-					currentCardIndex = i;
-					break;
-				}
-			}
-			*/
 			newAccountController.accountNamesArr[currentCardIndex].deposit(amount);
 			currentCard.children[8].textContent = `Deposit: $${amount}`;
 			currentCard.children[1].value = "";
@@ -75,7 +67,15 @@ leftChild.addEventListener("click", e => {
 		acctDisplayOutput.textContent = `"${currentCardName}" account was deleted`;
 	}
 });
-
+/*
+let currentCardIndex = -1;
+for (let i = 0; i < newAccountController.accountNamesArr.length; ++i) {
+	if (newAccountController.accountNamesArr[i].accountName == currentCardName) {
+		currentCardIndex = i;
+		break;
+	}
+}
+*/
 /*
 depBtn.addEventListener("click", () => {
 	console.log("deposit clicked");
