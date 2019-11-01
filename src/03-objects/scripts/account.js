@@ -43,18 +43,26 @@ export class AccountController {
 		return total;
 	}
 	highestBalance() {
+		this.accountNamesArr.sort((a, b) => b.accountBalance - a.accountBalance);
+		return this.accountNamesArr[0];
+		/*
 		const highest = this.accountNamesArr.reduce((accumulator, account) => {
 			if (account.accountBalance > accumulator) return account.accountBalance;
 			else return accumulator;
 		}, 0);
 		return highest;
+		*/
 	}
 	lowestBalance() {
+		this.accountNamesArr.sort((a, b) => a.accountBalance - b.accountBalance);
+		return this.accountNamesArr[0];
+		/*
 		const lowest = this.accountNamesArr.reduce((accumulator, account) => {
 			if (account.accountBalance < accumulator) return account.accountBalance;
 			else return accumulator;
 		}, this.accountNamesArr[0].accountBalance);
 		return lowest;
+		*/
 	}
 	removeAccount(toBeRemoved) {
 		const accountNamesArr = this.accountNamesArr.filter(account => account.accountName != toBeRemoved);
@@ -68,16 +76,11 @@ export const accountCards = {
 		let newCardDiv = document.createElement("div");
 		newCardDiv.className = "card-div";
 		leftChild.appendChild(newCardDiv);
-		// newCardDiv.textContent = `${inputName.value}`;
-		// inputName.value = "";
 		accountCards.createCardBtns(newCardDiv);
 		console.log(newCardDiv);
 		return newCardDiv;
 	},
 	createCardBtns: newCardDiv => {
-		// newCardDiv.appendChild(document.createElement("br"));
-		// newCardDiv.appendChild(document.createElement("br"));
-
 		let pTitle = document.createElement("p");
 		pTitle.className = "para-left-card-input";
 		newCardDiv.appendChild(pTitle);
@@ -88,7 +91,6 @@ export const accountCards = {
 		newCardDiv.appendChild(cardInput);
 
 		newCardDiv.appendChild(document.createElement("br"));
-		// newCardDiv.appendChild(document.createElement("br"));
 
 		let buttonDeposit = document.createElement("button");
 		buttonDeposit.className = "btn-card-dep";
@@ -116,31 +118,10 @@ export const accountCards = {
 		pOutput.className = "para-left-card-output";
 		newCardDiv.appendChild(pOutput);
 		pOutput.textContent = `Account Balance: $${inputBalance.value}`;
-		// inputBalance.value = "";
 
 		return newCardDiv;
 	},
-	addCardBeforeCurrent: currentCard => {
-		let newBeforeCard = document.createElement("div");
-		newBeforeCard.className = "card-div";
-		leftChild.insertBefore(newBeforeCard, currentCard);
-		newBeforeCard.textContent = `Card - ${leftChild.childElementCount}`;
-
-		cardsFunctions.createCardBtns(newBeforeCard);
-
-		return newBeforeCard;
-	},
-	addCardAfterCurrent: currentCard => {
-		let newAfterCard = document.createElement("div");
-		newAfterCard.className = "card-div";
-		leftChild.insertBefore(newAfterCard, currentCard.nextSibling);
-		newAfterCard.textContent = `Card - ${leftChild.childElementCount}`;
-
-		cardsFunctions.createCardBtns(newAfterCard);
-
-		return newAfterCard;
-	},
-	removeCurrentCard: currentCard => {
-		currentCard.remove();
+	removeCurrentCard: (currentCard, leftChild) => {
+		leftChild.remove(currentCard);
 	}
 };
