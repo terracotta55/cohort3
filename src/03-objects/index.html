@@ -28,7 +28,63 @@
 				You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.
 			</p>
 		<![endif]-->
+		<!-- Nav Bar -->
+		<div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a class="navbar-brand" href="#">Comp-130</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link active" href="./index.html">Accounts<span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link" href="./cities.html">Cities</a>
+						<a class="nav-item nav-link disabled" href="#">State</a>
+						<a class="nav-item nav-link disabled" href="#">React</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="page-title">
+			<h1><strong>Account Controller</strong></h1>
+		</div>
+
 		<div id="container">
+			<div id="left">
+				<h2><strong>Accounts</strong></h2>
+				<div id="leftChild"></div>
+			</div>
+			<div id="right">
+				<br />
+				<form action="#">
+					<label>Account Name:&emsp;</label><input type="text" id="inputName" value="" /><br />
+					<label>Initial Balance:&emsp;</label><input type="text" id="inputBalance" value="" /><br />
+				</form>
+				<br />
+				<div id="right-btns">
+					<button id="btn-right-add">Add Account</button> <br />
+					<button id="btn-right-total">Total Balance</button> <br />
+					<button id="btn-right-highest">Highest Balance</button> <br />
+					<button id="btn-right-lowest">Lowest Balance</button> <br />
+					<button id="btn-right-length">Number of Accounts</button> <br />
+				</div>
+				<br />
+				<p class="results-header">
+					<strong>Results will display here:</strong>
+				</p>
+				<p class="para-right-card-output"></p>
+			</div>
+		</div>
+
+		<!-- <div id="container">
 			<div id="leftPanel">
 				<p>left panel</p>
 			</div>
@@ -54,7 +110,7 @@
 			<div id="rightPanel">
 				<p>right panel</p>
 			</div>
-		</div>
+		</div> -->
 
 		<script src="./scripts/index.js" type="module" async defer></script>
 	</body>

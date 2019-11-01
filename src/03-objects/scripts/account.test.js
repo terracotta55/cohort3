@@ -1,12 +1,4 @@
-import { Account, AccountController } from "./account.js";
-const accountData = [
-	{ accountName: "checking account 1", accountBalance: 150 },
-	{ accountName: "checking account 2", accountBalance: 200 },
-	{ accountName: "checking account 3", accountBalance: 900 },
-	{ accountName: "checking account 4", accountBalance: 115 },
-	{ accountName: "checking account 5", accountBalance: 500 }
-];
-const myAccount = new AccountController("dalton", accountData);
+import { Account, AccountController, accountCards } from "./account.js";
 
 describe("testing Account class methods", () => {
 	test("testing display value formatter", () => {
@@ -33,37 +25,24 @@ describe("testing Account class methods", () => {
 	});
 });
 
-describe("testing AccountController class methods", () => {
-	test("testing add account in account controller", () => {
-		expect(myAccount.addAccount("checking account 6", 135)).toEqual({
-			accountName: "checking account 6",
-			accountBalance: 135
-		});
-	});
-
-	test("testing total balance in account controller", () => {
-		expect(myAccount.totalBalance()).toEqual(2000);
-	});
-
-	test("testing highest balance in account controller", () => {
-		expect(myAccount.highestBalance()).toEqual(900);
-	});
-
-	test("testing lowest balance in account controller", () => {
-		expect(myAccount.lowestBalance()).toEqual(115);
-	});
-
-	test("testing remove account in account controller", () => {
-		expect(myAccount.removeAccount("checking account 2")).toEqual([
-			{ accountName: "checking account 1", accountBalance: 150 },
-			{ accountName: "checking account 3", accountBalance: 900 },
-			{ accountName: "checking account 4", accountBalance: 115 },
-			{ accountName: "checking account 5", accountBalance: 500 },
-			{ accountName: "checking account 6", accountBalance: 135 }
-		]);
-	});
-
-	test("testing number of accounts in account controller", () => {
-		expect(myAccount.accountsList.length).toEqual(5);
-	});
+test("testing AccountController class methods", () => {
+	const myAccount = new AccountController("Dalton");
+	myAccount.addAccount("Savings", 20000);
+	expect(myAccount.accountNamesArr.length).toBe(1);
+	myAccount.addAccount("Retirement", 50000);
+	expect(myAccount.accountNamesArr.length).toBe(2);
+	expect(myAccount.accountNamesArr[0].accountName).toBe("Savings");
+	expect(myAccount.accountNamesArr[1].accountName).toBe("Retirement");
+	myAccount.addAccount("College Fund", 80000);
+	expect(myAccount.accountNamesArr.length).toBe(3);
+	expect(myAccount.totalBalance()).toEqual(150000);
+	myAccount.addAccount("Mortgage", 2000);
+	expect(myAccount.accountNamesArr.length).toBe(4);
+	expect(myAccount.lowestBalance()).toEqual({ accountName: "Mortgage", accountBalance: 2000 });
+	expect(myAccount.highestBalance()).toEqual({ accountName: "College Fund", accountBalance: 80000 });
+	expect(myAccount.totalBalance()).toEqual(152000);
+	myAccount.removeAccount("Mortgage");
+	expect(myAccount.accountNamesArr.length).toBe(3);
+	expect(myAccount.totalBalance()).toEqual(150000);
+	expect(myAccount.accountsList.length).toEqual(3);
 });
