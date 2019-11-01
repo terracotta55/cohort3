@@ -12,8 +12,10 @@ export class Account {
 			throw new Error("Insufficient Funds!");
 		}
 		this.accountBalance -= wthAmt;
+		console.log(this.accountBalance);
 	}
 	balance() {
+		console.log(this.accountBalance);
 		return this.accountBalance;
 	}
 	static formatDisplayValue(userInput) {
@@ -27,7 +29,6 @@ export class AccountController {
 		_accountsList.set(this, _accountsList);
 		this.accountNamesArr = [];
 		this.accountOwner = accountOwner;
-		// this.Accounts = [];
 	}
 	get accountsList() {
 		return this.accountNamesArr;
@@ -67,15 +68,21 @@ export const accountCards = {
 		let newCardDiv = document.createElement("div");
 		newCardDiv.className = "card-div";
 		leftChild.appendChild(newCardDiv);
-		newCardDiv.textContent = `${inputName.value}`;
+		// newCardDiv.textContent = `${inputName.value}`;
 		// inputName.value = "";
 		accountCards.createCardBtns(newCardDiv);
 		console.log(newCardDiv);
 		return newCardDiv;
 	},
 	createCardBtns: newCardDiv => {
-		newCardDiv.appendChild(document.createElement("br"));
 		// newCardDiv.appendChild(document.createElement("br"));
+		// newCardDiv.appendChild(document.createElement("br"));
+
+		let pTitle = document.createElement("p");
+		pTitle.className = "para-left-card-input";
+		newCardDiv.appendChild(pTitle);
+		pTitle.textContent = `${inputName.value}`;
+
 		let cardInput = document.createElement("input");
 		cardInput.className = "card-input";
 		newCardDiv.appendChild(cardInput);
@@ -105,10 +112,10 @@ export const accountCards = {
 		buttonDelete.textContent = "Delete";
 		newCardDiv.appendChild(buttonDelete);
 
-		let pTag = document.createElement("p");
-		pTag.className = "para-left-card-output";
-		newCardDiv.appendChild(pTag);
-		pTag.textContent = `Account Balance: $${inputBalance.value}`;
+		let pOutput = document.createElement("p");
+		pOutput.className = "para-left-card-output";
+		newCardDiv.appendChild(pOutput);
+		pOutput.textContent = `Account Balance: $${inputBalance.value}`;
 		// inputBalance.value = "";
 
 		return newCardDiv;
