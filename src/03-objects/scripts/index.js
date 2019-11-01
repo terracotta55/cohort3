@@ -1,73 +1,72 @@
 import { Account, AccountController, accountCards } from "./account.js";
 
-const newAccount = new Account("", null);
-const cardInput = document.querySelector(".card-input");
+// const newAccount = new Account("", null);
+// const cardInput = document.querySelector(".card-input");
 // const userInput = document.getElementById("amountInput");
 // const displayScreen = document.getElementById("amtDispValue");
 // let userInputVal = Account.formatDisplayValue(userInput.value);
 // const accountNamesArr = [];
-const newAccountController = new AccountController("Dalton's Accounts");
-// let acctDisplayOutput = document.querySelector("#para-left-card-output");
+let acctDisplayOutput = document.querySelector(".para-right-card-output");
+const newAccountController = new AccountController("Dalton-Accounts");
 
 right.addEventListener("click", e => {
 	if (e.target.id === "btn-right-add") {
 		console.log(`add clicked`);
 		accountCards.createCardDiv();
 		newAccountController.addAccount(inputName.value, Account.formatDisplayValue(inputBalance.value));
-		// newAccount.deposit(inputName.value, Account.formatDisplayValue(inputBalance.value));
 		inputName.value = "";
 		inputBalance.value = "";
 		console.log(newAccountController.accountNamesArr);
-		// console.log(newAccount);
 	} else if (e.target.id === "btn-right-total") {
 		console.log(`total clicked`);
 		let total = newAccountController.totalBalance();
-		document.querySelector(".para-right-card-output").textContent = `Total Balance: $${total}`;
+		acctDisplayOutput.textContent = `Total Balance: $${total}`;
 	} else if (e.target.id === "btn-right-highest") {
 		console.log(`highest clicked`);
 		let highest = newAccountController.highestBalance();
-		document.querySelector(".para-right-card-output").textContent = `Highest Balance: $${highest}`;
+		acctDisplayOutput.textContent = `Highest Balance: $${highest}`;
 	} else if (e.target.id === "btn-right-lowest") {
 		console.log(`lowest clicked`);
 		let lowest = newAccountController.lowestBalance();
-		document.querySelector(".para-right-card-output").textContent = `Lowest Balance: $${lowest}`;
+		acctDisplayOutput.textContent = `Lowest Balance: $${lowest}`;
 	}
 });
 
 leftChild.addEventListener("click", e => {
 	if (e.target.className === "btn-card-dep") {
 		console.log(`deposit clicked`);
-		let currentAccount = e.toElement.parentElement;
-		console.log(currentAccount.children[1].value);
-		let amount = Number(currentAccount.children[1].value);
+		let currentCard = e.toElement.parentElement;
+		let amount = Number(currentCard.children[1].value);
 		if (amount > 0) {
-			let currentAccountType = currentAccount.children[0].textContent;
-			let CurrentAccountIndex = newAccountController.accountNamesArr.findIndex(itm => {
-				console.log(itm.accountName);
-				itm.accountName === currentAccountType;
-			});
-
-			console.log(currentAccountType);
-			console.log(CurrentAccountIndex);
-			console.log(newAccountController.accountNamesArr[0]);
-			newAccountController.accountNamesArr[CurrentAccountIndex].deposit(amount);
-			// currentAccount.children[1].value = "";
-			// display.textContent = `${amount}$ has been deposited to your ${Mason.Accounts[CurrentAccountIndex].accountType}`;
-			console.log(currentAccount.balance());
+			let currentCardName = currentCard.children[0].textContent;
+			let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.accountName === currentCardName);
+			/*
+			let currentCardIndex = -1;
+			for (let i = 0; i < newAccountController.accountNamesArr.length; ++i) {
+				if (newAccountController.accountNamesArr[i].accountName == currentCardName) {
+					currentCardIndex = i;
+					break;
+				}
+			}
+			*/
+			newAccountController.accountNamesArr[currentCardIndex].deposit(amount);
+			currentCard.children[8].textContent = `Deposit: $${amount}`;
 		}
-		// let newAccount = new Account();
-		// accountCards.createCardDiv();
-		// myAccount.addAccount(inputName.value, Number(inputBalance.value));
-	} else if (e.target.id === "btn-card-wth") {
+	} else if (e.target.className === "btn-card-wth") {
 		console.log(`withdraw clicked`);
-		let total = myAccount.totalBalance();
-
-		// document.querySelector(".para-right-card-output").textContent = `Total Balance: $${total}`;
-	} else if (e.target.id === "btn-card-bal") {
+		let currentCard = e.toElement.parentElement;
+		let amount = Number(currentCard.children[1].value);
+		if (amount > 0) {
+			let currentCardName = currentCard.children[0].textContent;
+			let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.accountName === currentCardName);
+			newAccountController.accountNamesArr[currentCardIndex].withdraw(amount);
+			currentCard.children[8].textContent = `Withdraw: $${amount}`;
+		}
+	} else if (e.target.className === "btn-card-bal") {
 		console.log(`balance clicked`);
 		let balance = myAccount.highestBalance();
 		// document.querySelector(".para-right-card-output").textContent = `Highest Balance: $${highest}`;
-	} else if (e.target.id === "btn-card-del") {
+	} else if (e.target.className === "btn-card-del") {
 		console.log(`delete clicked`);
 		let lowest = myAccount.lowestBalance();
 		// document.querySelector(".para-right-card-output").textContent = `Lowest Balance: $${lowest}`;
