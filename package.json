@@ -9,9 +9,9 @@
 		"test1": "jest src/01-getting-started",
 		"test2": "jest src/02-dom",
 		"test3": "jest src/03-objects",
+		"testdaily": "jest src/javascript/daily.test.js",
 		"test1cov": "jest src/01-getting-started --coverage",
-		"testfile": "jest src/01-getting-started/scripts/lfsplay.test.js",
-		"testdalton": "jest src/javascript/daily.test.js"
+		"testfile": "jest src/01-getting-started/scripts/lfsplay.test.js"
 	},
 	"keywords": [],
 	"author": "Dalton Okechukwu",
