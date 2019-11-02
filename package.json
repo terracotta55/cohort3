@@ -1,22 +1,26 @@
 {
-  "name": "jest-p2",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "testcov": "jest --coverage",
-    "test1": "jest src/01-getting-started",
-    "test1cov": "jest src/01-getting-started --coverage",
-    "testfile": "jest src/01-getting-started/scripts/lfsplay.test.js",
-    "testdalton": "jest src/javascript/daily.test.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "jest": "^24.9.0"
-  }
+	"name": "jest-p2",
+	"version": "1.0.0",
+	"description": "Test Driven Development - Bootcamp",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"testcov": "jest --coverage",
+		"test1": "jest src/01-getting-started",
+		"test2": "jest src/02-dom",
+		"test3": "jest src/03-objects",
+		"test1cov": "jest src/01-getting-started --coverage",
+		"testfile": "jest src/01-getting-started/scripts/lfsplay.test.js",
+		"testdalton": "jest src/javascript/daily.test.js"
+	},
+	"keywords": [],
+	"author": "Dalton Okechukwu",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/cli": "^7.0.0",
+		"@babel/preset-env": "^7.0.0",
+		"jest": "^24.9.0",
+		"node-fetch": "^2.6.0",
+		"whatwg-fetch": "^3.0.0"
+	}
 }
