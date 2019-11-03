@@ -185,3 +185,80 @@ console.log(myAccount.accountNamesArr);
 // console.log(myAccount.lowestBalance());
 // console.log(myAccount.removeAccount("checking account 2"));
 console.log(myAccount.accountsList.length);
+const data = [
+	{
+		name: "სერგო",
+		surname: "მაისურაძე",
+		gender: "male",
+		region: "Georgia"
+	},
+	{
+		name: "Bystrík",
+		surname: "Brunovský",
+		gender: "male",
+		region: "Slovakia"
+	},
+	{
+		name: "Mia",
+		surname: "Burns",
+		gender: "female",
+		region: "New Zealand"
+	},
+	{
+		name: "Sáfrány",
+		surname: "Jakab",
+		gender: "male",
+		region: "Hungary"
+	},
+	{
+		name: "Lukas",
+		surname: "Verlinden",
+		gender: "male",
+		region: "Belgium"
+	},
+	{
+		name: "Николай",
+		surname: "Калинин",
+		gender: "male",
+		region: "Russia"
+	},
+	{
+		name: "Anghelina",
+		surname: "Rădescu",
+		gender: "female",
+		region: "Romania"
+	},
+	{
+		name: "小林",
+		surname: "美優",
+		gender: "female",
+		region: "Japan"
+	},
+	{
+		name: "Ismael",
+		surname: "Ortiz",
+		gender: "male",
+		region: "Spain"
+	},
+	{
+		name: "Αρισταγόρας",
+		surname: "Γερμανού",
+		gender: "male",
+		region: "Greece"
+	}
+];
+
+const getFirstName = data => {
+	return data[0].name;
+};
+
+const getAllFirstNames = data => {
+	const nameArr = [];
+	data.forEach(element => {
+		nameArr.push(element.name);
+	});
+	return nameArr;
+};
+
+console.log(getFirstName(data));
+console.log(getAllFirstNames(data));
