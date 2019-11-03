@@ -1,4 +1,4 @@
-import { getFirstName, getAllFirstNames } from "./fetch.js";
+import { asyncFunctions } from "./fetch.js";
 
 const data = [
 	{
@@ -63,8 +63,19 @@ const data = [
 	}
 ];
 test("testing get first names fetch", () => {
-	expect(getFirstName(data)).toBe("სერგო");
+	expect(asyncFunctions.getFirstName(data)).toBe("სერგო");
 });
 test("testing get all names fetch", () => {
-	expect(getAllFirstNames(data)).toEqual(["სერგო", "Bystrík", "Mia", "Sáfrány", "Lukas", "Николай", "Anghelina", "小林", "Ismael", "Αρισταγόρας"]);
+	expect(asyncFunctions.getAllFirstNames(data)).toEqual([
+		"სერგო",
+		"Bystrík",
+		"Mia",
+		"Sáfrány",
+		"Lukas",
+		"Николай",
+		"Anghelina",
+		"小林",
+		"Ismael",
+		"Αρισταγόρας"
+	]);
 });
