@@ -306,7 +306,7 @@ const asyncFunctions = {
 // asyncFunctions.showDelayProblem();
 // asyncFunctions.showDelaySolution();
 // asyncFunctions.getUsers();
-// asyncFunctions.workWithData();
+asyncFunctions.workWithData();
 const me = {
 	name: "Dalton",
 	surname: "Okechukwu",
@@ -382,6 +382,7 @@ class Community {
 		this.cityNamesArr = this.cityNamesArr.filter(city => city.cityKey !== cityKeyToBeRemoved);
 	}
 }
+/*
 const myCommunity = new Community();
 myCommunity.createCity(1, "Lagos", 6.454066, 3.394673, 900000);
 myCommunity.createCity(2, "Rio de Janeiro", -22.875113, -43.277548, 90000);
@@ -392,3 +393,4 @@ console.log(myCommunity.cityNamesArr.length);
 console.log(myCommunity.cityNamesArr);
 myCommunity.deleteCity(3);
 console.log(myCommunity.cityNamesArr);
+*/

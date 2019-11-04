@@ -1,5 +1,5 @@
-import { Account, AccountController } from "./scripts/account.js";
-import { accountCards } from "./scripts/functions.js";
+import { Account, AccountController } from "./scripts/accounts/account.js";
+import { accountCards } from "./scripts/accounts/functions.js";
 
 const acctDisplayOutput = document.querySelector(".para-right-card-output");
 const newAccountController = new AccountController("Dalton-Accounts");
@@ -24,6 +24,10 @@ right.addEventListener("click", e => {
 		console.log(`lowest clicked`);
 		let lowest = newAccountController.lowestBalance();
 		acctDisplayOutput.textContent = `Lowest balance is $${lowest.accountBalance} in "${lowest.accountName}"`;
+	} else if (e.target.id === "btn-right-length") {
+		console.log(`length clicked`);
+		let length = newAccountController.accountsList.length;
+		acctDisplayOutput.textContent = `You have ${length} account(s)`;
 	}
 });
 
