@@ -1,5 +1,5 @@
 import { Account, AccountController } from "./account.js";
-import { accountCards } from "./functions.js";
+import { accountCards } from "./accountfunctions.js";
 
 const acctDisplayOutput = document.querySelector(".para-right-card-output");
 const newAccountController = new AccountController("Dalton-Accounts");
