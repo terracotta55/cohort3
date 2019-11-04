@@ -1,5 +1,5 @@
-import { City, Community } from "./scripts/cities/account.js";
-import { cityCards } from "./scripts/cities/cityfunctions.js";
+import { City, Community } from "./scripts/cities/city.js";
+import { cityCards } from "./cityfunctions.js";
 
 async function postData(url = "", data = {}) {
 	// Default options are marked with *
