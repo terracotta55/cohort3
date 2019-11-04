@@ -258,34 +258,6 @@ const getAllFirstNames = data => {
 
 console.log(getFirstName(data));
 console.log(getAllFirstNames(data));
-/*
-function showDelayProblem() {
-	console.log("One");
-	setTimeout(() => {
-		// Simulates a fetch
-		console.log("Two");
-	}, 1 * 2000);
-	console.log("Three"); // We have a problem Huston
-}
-showDelayProblem();
-*/
-/*
-async function showDelaySolution() {
-	try {
-		console.log("One");
-		const value = await // Simulate fetch
-		new Promise((resolve, reject) => setTimeout(() => resolve("Two"), 1 * 3000));
-		// Now that we have the value we can use it.
-		console.log(value);
-		console.log("Three");
-	} catch (error) {
-		console.log(error);
-	}
-}
-console.log("Before: showDelaySolution");
-showDelaySolution();
-console.log("After: showDelaySolution");
-*/
 
 const asyncFunctions = {
 	url: "https://uinames.com/api/?amount=10",
@@ -305,7 +277,7 @@ const asyncFunctions = {
 	async showDelaySolution() {
 		try {
 			console.log("One");
-			const value = await // Simulate fetch
+			const value = await // Simulates fetch(xxx.url)
 			new Promise((resolve, reject) => setTimeout(() => resolve("Two"), 1 * 2000));
 			console.log(value); // Now that we have the value we can use it.
 			console.log("Three"); // This only runs after promise is fulfilled
@@ -334,7 +306,7 @@ const asyncFunctions = {
 // asyncFunctions.showDelayProblem();
 // asyncFunctions.showDelaySolution();
 // asyncFunctions.getUsers();
-asyncFunctions.workWithData();
+// asyncFunctions.workWithData();
 const me = {
 	name: "Dalton",
 	surname: "Okechukwu",
@@ -344,3 +316,79 @@ const me = {
 const stringifyMe = JSON.stringify(me);
 console.log(me);
 console.log(stringifyMe);
+
+class City {
+	constructor(cityKey, cityName, cityLatitude, cityLongitude, cityPopulation) {
+		this.cityKey = cityKey; //unique identifier for each city
+		this.cityName = cityName;
+		this.cityLatitude = cityLatitude;
+		this.cityLongitude = cityLongitude;
+		this.cityPopulation = cityPopulation;
+	}
+	show() {
+		return `
+		Name: ${this.cityName}\nLatitude: ${this.cityLatitude}\nLongitude: ${this.cityLongitude}\nPopulation: ${this.cityPopulation}`.trim();
+	}
+	async movedIn(num) {
+		this.cityPopulation += num;
+		console.log(this.cityPopulation);
+	}
+	async movedOut(num) {
+		this.cityPopulation -= num;
+		console.log(this.cityPopulation);
+	}
+	howBig() {
+		if (this.cityPopulation >= 1 && this.cityPopulation <= 100) {
+			return `Hamlet`;
+		}
+		if (this.cityPopulation < 1000) {
+			return `Village`;
+		}
+		if (this.cityPopulation <= 20000) {
+			return `Town`;
+		}
+		if (this.cityPopulation <= 100000) {
+			return `Large Town`;
+		} else return `City`;
+	}
+}
+
+class Community {
+	constructor() {
+		this.cityNamesArr = [];
+	}
+	whichSphere(cityObj) {
+		if (cityObj.cityLatitude < 0) return `Southern Hemisphere`;
+		if (cityObj.cityLatitude > 0) return `Northern Hemisphere`;
+		return `Equator`;
+	}
+	getMostNorthern() {
+		this.cityNamesArr.sort((a, b) => b.cityLatitude - a.cityLatitude);
+		return this.cityNamesArr[0];
+	}
+	getMostSouthern() {
+		this.cityNamesArr.sort((a, b) => a.cityLatitude - b.cityLatitude);
+		return this.cityNamesArr[0];
+	}
+	getTotalPopulation() {
+		return this.cityNamesArr.reduce((accumulator, city) => city.cityPopulation + accumulator, 0);
+	}
+	createCity(cityKey, cityName, cityLatitude, cityLongitude, cityPopulation) {
+		let newCity = new City(cityKey, cityName, cityLatitude, cityLongitude, cityPopulation);
+		this.cityNamesArr.push(newCity);
+		return newCity;
+	}
+	async deleteCity(cityKeyToBeRemoved) {
+		this.cityNamesArr = this.cityNamesArr.filter(city => city.cityKey !== cityKeyToBeRemoved);
+	}
+}
+const myCommunity = new Community();
+myCommunity.createCity(1, "Lagos", 6.454066, 3.394673, 900000);
+myCommunity.createCity(2, "Rio de Janeiro", -22.875113, -43.277548, 90000);
+myCommunity.createCity(3, "La Libertad", 16.788497, -90.116978, 19000);
+myCommunity.createCity(4, "Pembroke", 45.816667, -77.116667, 900);
+myCommunity.createCity(5, "Kwinana", -32.230129, 115.781281, 90);
+console.log(myCommunity.cityNamesArr.length);
+console.log(myCommunity.cityNamesArr);
+myCommunity.deleteCity(3);
+console.log(myCommunity.cityNamesArr);

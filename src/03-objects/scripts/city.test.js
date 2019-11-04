@@ -6,6 +6,7 @@ myCommunity.createCity(2, "Rio de Janeiro", -22.875113, -43.277548, 90000);
 myCommunity.createCity(3, "La Libertad", 16.788497, -90.116978, 19000);
 myCommunity.createCity(4, "Pembroke", 45.816667, -77.116667, 900);
 myCommunity.createCity(5, "Kwinana", -32.230129, 115.781281, 90);
+myCommunity.createCity(5, "Equatorial City", 0, 0, 0);
 console.log(myCommunity.cityNamesArr.length);
 
 describe("testing City class methods", () => {
@@ -39,6 +40,7 @@ describe("testing Community class methods", () => {
 	test("testing whichSphere method", () => {
 		expect(myCommunity.whichSphere(myCommunity.cityNamesArr[1])).toBe(`Southern Hemisphere`);
 		expect(myCommunity.whichSphere(myCommunity.cityNamesArr[2])).toBe(`Northern Hemisphere`);
+		expect(myCommunity.whichSphere(myCommunity.cityNamesArr[5])).toBe(`Equator`);
 	});
 	test("testing getMostNorthern method", () => {
 		expect(myCommunity.getMostNorthern()).toEqual({

@@ -1,6 +1,6 @@
 export class City {
 	constructor(cityKey, cityName, cityLatitude, cityLongitude, cityPopulation) {
-		this.cityKey = cityKey; //unique identifier for each city
+		this.cityKey = cityKey; //should be unique identifier for each city
 		this.cityName = cityName;
 		this.cityLatitude = cityLatitude;
 		this.cityLongitude = cityLongitude;
@@ -33,7 +33,6 @@ export class City {
 		} else return `City`;
 	}
 }
-// const newCity = new City(1, "Calgary", 51, -114, 1200000);
 
 export class Community {
 	constructor() {
