@@ -5,17 +5,14 @@ export class Account {
 	}
 	deposit(depAmt) {
 		this.accountBalance += depAmt;
-		console.log(this.accountBalance);
 	}
 	withdraw(wthAmt) {
 		if (wthAmt > this.accountBalance) {
 			throw new Error("Insufficient Funds!");
 		}
 		this.accountBalance -= wthAmt;
-		console.log(this.accountBalance);
 	}
 	balance() {
-		console.log(this.accountBalance);
 		return this.accountBalance;
 	}
 	static formatDisplayValue(userInput) {
