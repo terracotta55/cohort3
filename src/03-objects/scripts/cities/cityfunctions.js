@@ -3,7 +3,7 @@ export const cityCards = {
 		let newCardDiv = document.createElement("div");
 		newCardDiv.className = "card-div";
 		leftChild.appendChild(newCardDiv);
-		accountCards.createCardBtns(newCardDiv);
+		cityCards.createCardBtns(newCardDiv);
 		console.log(newCardDiv);
 		return newCardDiv;
 	},
@@ -11,7 +11,7 @@ export const cityCards = {
 		let pTitle = document.createElement("p");
 		pTitle.className = "para-left-card-input";
 		newCardDiv.appendChild(pTitle);
-		pTitle.textContent = `${inputName.value}`;
+		pTitle.textContent = `${inputCity.value}`;
 
 		let cardInput = document.createElement("input");
 		cardInput.className = "card-input";
@@ -19,32 +19,32 @@ export const cityCards = {
 
 		newCardDiv.appendChild(document.createElement("br"));
 
-		let buttonDeposit = document.createElement("button");
-		buttonDeposit.className = "btn-card-dep";
-		buttonDeposit.textContent = "Deposit";
-		newCardDiv.appendChild(buttonDeposit);
+		let buttonMovedIn = document.createElement("button");
+		buttonMovedIn.className = "btn-card-moved-in";
+		buttonMovedIn.textContent = "Moved In";
+		newCardDiv.appendChild(buttonMovedIn);
 
-		let buttonWithdraw = document.createElement("button");
-		buttonWithdraw.className = "btn-card-wth";
-		buttonWithdraw.textContent = "Withdraw";
-		newCardDiv.appendChild(buttonWithdraw);
+		let buttonMovedOut = document.createElement("button");
+		buttonMovedOut.className = "btn-card-moved-out";
+		buttonMovedOut.textContent = "Moved Out";
+		newCardDiv.appendChild(buttonMovedOut);
 
-		let buttonBalance = document.createElement("button");
-		buttonBalance.className = "btn-card-bal";
-		buttonBalance.textContent = "Balance";
-		newCardDiv.appendChild(buttonBalance);
+		let buttonHowBig = document.createElement("button");
+		buttonHowBig.className = "btn-card-how-big";
+		buttonHowBig.textContent = "How Big";
+		newCardDiv.appendChild(buttonHowBig);
 
 		newCardDiv.appendChild(document.createElement("br"));
 
-		let buttonDelete = document.createElement("button");
-		buttonDelete.className = "btn-card-del";
-		buttonDelete.textContent = "Delete";
-		newCardDiv.appendChild(buttonDelete);
+		let buttonDeleteCity = document.createElement("button");
+		buttonDeleteCity.className = "btn-card-del";
+		buttonDeleteCity.textContent = "Remove City";
+		newCardDiv.appendChild(buttonDeleteCity);
 
 		let pOutput = document.createElement("p");
 		pOutput.className = "para-left-card-output";
 		newCardDiv.appendChild(pOutput);
-		pOutput.textContent = `Account Balance: $${inputBalance.value}`;
+		pOutput.textContent = `Initial Population: ${inputPopulation.value}`;
 
 		return newCardDiv;
 	},

@@ -60,22 +60,23 @@
 		</div>
 		<div id="container">
 			<div id="left">
-				<h2><strong>Accounts</strong></h2>
+				<h2><strong>Community</strong></h2>
 				<div id="leftChild"></div>
 			</div>
 			<div id="right">
 				<br />
 				<form action="#">
-					<label>Account Name:&emsp;</label><input type="text" id="inputName" value="" /><br />
-					<label>Initial Balance:&emsp;</label><input type="text" id="inputBalance" value="" /><br />
+					<label>City Name:&emsp;</label><input type="text" id="inputCity" value="" /><br />
+					<label>Latitude:&emsp;</label><input type="text" id="inputLatitude" value="" /><br />
+					<label>Longitude:&emsp;</label><input type="text" id="inputLongitude" value="" /><br />
+					<label>Population:&emsp;</label><input type="text" id="inputPopulation" value="" /><br />
 				</form>
 				<br />
 				<div id="right-btns">
-					<button id="btn-right-add">Add Account</button> <br />
-					<button id="btn-right-total">Total Balance</button> <br />
-					<button id="btn-right-highest">Highest Balance</button> <br />
-					<button id="btn-right-lowest">Lowest Balance</button> <br />
-					<button id="btn-right-length">Number of Accounts</button> <br />
+					<button id="btn-right-add">Add City</button> <br />
+					<button id="btn-right-north">Most Northern</button> <br />
+					<button id="btn-right-south">Most Southern</button> <br />
+					<button id="btn-right-total">Total Population</button> <br />
 				</div>
 				<br />
 				<p class="results-header">
@@ -84,6 +85,6 @@
 				<p class="para-right-card-output"></p>
 			</div>
 		</div>
-		<script src="./cityindex.js" type="module" async defer></script>
+		<script src="./scripts/cities/cityindex.js" type="module" async defer></script>
 	</body>
 </html>

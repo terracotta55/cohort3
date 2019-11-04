@@ -32,6 +32,9 @@ export class City {
 			return `Large Town`;
 		} else return `City`;
 	}
+	static formatPopulation(userInput) {
+		return Math.round(userInput * 100) / 100;
+	}
 }
 
 export class Community {
