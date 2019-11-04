@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+	<!--<![endif]-->
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Comp-130</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+
+		<link href="./city.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<!--[if lt IE 7]>
+			<p class="browsehappy">
+				You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.
+			</p>
+		<![endif]-->
+		<!-- Nav Bar -->
+		<div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a class="navbar-brand" href="#">Comp-130</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" href="./index.html">Accounts</a>
+						<a class="nav-item nav-link active" href="./city.html">Cities<span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link disabled" href="#">State</a>
+						<a class="nav-item nav-link disabled" href="#">React</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="page-title">
+			<h1><strong>Community Controller</strong></h1>
+		</div>
+		<div id="container">
+			<div id="left">
+				<h2><strong>Accounts</strong></h2>
+				<div id="leftChild"></div>
+			</div>
+			<div id="right">
+				<br />
+				<form action="#">
+					<label>Account Name:&emsp;</label><input type="text" id="inputName" value="" /><br />
+					<label>Initial Balance:&emsp;</label><input type="text" id="inputBalance" value="" /><br />
+				</form>
+				<br />
+				<div id="right-btns">
+					<button id="btn-right-add">Add Account</button> <br />
+					<button id="btn-right-total">Total Balance</button> <br />
+					<button id="btn-right-highest">Highest Balance</button> <br />
+					<button id="btn-right-lowest">Lowest Balance</button> <br />
+					<button id="btn-right-length">Number of Accounts</button> <br />
+				</div>
+				<br />
+				<p class="results-header">
+					<strong>Results will display here:</strong>
+				</p>
+				<p class="para-right-card-output"></p>
+			</div>
+		</div>
+		<script src="./city_main.js" type="module" async defer></script>
+	</body>
+</html>
