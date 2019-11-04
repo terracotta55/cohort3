@@ -1,5 +1,4 @@
 import { asyncFunctions } from "./fetch.js";
-
 jest.useFakeTimers();
 const data = [
 	{
@@ -84,4 +83,9 @@ test("testing get all names fetch", () => {
 test("testing showDelayProblem fetch", () => {
 	asyncFunctions.showDelayProblem();
 	expect(setTimeout).toHaveBeenCalledTimes(1);
+});
+
+test("testing showDelaySolution fetch", async () => {
+	asyncFunctions.showDelaySolution();
+	expect.assertions(0);
 });

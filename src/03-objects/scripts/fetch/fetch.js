@@ -13,7 +13,6 @@ export const asyncFunctions = {
 			console.log("Two");
 		}, 1 * 2000); // Simulates a fetch
 		console.log("Three"); // We have a problem, this executes despite the timeout
-		// module.exports = setTimeout;
 	},
 	async showDelaySolution() {
 		try {
@@ -38,8 +37,8 @@ export const asyncFunctions = {
 	},
 	async workWithData() {
 		const data = await asyncFunctions.getUsers();
-		// console.log(asyncFunctions.getFirstName(data));
-		// console.log(asyncFunctions.getAllFirstNames(data));
+		console.log(asyncFunctions.getFirstName(data));
+		console.log(asyncFunctions.getAllFirstNames(data));
 	}
 };
 
@@ -50,5 +49,5 @@ const me = {
 	region: "Canada"
 };
 const stringifyMe = JSON.stringify(me);
-console.log(me);
-console.log(stringifyMe);
+// console.log(me);
+// console.log(stringifyMe);
