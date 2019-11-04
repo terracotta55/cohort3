@@ -49,5 +49,5 @@ const me = {
 	region: "Canada"
 };
 const stringifyMe = JSON.stringify(me);
-// console.log(me);
-// console.log(stringifyMe);
+console.log(me);
+console.log(stringifyMe);
