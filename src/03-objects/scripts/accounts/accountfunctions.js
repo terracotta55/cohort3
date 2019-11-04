@@ -9,7 +9,7 @@ export const accountCards = {
 	},
 	createCardBtns: newCardDiv => {
 		let pTitle = document.createElement("p");
-		pTitle.className = "para-left-card-input";
+		pTitle.className = "para-left-card-title";
 		newCardDiv.appendChild(pTitle);
 		pTitle.textContent = `${inputName.value}`;
 
