@@ -1,34 +1,28 @@
 import { City, Community } from "./city.js";
 import { cityCards } from "./cityfunctions.js";
-
-async function postData(url = "", data = {}) {
-	// Default options are marked with *
-	const response = await fetch(url, {
-		method: "POST", // *GET, POST, PUT, DELETE, etc.
-		mode: "cors", // no-cors, *cors, same-origin
-		cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-		credentials: "same-origin", // include, *same-origin, omit
-		headers: {
-			"Content-Type": "application/json"
-			// 'Content-Type': 'application/x-www-form-urlencoded',
-		},
-		redirect: "follow", // manual, *follow, error
-		referrer: "no-referrer", // no-referrer, *client
-		body: JSON.stringify(data) // body data type must match "Content-Type" header
-	});
-	return await response.json(); // parses JSON response into native JavaScript objects
-}
+// import { cityFetch } from "./fetch/cityfetch.js";
 
 const cityDisplayOutput = document.querySelector(".para-right-card-output");
 const newCommunity = new Community();
-let cityKey = 0;
+// let cityKeyCounter = newCommunity.getLastKey();
+let cityKeyCounter = 0;
+document.addEventListener("DOMContentLoaded", () => {
+	newCommunity.getAllCities();
+	cityKeyCounter = newCommunity.getLastKey();
+});
 
 right.addEventListener("click", e => {
 	if (e.target.id === "btn-right-add") {
-		cityKey++;
 		console.log(`add city clicked`);
+		cityKeyCounter++;
 		cityCards.createCardDiv();
-		newCommunity.createCity(Number(cityKey), inputCity.value, inputLatitude.value, inputLongitude.value, City.formatPopulation(inputPopulation.value));
+		newCommunity.createCity(
+			Number(cityKeyCounter),
+			inputCity.value,
+			inputLatitude.value,
+			inputLongitude.value,
+			City.formatPopulation(inputPopulation.value)
+		);
 		inputCity.value = "";
 		inputLatitude.value = "";
 		inputLongitude.value = "";
@@ -69,7 +63,7 @@ leftChild.addEventListener("click", e => {
 			let currentCardName = currentCard.children[0].textContent;
 			let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.cityName === currentCardName);
 			newCommunity.cityNamesArr[currentCardIndex].movedOut(amount);
-			currentCard.children[8].textContent = `MovedOut: ${amount}`;
+			currentCard.children[8].textContent = `Moved Out: ${amount}`;
 			currentCard.children[1].value = "";
 		}
 	} else if (e.target.className === "btn-card-how-big") {
