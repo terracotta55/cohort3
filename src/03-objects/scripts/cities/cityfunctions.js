@@ -2,9 +2,10 @@ export const cityCards = {
 	createCardDiv: () => {
 		let newCardDiv = document.createElement("div");
 		newCardDiv.className = "card-div";
+		// newCardDiv.setAttribute("key", cityCards.cardCount);
 		leftChild.appendChild(newCardDiv);
 		cityCards.createCardBtns(newCardDiv);
-		console.log(newCardDiv);
+		// console.log(newCardDiv);
 		return newCardDiv;
 	},
 	createCardBtns: newCardDiv => {
