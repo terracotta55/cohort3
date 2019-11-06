@@ -1,12 +1,16 @@
 test("How do pointers work", () => {
 	console.log("Reference");
 	const a = { name: "Larry", bal: 10 };
+	const b = { name: "Jerry", bal: 105 };
 	const arr = [];
 	const obj = {};
 	arr.push(a);
+	arr.push(b);
 	obj[a.name] = a;
-	console.log(obj[a.name]);
-	console.log(a.name);
+	obj[b.name] = b;
+	console.log(arr);
+	console.log(obj);
+
 	expect(a.bal).toBe(10);
 	expect(arr[0].bal).toBe(10);
 	expect(obj[a.name].bal).toBe(10);
