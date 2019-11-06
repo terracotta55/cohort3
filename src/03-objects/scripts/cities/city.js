@@ -117,8 +117,11 @@ export class Community {
 		postData(url + "add", newCity);
 		return newCity;
 	}
-	async deleteCity(key) {
-		this.cityNamesArr = this.cityNamesArr.filter(city => city.cityKey !== keyToBeRemoved);
-		postData(url + "delete", { key });
+	deleteCity(key) {
+		key = Number(key);
+		const newCityNamesArr = this.cityNamesArr.filter(city => city.key !== key);
+		this.cityNamesArr = newCityNamesArr;
+		// postData(url + "delete", { key });
+		postData(url + "delete", newCityNamesArr);
 	}
 }
