@@ -1,4 +1,9 @@
 const functions = {
+	// 06-Nov-2019 Daily Exercises
+	staffGreaterThanBalance: arr => {
+		const greaterThanArr = arr.filter(elem => elem.balance > 1000);
+		return greaterThanArr;
+	},
 	// 29-Oct-2019 Daily Exercises
 	staffTotalBalance: arr => {
 		const total = arr.reduce((accumulator, staff) => accumulator + staff.balance, 0);
