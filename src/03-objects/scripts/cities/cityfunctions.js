@@ -1,18 +1,25 @@
 export const cityCards = {
-	createCardDiv: () => {
+	cardCount: 0,
+	createCardDiv() {
 		let newCardDiv = document.createElement("div");
+		this.cardCount++;
 		newCardDiv.className = "card-div";
-		// newCardDiv.setAttribute("key", cityCards.cardCount);
+		newCardDiv.setAttribute("key", cityCards.cardCount);
 		leftChild.appendChild(newCardDiv);
 		cityCards.createCardBtns(newCardDiv);
 		// console.log(newCardDiv);
 		return newCardDiv;
 	},
 	createCardBtns: newCardDiv => {
-		let pTitle = document.createElement("p");
-		pTitle.className = "para-left-card-input";
-		newCardDiv.appendChild(pTitle);
-		pTitle.textContent = `${inputCity.value}`;
+		let pKey = document.createElement("p");
+		pKey.className = "para-left-card-key";
+		newCardDiv.appendChild(pKey);
+		pKey.textContent = `${cityCards.cardCount}`; // replace this with key instead.
+		// pTitle.textContent = `${inputCity.value}`; // replace this with key instead.
+		let pCityName = document.createElement("p");
+		pCityName.className = "para-left-card-name";
+		newCardDiv.appendChild(pCityName);
+		pCityName.textContent = `${inputCity.value}`;
 
 		let cardInput = document.createElement("input");
 		cardInput.className = "card-input";
@@ -50,6 +57,6 @@ export const cityCards = {
 		return newCardDiv;
 	},
 	removeCurrentCard: (currentCard, leftChild) => {
-		leftChild.remove(currentCard);
+		leftChild.removeChild(currentCard);
 	}
 };
