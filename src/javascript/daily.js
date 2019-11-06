@@ -1,8 +1,11 @@
 const functions = {
 	// 06-Nov-2019 Daily Exercises
 	staffGreaterThanBalance: arr => {
+		// let balanceNumbers = [];
 		const greaterThanArr = arr.filter(elem => elem.balance > 1000);
+		// greaterThanArr.forEach(elem => balanceNumbers.push(elem.balance));
 		return greaterThanArr;
+		// return balanceNumbers;
 	},
 	// 29-Oct-2019 Daily Exercises
 	staffTotalBalance: arr => {
