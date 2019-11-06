@@ -1,17 +1,25 @@
 export const accountCards = {
-	createCardDiv: () => {
+	cardCount: 0,
+	createCardDiv() {
 		let newCardDiv = document.createElement("div");
+		this.cardCount++;
 		newCardDiv.className = "card-div";
+		newCardDiv.setAttribute("key", accountCards.cardCount);
 		leftChild.appendChild(newCardDiv);
 		accountCards.createCardBtns(newCardDiv);
-		console.log(newCardDiv);
+		// console.log(newCardDiv);
 		return newCardDiv;
 	},
 	createCardBtns: newCardDiv => {
-		let pTitle = document.createElement("p");
-		pTitle.className = "para-left-card-title";
-		newCardDiv.appendChild(pTitle);
-		pTitle.textContent = `${inputName.value}`;
+		// let pKey = document.createElement("p");
+		// pKey.className = "para-left-card-key";
+		// newCardDiv.appendChild(pKey);
+		// pKey.textContent = `${accountCards.cardCount}`; // replace this with key instead.
+		// pTitle.textContent = `${inputCity.value}`; // replace this with key instead.
+		let pAcctName = document.createElement("p");
+		pAcctName.className = "para-left-card-name";
+		newCardDiv.appendChild(pAcctName);
+		pAcctName.textContent = `${inputName.value}`;
 
 		let cardInput = document.createElement("input");
 		cardInput.className = "card-input";
@@ -49,6 +57,6 @@ export const accountCards = {
 		return newCardDiv;
 	},
 	removeCurrentCard: (currentCard, leftChild) => {
-		leftChild.remove(currentCard);
+		leftChild.removeChild(currentCard);
 	}
 };
