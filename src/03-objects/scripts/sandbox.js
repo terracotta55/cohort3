@@ -172,19 +172,18 @@ class AccountController {
 }
 
 const myAccount = new AccountController("dalton");
-myAccount.addAccount("checking account 1", 150);
-myAccount.addAccount("checking account 2", 200);
+// myAccount.addAccount("checking account 1", 150);
+// myAccount.addAccount("checking account 2", 200);
 // myAccount.addAccount("checking account 3", 900);
-myAccount.addAccount("checking account 3", 900);
-myAccount.addAccount("checking account 4", 115);
-myAccount.addAccount("checking account 5", 500);
-myAccount.addAccount("checking account 6", 135);
-console.log(myAccount.accountNamesArr);
+// myAccount.addAccount("checking account 4", 115);
+// myAccount.addAccount("checking account 5", 500);
+// myAccount.addAccount("checking account 6", 135);
+// console.log(myAccount.accountNamesArr);
 // console.log(myAccount.totalBalance());
 // console.log(myAccount.highestBalance());
 // console.log(myAccount.lowestBalance());
-// console.log(myAccount.removeAccount("checking account 2"));
-console.log(myAccount.accountsList.length);
+console.log(myAccount.removeAccount("checking account 2"));
+// console.log(myAccount.accountsList.length);
 const data = [
 	{
 		name: "სერგო",
@@ -255,10 +254,10 @@ const getFirstName = data => {
 const getAllFirstNames = data => {
 	return data.map(arrElem => arrElem.name);
 };
-
+/*
 console.log(getFirstName(data));
 console.log(getAllFirstNames(data));
-
+*/
 const asyncFunctions = {
 	url: "https://uinames.com/api/?amount=10",
 	getFirstName(data) {
@@ -305,18 +304,19 @@ const asyncFunctions = {
 };
 // asyncFunctions.showDelayProblem();
 // asyncFunctions.showDelaySolution();
-// asyncFunctions.getUsers();
-asyncFunctions.workWithData();
+asyncFunctions.getUsers();
+// asyncFunctions.workWithData();
 const me = {
 	name: "Dalton",
 	surname: "Okechukwu",
 	gender: "male",
 	region: "Canada"
 };
+/*
 const stringifyMe = JSON.stringify(me);
 console.log(me);
 console.log(stringifyMe);
-
+*/
 class City {
 	constructor(cityKey, cityName, cityLatitude, cityLongitude, cityPopulation) {
 		this.cityKey = cityKey; //unique identifier for each city
