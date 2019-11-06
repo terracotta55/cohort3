@@ -8,7 +8,7 @@ describe("testing Account class methods", () => {
 	});
 
 	test("testing account app", () => {
-		let checkingAccount = new Account("Checking Account", 100);
+		let checkingAccount = new Account(1, "Checking Account", 100);
 		expect(checkingAccount.balance()).toEqual(100);
 		expect(checkingAccount.withdraw(50)).toBe(undefined);
 		expect(checkingAccount.balance()).toEqual(50);
@@ -17,7 +17,7 @@ describe("testing Account class methods", () => {
 	});
 
 	test("testing throws insufficient funds error", () => {
-		let checkingAccount = new Account("Checking Account", 100);
+		let checkingAccount = new Account(1, "Checking Account", 100);
 		const insufficientFunds = () => {
 			checkingAccount.withdraw(500);
 		};
@@ -25,24 +25,26 @@ describe("testing Account class methods", () => {
 	});
 });
 
-test("testing AccountController class methods", () => {
-	const myAccount = new AccountController("Dalton");
-	myAccount.addAccount("Savings", 20000);
-	expect(myAccount.accountNamesArr.length).toBe(1);
-	myAccount.addAccount("Retirement", 50000);
-	expect(myAccount.accountNamesArr.length).toBe(2);
-	expect(myAccount.accountNamesArr[0].accountName).toBe("Savings");
-	expect(myAccount.accountNamesArr[1].accountName).toBe("Retirement");
-	myAccount.addAccount("College Fund", 80000);
-	expect(myAccount.accountNamesArr.length).toBe(3);
-	expect(myAccount.totalBalance()).toEqual(150000);
-	myAccount.addAccount("Mortgage", 2000);
-	expect(myAccount.accountNamesArr.length).toBe(4);
-	expect(myAccount.lowestBalance()).toEqual({ accountName: "Mortgage", accountBalance: 2000 });
-	expect(myAccount.highestBalance()).toEqual({ accountName: "College Fund", accountBalance: 80000 });
-	expect(myAccount.totalBalance()).toEqual(152000);
-	myAccount.removeAccount("Mortgage");
-	expect(myAccount.accountNamesArr.length).toBe(3);
-	expect(myAccount.totalBalance()).toEqual(150000);
-	expect(myAccount.accountsList.length).toEqual(3);
+describe("testing AccountController class methods", () => {
+	test("testing each method", () => {
+		const myAccount = new AccountController("Dalton");
+		myAccount.addAccount(1, "Savings", 20000);
+		expect(myAccount.accountNamesArr.length).toBe(1);
+		myAccount.addAccount(2, "Retirement", 50000);
+		expect(myAccount.accountNamesArr.length).toBe(2);
+		expect(myAccount.accountNamesArr[0].accountName).toBe("Savings");
+		expect(myAccount.accountNamesArr[1].accountName).toBe("Retirement");
+		myAccount.addAccount(3, "College Fund", 80000);
+		expect(myAccount.accountNamesArr.length).toBe(3);
+		expect(myAccount.totalBalance()).toEqual(150000);
+		myAccount.addAccount(4, "Mortgage", 2000);
+		expect(myAccount.accountNamesArr.length).toBe(4);
+		expect(myAccount.lowestBalance()).toEqual({ key: 4, accountName: "Mortgage", accountBalance: 2000 });
+		expect(myAccount.highestBalance()).toEqual({ key: 3, accountName: "College Fund", accountBalance: 80000 });
+		expect(myAccount.totalBalance()).toEqual(152000);
+		myAccount.removeAccount(3);
+		expect(myAccount.accountNamesArr.length).toBe(3);
+		expect(myAccount.totalBalance()).toEqual(72000);
+		expect(myAccount.accountsList.length).toEqual(3);
+	});
 });
