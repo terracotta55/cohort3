@@ -109,3 +109,7 @@ form {
 	font-size: 1.2em;
 	color: royalblue;
 }
+.para-left-card-name,
+.para-left-card-key {
+	margin: 0px;
+}
