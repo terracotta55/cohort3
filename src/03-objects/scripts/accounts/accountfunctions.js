@@ -7,15 +7,9 @@ export const accountCards = {
 		newCardDiv.setAttribute("key", accountCards.cardCount);
 		leftChild.appendChild(newCardDiv);
 		accountCards.createCardBtns(newCardDiv);
-		// console.log(newCardDiv);
 		return newCardDiv;
 	},
 	createCardBtns: newCardDiv => {
-		// let pKey = document.createElement("p");
-		// pKey.className = "para-left-card-key";
-		// newCardDiv.appendChild(pKey);
-		// pKey.textContent = `${accountCards.cardCount}`; // replace this with key instead.
-		// pTitle.textContent = `${inputCity.value}`; // replace this with key instead.
 		let pAcctName = document.createElement("p");
 		pAcctName.className = "para-left-card-name";
 		newCardDiv.appendChild(pAcctName);
