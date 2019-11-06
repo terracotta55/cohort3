@@ -4,13 +4,14 @@ import { accountCards } from "./accountfunctions.js";
 const acctDisplayOutput = document.querySelector(".para-right-card-output");
 const newAccountController = new AccountController("Dalton-Accounts");
 
+let acctClassKeyCounter = 0;
 right.addEventListener("click", e => {
 	if (e.target.id === "btn-right-add") {
 		console.log(`add clicked`);
+		acctClassKeyCounter++;
 		accountCards.createCardDiv();
-		newAccountController.addAccount(inputName.value, Account.formatDisplayValue(inputBalance.value));
-		inputName.value = "";
-		inputBalance.value = "";
+		newAccountController.addAccount(Number(acctClassKeyCounter), inputName.value, Account.formatDisplayValue(inputBalance.value));
+		inputName.value = inputBalance.value = "";
 		console.log(newAccountController.accountNamesArr);
 	} else if (e.target.id === "btn-right-total") {
 		console.log(`total clicked`);
@@ -37,8 +38,8 @@ leftChild.addEventListener("click", e => {
 		let currentCard = e.toElement.parentElement;
 		let amount = Number(currentCard.children[1].value);
 		if (amount > 0) {
-			let currentCardName = currentCard.children[0].textContent;
-			let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.accountName === currentCardName);
+			let currentCardKeyAttribute = Number(currentCard.getAttribute("key"));
+			let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.key === currentCardKeyAttribute);
 			newAccountController.accountNamesArr[currentCardIndex].deposit(amount);
 			currentCard.children[8].textContent = `Deposit: $${amount}`;
 			currentCard.children[1].value = "";
@@ -48,8 +49,8 @@ leftChild.addEventListener("click", e => {
 		let currentCard = e.toElement.parentElement;
 		let amount = Number(currentCard.children[1].value);
 		if (amount > 0) {
-			let currentCardName = currentCard.children[0].textContent;
-			let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.accountName === currentCardName);
+			let currentCardKeyAttribute = Number(currentCard.getAttribute("key"));
+			let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.key === currentCardKeyAttribute);
 			newAccountController.accountNamesArr[currentCardIndex].withdraw(amount);
 			currentCard.children[8].textContent = `Withdraw: $${amount}`;
 			currentCard.children[1].value = "";
@@ -57,54 +58,18 @@ leftChild.addEventListener("click", e => {
 	} else if (e.target.className === "btn-card-bal") {
 		console.log(`balance clicked`);
 		let currentCard = e.toElement.parentElement;
-		let currentCardName = currentCard.children[0].textContent;
-		let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.accountName === currentCardName);
+		let currentCardKeyAttribute = Number(currentCard.getAttribute("key"));
+		let currentCardIndex = newAccountController.accountNamesArr.findIndex(arrayItem => arrayItem.key === currentCardKeyAttribute);
 		let balance = newAccountController.accountNamesArr[currentCardIndex].balance();
 		currentCard.children[8].textContent = `Balance: $${balance}`;
 		currentCard.children[1].value = "";
 	} else if (e.target.className === "btn-card-del") {
 		console.log(`delete clicked`);
 		let currentCard = e.toElement.parentElement;
+		let currentCardKeyAttribute = currentCard.getAttribute("key");
 		let currentCardName = currentCard.children[0].textContent;
-		newAccountController.removeAccount(currentCardName);
-		accountCards.removeCurrentCard(currentCardName, leftChild);
+		newAccountController.removeAccount(currentCardKeyAttribute);
+		accountCards.removeCurrentCard(currentCard, leftChild);
 		acctDisplayOutput.textContent = `"${currentCardName}" account was deleted`;
 	}
 });
-/*
-let currentCardIndex = -1;
-for (let i = 0; i < newAccountController.accountNamesArr.length; ++i) {
-	if (newAccountController.accountNamesArr[i].accountName == currentCardName) {
-		currentCardIndex = i;
-		break;
-	}
-}
-*/
-/*
-depBtn.addEventListener("click", () => {
-	console.log("deposit clicked");
-	let userInputVal = Account.formatDisplayValue(userInput.value);
-	displayScreen.textContent = `Deposit: $${userInputVal}`;
-	checkingAccount.deposit(userInputVal);
-	userInput.value = "";
-});
-
-wthBtn.addEventListener("click", () => {
-	console.log("withdraw clicked");
-	let userInputVal = Account.formatDisplayValue(userInput.value);
-	if (userInputVal > checkingAccount.balance()) {
-		displayScreen.textContent = `Insufficient Funds!`;
-	} else {
-		checkingAccount.withdraw(userInputVal);
-		displayScreen.textContent = `Withdrawal: $${userInputVal}`;
-	}
-	userInput.value = "";
-});
-
-balBtn.addEventListener("click", () => {
-	console.log("balance clicked");
-	let userInputVal = Account.formatDisplayValue(userInput.value);
-	displayScreen.textContent = `Balance: $${checkingAccount.balance(userInputVal)}`;
-	userInput.value = "";
-});
-*/
