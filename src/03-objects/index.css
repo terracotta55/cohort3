@@ -109,6 +109,11 @@ form {
 	font-size: 1.2em;
 	color: royalblue;
 }
+.para-left-card-name,
+.para-left-card-key,
+.para-left-card-output {
+	margin: 0px;
+}
 /* css for one card bank account */
 /*
 body {
