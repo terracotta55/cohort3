@@ -1,10 +1,10 @@
 import { City, Community } from "./city.js";
 import { cityCards } from "./cityfunctions.js";
-// import { cityFetch } from "./fetch/cityfetch.js";
 
 const cityDisplayOutput = document.querySelector(".para-right-card-output");
 const newCommunity = new Community();
 // let cityKeyCounter = newCommunity.getLastKey();
+
 let cityKeyCounter = 0;
 document.addEventListener("DOMContentLoaded", () => {
 	newCommunity.getAllCities();
@@ -23,10 +23,7 @@ right.addEventListener("click", e => {
 			inputLongitude.value,
 			City.formatPopulation(inputPopulation.value)
 		);
-		inputCity.value = "";
-		inputLatitude.value = "";
-		inputLongitude.value = "";
-		inputPopulation.value = "";
+		inputCity.value = inputLatitude.value = inputLongitude.value = inputPopulation.value = "";
 		console.log(newCommunity.cityNamesArr);
 	} else if (e.target.id === "btn-right-total") {
 		console.log(`total clicked`);
@@ -58,13 +55,13 @@ leftChild.addEventListener("click", e => {
 	} else if (e.target.className === "btn-card-moved-out") {
 		console.log(`moved out clicked`);
 		let currentCard = e.toElement.parentElement;
-		let amount = Number(currentCard.children[1].value);
+		let amount = Number(currentCard.children[2].value);
 		if (amount > 0) {
-			let currentCardName = currentCard.children[0].textContent;
+			let currentCardName = currentCard.children[1].textContent;
 			let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.cityName === currentCardName);
 			newCommunity.cityNamesArr[currentCardIndex].movedOut(amount);
-			currentCard.children[8].textContent = `Moved Out: ${amount}`;
-			currentCard.children[1].value = "";
+			currentCard.children[9].textContent = `Moved Out: ${amount}`;
+			currentCard.children[2].value = "";
 		}
 	} else if (e.target.className === "btn-card-how-big") {
 		console.log(`how big clicked`);
@@ -77,9 +74,12 @@ leftChild.addEventListener("click", e => {
 	} else if (e.target.className === "btn-card-del") {
 		console.log(`remove city clicked`);
 		let currentCard = e.toElement.parentElement;
-		let currentCardName = currentCard.children[0].textContent;
-		newCommunity.deleteCity(currentCardName);
-		cityCards.removeCurrentCard(currentCardName, leftChild);
-		cityDisplayOutput.textContent = `${currentCardName} was deleted`;
+		let currentCardKey = currentCard.children[0].textContent;
+		newCommunity.deleteCity(currentCardKey);
+		console.log(currentCardKey); // need to pass key!!!
+		console.log(currentCard);
+		cityCards.removeCurrentCard(currentCard, leftChild);
+		cityDisplayOutput.textContent = `${currentCardKey} was deleted`;
+		console.log(newCommunity.cityNamesArr);
 	}
 });
