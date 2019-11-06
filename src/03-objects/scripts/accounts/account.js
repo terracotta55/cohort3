@@ -1,5 +1,6 @@
 export class Account {
-	constructor(accountName, accountBalance) {
+	constructor(key, accountName, accountBalance) {
+		this.key = key;
 		this.accountName = accountName;
 		this.accountBalance = accountBalance;
 	}
@@ -30,8 +31,8 @@ export class AccountController {
 	get accountsList() {
 		return this.accountNamesArr;
 	}
-	addAccount(accountName, accountBalance) {
-		let newAccount = new Account(accountName, accountBalance);
+	addAccount(key, accountName, accountBalance) {
+		let newAccount = new Account(key, accountName, accountBalance);
 		this.accountNamesArr.push(newAccount);
 		return newAccount;
 	}
@@ -47,9 +48,10 @@ export class AccountController {
 		this.accountNamesArr.sort((a, b) => a.accountBalance - b.accountBalance);
 		return this.accountNamesArr[0];
 	}
-	removeAccount(toBeRemoved) {
-		const accountNamesArr = this.accountNamesArr.filter(account => account.accountName != toBeRemoved);
-		this.accountNamesArr = accountNamesArr;
-		return this.accountNamesArr;
+	removeAccount(key) {
+		key = Number(key);
+		const newAccountNamesArr = this.accountNamesArr.filter(account => account.key != key);
+		this.accountNamesArr = newAccountNamesArr;
+		// return this.accountNamesArr;
 	}
 }
