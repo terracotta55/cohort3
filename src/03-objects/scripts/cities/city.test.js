@@ -6,7 +6,7 @@ myCommunity.createCity(2, "Rio de Janeiro", -22.875113, -43.277548, 90000);
 myCommunity.createCity(3, "La Libertad", 16.788497, -90.116978, 19000);
 myCommunity.createCity(4, "Pembroke", 45.816667, -77.116667, 900);
 myCommunity.createCity(5, "Kwinana", -32.230129, 115.781281, 90);
-myCommunity.createCity(5, "Equatorial City", 0, 0, 0);
+myCommunity.createCity(6, "Equatorial City", 0, 0, 0);
 console.log(myCommunity.cityNamesArr.length);
 
 describe("testing City class methods", () => {
@@ -44,7 +44,7 @@ describe("testing Community class methods", () => {
 	});
 	test("testing getMostNorthern method", () => {
 		expect(myCommunity.getMostNorthern()).toEqual({
-			cityKey: 4,
+			key: 4,
 			cityLatitude: 45.816667,
 			cityLongitude: -77.116667,
 			cityName: "Pembroke",
@@ -54,7 +54,7 @@ describe("testing Community class methods", () => {
 
 	test("testing getMostSouthern method", () => {
 		expect(myCommunity.getMostSouthern()).toEqual({
-			cityKey: 5,
+			key: 5,
 			cityLatitude: -32.230129,
 			cityLongitude: 115.781281,
 			cityName: "Kwinana",
