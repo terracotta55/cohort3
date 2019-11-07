@@ -6,7 +6,7 @@ const cityDisplayOutput = document.querySelector(".para-right-card-output");
 cityDisplayOutput.textContent = `Data loading...`;
 const newCommunity = new Community();
 let keyCounter;
-let lastKey = cityFetch.pageLoad(newCommunity);
+let lastKey = cityFetch.getAllCitiesServer(newCommunity);
 lastKey.then(
 	result => {
 		keyCounter = result + 1;
@@ -18,16 +18,10 @@ lastKey.then(
 	},
 	reject => (cityDisplayOutput.textContent = `Error: No key found!`)
 );
-window.addEventListener("load", e => {
-	console.log("window load");
-	// let lastKey = cityFetch.pageLoad(newCommunity);
-});
-document.addEventListener("readystatechange", e => {
-	console.log("document readystatechange");
-});
-
-document.addEventListener("DOMContentLoaded", e => {
-	console.log("document DOMContentLoaded");
+window.addEventListener("load", async e => {
+	let data = await cityFetch.clearServerOnLoad();
+	console.log("window loaded, server cleared");
+	// let lastKey = cityFetch.getAllCitiesServer(newCommunity);
 });
 
 right.addEventListener("click", async e => {
