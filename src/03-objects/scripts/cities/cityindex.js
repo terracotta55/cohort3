@@ -1,28 +1,54 @@
 import { City, Community } from "./city.js";
 import { cityCards } from "./cityfunctions.js";
+import { cityFetch } from "../fetch/cityfetch.js";
 
 const cityDisplayOutput = document.querySelector(".para-right-card-output");
+cityDisplayOutput.textContent = `Data loading...`;
 const newCommunity = new Community();
-// let cityKeyCounter = newCommunity.getLastKey();
-
-let cityKeyCounter = 0;
-document.addEventListener("DOMContentLoaded", () => {
-	newCommunity.getAllCities();
-	cityKeyCounter = newCommunity.getLastKey();
+let keyCounter;
+let lastKey = cityFetch.pageLoad(newCommunity);
+lastKey.then(
+	result => {
+		keyCounter = result + 1;
+		if (newCommunity.cityNamesArr.length >= 1) {
+			cityDisplayOutput.textContent = `Success: Last key found!`;
+		} else {
+			cityDisplayOutput.textContent = `Success: Server is empty!`;
+		}
+	},
+	reject => (cityDisplayOutput.textContent = `Error: No key found!`)
+);
+window.addEventListener("load", e => {
+	console.log("window load");
+	// let lastKey = cityFetch.pageLoad(newCommunity);
+});
+document.addEventListener("readystatechange", e => {
+	console.log("document readystatechange");
 });
 
-right.addEventListener("click", e => {
+document.addEventListener("DOMContentLoaded", e => {
+	console.log("document DOMContentLoaded");
+});
+
+right.addEventListener("click", async e => {
 	if (e.target.id === "btn-right-add") {
 		console.log(`add city clicked`);
-		cityKeyCounter++;
-		cityCards.createCardDiv();
-		newCommunity.createCity(
-			Number(cityKeyCounter),
-			inputCity.value,
-			inputLatitude.value,
-			inputLongitude.value,
-			City.formatPopulation(inputPopulation.value)
-		);
+		try {
+			cityCards.createCardDiv();
+			newCommunity.createCity(
+				Number(keyCounter),
+				inputCity.value,
+				inputLatitude.value,
+				inputLongitude.value,
+				City.formatPopulation(inputPopulation.value)
+			);
+			let data = await cityFetch.postNewToServer(newCommunity.cityNamesArr.filter(itm => itm.key === keyCounter)[0]);
+			keyCounter++;
+		} catch (error) {
+			cityDisplayOutput.textContent = `Error with add new city`;
+			newCommunity.deleteCity(keyCounter);
+		}
+		cityDisplayOutput.textContent = `New city ${inputCity.value} added`;
 		inputCity.value = inputLatitude.value = inputLongitude.value = inputPopulation.value = "";
 		console.log(newCommunity.cityNamesArr);
 	} else if (e.target.id === "btn-right-total") {
@@ -40,46 +66,70 @@ right.addEventListener("click", e => {
 	}
 });
 
-leftChild.addEventListener("click", e => {
+leftChild.addEventListener("click", async e => {
 	if (e.target.className === "btn-card-moved-in") {
 		console.log(`moved in clicked`);
 		let currentCard = e.toElement.parentElement;
 		let amount = Number(currentCard.children[1].value);
 		if (amount > 0) {
+			currentCard.children[8].textContent = `Updating moved in...`;
 			let currentCardName = currentCard.children[0].textContent;
 			let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.cityName === currentCardName);
 			newCommunity.cityNamesArr[currentCardIndex].movedIn(amount);
-			currentCard.children[8].textContent = `Moved In: ${amount}`;
+			try {
+				let data = await cityFetch.updateCityServer(newCommunity.cityNamesArr[currentCardIndex]);
+				currentCard.children[8].textContent = `Moved In: ${amount}`;
+			} catch (error) {
+				currentCard.children[8].textContent = `Error processing moved in!`;
+				newCommunity.cityNamesArr[currentCardIndex].movedOut(amount);
+				console.log(newCommunity.cityNamesArr);
+			}
 			currentCard.children[1].value = "";
 		}
 	} else if (e.target.className === "btn-card-moved-out") {
 		console.log(`moved out clicked`);
 		let currentCard = e.toElement.parentElement;
-		let amount = Number(currentCard.children[2].value);
+		let amount = Number(currentCard.children[1].value);
 		if (amount > 0) {
-			let currentCardName = currentCard.children[1].textContent;
+			currentCard.children[8].textContent = `Updating moved in...`;
+			let currentCardName = currentCard.children[0].textContent;
 			let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.cityName === currentCardName);
 			newCommunity.cityNamesArr[currentCardIndex].movedOut(amount);
-			currentCard.children[9].textContent = `Moved Out: ${amount}`;
-			currentCard.children[2].value = "";
+			try {
+				let data = await cityFetch.updateCityServer(newCommunity.cityNamesArr[currentCardIndex]);
+				currentCard.children[8].textContent = `Moved Out: ${amount}`;
+			} catch (error) {
+				currentCard.children[8].textContent = `Error processing moved out!`;
+				newCommunity.cityNamesArr[currentCardIndex].movedIn(amount);
+				console.log(newCommunity.cityNamesArr);
+			}
+			currentCard.children[1].value = "";
 		}
 	} else if (e.target.className === "btn-card-how-big") {
 		console.log(`how big clicked`);
 		let currentCard = e.toElement.parentElement;
+		// let currentCardKeyAttribute = Number(currentCard.getAttribute("key"));
+		// let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.key === currentCardKeyAttribute);
 		let currentCardName = currentCard.children[0].textContent;
 		let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.cityName === currentCardName);
 		let balance = newCommunity.cityNamesArr[currentCardIndex].howBig();
-		currentCard.children[8].textContent = `Population: ${balance}`;
+		currentCard.children[8].textContent = `Population: ${newCommunity.cityNamesArr[currentCardIndex].cityPopulation} = ${balance}`;
 		currentCard.children[1].value = "";
 	} else if (e.target.className === "btn-card-del") {
 		console.log(`remove city clicked`);
 		let currentCard = e.toElement.parentElement;
-		let currentCardKey = currentCard.children[0].textContent;
-		newCommunity.deleteCity(currentCardKey);
-		console.log(currentCardKey); // need to pass key!!!
-		console.log(currentCard);
-		cityCards.removeCurrentCard(currentCard, leftChild);
-		cityDisplayOutput.textContent = `${currentCardKey} was deleted`;
+		let currentCardName = currentCard.children[0].textContent;
+		let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.cityName === currentCardName);
+		let currentCardKey = newCommunity.cityNamesArr[currentCardIndex].key;
+		try {
+			let data = await cityFetch.deleteCityServer(currentCardKey);
+			newCommunity.deleteCity(currentCardKey);
+			cityCards.removeCurrentCard(currentCard, leftChild);
+			cityDisplayOutput.textContent = `Deleted: ${currentCardName}`;
+		} catch (error) {
+			cityDisplayOutput.textContent = `Error deleting city`;
+		}
+		cityDisplayOutput.textContent = `${currentCardName} was deleted`;
 		console.log(newCommunity.cityNamesArr);
 	}
 });
