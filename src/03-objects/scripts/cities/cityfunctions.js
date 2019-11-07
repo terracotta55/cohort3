@@ -7,15 +7,9 @@ export const cityCards = {
 		newCardDiv.setAttribute("key", cityCards.cardCount);
 		leftChild.appendChild(newCardDiv);
 		cityCards.createCardBtns(newCardDiv);
-		// console.log(newCardDiv);
 		return newCardDiv;
 	},
 	createCardBtns: newCardDiv => {
-		let pKey = document.createElement("p");
-		pKey.className = "para-left-card-key";
-		newCardDiv.appendChild(pKey);
-		pKey.textContent = `${cityCards.cardCount}`; // replace this with key instead.
-		// pTitle.textContent = `${inputCity.value}`; // replace this with key instead.
 		let pCityName = document.createElement("p");
 		pCityName.className = "para-left-card-name";
 		newCardDiv.appendChild(pCityName);
