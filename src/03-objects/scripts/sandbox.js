@@ -182,7 +182,7 @@ const myAccount = new AccountController("dalton");
 // console.log(myAccount.totalBalance());
 // console.log(myAccount.highestBalance());
 // console.log(myAccount.lowestBalance());
-console.log(myAccount.removeAccount("checking account 2"));
+// console.log(myAccount.removeAccount("checking account 2"));
 // console.log(myAccount.accountsList.length);
 const data = [
 	{
@@ -382,7 +382,7 @@ class Community {
 		this.cityNamesArr = this.cityNamesArr.filter(city => city.cityKey !== cityKeyToBeRemoved);
 	}
 }
-/*
+
 const myCommunity = new Community();
 myCommunity.createCity(1, "Lagos", 6.454066, 3.394673, 900000);
 myCommunity.createCity(2, "Rio de Janeiro", -22.875113, -43.277548, 90000);
@@ -393,4 +393,66 @@ console.log(myCommunity.cityNamesArr.length);
 console.log(myCommunity.cityNamesArr);
 myCommunity.deleteCity(3);
 console.log(myCommunity.cityNamesArr);
+
+// sample fetch
+/*
+fetch("https://jsonplaceholder.typicode.com/users").then(response => console.log(response));
 */
+fetch("https://jsonplaceholder.typicode.com/users")
+	.then(response => response.json())
+	.then(data => console.log(data));
+
+const myPromise = new Promise((resolve, reject) => {
+	if (true) {
+		resolve("it worked :)");
+	} else {
+		reject("it broke :(");
+	}
+});
+// myPromise.then(result => console.log(result));
+
+const urls = ["https://jsonplaceholder.typicode.com/users", "https://jsonplaceholder.typicode.com/posts", "https://jsonplaceholder.typicode.com/albums"];
+
+Promise.all(urls.map(url => fetch(url).then(response => response.json())))
+	.then(data => {
+		console.log(data[0]);
+		console.log(data[1]);
+		console.log(data[2]);
+	})
+	.catch(() => console.log("error loading"));
+
+async function fetchUsers() {
+	const response = await fetch("https://jsonplaceholder.typicode.com/users");
+	const data = await response.json();
+	console.log(data);
+}
+// fetchUsers();
+const urls2 = ["https://swapi.co/api/people/1", "https://swapi.co/api/people/2", "https://swapi.co/api/people/3", "https://swapi.co/api/people/4"];
+async function fetchData() {
+	try {
+		const [first, second, third, fourth] = await Promise.all(urls2.map(url => fetch(url).then(response => response.json())));
+		console.log("first:", first);
+		console.log("second:", second);
+		console.log("third:", third);
+		console.log("fourth:", fourth);
+	} catch (error) {
+		console.log("not working", error);
+	}
+}
+// fetchData();
+
+async function getData() {
+	try {
+		const [users, posts, albums] = await Promise.all(
+			urls.map(async function(url) {
+				const response = await fetch(url);
+				return response.json();
+			})
+		);
+		console.log("users", users);
+		console.log("posta", posts);
+		console.log("albums", albums);
+	} catch (error) {
+		console.log("there are issues", error);
+	}
+}
