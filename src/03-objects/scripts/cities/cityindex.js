@@ -20,8 +20,7 @@ lastKey.then(
 );
 window.addEventListener("load", async e => {
 	let data = await cityFetch.clearServerOnLoad();
-	console.log("window loaded, server cleared");
-	// let lastKey = cityFetch.getAllCitiesServer(newCommunity);
+	console.info("window loaded, server cleared");
 });
 
 right.addEventListener("click", async e => {
@@ -102,8 +101,6 @@ leftChild.addEventListener("click", async e => {
 	} else if (e.target.className === "btn-card-how-big") {
 		console.log(`how big clicked`);
 		let currentCard = e.toElement.parentElement;
-		// let currentCardKeyAttribute = Number(currentCard.getAttribute("key"));
-		// let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.key === currentCardKeyAttribute);
 		let currentCardName = currentCard.children[0].textContent;
 		let currentCardIndex = newCommunity.cityNamesArr.findIndex(arrayItem => arrayItem.cityName === currentCardName);
 		let balance = newCommunity.cityNamesArr[currentCardIndex].howBig();
