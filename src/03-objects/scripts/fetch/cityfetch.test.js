@@ -56,3 +56,14 @@ describe("testing cityfetch aync functions and server update", () => {
 		expect(myCommunity.cityNamesArr.length).toEqual(5);
 	});
 });
+
+describe("testing for comp-130e object references", () => {
+	test("testing object references", () => {
+		let myCity = new City(7, "Reference City", 44, -99, 1000);
+		let myFav = myCity;
+		myCity.movedIn(500);
+		myFav.movedIn(200);
+		expect(myCity.cityPopulation).toBe(1700);
+		expect(myFav.cityPopulation).toBe(1700);
+	});
+});
