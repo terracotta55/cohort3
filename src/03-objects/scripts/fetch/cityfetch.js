@@ -1,5 +1,7 @@
-const url = "http://127.0.0.1:5000/";
 import { City, Community } from "../cities/city.js";
+
+const url = "http://localhost:5000/";
+
 export const cityFetch = {
 	async postData(url = "", data = {}) {
 		const response = await fetch(url, {
