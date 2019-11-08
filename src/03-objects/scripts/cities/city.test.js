@@ -7,7 +7,6 @@ myCommunity.createCity(3, "La Libertad", 16.788497, -90.116978, 19000);
 myCommunity.createCity(4, "Pembroke", 45.816667, -77.116667, 900);
 myCommunity.createCity(5, "Kwinana", -32.230129, 115.781281, 90);
 myCommunity.createCity(6, "Equatorial City", 0, 0, 0);
-console.log(myCommunity.cityNamesArr.length);
 
 describe("testing City class methods", () => {
 	test("testing show method", () => {
@@ -33,6 +32,10 @@ Population: 900000`);
 		expect(myCommunity.cityNamesArr[2].howBig()).toBe(`Town`);
 		expect(myCommunity.cityNamesArr[3].howBig()).toBe(`Village`);
 		expect(myCommunity.cityNamesArr[4].howBig()).toBe(`Hamlet`);
+	});
+
+	test("testing static method formatPopulation", () => {
+		expect(City.formatPopulation(10678.456708387)).toBe(10678.46);
 	});
 });
 
@@ -67,7 +70,7 @@ describe("testing Community class methods", () => {
 
 	test("testing deleteCity method", () => {
 		let citiesBeforeDelete = myCommunity.cityNamesArr.length;
-		myCommunity.deleteCity(3);
+		myCommunity.deleteCity(6);
 		let citiesAfterDelete = myCommunity.cityNamesArr.length;
 		expect(citiesAfterDelete).toBe(citiesBeforeDelete - 1);
 	});
