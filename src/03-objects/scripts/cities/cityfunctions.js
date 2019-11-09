@@ -1,19 +1,14 @@
 export const cityCards = {
-	cardCount: 0,
-	createCardDiv() {
+	createCardDiv: (key, cityName, cityPopulation) => {
 		let newCardDiv = document.createElement("div");
-		this.cardCount++;
 		newCardDiv.className = "card-div";
-		newCardDiv.setAttribute("key", cityCards.cardCount);
+		newCardDiv.setAttribute("key", key);
 		leftChild.appendChild(newCardDiv);
-		cityCards.createCardBtns(newCardDiv);
-		return newCardDiv;
-	},
-	createCardBtns: newCardDiv => {
+
 		let pCityName = document.createElement("p");
 		pCityName.className = "para-left-card-name";
 		newCardDiv.appendChild(pCityName);
-		pCityName.textContent = `${inputCity.value}`;
+		pCityName.innerText = `${cityName}`;
 
 		let cardInput = document.createElement("input");
 		cardInput.className = "card-input";
@@ -46,7 +41,7 @@ export const cityCards = {
 		let pOutput = document.createElement("p");
 		pOutput.className = "para-left-card-output";
 		newCardDiv.appendChild(pOutput);
-		pOutput.textContent = `Initial Population: ${inputPopulation.value}`;
+		pOutput.textContent = `Current Population: ${cityPopulation}`;
 
 		return newCardDiv;
 	},
