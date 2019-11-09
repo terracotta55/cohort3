@@ -39,13 +39,17 @@ export const cityFetch = {
 	},
 	async clearServerOnLoad() {
 		let data = await this.postData(url + "clear");
+		return data;
 	},
 	async updateCityServer(currentCity) {
 		let data = await this.postData(url + "update", currentCity);
+		return data;
 	},
 	async deleteCityServer(removeKey) {
 		let data = await this.postData(url + "delete", { key: removeKey });
+		return data;
 	},
+	/* istanbul ignore next */
 	async htmlReloadCities() {
 		fetch("http://localhost:5000/all")
 			.then(request => request.json())
@@ -60,7 +64,7 @@ export const cityFetch = {
 					);
 					cityCards.createCardDiv(Number(serverCity.key), serverCity.cityName, serverCity.cityPopulation);
 				});
-			})
-			.then(() => console.log(newCommunity.cityNamesArr));
+			});
+		return newCommunity.cityNamesArr;
 	}
 };
