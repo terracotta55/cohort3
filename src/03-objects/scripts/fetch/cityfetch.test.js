@@ -1,29 +1,21 @@
 import { City, Community } from "../cities/city.js";
 import { cityFetch } from "./cityFetch.js";
+import { cityCards } from "../cities/cityfunctions.js";
 
-global.fetch = require("node-fetch"); // need to install node-fetch via npm
+global.fetch = require("node-fetch"); // install node-fetch via npm
+
 const fs = require("fs");
 const path = require("path");
 const html = fs.readFileSync(path.resolve(__dirname, "../../city.html"), "utf8");
-
 jest.dontMock("fs");
 
-describe("testing cityfetch aync functions and server update", () => {
-	beforeEach(() => {
-		document.documentElement.innerHTML = html.toString();
-	});
-
-	afterEach(() => {
-		jest.resetModules(); // restore function after test
-	});
-
+describe("testing cityfetch async functions and server comms", () => {
 	test("testing clear server when html page loads ", async () => {
 		let data = await cityFetch.clearServerOnLoad();
 		let myCommunity = new Community();
 		let lastKey = await cityFetch.getAllCitiesServer(myCommunity);
 		expect(lastKey).toEqual(0);
 	});
-
 	test("testing server add of newly created cities", async () => {
 		let myCommunity = new Community();
 		myCommunity.createCity(1, "Lagos", 6.454066, 3.394673, 900000);
@@ -55,4 +47,34 @@ describe("testing cityfetch aync functions and server update", () => {
 		expect(lastKey).toEqual(5);
 		expect(myCommunity.cityNamesArr.length).toEqual(5);
 	});
+	test("testing html page on reload", async () => {
+		let data = await cityFetch.htmlReloadCities();
+		expect(data).toEqual([]);
+	});
 });
+
+describe("testing dom manipulation card functions", () => {
+	beforeEach(() => {
+		document.documentElement.innerHTML = html.toString();
+	});
+	afterEach(() => {
+		jest.resetModules();
+	});
+	test("testing creating a new div appended to leftChild", () => {
+		let testLeft = document.getElementById("leftChild");
+		let testChildCount = leftChild.childElementCount;
+		cityCards.createCardDiv();
+		expect(testLeft.childElementCount).toBe(testChildCount + 1);
+	});
+	test("testing remove current card", () => {
+		let testLeft = document.getElementById("leftChild");
+		cityCards.createCardDiv();
+		cityCards.createCardDiv();
+		let cardCount = testLeft.childElementCount;
+		let currentCard = testLeft.children[1];
+		cityCards.removeCurrentCard(currentCard, testLeft);
+		expect(testLeft.childElementCount).toBe(cardCount - 1);
+	});
+});
+
+// refernece for istanbul ignore: https://github.com/gotwarlost/istanbul/blob/master/ignoring-code-for-coverage.md
