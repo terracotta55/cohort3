@@ -18,16 +18,18 @@ lastKey.then(
 	},
 	reject => (cityDisplayOutput.textContent = `Error: No key found!`)
 );
+
 window.addEventListener("load", async e => {
-	let data = await cityFetch.clearServerOnLoad();
-	console.info("window loaded, server cleared");
+	await cityFetch.htmlReloadCities();
 });
 
 right.addEventListener("click", async e => {
 	if (e.target.id === "btn-right-add") {
 		console.log(`add city clicked`);
+		let cityName = inputCity.value;
+		let cityPopulation = inputPopulation.value;
 		try {
-			cityCards.createCardDiv();
+			cityCards.createCardDiv(keyCounter, cityName, cityPopulation);
 			newCommunity.createCity(
 				Number(keyCounter),
 				inputCity.value,
