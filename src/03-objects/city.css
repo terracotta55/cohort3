@@ -83,7 +83,7 @@ h2 {
 #btn-right-length {
 	border: solid gray 2px;
 	outline: none;
-	margin: 5px;
+	margin: 3px;
 	border-radius: 5px;
 	width: 175px;
 	align-self: center;
@@ -94,11 +94,16 @@ label {
 	clear: left;
 	width: 150px;
 	text-align: right;
+	margin: 2px;
 }
-#inputName,
-#inputBalance {
+#inputCity,
+#inputLatitude,
+#inputLongitude,
+#inputPopulation {
 	float: left;
-	width: 220px;
+	width: 175px;
+	margin: 3px;
+	/* border-radius: 5px; */
 }
 form {
 	margin: 10px;
