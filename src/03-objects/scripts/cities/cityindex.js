@@ -20,7 +20,8 @@ lastKey.then(
 );
 
 window.addEventListener("load", async e => {
-	await cityFetch.htmlReloadCities();
+	let data = await cityFetch.htmlReloadCities();
+	console.log(data);
 });
 
 right.addEventListener("click", async e => {
