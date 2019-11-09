@@ -10,10 +10,12 @@ export const asyncFunctions = {
 	showDelayProblem() {
 		console.log("One");
 		setTimeout(() => {
+			/* istanbul ignore next */
 			console.log("Two");
 		}, 1 * 2000); // Simulates a fetch
 		console.log("Three"); // We have a problem, this executes despite the timeout
 	},
+	/* istanbul ignore next */
 	async showDelaySolution() {
 		try {
 			console.log("One");
@@ -25,6 +27,7 @@ export const asyncFunctions = {
 			console.log(error);
 		}
 	},
+	/* istanbul ignore next */
 	async getUsers() {
 		try {
 			const response = await fetch(asyncFunctions.url);
@@ -35,6 +38,7 @@ export const asyncFunctions = {
 			throw error;
 		}
 	},
+	/* istanbul ignore next */
 	async workWithData() {
 		const data = await asyncFunctions.getUsers();
 		console.log(asyncFunctions.getFirstName(data));
@@ -43,8 +47,8 @@ export const asyncFunctions = {
 };
 
 const me = {
-	name: "Dalton",
-	surname: "Okechukwu",
+	name: "Chukwuemeka",
+	surname: "Okoro",
 	gender: "male",
 	region: "Canada"
 };
