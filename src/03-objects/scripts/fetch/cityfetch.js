@@ -1,6 +1,8 @@
 import { City, Community } from "../cities/city.js";
+import { cityCards } from "../cities/cityfunctions.js";
 
 const url = "http://localhost:5000/";
+const newCommunity = new Community();
 
 export const cityFetch = {
 	async postData(url = "", data = {}) {
@@ -43,5 +45,22 @@ export const cityFetch = {
 	},
 	async deleteCityServer(removeKey) {
 		let data = await this.postData(url + "delete", { key: removeKey });
+	},
+	async htmlReloadCities() {
+		fetch("http://localhost:5000/all")
+			.then(request => request.json())
+			.then(data => {
+				data.map(serverCity => {
+					newCommunity.createCity(
+						Number(serverCity.key),
+						serverCity.cityName,
+						Number(serverCity.cityLatitude),
+						Number(serverCity.cityLongitude),
+						Number(serverCity.cityPopulation)
+					);
+					cityCards.createCardDiv(Number(serverCity.key), serverCity.cityName, serverCity.cityPopulation);
+				});
+			})
+			.then(() => console.log(newCommunity.cityNamesArr));
 	}
 };
