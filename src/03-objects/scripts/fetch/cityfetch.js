@@ -18,9 +18,12 @@ export const cityFetch = {
 			referrer: "no-referrer",
 			body: JSON.stringify(data)
 		});
+		/* istanbul ignore next */
 		const json = await response.json();
+		/* istanbul ignore next */
 		return json;
 	},
+	/* istanbul ignore next */
 	async getAllCitiesServer(newCommunity) {
 		let data = await cityFetch.postData(url + "all");
 		if (data.length != 0) {
@@ -35,18 +38,22 @@ export const cityFetch = {
 	},
 	async postNewToServer(newCity) {
 		let data = await this.postData(url + "add", newCity);
+		/* istanbul ignore next */
 		return data;
 	},
 	async clearServerOnLoad() {
 		let data = await this.postData(url + "clear");
+		/* istanbul ignore next */
 		return data;
 	},
 	async updateCityServer(currentCity) {
 		let data = await this.postData(url + "update", currentCity);
+		/* istanbul ignore next */
 		return data;
 	},
 	async deleteCityServer(removeKey) {
 		let data = await this.postData(url + "delete", { key: removeKey });
+		/* istanbul ignore next */
 		return data;
 	},
 	/* istanbul ignore next */
