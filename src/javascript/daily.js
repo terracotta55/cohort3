@@ -1,11 +1,18 @@
-const functions = {
+export const functions = {
+	// 08-Nov-2019 Daily Exercises
+	twoWesternProvs: (peopleArr, twoProvsCallback) => {
+		//filter used, expecting different lenght arr
+		const twoProvsResult = peopleArr.filter(elem => elem.province.toLowerCase() === "ab" || elem.province.toLowerCase() === "bc");
+		return twoProvsCallback(twoProvsResult);
+	},
+	twoProvsCallback: newPeopleArr => {
+		// map used, expecting same length arr
+		return newPeopleArr.map(elem => `${elem.fname} ${elem.lname}`);
+	},
 	// 06-Nov-2019 Daily Exercises
 	staffGreaterThanBalance: arr => {
-		// let balanceNumbers = [];
 		const greaterThanArr = arr.filter(elem => elem.balance > 1000);
-		// greaterThanArr.forEach(elem => balanceNumbers.push(elem.balance));
 		return greaterThanArr;
-		// return balanceNumbers;
 	},
 	// 29-Oct-2019 Daily Exercises
 	staffTotalBalance: arr => {
@@ -156,7 +163,6 @@ const functions = {
 		}
 	}
 };
-export default functions;
 
 const data = {
 	staff: [
