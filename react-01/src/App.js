@@ -1,29 +1,42 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import MyComponent from "./components/MyComponent";
+import EvenComponent from "./components/EvenComponent";
+import OddComponent from "./components/OddComponent";
 
 class App extends Component {
   constructor() {
     super();
     this.counter = 21;
     this.state = {
-      myState: "No State"
+      myState: "No State",
+      whatToSay: "Whatever Today"
     };
   }
+  whatToDisplay = props => {
+    if (this.counter % 2 === 0) {
+      return <EvenComponent />;
+    }
+    return <OddComponent />;
+  };
   onPushMe = () => {
     console.log("button pushed");
-    this.setState({ myState: `New State: ${this.counter++}` });
+    this.setState({ myState: `New State: ${++this.counter}` });
   };
   render() {
+    const whatToSay = "Whatever";
     return (
       <div className="App">
         <header className="App-header">
+          <MyComponent whatToSay={whatToSay} pushButton={this.onPushMe} />
           <img src={logo} className="App-logo" alt="logo" />
           <h1>
             Hi I'm Dalton, and I'm developing this app!
             {" " + this.state.myState}
           </h1>
-          <button onClick={this.onPushMe}>Push Me</button>
+          <p>{this.whatToDisplay()}</p>
+          <button onClick={this.onPushMe}>Push Me - 1</button>
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
