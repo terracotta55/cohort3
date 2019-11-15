@@ -10,7 +10,7 @@ class App extends Component {
     super();
     this.counter = 21;
     this.state = {
-      myState: "No State"
+      myState: `Empty State: :)`
     };
   }
   onPushMe = () => {
@@ -24,14 +24,14 @@ class App extends Component {
     return <OddComponent />;
   };
   render() {
-    const whatToSay = "Whatever";
+    const whatToSay = "It's always a good time!";
     return (
       <div className="App">
         <header className="App-header">
           <MyComponent whatToSay={whatToSay} pushButton={this.onPushMe} />
           <img src={logo} className="App-logo" alt="logo" />
           <h1>
-            Hi I'm Dalton, and I'm developing this app!
+            Hi I'm Dalton, and I'm developing this counter app!
             {" " + this.state.myState}
           </h1>
           <p>{this.whatToDisplay()}</p>
