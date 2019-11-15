@@ -10,19 +10,18 @@ class App extends Component {
     super();
     this.counter = 21;
     this.state = {
-      myState: "No State",
-      whatToSay: "Whatever Today"
+      myState: "No State"
     };
   }
-  whatToDisplay = props => {
+  onPushMe = () => {
+    console.log("button pushed");
+    this.setState({ myState: `New State: ${++this.counter}` });
+  };
+  whatToDisplay = () => {
     if (this.counter % 2 === 0) {
       return <EvenComponent />;
     }
     return <OddComponent />;
-  };
-  onPushMe = () => {
-    console.log("button pushed");
-    this.setState({ myState: `New State: ${++this.counter}` });
   };
   render() {
     const whatToSay = "Whatever";
