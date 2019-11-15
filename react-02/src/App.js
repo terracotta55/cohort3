@@ -7,18 +7,24 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      mouseStatus: `Nothing :(`
+      mouseStatus: `Page Loaded...`
     };
   }
-  mouseMsg() {
+  mouseOverImg = () => {
     console.log(`moused!`);
-    this.setState({ mouseStatus: `Moused over!` });
-  }
+    this.setState({ mouseStatus: `Moused :)` });
+  };
+  mouseOverDiv = () => {
+    this.setState({ mouseStatus: `Not Moused!` });
+  };
 
   render() {
     return (
       <div className="App">
-        <Images someHovering={this.mouseMsg} />
+        <Images
+          someHovering={this.mouseOverImg}
+          noHovering={this.mouseOverDiv}
+        />
         <header className="App-header">
           <h1>{this.state.mouseStatus}</h1>
           <img src={logo} className="App-logo" alt="logo" />
