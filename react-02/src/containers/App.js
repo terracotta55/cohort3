@@ -1,13 +1,13 @@
 import React from "react";
 import logo from "./svg_logo/logo.svg";
 import "./App.css";
-import { Images } from "../components/Images";
+import { Images } from "../components/images/Images";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      mouseStatus: `Page Loaded!`
+      mouseStatus: `Comp-140 Homepage!`
     };
   }
   mouseOverImg = () => {
