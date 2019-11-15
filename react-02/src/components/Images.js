@@ -11,30 +11,35 @@ export const Images = props => {
     <header className="Images-header">
       <img
         onMouseOver={props.someHovering}
+        onMouseOut={props.noHovering}
         alt=""
         src={Image_2}
         className="Images-svg"
       ></img>
       <img
         onMouseOver={props.someHovering}
+        onMouseOut={props.noHovering}
         alt=""
         src={Image_3}
         className="Images-svg"
       ></img>
       <img
         onMouseOver={props.someHovering}
+        onMouseOut={props.noHovering}
         alt=""
         src={Image_5}
         className="Images-svg"
       ></img>
       <img
         onMouseOver={props.someHovering}
+        onMouseOut={props.noHovering}
         alt=""
         src={Image_4}
         className="Images-svg"
       ></img>
       <img
         onMouseOver={props.someHovering}
+        onMouseOut={props.noHovering}
         alt=""
         src={Image_1}
         className="Images-svg"
