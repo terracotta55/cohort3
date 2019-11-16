@@ -1,46 +1,27 @@
 import React from "react";
-import logo from "./svg_logo/logo.svg";
-import "./App.css";
-import { Images } from "../components/images/Images";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "../components/home/Home";
+import TicTac from "../components/tictac/TicTac";
+import Navigation from "../components/navigation/Navigation";
+import City from "../components/city/City";
+import State from "../components/state/State";
+import Redux from "../components/redux/Redux";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      mouseStatus: `Comp-140 Homepage!`
-    };
-  }
-  mouseOverImg = () => {
-    console.log(`moused!`);
-    this.setState({ mouseStatus: `Moused :)` });
-  };
-  mouseOverDiv = () => {
-    this.setState({ mouseStatus: `Not Moused :(` });
-  };
-
   render() {
     return (
-      <div className="App">
-        <Images
-          someHovering={this.mouseOverImg}
-          noHovering={this.mouseOverDiv}
-        />
-        <header className="App-header">
-          <h1>{this.state.mouseStatus}</h1>
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div>
+          <Navigation />
+          <Switch>
+            <Route path="/" component={Home} exact />
+            <Route path="/tictac" component={TicTac} />
+            <Route path="/city" component={City} />
+            <Route path="/state" component={State} />
+            <Route path="/redux" component={Redux} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

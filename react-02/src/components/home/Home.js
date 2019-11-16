@@ -1,32 +1,19 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Images } from "./components/Images";
+import logo from "../logo.svg";
+import "./Home.css";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      mouseStatus: `Page Loaded...`
+      pageStatus: `Comp-140B: Homepage!`
     };
   }
-  mouseOverImg = () => {
-    console.log(`moused!`);
-    this.setState({ mouseStatus: `Moused :)` });
-  };
-  mouseOverDiv = () => {
-    this.setState({ mouseStatus: `Not Moused!` });
-  };
-
   render() {
     return (
       <div className="App">
-        <Images
-          someHovering={this.mouseOverImg}
-          noHovering={this.mouseOverDiv}
-        />
         <header className="App-header">
-          <h1>{this.state.mouseStatus}</h1>
+          <h1>{this.state.pageStatus}</h1>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
