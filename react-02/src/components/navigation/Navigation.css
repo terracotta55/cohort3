@@ -15,7 +15,7 @@ p {
 }
 
 .Images-svg {
-  height: 15vmax;
+  height: 7vmax;
   width: auto;
   animation: imagesmove 5s infinite;
 }
