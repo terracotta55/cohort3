@@ -3,10 +3,11 @@ import Board from "./Board";
 import "./Game.css";
 
 class Game extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      pageStatus: `Tic-Tac-Toe Game`
+      history: [{ squares: Array(9).fill(null) }],
+      xIsNext: true
     };
   }
   render() {
