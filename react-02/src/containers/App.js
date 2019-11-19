@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "../components/home/Home";
-import TicTac from "../components/tictac/TicTac";
+import Game from "../components/tictac/Game";
 import Navigation from "../components/navigation/Navigation";
 import City from "../components/city/City";
 import State from "../components/state/State";
@@ -15,7 +15,7 @@ class App extends React.Component {
           <Navigation />
           <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/tictac" component={TicTac} />
+            <Route path="/tictac" component={Game} />
             <Route path="/city" component={City} />
             <Route path="/state" component={State} />
             <Route path="/redux" component={Redux} />
