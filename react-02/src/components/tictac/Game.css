@@ -17,7 +17,7 @@ ul {
 .status {
   margin-bottom: 20px;
   margin-top: 20px;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   justify-content: center;
 }
@@ -42,8 +42,8 @@ ul {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 48px;
+  font-weight: 900;
   line-height: 100px;
   height: 100px;
   margin-right: -1px;
@@ -51,6 +51,7 @@ ul {
   padding: 0;
   text-align: center;
   width: 100px;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .square:focus {
