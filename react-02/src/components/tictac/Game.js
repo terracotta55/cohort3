@@ -13,6 +13,17 @@ class Game extends React.Component {
     };
   }
   handleClick(i) {
+    const locations = [
+      [1, 1],
+      [2, 1],
+      [3, 1],
+      [1, 2],
+      [2, 2],
+      [3, 2],
+      [1, 3],
+      [2, 3],
+      [3, 3]
+    ];
     const history = this.state.history.slice(0, this.state.stepNumber + 1); // array.slice(start, end)
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -21,12 +32,18 @@ class Game extends React.Component {
     }
     squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({
-      history: history.concat([{ squares: squares }]),
+      history: history.concat([
+        {
+          squares: squares,
+          location: locations[i]
+        }
+      ]),
       xIsNext: !this.state.xIsNext,
       stepNumber: history.length
     });
   }
   jumpTo(step) {
+    // equating move to stepNumber
     this.setState({
       stepNumber: step,
       xIsNext: step % 2 === 0
@@ -39,11 +56,20 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       // array.map(function(currentValue, index, arr), thisValue)
-      const desc = move ? `Go to move # ${move}` : `Go to game start`;
+      const desc = move
+        ? `Go to move #${move} at ${history[move].location}`
+        : `Go to game start`;
+      console.log("history", history);
+      console.log("step", step);
+      console.log("move", move);
       return (
         <li key={move}>
           <Button variant="primary" onClick={() => this.jumpTo(move)}>
-            {desc}
+            {move === this.state.stepNumber ? (
+              <b style={{ color: "yellow" }}>{desc}</b>
+            ) : (
+              desc
+            )}
           </Button>
         </li>
       );
