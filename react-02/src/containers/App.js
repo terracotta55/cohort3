@@ -6,6 +6,7 @@ import Navigation from "../components/navigation/Navigation";
 import City from "../components/city/City";
 import State from "../components/state/State";
 import Redux from "../components/redux/Redux";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   render() {
