@@ -1,23 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400&display=swap");
 
-body {
-  text-align: center;
-  background-color: #d3d3d3;
-  min-height: 90vh;
-  align-items: center;
-  justify-content: center;
-  font-family: "Ubuntu", sans-serif;
-}
-
 ol,
 ul {
   padding-left: 30px;
 }
 
 .status {
-  margin-bottom: 20px;
-  margin-top: 20px;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   justify-content: center;
 }
@@ -26,10 +15,17 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: #c0c0c0;
+  height: 100vh;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.game-board {
+  margin-top: 50px;
 }
 
 .game-info {
-  margin-left: 20px;
+  margin: 40px 0px 0px 20px;
 }
 
 .board-row:after {
@@ -39,25 +35,26 @@ ul {
 }
 
 .square {
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #999;
   float: left;
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: 900;
   line-height: 100px;
-  height: 100px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
+  height: 100px;
   width: 100px;
-  font-family: "Ubuntu", sans-serif;
 }
 
 .square:focus {
   outline: none;
+  background: #ddd;
 }
 
-.kbd-navigation .square:focus {
-  background: #ddd;
+.btn-primary {
+  margin: 5px;
+  width: 150px;
 }
