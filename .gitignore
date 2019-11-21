@@ -13,4 +13,5 @@ src/gitignore
 src/02-dom/sandbox/.DS_Store
 src/02-dom/sandbox/scripts/.DS_Store
 src/02-dom/scripts/.DS_Store
+src/03-objects/scripts/sandbox/.vscode/
 
