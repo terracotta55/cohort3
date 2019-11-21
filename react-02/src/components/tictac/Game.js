@@ -19,6 +19,9 @@ class Game extends React.Component {
       isAscending: true
     };
   }
+  refreshPage() {
+    window.location.reload();
+  }
   handleClick(i) {
     const locations = [
       [1, 1],
@@ -100,6 +103,16 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="sorting">
+          <div>
+            <Button
+              onClick={() => this.refreshPage()}
+              className="reset"
+              variant="danger"
+            >
+              Reset
+            </Button>
+          </div>
+
           <DropdownButton variant="primary" className="sort" title="Sort Moves">
             <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
               {this.state.isAscending ? "Descending" : "Ascending"}
