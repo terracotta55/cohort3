@@ -2,14 +2,21 @@ import React from "react";
 import Board from "./Board";
 import "./Game.css";
 import Button from "react-bootstrap/Button";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: [{ squares: Array(9).fill(null) }],
+      history: [
+        {
+          squares: Array(9).fill(null)
+        }
+      ],
       xIsNext: true,
-      stepNumber: 0
+      stepNumber: 0,
+      isAscending: true
     };
   }
   handleClick(i) {
@@ -49,6 +56,13 @@ class Game extends React.Component {
       xIsNext: step % 2 === 0
     });
   }
+
+  sortHistory() {
+    this.setState({
+      isAscending: !this.state.isAscending
+    });
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -77,18 +91,25 @@ class Game extends React.Component {
 
     let status;
     if (winner) {
-      status = `Game Winner: ${winner}`;
+      status = `Game Winner Is: ${winner}`;
     } else {
-      status = `Next Player: ${this.state.xIsNext ? "X" : "O"}`;
+      status = `Next Player Is: ${this.state.xIsNext ? "X" : "O"}`;
     }
     return (
       <div className="game">
+        <div className="sorting">
+          <DropdownButton variant="primary" className="sort" title="Sort Moves">
+            <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+              {this.state.isAscending ? "Descending" : "Ascending"}
+            </Dropdown.Item>
+          </DropdownButton>
+        </div>
         <div className="game-board">
           <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="game-info">
           <div className="status">{status}</div>
-          <ol>{moves}</ol>
+          <ol>{this.state.isAscending ? moves : moves.reverse()}</ol>
         </div>
       </div>
     );
