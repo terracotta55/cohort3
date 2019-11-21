@@ -61,3 +61,7 @@ ul {
 .sort {
   margin: 45px 30px 0px 0px;
 }
+
+.square--winning {
+  background-color: yellow !important;
+}
