@@ -57,6 +57,7 @@ ul {
 .btn-primary {
   margin: 5px;
   width: 180px;
+  outline: none !important;
 }
 .sort {
   margin: 45px 30px 0px 0px;
@@ -64,4 +65,15 @@ ul {
 
 .square--winning {
   background-color: yellow !important;
+}
+
+.sorting {
+  display: flex;
+}
+.reset {
+  margin: 50px 10px 0px 0px;
+}
+
+.btn-danger {
+  outline: none !important;
 }
