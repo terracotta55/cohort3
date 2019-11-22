@@ -5,11 +5,25 @@ const functions = {
         elem.province.toLowerCase() === "ab" ||
         elem.province.toLowerCase() === "bc"
     );
-    console.log(twoProvsResult);
+    // console.log(twoProvsResult);
     return twoProvsCallback(twoProvsResult);
   },
   twoProvsCallback: newPeopleArr => {
     return newPeopleArr.map(elem => `${elem.fname} ${elem.lname}`);
+  },
+  newCallBack: newPeopleArr => {
+    const myObj = { age: null, num: null, avg: null };
+    const totalAges = newPeopleArr.reduce(
+      (accum, person) => accum + person.age,
+      0
+    );
+    const numberOfPeople = newPeopleArr.length;
+    const avgAge = totalAges / newPeopleArr.length;
+    myObj["age"] = totalAges;
+    myObj["num"] = numberOfPeople;
+    myObj["avg"] = Number(avgAge.toFixed(2));
+    // console.log(totalAges);
+    return myObj;
   }
 };
 console.log(`hello world :)`);
@@ -61,4 +75,6 @@ const people = [
 ];
 
 let result = functions.twoWesternProvs(people, functions.twoProvsCallback);
-// console.log(result);
+let result_2 = functions.twoWesternProvs(people, functions.newCallBack);
+console.log(result);
+console.log(result_2);
