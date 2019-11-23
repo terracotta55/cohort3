@@ -6,9 +6,10 @@ ul {
 }
 
 .status {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: bold;
-  justify-content: center;
+  /* justify-content: center;
+  text-align: center; */
 }
 
 .game {
@@ -18,14 +19,36 @@ ul {
   background-color: #c0c0c0;
   height: 100vh;
   font-family: "Ubuntu", sans-serif;
-}
-
-.game-board {
-  margin-top: 50px;
+  min-width: 900px;
 }
 
 .game-info {
-  margin: 0px 0px 0px 30px;
+  /* margin: 0px 0px 0px 30px; */
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+}
+
+.game-options {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  margin: 5px 0px 0px 0px;
+}
+
+.game-board {
+  width: 50%;
+  /* justify-content: auto; */
+  text-align: center;
+}
+
+.board-row-div {
+  justify-content: center;
+  /* margin-left: 103px; */
+  /* margin-left: calc(50% - 280px); */
+  float: left;
+  position: relative;
+  left: 50%;
 }
 
 .board-row:after {
@@ -38,15 +61,17 @@ ul {
   background: #ffffff;
   border: 1px solid #999;
   float: left;
-  font-size: 3rem;
+  position: relative;
+  left: -50%;
+  font-size: 4rem;
   font-weight: 900;
   line-height: 100px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
 }
 
 .square:focus {
@@ -59,21 +84,20 @@ ul {
   width: 180px;
   outline: none !important;
 }
-.sort {
-  margin: 45px 30px 0px 0px;
+
+.btn-secondary {
+  margin: 10px 0px 10px 35px;
+  outline: none !important;
+  width: 180px;
+}
+
+.btn-dark {
+  margin: 5px;
+  width: 180px;
+  outline: none !important;
+  float: right;
 }
 
 .square--winning {
   background-color: yellow !important;
-}
-
-.sorting {
-  display: flex;
-}
-.reset {
-  margin: 50px 10px 0px 0px;
-}
-
-.btn-danger {
-  outline: none !important;
 }
