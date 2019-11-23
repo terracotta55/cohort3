@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Square from "./Square";
 
 class Board extends React.Component {
@@ -27,11 +27,11 @@ class Board extends React.Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         {this.renderRows(0)}
         {this.renderRows(3)}
         {this.renderRows(6)}
-      </div>
+      </Fragment>
     );
   }
 }
