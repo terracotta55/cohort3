@@ -75,7 +75,7 @@ class Game extends React.Component {
       // array.map(function(currentValue, index, arr), thisValue)
       const desc = move
         ? `Go to move #${move} at ${history[move].location}`
-        : `Go to game start`;
+        : `Go to start`;
       console.log("history", history);
       console.log("step", step);
       console.log("move", move);
@@ -102,33 +102,69 @@ class Game extends React.Component {
     }
     return (
       <div className="game">
-        <div className="sorting">
-          <div>
+        <div className="game-options">
+          <div className="game-options-div">
+            <DropdownButton variant="dark" title="# of Players">
+              <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+                One-Player
+              </Dropdown.Item>
+              <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+                Two-Player
+              </Dropdown.Item>
+            </DropdownButton>
+          </div>
+          <div className="game-options-div">
+            <DropdownButton variant="dark" title="Game Difficulty">
+              <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+                Quite Easy
+              </Dropdown.Item>
+              <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+                Quite Hard
+              </Dropdown.Item>
+            </DropdownButton>
+          </div>
+          <div className="game-options-div">
+            <DropdownButton variant="dark" title="Starting Player">
+              <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+                Player Starts
+              </Dropdown.Item>
+              <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+                Computer Starts
+              </Dropdown.Item>
+            </DropdownButton>
+          </div>
+          <div className="game-options-div">
+            <DropdownButton variant="dark" className="sort" title="Sort Moves">
+              <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+                {this.state.isAscending ? "Descending" : "Ascending"}
+              </Dropdown.Item>
+            </DropdownButton>
+          </div>
+        </div>
+        <div className="game-board">
+          <div className="status">{status}</div>
+          <div className="board-row-div">
+            <Board
+              className="board-main"
+              winningSquares={winner ? winner.line : []}
+              squares={current.squares}
+              onClick={i => this.handleClick(i)}
+            />
+          </div>
+        </div>
+        <div className="game-info">
+          <div className="reset-btn">
             <Button
               onClick={() => this.refreshPage()}
               className="reset"
-              variant="danger"
+              variant="secondary"
             >
-              Reset
+              New Game
             </Button>
           </div>
-
-          <DropdownButton variant="primary" className="sort" title="Sort Moves">
-            <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
-              {this.state.isAscending ? "Descending" : "Ascending"}
-            </Dropdown.Item>
-          </DropdownButton>
-        </div>
-        <div className="game-board">
-          <Board
-            winningSquares={winner ? winner.line : []}
-            squares={current.squares}
-            onClick={i => this.handleClick(i)}
-          />
-        </div>
-        <div className="game-info">
-          <div className="status">{status}</div>
-          <ol>{this.state.isAscending ? moves : moves.reverse()}</ol>
+          <div className="moves-list sort">
+            <ol>{this.state.isAscending ? moves : moves.reverse()}</ol>
+          </div>
         </div>
       </div>
     );
