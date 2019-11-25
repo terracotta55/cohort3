@@ -1,4 +1,32 @@
 export const functions = {
+  // 22-Nov-2019 Daily Exercises
+  numAscendingAnonymous: arr => {
+    const newArr = arr.sort(function(a, b) {
+      return a.num - b.num;
+    });
+    return newArr;
+  },
+
+  nameAscendingNamed: arr => {
+    const newArr = arr.sort(function alphaSort(a, b) {
+      if (a.str > b.str) {
+        return 1;
+      }
+      return -1;
+    });
+    return newArr;
+  },
+
+  originReverseArrow: arr => {
+    const newArr = arr.sort((a, b) => {
+      if (b.origin > a.origin) {
+        return 1;
+      }
+      return -1;
+    });
+    return newArr;
+  },
+
   // 21-Nov-2019 Daily Exercises
   newCallBack: arr => {
     const myObj = { age: null, num: null, avg: null };
