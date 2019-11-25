@@ -318,88 +318,94 @@ class Game extends React.Component {
       status = `Next Player: ${this.state.xIsNext ? "X" : "O"}`;
     }
     return (
-      <div className="game">
-        <div className="game-options">
-          <div className="game-options-div">
-            <Form.Control
-              as="select"
-              title="Number of Players"
-              value={this.state.players}
-              onChange={this.playersChange}
-            >
-              <option value="1-Player">1-Player</option>
-              <option value="2-Player">2-Player</option>
-            </Form.Control>
-          </div>
-          <div className="game-options-div">
-            {this.state.players === "1-Player" && (
+      <Fragment>
+        <div className="game">
+          <div className="game-options">
+            <div className="game-options-div">
               <Form.Control
                 as="select"
-                title="Game Difficulty"
-                value={this.state.level}
-                onChange={this.levelChange}
+                title="Number of Players"
+                value={this.state.players}
+                onChange={this.playersChange}
               >
-                <option value="1-Player">Beginner</option>
-                <option value="2-Player">Expert</option>
+                <option value="1-Player">1-Player</option>
+                <option value="2-Player">2-Player</option>
               </Form.Control>
-            )}
-          </div>
-          <div className="game-options-div">
-            {this.state.players === "1-Player" && (
-              <Form.Control
-                as="select"
-                title="Game Difficulty"
-                value={this.state.first}
-                onChange={this.firstChange}
-              >
-                <option value="Human">Human</option>
-                <option value="Computer">Computer</option>
-              </Form.Control>
-            )}
-          </div>
-          <div className="game-options-div">
-            <DropdownButton variant="dark" className="sort" title="Sort Moves">
-              <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
-                {this.state.isAscending ? "Descending" : "Ascending"}
-              </Dropdown.Item>
-            </DropdownButton>
-            <div>
-              <Button
-                onClick={() => this.refreshPage()}
-                className="reset"
+            </div>
+            <div className="game-options-div">
+              {this.state.players === "1-Player" && (
+                <Form.Control
+                  as="select"
+                  title="Game Difficulty"
+                  value={this.state.level}
+                  onChange={this.levelChange}
+                >
+                  <option value="1-Player">Beginner</option>
+                  <option value="2-Player">Expert</option>
+                </Form.Control>
+              )}
+            </div>
+            <div className="game-options-div">
+              {this.state.players === "1-Player" && (
+                <Form.Control
+                  as="select"
+                  title="Game Difficulty"
+                  value={this.state.first}
+                  onChange={this.firstChange}
+                >
+                  <option value="Human">Human</option>
+                  <option value="Computer">Computer</option>
+                </Form.Control>
+              )}
+            </div>
+            <div className="game-options-div">
+              <DropdownButton
                 variant="dark"
+                className="sort"
+                title="Sort Moves"
               >
-                <b style={{ color: "yellow" }}>Clear Board</b>
+                <Dropdown.Item as="button" onClick={() => this.sortHistory()}>
+                  {this.state.isAscending ? "Descending" : "Ascending"}
+                </Dropdown.Item>
+              </DropdownButton>
+              <div>
+                <Button
+                  onClick={() => this.refreshPage()}
+                  className="reset"
+                  variant="dark"
+                >
+                  <b style={{ color: "yellow" }}>Clear Board</b>
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="game-board">
+            <div className="status">{status}</div>
+            <div className="board-row-div">
+              <Board
+                className="board-main"
+                winningSquares={winner ? winner.line : []}
+                squares={current.squares}
+                onClick={i => this.handleClick(i)}
+              />
+            </div>
+          </div>
+          <div className="game-info">
+            <div className="computer-start-div">
+              <Button
+                onClick={this.gameStarts}
+                className="computer-start"
+                variant="success"
+              >
+                <b style={{ color: "yellow" }}>Computer Start</b>
               </Button>
+            </div>
+            <div className="moves-list sort">
+              <ol>{this.state.isAscending ? moves : moves.reverse()}</ol>
             </div>
           </div>
         </div>
-        <div className="game-board">
-          <div className="status">{status}</div>
-          <div className="board-row-div">
-            <Board
-              className="board-main"
-              winningSquares={winner ? winner.line : []}
-              squares={current.squares}
-              onClick={i => this.handleClick(i)}
-            />
-          </div>
-        </div>
-        <div className="game-info">
-          <div className="computer-start-div">
-            <Button
-              onClick={this.gameStarts}
-              className="computer-start"
-              variant="success"
-            >
-              <b style={{ color: "yellow" }}>Computer Start</b>
-            </Button>
-          </div>
-          <div className="moves-list sort">
-            <ol>{this.state.isAscending ? moves : moves.reverse()}</ol>
-          </div>
-        </div>
-      </div>
+      </Fragment>
     );
   }
 }
