@@ -8,8 +8,6 @@ ul {
 .status {
   font-size: 4rem;
   font-weight: bold;
-  /* justify-content: center;
-  text-align: center; */
 }
 
 .game {
@@ -23,7 +21,6 @@ ul {
 }
 
 .game-info {
-  /* margin: 0px 0px 0px 30px; */
   display: flex;
   width: 25%;
   flex-direction: column;
@@ -38,14 +35,11 @@ ul {
 
 .game-board {
   width: 50%;
-  /* justify-content: auto; */
   text-align: center;
 }
 
 .board-row-div {
   justify-content: center;
-  /* margin-left: 103px; */
-  /* margin-left: calc(50% - 280px); */
   float: left;
   position: relative;
   left: 50%;
@@ -79,13 +73,13 @@ ul {
   background: #ddd;
 }
 
-.btn-primary {
+.btn-secondary {
   margin: 5px;
   width: 180px;
   outline: none !important;
 }
 
-.btn-secondary {
+.btn-success {
   margin: 10px 0px 10px 35px;
   outline: none !important;
   width: 180px;
@@ -100,4 +94,15 @@ ul {
 
 .square--winning {
   background-color: yellow !important;
+}
+select {
+  background-color: #343a40 !important;
+  color: #fff !important;
+}
+
+.form-control {
+  width: 180px !important;
+  float: right;
+  margin: 5px;
+  outline: none !important;
 }
