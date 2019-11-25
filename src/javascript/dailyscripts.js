@@ -76,5 +76,38 @@ const people = [
 
 let result = functions.twoWesternProvs(people, functions.twoProvsCallback);
 let result_2 = functions.twoWesternProvs(people, functions.newCallBack);
-console.log(result);
-console.log(result_2);
+// console.log(result);
+// console.log(result_2);
+
+let myArray = [
+  { num: 5, str: "apples", origin: "BC" },
+  { num: 7, str: "oranges", origin: "Florida" },
+  { num: 2, str: "lemons", origin: "Mexico" },
+  { num: 8, str: "bananas", origin: "Ecuador" },
+  { num: 6, str: "avocados", origin: "Mexico" },
+  { num: 4, str: "pineapple", origin: "Brazil" },
+  { num: 3, str: "blueberries", origin: "Chile" },
+  { num: 9, str: "pears", origin: "Oregon" },
+  { num: 1, str: "cantaloupe", origin: "California" }
+];
+
+let newArray = myArray.sort(function(a, b) {
+  return a.num - b.num;
+});
+console.log(newArray);
+
+let newerArray = myArray.sort(function alphaSort(a, b) {
+  if (a.str > b.str) {
+    return 1;
+  }
+  return -1;
+});
+console.log(newerArray);
+
+let newestArray = myArray.sort((a, b) => {
+  if (b.origin > a.origin) {
+    return 1;
+  }
+  return -1;
+});
+console.log(newestArray);
