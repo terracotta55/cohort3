@@ -6,7 +6,7 @@ class City extends React.Component {
   constructor() {
     super();
     this.state = {
-      pageStatus: `City Exercise`
+      pageStatus: `Community Controller`
     };
   }
   render() {
