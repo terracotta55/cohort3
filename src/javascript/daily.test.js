@@ -1,4 +1,16 @@
 import { functions } from "./daily";
+let myArray = [
+  { num: 5, str: "apples", origin: "BC" },
+  { num: 7, str: "oranges", origin: "Florida" },
+  { num: 2, str: "lemons", origin: "Mexico" },
+  { num: 8, str: "bananas", origin: "Ecuador" },
+  { num: 6, str: "avocados", origin: "Mexico" },
+  { num: 4, str: "pineapple", origin: "Brazil" },
+  { num: 3, str: "blueberries", origin: "Chile" },
+  { num: 9, str: "pears", origin: "Oregon" },
+  { num: 1, str: "cantaloupe", origin: "California" }
+];
+
 const people = [
   { fname: "Alex", lname: "Smith", province: "BC", age: 33 },
   { fname: "Angela", lname: "Jones", province: "AB", age: 61 },
@@ -60,6 +72,50 @@ const data = {
   city: "Calgary",
   prov: "Alberta"
 };
+
+describe("testing three ways of writing functions", () => {
+  // 22-Nov-2019 Daily Exercises
+  test("testing sort number ascending, using anonymous function", () => {
+    expect(functions.numAscendingAnonymous(myArray)).toEqual([
+      { num: 1, str: "cantaloupe", origin: "California" },
+      { num: 2, str: "lemons", origin: "Mexico" },
+      { num: 3, str: "blueberries", origin: "Chile" },
+      { num: 4, str: "pineapple", origin: "Brazil" },
+      { num: 5, str: "apples", origin: "BC" },
+      { num: 6, str: "avocados", origin: "Mexico" },
+      { num: 7, str: "oranges", origin: "Florida" },
+      { num: 8, str: "bananas", origin: "Ecuador" },
+      { num: 9, str: "pears", origin: "Oregon" }
+    ]);
+  });
+  test("testing fruit alphabetic, using named function", () => {
+    expect(functions.nameAscendingNamed(myArray)).toEqual([
+      { num: 5, str: "apples", origin: "BC" },
+      { num: 6, str: "avocados", origin: "Mexico" },
+      { num: 8, str: "bananas", origin: "Ecuador" },
+      { num: 3, str: "blueberries", origin: "Chile" },
+      { num: 1, str: "cantaloupe", origin: "California" },
+      { num: 2, str: "lemons", origin: "Mexico" },
+      { num: 7, str: "oranges", origin: "Florida" },
+      { num: 9, str: "pears", origin: "Oregon" },
+      { num: 4, str: "pineapple", origin: "Brazil" }
+    ]);
+  });
+  test("testing origin reverse alphabetic, using arrow function", () => {
+    expect(functions.originReverseArrow(myArray)).toEqual([
+      { num: 9, str: "pears", origin: "Oregon" },
+      { num: 2, str: "lemons", origin: "Mexico" },
+      { num: 6, str: "avocados", origin: "Mexico" },
+      { num: 7, str: "oranges", origin: "Florida" },
+      { num: 8, str: "bananas", origin: "Ecuador" },
+      { num: 3, str: "blueberries", origin: "Chile" },
+      { num: 1, str: "cantaloupe", origin: "California" },
+      { num: 4, str: "pineapple", origin: "Brazil" },
+      { num: 5, str: "apples", origin: "BC" }
+    ]);
+  });
+});
+
 describe("testing return obj of number of people, total age, and avg age of people from AB & BC only", () => {
   // 21-Nov-2019 Daily Exercise
   test("testing twoWesternProv calling newCallBack", () => {
