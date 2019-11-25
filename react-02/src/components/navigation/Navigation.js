@@ -14,21 +14,21 @@ const Navigation = props => {
         <img alt="" src={Image_2} className="Images-svg"></img>
         <p>Home</p>
       </NavLink>
-      <NavLink to="/tictac">
+      <NavLink to="/game">
         <img alt="" src={Image_3} className="Images-svg"></img>
-        <p>TicTacToe</p>
+        <p>Game</p>
+      </NavLink>
+      <NavLink to="/account">
+        <img alt="" src={Image_5} className="Images-svg"></img>
+        <p>Account</p>
       </NavLink>
       <NavLink to="/city">
-        <img alt="" src={Image_5} className="Images-svg"></img>
-        <p>City Server</p>
-      </NavLink>
-      <NavLink to="/state">
         <img alt="" src={Image_4} className="Images-svg"></img>
-        <p>State</p>
+        <p>City</p>
       </NavLink>
-      <NavLink to="/redux">
+      <NavLink to="/hooks">
         <img alt="" src={Image_1} className="Images-svg"></img>
-        <p>Redux</p>
+        <p>Hooks</p>
       </NavLink>
     </header>
   );
