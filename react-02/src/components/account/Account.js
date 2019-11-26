@@ -1,5 +1,4 @@
-import React from "react";
-import logo from "../logo.svg";
+import React, { Fragment } from "react";
 import "./Account.css";
 
 class Account extends React.Component {
@@ -11,23 +10,40 @@ class Account extends React.Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>{this.state.pageStatus}</h1>
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Fragment>
+        <div id="container">
+          <div id="left">
+            <h2>
+              <strong>Accounts</strong>
+            </h2>
+            <div id="leftChild"></div>
+          </div>
+          <div id="right">
+            <br />
+            <form action="#">
+              <label>Account Name:&emsp;</label>
+              <input type="text" id="inputName" value="" />
+              <br />
+              <label>Initial Balance:&emsp;</label>
+              <input type="text" id="inputBalance" value="" />
+              <br />
+            </form>
+            <br />
+            <div id="right-btns">
+              <button id="btn-right-add">Add Account</button> <br />
+              <button id="btn-right-total">Total Balance</button> <br />
+              <button id="btn-right-highest">Highest Balance</button> <br />
+              <button id="btn-right-lowest">Lowest Balance</button> <br />
+              <button id="btn-right-length">Number of Accounts</button> <br />
+            </div>
+            <br />
+            <p class="results-header">
+              <strong>Results will display here:</strong>
+            </p>
+            <p class="para-right-card-output"></p>
+          </div>
+        </div>
+      </Fragment>
     );
   }
 }
