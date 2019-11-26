@@ -73,6 +73,16 @@ const data = {
   prov: "Alberta"
 };
 
+describe("testing destructuring", () => {
+  test("tesing the array destructuring function", () => {
+    expect(functions.arrayDestructuring(myArray)).toEqual({
+      num: 2,
+      str: "lemons",
+      origin: "Mexico"
+    });
+  });
+});
+
 describe("testing three ways of writing functions", () => {
   // 22-Nov-2019 Daily Exercises
   test("testing sort number ascending, using anonymous function", () => {
