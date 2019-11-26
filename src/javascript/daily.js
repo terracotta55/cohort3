@@ -1,4 +1,9 @@
 export const functions = {
+  // 26-Nov-2019 Daily Exercises
+  arrayDestructuring: arr => {
+    let [first, second, ...theRest] = arr;
+    return theRest[0];
+  },
   // 22-Nov-2019 Daily Exercises
   numAscendingAnonymous: arr => {
     const newArr = arr.sort(function(a, b) {
