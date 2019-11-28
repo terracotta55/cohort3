@@ -1,8 +1,6 @@
-import React, { Fragment } from "react";
-
-class AccountFunctions extends React.Component {
+class AccountFunctions {
   constructor() {
-    super();
+    // super();
     this.state = { cardCount: 0 };
   }
   createCardDiv() {
