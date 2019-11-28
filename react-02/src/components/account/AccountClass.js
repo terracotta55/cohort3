@@ -1,8 +1,6 @@
-import React from "react";
-
-class AccountClass extends React.Component {
+class AccountClass {
   constructor(key, accountName, accountBalance) {
-    super();
+    // super();
     this.key = key;
     this.accountName = accountName;
     this.accountBalance = accountBalance;
