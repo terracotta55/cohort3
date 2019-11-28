@@ -1,8 +1,6 @@
-import React from "react";
-
-class AccountController extends React.Component {
+class AccountController {
   constructor(accountOwner) {
-    super();
+    // super();
     const _accountsList = new WeakMap();
     _accountsList.set(this, _accountsList);
     this.accountNamesArr = [];
