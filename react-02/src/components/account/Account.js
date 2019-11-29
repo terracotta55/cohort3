@@ -3,6 +3,7 @@ import "./Account.css";
 // import InputGroup from "react-bootstrap/InputGroup";
 // import FormControl from "react-bootstrap/FormControl";
 import InputBox from "./InputBox";
+import InputBtn from "./InputBtn";
 
 class Account extends React.Component {
   constructor() {
@@ -33,6 +34,10 @@ class Account extends React.Component {
     });
   }
 
+  onAddAccClicked(e) {
+    console.log("add acc clicked");
+  }
+
   render() {
     return (
       <Fragment>
@@ -44,26 +49,19 @@ class Account extends React.Component {
             <div id="leftChild"></div>
           </div>
           <div id="right">
-            <br />
-            <label>Account Name:</label>
-            <InputBox onChange={this.onAccNameChange} />
-            <br />
-            <label>Initial Balance:</label>
-            <InputBox onChange={this.onAccBalChange} />
-            <br />
-            <br />
-            <div id="right-btns">
-              <button id="btn-right-add">Add Account</button> <br />
-              <button id="btn-right-total">Total Balance</button> <br />
-              <button id="btn-right-highest">Highest Balance</button> <br />
-              <button id="btn-right-lowest">Lowest Balance</button> <br />
-              <button id="btn-right-length">Number of Accounts</button> <br />
+            <div id="rightInput">
+              <label>Account Name:</label>
+              <InputBox onChange={this.onAccNameChange} />
+              <label>Initial Balance:</label>
+              <InputBox onChange={this.onAccBalChange} />
+              <InputBtn onClick={this.onAddAccClicked} />
             </div>
-            <br />
-            <p className="results-header">
-              <strong>Results will display here:</strong>
-            </p>
-            <p className="para-right-card-output"></p>
+            <div id="rightResults">
+              <label>Total Balance:</label>
+              <label>Highest Balance:</label>
+              <label>Lowest Balance:</label>
+              <label>No. of Accounts:</label>
+            </div>
           </div>
         </div>
       </Fragment>
