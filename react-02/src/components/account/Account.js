@@ -1,42 +1,26 @@
 import React, { Fragment } from "react";
 import "./Account.css";
-// import InputGroup from "react-bootstrap/InputGroup";
-// import FormControl from "react-bootstrap/FormControl";
-import InputBox from "./InputBox";
-import InputBtn from "./InputBtn";
+import InputForm from "./InputForm";
+import ResultsDisp from "./ResultsDisp";
+// import AccountFunctions from "./AccountFunctions";
+import AccountController from "./AccountController";
 
 class Account extends React.Component {
   constructor() {
     super();
+    this.account = new AccountController();
     this.state = {
-      account: {
-        name: "",
-        balance: 0
-      }
+      accountsArray: []
     };
-    this.onAccNameChange = this.onAccNameChange.bind(this);
-    this.onAccBalChange = this.onAccBalChange.bind(this);
-  }
-  onAccNameChange(e) {
-    console.log("acc name change");
-    this.setState({
-      account: {
-        name: e.target.value
-      }
-    });
-  }
-  onAccBalChange(e) {
-    console.log("acc bal change");
-    this.setState({
-      account: {
-        balance: e.target.value
-      }
-    });
   }
 
-  onAddAccClicked(e) {
-    console.log("add acc clicked");
-  }
+  addNewAccount = dataInputs => {
+    console.log("add account clicked");
+
+    const { counter, accountName, accountBalance } = dataInputs;
+    this.account.addAccount(counter, accountName, accountBalance);
+    console.log(this.account.accountNamesArr);
+  };
 
   render() {
     return (
@@ -44,24 +28,13 @@ class Account extends React.Component {
         <div id="container">
           <div id="left">
             <h2>
-              <strong>Accounts</strong>
+              <strong>Accounts Controller</strong>
             </h2>
             <div id="leftChild"></div>
           </div>
           <div id="right">
-            <div id="rightInput">
-              <label>Account Name:</label>
-              <InputBox onChange={this.onAccNameChange} />
-              <label>Initial Balance:</label>
-              <InputBox onChange={this.onAccBalChange} />
-              <InputBtn onClick={this.onAddAccClicked} />
-            </div>
-            <div id="rightResults">
-              <label>Total Balance:</label>
-              <label>Highest Balance:</label>
-              <label>Lowest Balance:</label>
-              <label>No. of Accounts:</label>
-            </div>
+            <InputForm onSubmit={this.addNewAccount} />
+            <ResultsDisp />
           </div>
         </div>
       </Fragment>
