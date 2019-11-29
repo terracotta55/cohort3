@@ -5,6 +5,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   font-family: "Ubuntu", sans-serif;
+  margin-top: 20px;
 }
 
 #left {
@@ -15,6 +16,7 @@
   border: solid gray 3px;
   height: 100vh;
   border-radius: 15px;
+  margin-top: 20px;
 }
 
 #leftChild {
@@ -30,11 +32,11 @@
 #right {
   width: 35%;
   background-color: whitesmoke;
-  /* text-align: center; */
   border: solid gray 3px;
   height: 100vh;
   border-radius: 15px;
   color: gray;
+  margin-top: 20px;
 }
 
 .card-div {
@@ -84,11 +86,11 @@ h2 {
 }
 
 #addAccBtn {
-  border: solid gray 2px;
+  border: solid gray 1px;
   outline: none;
-  margin: 5px;
+  margin: 5px 0px 5px 0px;
   border-radius: 5px;
-  width: 150px;
+  width: 200px;
   align-self: center;
   color: gray;
 }
@@ -102,11 +104,7 @@ label {
 
 #accInput {
   float: left;
-  width: 220px;
-}
-
-#rightInput {
-  margin-top: 20px;
+  width: 200px;
 }
 
 form {
