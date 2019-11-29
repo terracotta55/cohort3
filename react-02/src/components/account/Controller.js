@@ -1,6 +1,28 @@
-class AccountController {
+export class AccountClass {
+  constructor(key, accountName, accountBalance) {
+    this.key = key;
+    this.accountName = accountName;
+    this.accountBalance = accountBalance;
+  }
+  deposit(depAmt) {
+    this.accountBalance += depAmt;
+  }
+  withdraw(wthAmt) {
+    if (wthAmt > this.accountBalance) {
+      throw new Error("Insufficient Funds!");
+    }
+    this.accountBalance -= wthAmt;
+  }
+  balance() {
+    return this.accountBalance;
+  }
+  static formatDisplayValue(userInput) {
+    return Math.round(userInput * 100) / 100;
+  }
+}
+
+export class AccountController {
   constructor(accountOwner) {
-    // super();
     const _accountsList = new WeakMap();
     _accountsList.set(this, _accountsList);
     this.accountNamesArr = [];
@@ -10,7 +32,7 @@ class AccountController {
     return this.accountNamesArr;
   }
   addAccount(key, accountName, accountBalance) {
-    let newAccount = new Account(key, accountName, accountBalance);
+    let newAccount = new AccountClass(key, accountName, accountBalance);
     this.accountNamesArr.push(newAccount);
     return newAccount;
   }
@@ -32,11 +54,9 @@ class AccountController {
   removeAccount(key) {
     key = Number(key);
     const newAccountNamesArr = this.accountNamesArr.filter(
-      account => account.key != key
+      account => account.key !== key
     );
     this.accountNamesArr = newAccountNamesArr;
     // return this.accountNamesArr;
   }
 }
-
-export default AccountController;

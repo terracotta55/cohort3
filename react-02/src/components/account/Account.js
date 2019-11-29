@@ -2,25 +2,21 @@ import React, { Fragment } from "react";
 import "./Account.css";
 import InputForm from "./InputForm";
 import ResultsDisp from "./ResultsDisp";
-// import AccountFunctions from "./AccountFunctions";
-import AccountController from "./AccountController";
+import { AccountController } from "./Controller";
 
 class Account extends React.Component {
   constructor() {
     super();
-    this.account = new AccountController();
     this.state = {
       accountsArray: []
     };
+    this.account = new AccountController();
   }
 
-  addNewAccount = dataInputs => {
-    console.log("add account clicked");
-
-    const { counter, accountName, accountBalance } = dataInputs;
+  addReactAccount(params) {
+    const { counter, accountName, accountBalance } = params;
     this.account.addAccount(counter, accountName, accountBalance);
-    console.log(this.account.accountNamesArr);
-  };
+  }
 
   render() {
     return (
@@ -33,7 +29,7 @@ class Account extends React.Component {
             <div id="leftChild"></div>
           </div>
           <div id="right">
-            <InputForm onSubmit={this.addNewAccount} />
+            <InputForm onSubmit={this.addReactAccount} />
             <ResultsDisp />
           </div>
         </div>

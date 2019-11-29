@@ -1,4 +1,4 @@
-class AccountFunctions {
+class Functions {
   constructor() {
     // super();
     this.state = { cardCount: 0 };
@@ -59,4 +59,4 @@ class AccountFunctions {
   }
 }
 
-export default AccountFunctions;
+export default Functions;

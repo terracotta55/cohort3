@@ -5,7 +5,6 @@ import InputBtn from "./InputBtn";
 class InputForm extends React.Component {
   constructor() {
     super();
-    this.countStart = 0;
     this.state = {
       counter: 0,
       accountName: "",
@@ -22,10 +21,8 @@ class InputForm extends React.Component {
     });
   }
   handleSubmitForm(e) {
+    this.setState({ counter: this.counter + 1 });
     e.preventDefault(e);
-    this.setState(prevState => {
-      return { counter: prevState.counter + 1 };
-    });
     this.props.onSubmit(this.state);
   }
 
