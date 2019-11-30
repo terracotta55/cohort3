@@ -21,8 +21,10 @@ class InputForm extends React.Component {
     });
   }
   handleSubmitForm(e) {
-    this.setState({ counter: this.counter + 1 });
     e.preventDefault(e);
+    this.setState(prevState => {
+      return { counter: prevState.counter + 1 };
+    });
     this.props.onSubmit(this.state);
   }
 
@@ -30,7 +32,7 @@ class InputForm extends React.Component {
     return (
       <Fragment>
         <h2>
-          <strong>Enter Account Details</strong>
+          <strong>Account Details</strong>
         </h2>
         <form onSubmit={this.handleSubmitForm}>
           <label>Account Name:</label>
