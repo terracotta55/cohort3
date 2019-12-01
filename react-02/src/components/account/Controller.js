@@ -2,7 +2,9 @@ export class AccountClass {
   constructor(key, accountName, accountBalance) {
     this.key = key;
     this.accountName = accountName;
-    this.accountBalance = accountBalance;
+    accountBalance < 0
+      ? (this.accountBalance = 0)
+      : (this.accountBalance = this.formatDisplayValue(accountBalance));
   }
   deposit(depAmt) {
     this.accountBalance += depAmt;
@@ -16,7 +18,7 @@ export class AccountClass {
   balance() {
     return this.accountBalance;
   }
-  static formatDisplayValue(userInput) {
+  formatDisplayValue(userInput) {
     return Math.round(userInput * 100) / 100;
   }
 }
@@ -30,6 +32,14 @@ export class AccountController {
   }
   get accountsList() {
     return this.accountNamesArr;
+  }
+  getAccountKey(num) {
+    for (let i = 0; i < this.accountNamesArr.length; i++) {
+      if (this.accountNamesArr[i].key === num) {
+        return this.accountNamesArr[i];
+      }
+    }
+    return null;
   }
   addAccount(key, accountName, accountBalance) {
     let newAccount = new AccountClass(key, accountName, accountBalance);
