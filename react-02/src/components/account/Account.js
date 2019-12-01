@@ -9,19 +9,49 @@ class Account extends React.Component {
   constructor() {
     super();
     this.state = {
-      accountsArray: []
+      accountController: new AccountController(),
+      accountsArray: [],
+      lowest: 0,
+      highest: 0,
+      total: 0
     };
-    this.account = new AccountController();
   }
 
   addReactAccount = params => {
     const { counter, accountName, accountBalance } = params;
-    this.account.addAccount(counter, accountName, accountBalance);
-    console.log(this.account.accountNamesArr);
+    this.state.accountController.addAccount(
+      counter,
+      accountName,
+      accountBalance
+    );
+    console.log(this.state.accountController.accountNamesArr);
     this.setState({
-      accountsArray: this.account.accountNamesArr
+      accountsArray: this.state.accountController.accountNamesArr
     });
     console.log(this.state.accountsArray);
+  };
+
+  delReactAccount = num => {
+    let newAccountsArray = this.state.account.removeAccount(
+      this.state.account.getAccount(num)
+    );
+    let newAccountsObj = new AccountController();
+    newAccountsObj.accountNamesArr = newAccountsArray;
+    this.setState({ account: newAccountsObj }, this.updateAccounts);
+  };
+
+  updateAccounts = () => {
+    if (this.state.account.accountNamesArr.length < 1) {
+      this.setState({ lowest: 0, highest: 0 });
+      return;
+    }
+    this.setState(state => {
+      return {
+        lowest: state.account.lowestBalance(),
+        highest: state.account.highestBalance(),
+        total: state.account.totalBalance()
+      };
+    });
   };
 
   displayCards = () => {
