@@ -6,6 +6,9 @@ export class AccountClass {
       ? (this.accountBalance = 0)
       : (this.accountBalance = this.formatDisplayValue(accountBalance));
   }
+  duplicate() {
+    return new AccountController(this.accountNamesArr);
+  }
   deposit(depAmt) {
     this.accountBalance += depAmt;
   }
