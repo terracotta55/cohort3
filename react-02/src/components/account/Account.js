@@ -46,20 +46,22 @@ class Account extends React.Component {
   };
 
   depositReactAccount = depAmt => {
-    let newController = this.state.accountController.deposit(depAmt);
+    let newController = this.state.accountController.accountNamesArr[0].deposit(
+      depAmt
+    );
     this.setState({ accountContoller: newController }, this.updateAccounts);
   };
 
   updateAccounts = () => {
-    if (this.state.account.accountNamesArr.length < 1) {
+    if (this.state.accountController.accountNamesArr.length < 1) {
       this.setState({ lowest: 0, highest: 0 });
       return;
     }
-    this.setState(state => {
+    this.setState(newState => {
       return {
-        lowest: state.account.lowestBalance(),
-        highest: state.account.highestBalance(),
-        total: state.account.totalBalance()
+        lowest: newState.accountContoller.lowestBalance(),
+        highest: newState.accountController.highestBalance(),
+        total: newState.accountContoller.totalBalance()
       };
     });
   };
@@ -68,7 +70,7 @@ class Account extends React.Component {
     return this.state.accountsArray.map(account => {
       return (
         <Cards
-          key={account.counter}
+          key={account.key}
           accountArr={account}
           balance={account.accountBalance}
           withdrawCard={this.withdrawReactAccount}
