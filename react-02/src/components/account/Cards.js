@@ -4,10 +4,14 @@ class Cards extends React.Component {
   constructor() {
     super();
     this.state = {
-      accountBalance: 0
+      cardInput: "",
+      cardResult: ""
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
-
+  handleInputChange(e) {
+    this.setState({ cardInput: e.target.value });
+  }
   render() {
     return (
       <Fragment>
