@@ -40,6 +40,16 @@ class Account extends React.Component {
     this.setState({ account: newAccountsObj }, this.updateAccounts);
   };
 
+  withdrawReactAccount = wthAmt => {
+    let newController = this.state.accountController.withdraw(wthAmt);
+    this.setState({ accountContoller: newController }, this.updateAccounts);
+  };
+
+  depositReactAccount = depAmt => {
+    let newController = this.state.accountController.deposit(depAmt);
+    this.setState({ accountContoller: newController }, this.updateAccounts);
+  };
+
   updateAccounts = () => {
     if (this.state.account.accountNamesArr.length < 1) {
       this.setState({ lowest: 0, highest: 0 });
@@ -59,8 +69,11 @@ class Account extends React.Component {
       return (
         <Cards
           key={account.counter}
-          name={account.accountName}
+          accountArr={account}
           balance={account.accountBalance}
+          withdrawCard={this.withdrawReactAccount}
+          depositCard={this.depositReactAccount}
+          deleteCard={this.delReactAccount}
         />
       );
     });
@@ -80,7 +93,11 @@ class Account extends React.Component {
           </div>
           <div id="right">
             <InputForm onSubmit={this.addReactAccount} />
-            <ResultsDisp />
+            <ResultsDisp
+              lowestBal={this.state.lowest}
+              highestBal={this.state.highest}
+              totalBal={this.state.total}
+            />
           </div>
         </div>
       </Fragment>
