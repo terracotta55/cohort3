@@ -13,10 +13,11 @@ class Cards extends React.Component {
     this.setState({ cardInput: e.target.value });
   }
   render() {
+    let { accountName, accountBalance } = this.props.accountArr;
     return (
       <Fragment>
         <div className="card-div">
-          <span className="para-left-card-name">Hello</span>
+          <span className="para-left-card-name">{accountName}</span>
           <br />
           <input
             className="card-input"
@@ -31,7 +32,9 @@ class Cards extends React.Component {
           <br />
           <button className="btn-card-del">Delete</button>
           <br />
-          <span className="para-left-card-output">Balance</span>
+          <span className="para-left-card-output">
+            Balance: {accountBalance}
+          </span>
         </div>
       </Fragment>
     );
