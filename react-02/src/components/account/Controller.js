@@ -1,13 +1,10 @@
 export class AccountClass {
   constructor(key, accountName, accountBalance) {
     this.key = key;
-    this.accountName = accountName;
+    this.accountName = String(accountName);
     accountBalance < 0
       ? (this.accountBalance = 0)
       : (this.accountBalance = this.formatDisplayValue(accountBalance));
-  }
-  duplicate() {
-    return new AccountController(this.accountNamesArr);
   }
   deposit(depAmt) {
     this.accountBalance += depAmt;
@@ -27,14 +24,17 @@ export class AccountClass {
 }
 
 export class AccountController {
-  constructor(accountOwner) {
+  constructor(accountNamesArr = []) {
     const _accountsList = new WeakMap();
     _accountsList.set(this, _accountsList);
-    this.accountNamesArr = [];
-    this.accountOwner = accountOwner;
+    this.accountNamesArr = accountNamesArr;
+    // this.accountOwner = accountOwner;
   }
   get accountsList() {
     return this.accountNamesArr;
+  }
+  duplicate() {
+    return new AccountController(this.accountNamesArr);
   }
   getAccountKey(num) {
     for (let i = 0; i < this.accountNamesArr.length; i++) {
