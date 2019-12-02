@@ -64,6 +64,7 @@ class Cards extends React.Component {
           <span className="para-left-card-output">
             Balance: {accountBalance}
           </span>
+          <br />
           <span className="para-left-card-output">{this.state.cardResult}</span>
         </div>
       </Fragment>
