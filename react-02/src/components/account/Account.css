@@ -95,14 +95,14 @@ h2 {
   color: gray;
 }
 
-label {
+.right-input-label {
   float: left;
   clear: left;
   width: 150px;
   text-align: left;
 }
 
-#accInput {
+.right-input {
   float: left;
   width: 200px;
 }
@@ -114,4 +114,16 @@ form {
 .para-left-card-name,
 .para-left-card-output {
   margin: 0px;
+}
+
+.results-label {
+  float: left;
+  clear: left;
+  width: 150px;
+  text-align: left;
+}
+
+.results-span {
+  float: left;
+  width: 200px;
 }
