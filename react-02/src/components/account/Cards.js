@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 
 class Cards extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       cardInput: "",
       cardResult: ""
@@ -42,7 +42,7 @@ class Cards extends React.Component {
     return (
       <Fragment>
         <div className="card-div">
-          <span className="para-left-card-name">{accountName}</span>
+          <span className="para-left-card-name">Name: {accountName}</span>
           <br />
           <input
             value={this.state.cardInput}
@@ -62,7 +62,7 @@ class Cards extends React.Component {
           <button className="btn-card-del">Delete</button>
           <br />
           <span className="para-left-card-output">
-            Balance: {accountBalance}
+            Balance: ${accountBalance}
           </span>
           <br />
           <span className="para-left-card-output">{this.state.cardResult}</span>
