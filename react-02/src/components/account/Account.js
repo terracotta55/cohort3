@@ -59,8 +59,8 @@ class Account extends React.Component {
     }
     this.setState(newState => {
       return {
-        lowest: newState.accountController.lowestBalance(),
-        highest: newState.accountController.highestBalance(),
+        lowest: newState.accountController.lowestBalance().accountName,
+        highest: newState.accountController.highestBalance().accountName,
         total: newState.accountController.totalBalance()
       };
     });
@@ -95,9 +95,10 @@ class Account extends React.Component {
           <div id="right">
             <InputForm onSubmit={this.addReactAccount} />
             <ResultsDisp
-              lowestBal={this.state.lowest}
-              highestBal={this.state.highest}
-              totalBal={this.state.total}
+              lowestBal={this.state.lowest.toString()}
+              highestBal={this.state.highest.toString()}
+              totalBal={this.state.total.toString()}
+              numberAcc={this.state.accountsArray.length.toString()}
             />
           </div>
         </div>
