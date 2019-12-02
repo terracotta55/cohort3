@@ -3,8 +3,8 @@ import "./Account.css";
 import InputBtn from "./InputBtn";
 
 class InputForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       counter: 0,
       accountName: "",
@@ -35,23 +35,23 @@ class InputForm extends React.Component {
           <strong>Account Details</strong>
         </h2>
         <form onSubmit={this.handleSubmitForm}>
-          <label>Account Name:</label>
+          <label className="right-input-label">Account Name:</label>
           <input
             onChange={this.handleFormChange}
             name="accountName"
             type="text"
-            id="accInput"
+            className="right-input"
           />
-          <label>Initial Balance:</label>
+          <label className="right-input-label">Initial Balance:</label>
           <input
             onChange={this.handleFormChange}
             name="accountBalance"
             type="number"
-            id="accInput"
+            className="right-input"
             min="0"
             step="0.01"
           />
-          <InputBtn />
+          <InputBtn onSubmit={this.handleSubmitForm} />
         </form>
       </Fragment>
     );
