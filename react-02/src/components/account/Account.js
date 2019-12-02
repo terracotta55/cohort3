@@ -59,9 +59,9 @@ class Account extends React.Component {
     }
     this.setState(newState => {
       return {
-        lowest: newState.accountContoller.lowestBalance(),
+        lowest: newState.accountController.lowestBalance(),
         highest: newState.accountController.highestBalance(),
-        total: newState.accountContoller.totalBalance()
+        total: newState.accountController.totalBalance()
       };
     });
   };
@@ -83,7 +83,6 @@ class Account extends React.Component {
 
   render() {
     const card = this.displayCards();
-    console.log(card);
     return (
       <Fragment>
         <div id="container">
