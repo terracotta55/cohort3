@@ -4,14 +4,17 @@ class Cards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      accountCard: this.props.accountCard,
       cardInput: "",
       cardResult: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+
   handleInputChange(e) {
     this.setState({ cardInput: e.target.value });
   }
+
   formatCardInput(userInputInCard) {
     if (
       isNaN(userInputInCard) ||
@@ -22,7 +25,9 @@ class Cards extends React.Component {
     }
     return parseFloat(userInputInCard);
   }
-  handleDepositBtn = () => {
+
+  handleDepositBtn = e => {
+    e.preventDefault(e);
     let cardInputValue = this.formatCardInput(this.state.cardInput);
     console.log("deposit clicked", cardInputValue);
     if (!cardInputValue || cardInputValue <= 0) {
@@ -31,14 +36,54 @@ class Cards extends React.Component {
       });
       return;
     }
-    this.props.depositCard(cardInputValue);
+    this.state.accountCard.deposit(cardInputValue);
+    const accountCardUpdate = this.state.accountCard;
     this.setState({
+      accountCard: accountCardUpdate,
       cardInput: "",
-      cardResult: `Deposited $${cardInputValue.toFixed(2)}`
+      cardResult: `Deposited: $${cardInputValue.toFixed(2)}`
     });
+    this.props.updateCard();
   };
+
+  handleWithdrawBtn = e => {
+    e.preventDefault(e);
+    let cardInputValue = this.formatCardInput(this.state.cardInput);
+    console.log("withdraw clicked", cardInputValue, this.state.accountCard.key);
+    if (!cardInputValue || cardInputValue <= 0) {
+      this.setState({
+        cardResult: `Enter Valid Withdraw Amount`
+      });
+      return;
+    } else if (cardInputValue > this.state.accountCard.accountBalance) {
+      this.setState({
+        cardResult: `Insufficient Funds in Account`
+      });
+      return;
+    }
+    this.state.accountCard.withdraw(cardInputValue);
+    const accountCardUpdate = this.state.accountCard;
+    this.setState({
+      accountCard: accountCardUpdate,
+      cardInput: "",
+      cardResult: `Withdrew: $${cardInputValue.toFixed(2)}`
+    });
+    this.props.updateCard();
+  };
+
+  handleDeleteBtn = e => {
+    e.preventDefault(e);
+    console.log("delete clicked");
+    this.props.deleteCard(e.target.key);
+    const accountCardUpdate = this.state.accountCard;
+    this.setState({
+      accountCard: accountCardUpdate
+    });
+    this.props.updateCard();
+  };
+
   render() {
-    let { accountName, accountBalance } = this.props.accountArr;
+    let { accountName, accountBalance } = this.state.accountCard;
     return (
       <Fragment>
         <div className="card-div">
@@ -56,10 +101,14 @@ class Cards extends React.Component {
           <button className="btn-card-dep" onClick={this.handleDepositBtn}>
             Deposit
           </button>
-          <button className="btn-card-wth">Withdraw</button>
+          <button className="btn-card-wth" onClick={this.handleWithdrawBtn}>
+            Withdraw
+          </button>
           <button className="btn-card-bal">Balance</button>
           <br />
-          <button className="btn-card-del">Delete</button>
+          <button className="btn-card-del" onClick={this.handleDeleteBtn}>
+            Delete
+          </button>
           <br />
           <span className="para-left-card-output">
             Balance: ${accountBalance}
