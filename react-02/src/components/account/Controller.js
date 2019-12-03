@@ -10,9 +10,11 @@ export class AccountClass {
     this.accountBalance += depAmt;
   }
   withdraw(wthAmt) {
+    /*
     if (wthAmt > this.accountBalance) {
       throw new Error("Insufficient Funds!");
     }
+    */
     this.accountBalance -= wthAmt;
   }
   balance() {
@@ -28,14 +30,12 @@ export class AccountController {
     const _accountsList = new WeakMap();
     _accountsList.set(this, _accountsList);
     this.accountNamesArr = accountNamesArr;
-    // this.accountOwner = accountOwner;
   }
+
   get accountsList() {
     return this.accountNamesArr;
   }
-  duplicate() {
-    return new AccountController(this.accountNamesArr);
-  }
+
   getAccountKey(num) {
     for (let i = 0; i < this.accountNamesArr.length; i++) {
       if (this.accountNamesArr[i].key === num) {
@@ -44,11 +44,13 @@ export class AccountController {
     }
     return null;
   }
+
   addAccount(key, accountName, accountBalance) {
     let newAccount = new AccountClass(key, accountName, accountBalance);
     this.accountNamesArr.push(newAccount);
     return newAccount;
   }
+
   totalBalance() {
     const total = this.accountNamesArr.reduce(
       (accumulator, account) => accumulator + account.accountBalance,
@@ -56,20 +58,27 @@ export class AccountController {
     );
     return total;
   }
+
   highestBalance() {
-    this.accountNamesArr.sort((a, b) => b.accountBalance - a.accountBalance);
-    return this.accountNamesArr[0];
+    const accountNamesArrCopy = this.accountNamesArr.slice();
+    return accountNamesArrCopy.sort(
+      (a, b) => b.accountBalance - a.accountBalance
+    )[0];
   }
+
   lowestBalance() {
-    this.accountNamesArr.sort((a, b) => a.accountBalance - b.accountBalance);
-    return this.accountNamesArr[0];
+    const accountNamesArrCopy = this.accountNamesArr.slice();
+    return accountNamesArrCopy.sort(
+      (a, b) => a.accountBalance - b.accountBalance
+    )[0];
   }
+
   removeAccount(key) {
     key = Number(key);
     const newAccountNamesArr = this.accountNamesArr.filter(
       account => account.key !== key
     );
     this.accountNamesArr = newAccountNamesArr;
-    // return this.accountNamesArr;
+    return this.accountNamesArr;
   }
 }
