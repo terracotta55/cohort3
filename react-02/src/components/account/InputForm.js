@@ -22,10 +22,12 @@ class InputForm extends React.Component {
   }
   handleSubmitForm(e) {
     e.preventDefault(e);
-    this.setState(prevState => {
-      return { counter: prevState.counter + 1 };
-    });
     this.props.onSubmit(this.state);
+    this.setState(prevState => {
+      return {
+        counter: prevState.counter + 1
+      };
+    });
   }
 
   render() {
