@@ -11,8 +11,8 @@ class Account extends React.Component {
     this.state = {
       accountController: new AccountController(),
       accountsArray: [],
-      lowest: 0,
-      highest: 0,
+      lowest: "--",
+      highest: "--",
       total: 0
     };
   }
