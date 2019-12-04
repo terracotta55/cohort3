@@ -8,7 +8,7 @@ class InputForm extends React.Component {
     this.state = {
       counter: 0,
       accountName: "",
-      accountBalance: 0
+      accountBalance: ""
     };
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
@@ -20,6 +20,7 @@ class InputForm extends React.Component {
       [name]: value
     });
   }
+
   handleSubmitForm(e) {
     e.preventDefault(e);
     this.props.onSubmit(this.state);
@@ -28,10 +29,7 @@ class InputForm extends React.Component {
         counter: newState.counter + 1
       };
     });
-    this.setState({
-      accountName: "",
-      accountBalance: ""
-    });
+    this.setState({ accountName: "", accountBalance: "" });
   }
 
   render() {
@@ -47,6 +45,7 @@ class InputForm extends React.Component {
             name="accountName"
             type="text"
             className="right-input"
+            value={this.state.accountName}
           />
           <label className="right-input-label">Initial Balance:</label>
           <input
@@ -56,6 +55,7 @@ class InputForm extends React.Component {
             className="right-input"
             min="0"
             step="0.01"
+            value={this.state.accountBalance}
           />
           <InputBtn onSubmit={this.handleSubmitForm} />
         </form>
