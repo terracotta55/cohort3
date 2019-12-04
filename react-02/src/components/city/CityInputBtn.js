@@ -3,7 +3,7 @@ import React from "react";
 function InputBtn(props) {
   return (
     <button id="addAccBtn" onClick={props.onSubmit}>
-      Add Account
+      Add City
     </button>
   );
 }

@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
-import "./Account.css";
-import InputForm from "./InputForm";
-import ResultsDisp from "./ResultsDisp";
-import { AccountController } from "./Controller";
-import Cards from "./Cards";
+import "./City.css";
+import InputForm from "./CityInputForm";
+import ResultsDisp from "./CityResultsDisp";
+import { AccountController } from "./CityController";
+import Cards from "./CityCards";
 
-class Account extends React.Component {
+class City extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -63,7 +63,7 @@ class Account extends React.Component {
         <div id="container">
           <div id="left">
             <h2>
-              <strong>Account Cards</strong>
+              <strong>City Cards</strong>
             </h2>
             <div id="leftChild">{card}</div>
           </div>
@@ -82,4 +82,4 @@ class Account extends React.Component {
   }
 }
 
-export default Account;
+export default City;

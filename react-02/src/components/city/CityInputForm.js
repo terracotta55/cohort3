@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import "./Account.css";
-import InputBtn from "./InputBtn";
+import "./City.css";
+import InputBtn from "./CityInputBtn";
 
 class InputForm extends React.Component {
   constructor(props) {
@@ -36,10 +36,10 @@ class InputForm extends React.Component {
     return (
       <Fragment>
         <h2>
-          <strong>Account Details</strong>
+          <strong>City Details</strong>
         </h2>
         <form onSubmit={this.handleSubmitForm}>
-          <label className="right-input-label">Account Name:</label>
+          <label className="right-input-label">City Name:</label>
           <input
             onChange={this.handleFormChange}
             name="accountName"
@@ -47,7 +47,27 @@ class InputForm extends React.Component {
             className="right-input"
             value={this.state.accountName}
           />
-          <label className="right-input-label">Initial Balance:</label>
+          <label className="right-input-label">Latitude:</label>
+          <input
+            onChange={this.handleFormChange}
+            name="accountBalance"
+            type="number"
+            className="right-input"
+            min="0"
+            step="0.01"
+            value={this.state.accountBalance}
+          />
+          <label className="right-input-label">Longitude:</label>
+          <input
+            onChange={this.handleFormChange}
+            name="accountBalance"
+            type="number"
+            className="right-input"
+            min="0"
+            step="0.01"
+            value={this.state.accountBalance}
+          />
+          <label className="right-input-label">Population:</label>
           <input
             onChange={this.handleFormChange}
             name="accountBalance"
