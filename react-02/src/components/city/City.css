@@ -1,29 +1,129 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400&display=swap");
 
-.App {
-  text-align: center;
+#container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-family: "Ubuntu", sans-serif;
+  margin-top: 20px;
 }
 
-.App-logo {
-  height: 60vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 90vh;
+#left {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 50%;
+  background-color: whitesmoke;
+  border: solid gray 3px;
+  height: 100vh;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+#leftChild {
+  width: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+  border: 0px;
+  height: 100%;
+  overflow: scroll;
+  border-radius: 15px;
+}
+
+#right {
+  width: 35%;
+  background-color: whitesmoke;
+  border: solid gray 3px;
+  height: 100vh;
+  border-radius: 15px;
+  color: gray;
+  margin-top: 20px;
+}
+
+.card-div {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: auto;
+  padding: 8px;
+  background-color: burlywood;
+  min-height: 180px;
+  text-align: center;
+  align-self: center;
+  margin: 0px 0 20px 0;
+  width: 90%;
+  border: solid gray 2px;
+  border-radius: 15px;
+}
+
+.card-div button {
+  align-content: center;
+  margin: 5px;
+  outline: none;
+  border: solid gray 1px;
   color: white;
+  border-radius: 5px;
+  background-color: gray;
 }
 
-.App-link {
-  color: #09d3ac;
+.card-div .card-input {
+  align-content: center;
+  display: inline-block;
 }
 
-h1 {
-  font-size: 2rem;
-  font-family: "Ubuntu", sans-serif;
+.card-div:nth-child(odd) {
+  background-color: lightgoldenrodyellow;
+}
+
+.page-title,
+h2 {
+  text-align: center;
+  color: grey;
+}
+#right-btns {
+  border-radius: 5px;
+  width: auto;
+  align-self: center;
+  color: gray;
+}
+
+#addAccBtn {
+  border: solid gray 1px;
+  outline: none;
+  margin: 5px 0px 5px 0px;
+  border-radius: 5px;
+  width: 200px;
+  align-self: center;
+  color: gray;
+}
+
+.right-input-label {
+  float: left;
+  clear: left;
+  width: 150px;
+  text-align: left;
+}
+
+.right-input {
+  float: left;
+  width: 200px;
+}
+
+form {
+  margin: 10px;
+}
+
+.para-left-card-name,
+.para-left-card-output {
+  margin: 0px;
+}
+
+.results-label {
+  float: left;
+  clear: left;
+  width: 150px;
+  text-align: left;
+}
+
+.results-span {
+  float: left;
+  width: 200px;
 }
