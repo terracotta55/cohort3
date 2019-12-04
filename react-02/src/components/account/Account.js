@@ -9,73 +9,48 @@ class Account extends React.Component {
   constructor() {
     super();
     this.state = {
-      accountController: new AccountController(),
-      accountsArray: [],
       lowest: "--",
       highest: "--",
       total: 0
     };
+    this.accountController = new AccountController();
   }
 
   addReactAccount = params => {
     const { counter, accountName, accountBalance } = params;
-    this.state.accountController.addAccount(
-      counter,
-      accountName,
-      accountBalance
-    );
-    console.log(this.state.accountController.accountNamesArr);
-    this.setState({
-      accountsArray: this.state.accountController.accountNamesArr
-    });
-    console.log(this.state.accountsArray);
+    this.accountController.addAccount(counter, accountName, accountBalance);
+    console.log(this.accountController.accountNamesArr);
+    this.updateAccounts();
   };
 
-  delReactAccount = num => {
-    let newAccountsArray = this.state.account.removeAccount(
-      this.state.account.getAccount(num)
-    );
-    let newAccountsObj = new AccountController();
-    newAccountsObj.accountNamesArr = newAccountsArray;
-    this.setState({ account: newAccountsObj }, this.updateAccounts);
-  };
-
-  withdrawReactAccount = wthAmt => {
-    let newController = this.state.accountController.withdraw(wthAmt);
-    this.setState({ accountContoller: newController }, this.updateAccounts);
-  };
-
-  depositReactAccount = depAmt => {
-    let newController = this.state.accountController.accountNamesArr[0].deposit(
-      depAmt
-    );
-    this.setState({ accountContoller: newController }, this.updateAccounts);
+  deleteReactAccount = num => {
+    this.accountController.removeAccount(num);
+    console.log(this.accountController.accountNamesArr);
+    this.updateAccounts();
   };
 
   updateAccounts = () => {
-    if (this.state.accountController.accountNamesArr.length < 1) {
-      this.setState({ lowest: 0, highest: 0 });
+    if (this.accountController.accountNamesArr.length < 1) {
+      this.setState({ lowest: 0, highest: 0, total: 0 });
       return;
     }
-    this.setState(newState => {
-      return {
-        lowest: newState.accountController.lowestBalance().accountName,
-        highest: newState.accountController.highestBalance().accountName,
-        total: newState.accountController.totalBalance()
-      };
+    this.setState({
+      lowest: this.accountController.lowestBalance().accountName,
+      highest: this.accountController.highestBalance().accountName,
+      total: this.accountController.totalBalance()
     });
   };
 
   displayCards = () => {
-    return this.state.accountsArray.map(account => {
+    return this.accountController.accountNamesArr.map(account => {
       return (
         <Cards
           key={account.key}
-          accountArr={account}
-          balance={account.accountBalance}
-          withdrawCard={this.withdrawReactAccount}
-          depositCard={this.depositReactAccount}
-          deleteCard={this.delReactAccount}
+          keyCard={account.key}
+          accountCard={account}
+          balanceCard={account.accountBalance}
+          deleteCard={this.deleteReactAccount}
+          updateCard={this.updateAccounts}
         />
       );
     });
@@ -98,7 +73,7 @@ class Account extends React.Component {
               lowestBal={this.state.lowest.toString()}
               highestBal={this.state.highest.toString()}
               totalBal={this.state.total.toString()}
-              numberAcc={this.state.accountsArray.length.toString()}
+              numberAcc={this.accountController.accountNamesArr.length.toString()}
             />
           </div>
         </div>
