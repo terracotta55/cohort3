@@ -49,7 +49,7 @@ class Cards extends React.Component {
   handleWithdrawBtn = e => {
     e.preventDefault(e);
     let cardInputValue = this.formatCardInput(this.state.cardInput);
-    console.log("withdraw clicked", cardInputValue, this.state.accountCard.key);
+    console.log("withdraw clicked", cardInputValue);
     if (!cardInputValue || cardInputValue <= 0) {
       this.setState({
         cardResult: `Enter Valid Withdraw Amount`
@@ -71,10 +71,16 @@ class Cards extends React.Component {
     this.props.updateCard();
   };
 
-  handleDeleteBtn = e => {
-    e.preventDefault(e);
-    console.log("delete clicked");
-    this.props.deleteCard(e.target.key);
+  handleBalanceBtn = () => {
+    console.log("balance clicked");
+    this.setState({
+      cardResult: `You have $${this.props.balanceCard} in your Account`
+    });
+    this.props.updateCard();
+  };
+
+  handleDeleteBtn = () => {
+    this.props.deleteCard(this.props.keyCard);
     const accountCardUpdate = this.state.accountCard;
     this.setState({
       accountCard: accountCardUpdate
@@ -104,7 +110,9 @@ class Cards extends React.Component {
           <button className="btn-card-wth" onClick={this.handleWithdrawBtn}>
             Withdraw
           </button>
-          <button className="btn-card-bal">Balance</button>
+          <button className="btn-card-bal" onClick={this.handleBalanceBtn}>
+            Balance
+          </button>
           <br />
           <button className="btn-card-del" onClick={this.handleDeleteBtn}>
             Delete
