@@ -1,84 +1,79 @@
-export class AccountClass {
-  constructor(key, accountName, accountBalance) {
-    this.key = key;
-    this.accountName = String(accountName);
-    accountBalance < 0
-      ? (this.accountBalance = 0)
-      : (this.accountBalance = this.formatDisplayValue(accountBalance));
+export class CityClass {
+  constructor(key, cityName, cityLatitude, cityLongitude, cityPopulation) {
+    this.key = key; //should be unique identifier for each city
+    this.cityName = String(cityName);
+    this.cityLatitude = parseFloat(cityLatitude);
+    this.cityLongitude = parseFloat(cityLongitude);
+    cityPopulation < 0
+      ? (this.cityPopulation = 0)
+      : (this.cityPopulation = parseInt(cityPopulation));
   }
-  deposit(depAmt) {
-    this.accountBalance += depAmt;
+  show() {
+    return `
+		Name: ${this.cityName}\nLatitude: ${this.cityLatitude}\nLongitude: ${this.cityLongitude}\nPopulation: ${this.cityPopulation}`.trim();
   }
-  withdraw(wthAmt) {
-    /*
-    if (wthAmt > this.accountBalance) {
-      throw new Error("Insufficient Funds!");
+  async movedIn(num) {
+    this.cityPopulation += num;
+  }
+  async movedOut(num) {
+    this.cityPopulation -= num;
+  }
+  howBig() {
+    if (this.cityPopulation >= 1 && this.cityPopulation <= 100) {
+      return `Hamlet`;
     }
-    */
-    this.accountBalance -= wthAmt;
+    if (this.cityPopulation < 1000) {
+      return `Village`;
+    }
+    if (this.cityPopulation <= 20000) {
+      return `Town`;
+    }
+    if (this.cityPopulation <= 100000) {
+      return `Large Town`;
+    } else return `City`;
   }
-  balance() {
-    return this.accountBalance;
-  }
-  formatDisplayValue(userInput) {
+  static formatPopulation(userInput) {
     return Math.round(userInput * 100) / 100;
   }
 }
 
-export class AccountController {
-  constructor(accountNamesArr = []) {
-    const _accountsList = new WeakMap();
-    _accountsList.set(this, _accountsList);
-    this.accountNamesArr = accountNamesArr;
+export class Community {
+  constructor() {
+    this.cityNamesArr = [];
   }
-
-  get accountsList() {
-    return this.accountNamesArr;
+  whichSphere(cityObj) {
+    if (cityObj.cityLatitude < 0) return `Southern Hemisphere`;
+    if (cityObj.cityLatitude > 0) return `Northern Hemisphere`;
+    return `Equator`;
   }
-
-  getAccountKey(num) {
-    for (let i = 0; i < this.accountNamesArr.length; i++) {
-      if (this.accountNamesArr[i].key === num) {
-        return this.accountNamesArr[i];
-      }
-    }
-    return null;
+  getMostNorthern() {
+    const cityNamesArrCopy = this.cityNamesArr.slice();
+    return cityNamesArrCopy.sort((a, b) => b.cityLatitude - a.cityLatitude)[0];
   }
-
-  addAccount(key, accountName, accountBalance) {
-    let newAccount = new AccountClass(key, accountName, accountBalance);
-    this.accountNamesArr.push(newAccount);
-    return newAccount;
+  getMostSouthern() {
+    const cityNamesArrCopy = this.cityNamesArr.slice();
+    return cityNamesArrCopy.sort((a, b) => a.cityLatitude - b.cityLatitude)[0];
   }
-
-  totalBalance() {
-    const total = this.accountNamesArr.reduce(
-      (accumulator, account) => accumulator + account.accountBalance,
+  getTotalPopulation() {
+    return this.cityNamesArr.reduce(
+      (accumulator, city) => city.cityPopulation + accumulator,
       0
     );
-    return total;
   }
-
-  highestBalance() {
-    const accountNamesArrCopy = this.accountNamesArr.slice();
-    return accountNamesArrCopy.sort(
-      (a, b) => b.accountBalance - a.accountBalance
-    )[0];
-  }
-
-  lowestBalance() {
-    const accountNamesArrCopy = this.accountNamesArr.slice();
-    return accountNamesArrCopy.sort(
-      (a, b) => a.accountBalance - b.accountBalance
-    )[0];
-  }
-
-  removeAccount(key) {
-    key = Number(key);
-    const newAccountNamesArr = this.accountNamesArr.filter(
-      account => account.key !== key
+  createCity(key, cityName, cityLatitude, cityLongitude, cityPopulation) {
+    let newCity = new CityClass(
+      key,
+      cityName,
+      cityLatitude,
+      cityLongitude,
+      cityPopulation
     );
-    this.accountNamesArr = newAccountNamesArr;
-    return this.accountNamesArr;
+    this.cityNamesArr.push(newCity);
+    return newCity;
+  }
+  async deleteCity(key) {
+    key = Number(key);
+    const newCityNamesArr = this.cityNamesArr.filter(city => city.key !== key);
+    this.cityNamesArr = newCityNamesArr;
   }
 }
