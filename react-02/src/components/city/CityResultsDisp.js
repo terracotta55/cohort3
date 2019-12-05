@@ -12,8 +12,11 @@ function ResultsDisp(props) {
       <label className="results-label">Most Southern:</label>
       <span className="results-span">{props.southmostLatitude}</span>
       <br />
-      <label className="results-label">Additional Info:</label>
+      <label className="results-label">Number of Cities:</label>
       <span className="results-span">{props.numberOfCities}</span>
+      <br />
+      <label className="results-label">Server Message:</label>
+      <span className="results-span">{props.serverMessage}</span>
     </div>
   );
 }
