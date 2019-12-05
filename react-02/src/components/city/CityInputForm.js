@@ -7,8 +7,10 @@ class InputForm extends React.Component {
     super(props);
     this.state = {
       counter: 0,
-      accountName: "",
-      accountBalance: ""
+      cityName: "",
+      cityPopulation: "",
+      cityLatitude: "",
+      cityLongitude: ""
     };
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
@@ -29,7 +31,12 @@ class InputForm extends React.Component {
         counter: newState.counter + 1
       };
     });
-    this.setState({ accountName: "", accountBalance: "" });
+    this.setState({
+      cityName: "",
+      cityPopulation: "",
+      cityLatitude: "",
+      cityLongitude: ""
+    });
   }
 
   render() {
@@ -42,40 +49,40 @@ class InputForm extends React.Component {
           <label className="right-input-label">City Name:</label>
           <input
             onChange={this.handleFormChange}
-            name="accountName"
+            name="cityName"
             type="text"
             className="right-input"
-            value={this.state.accountName}
+            value={this.state.cityName}
           />
           <label className="right-input-label">Latitude:</label>
           <input
             onChange={this.handleFormChange}
-            name="accountBalance"
+            name="cityLatitude"
             type="number"
             className="right-input"
             min="0"
             step="0.01"
-            value={this.state.accountBalance}
+            value={this.state.cityLatitude}
           />
           <label className="right-input-label">Longitude:</label>
           <input
             onChange={this.handleFormChange}
-            name="accountBalance"
+            name="cityLongitude"
             type="number"
             className="right-input"
             min="0"
             step="0.01"
-            value={this.state.accountBalance}
+            value={this.state.cityLongitude}
           />
           <label className="right-input-label">Population:</label>
           <input
             onChange={this.handleFormChange}
-            name="accountBalance"
+            name="cityPopulation"
             type="number"
             className="right-input"
             min="0"
             step="0.01"
-            value={this.state.accountBalance}
+            value={this.state.cityPopulation}
           />
           <InputBtn onSubmit={this.handleSubmitForm} />
         </form>
