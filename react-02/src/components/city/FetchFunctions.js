@@ -3,7 +3,7 @@ import { CityClass, Community } from "./CityController.js";
 const url = "http://localhost:5000/";
 const newCommunity = new Community();
 
-const CityFetch = {
+const cityFetch = {
   async postData(url = "", data = {}) {
     const response = await fetch(url, {
       method: "POST",
@@ -25,7 +25,7 @@ const CityFetch = {
   /* istanbul ignore next */
   async getAllCitiesServer(newCommunity) {
     let data = await cityFetch.postData(url + "all");
-    if (data.length != 0) {
+    if (data.length !== 0) {
       newCommunity.cityNamesArr = data.map(
         itm =>
           new CityClass(
@@ -65,6 +65,7 @@ const CityFetch = {
     return data;
   },
   /* istanbul ignore next */
+
   async htmlReloadCities() {
     fetch("http://localhost:5000/all")
       .then(request => request.json())
@@ -77,6 +78,7 @@ const CityFetch = {
             Number(serverCity.cityLongitude),
             Number(serverCity.cityPopulation)
           );
+
           cityCards.createCardDiv(
             Number(serverCity.key),
             serverCity.cityName,
@@ -87,4 +89,5 @@ const CityFetch = {
     return newCommunity.cityNamesArr;
   }
 };
-export default CityFetch;
+
+export default cityFetch;

@@ -4,6 +4,7 @@ import InputForm from "./CityInputForm";
 import ResultsDisp from "./CityResultsDisp";
 import { Community } from "./CityController";
 import Cards from "./CityCards";
+import cityFetch from "./FetchFunctions";
 
 class City extends React.Component {
   constructor() {
@@ -12,15 +13,36 @@ class City extends React.Component {
       southernmost: "--",
       northernmost: "--",
       total: 0,
-      serverMsg: "Loading content...",
+      serverMsg: "--",
       cityCounter: 0
     };
     this.cityController = new Community();
   }
 
-  componentDidMount() {}
+  async componentDidMount() {
+    const newCommunity = new Community();
+    let keyCounter;
+    let lastKey = cityFetch.getAllCitiesServer(newCommunity);
+    lastKey.then(
+      result => {
+        if (newCommunity.cityNamesArr.length >= 1) {
+          keyCounter = result + 1;
+          this.setState({
+            serverMsg: `Success! Last Key Found`,
+            cityCounter: keyCounter
+          });
+          this.cityController = newCommunity;
+        } else {
+          this.setState({ serverMsg: `Good! Server Is Empty` });
+        }
+      },
+      reject => {
+        this.setState({ serverMsg: `Error! Something Went Wrong!` });
+      }
+    );
+  }
 
-  addReactCity = params => {
+  addReactCity = async params => {
     let counterValue = this.state.cityCounter;
     const { cityName, cityLatitude, cityLongitude, cityPopulation } = params;
     this.cityController.createCity(
@@ -36,6 +58,11 @@ class City extends React.Component {
         cityCounter: newState.cityCounter + 1
       };
     });
+    await cityFetch.postNewToServer(
+      this.cityController.cityNamesArr.filter(
+        itm => itm.key === counterValue
+      )[0]
+    );
     this.updateCities();
   };
 
