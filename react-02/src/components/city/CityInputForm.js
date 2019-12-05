@@ -6,7 +6,6 @@ class InputForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 0,
       cityName: "",
       cityPopulation: "",
       cityLatitude: "",
@@ -26,11 +25,13 @@ class InputForm extends React.Component {
   handleSubmitForm(e) {
     e.preventDefault(e);
     this.props.onSubmit(this.state);
+    /*
     this.setState(newState => {
       return {
         counter: newState.counter + 1
       };
     });
+    */
     this.setState({
       cityName: "",
       cityPopulation: "",
