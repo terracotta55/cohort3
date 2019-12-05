@@ -11,27 +11,31 @@ class City extends React.Component {
     this.state = {
       southernmost: "--",
       northernmost: "--",
-      total: 0
+      total: 0,
+      serverMsg: "Loading content...",
+      cityCounter: 0
     };
     this.cityController = new Community();
   }
 
+  componentDidMount() {}
+
   addReactCity = params => {
-    const {
-      counter,
-      cityName,
-      cityLatitude,
-      cityLongitude,
-      cityPopulation
-    } = params;
+    let counterValue = this.state.cityCounter;
+    const { cityName, cityLatitude, cityLongitude, cityPopulation } = params;
     this.cityController.createCity(
-      counter,
+      counterValue,
       cityName,
       cityLatitude,
       cityLongitude,
       cityPopulation
     );
     console.log(this.cityController.cityNamesArr);
+    this.setState(newState => {
+      return {
+        cityCounter: newState.cityCounter + 1
+      };
+    });
     this.updateCities();
   };
 
@@ -80,12 +84,16 @@ class City extends React.Component {
             <div id="leftChild">{card}</div>
           </div>
           <div id="right">
-            <InputForm onSubmit={this.addReactCity} />
+            <InputForm
+              onSubmit={this.addReactCity}
+              cityCounter={this.state.cityCounter.toString()}
+            />
             <ResultsDisp
               southmostLatitude={this.state.southernmost.toString()}
               northmostLatitude={this.state.northernmost.toString()}
               totalPopulation={this.state.total.toString()}
               numberOfCities={this.cityController.cityNamesArr.length.toString()}
+              serverMessage={this.state.serverMsg.toString()}
             />
           </div>
         </div>
