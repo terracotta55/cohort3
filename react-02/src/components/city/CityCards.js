@@ -4,7 +4,7 @@ class Cards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      accountCard: this.props.accountCard,
+      cityCard: this.props.cityCard,
       cardInput: "",
       cardResult: ""
     };
@@ -26,74 +26,72 @@ class Cards extends React.Component {
     return parseFloat(userInputInCard);
   }
 
-  handleDepositBtn = e => {
+  handleMovedInBtn = e => {
     e.preventDefault(e);
     let cardInputValue = this.formatCardInput(this.state.cardInput);
-    console.log("deposit clicked", cardInputValue);
     if (!cardInputValue || cardInputValue <= 0) {
       this.setState({
-        cardResult: `Enter Valid Deposit Amount`
+        cardResult: `Enter Valid Population for Move In`
       });
       return;
     }
-    this.state.accountCard.deposit(cardInputValue);
-    const accountCardUpdate = this.state.accountCard;
+    this.state.cityCard.movedIn(cardInputValue);
+    const cityCardUpdate = this.state.cityCard;
     this.setState({
-      accountCard: accountCardUpdate,
+      cityCard: cityCardUpdate,
       cardInput: "",
-      cardResult: `Deposited: $${cardInputValue.toFixed(2)}`
+      cardResult: `${cardInputValue} People Moved In`
     });
     this.props.updateCard();
   };
 
-  handleWithdrawBtn = e => {
+  handleMovedOutBtn = e => {
     e.preventDefault(e);
     let cardInputValue = this.formatCardInput(this.state.cardInput);
-    console.log("withdraw clicked", cardInputValue);
     if (!cardInputValue || cardInputValue <= 0) {
       this.setState({
-        cardResult: `Enter Valid Withdraw Amount`
+        cardResult: `Enter Valid Population for Move Out`
       });
       return;
-    } else if (cardInputValue > this.state.accountCard.accountBalance) {
+    } else if (cardInputValue > this.state.cityCard.cityPopulation) {
       this.setState({
-        cardResult: `Insufficient Funds in Account`
+        cardResult: `Cannot Move Out More People Than Live Here`
       });
       return;
     }
-    this.state.accountCard.withdraw(cardInputValue);
-    const accountCardUpdate = this.state.accountCard;
+    this.state.cityCard.movedOut(cardInputValue);
+    const cityCardUpdate = this.state.cityCard;
     this.setState({
-      accountCard: accountCardUpdate,
+      cityCard: cityCardUpdate,
       cardInput: "",
-      cardResult: `Withdrew: $${cardInputValue.toFixed(2)}`
+      cardResult: `${cardInputValue} People Moved Out`
     });
     this.props.updateCard();
   };
 
-  handleBalanceBtn = () => {
-    console.log("balance clicked");
+  handleHowBigBtn = () => {
+    const howBig = this.state.cityCard.howBig();
     this.setState({
-      cardResult: `You have $${this.props.balanceCard} in your Account`
+      cardResult: `${this.state.cityCard.cityName} is a ${howBig}`
     });
     this.props.updateCard();
   };
 
-  handleDeleteBtn = () => {
+  handleRemoveBtn = () => {
     this.props.deleteCard(this.props.keyCard);
-    const accountCardUpdate = this.state.accountCard;
+    const cityCardUpdate = this.state.cityCard;
     this.setState({
-      accountCard: accountCardUpdate
+      cityCard: cityCardUpdate
     });
     this.props.updateCard();
   };
 
   render() {
-    let { accountName, accountBalance } = this.state.accountCard;
+    let { cityName, cityPopulation } = this.state.cityCard;
     return (
       <Fragment>
         <div className="card-div">
-          <span className="para-left-card-name">Name: {accountName}</span>
+          <span className="para-left-card-name">City Name: {cityName}</span>
           <br />
           <input
             value={this.state.cardInput}
@@ -104,22 +102,22 @@ class Cards extends React.Component {
             step="0.01"
           />
           <br />
-          <button className="btn-card-dep" onClick={this.handleDepositBtn}>
-            Deposit
+          <button className="btn-card-dep" onClick={this.handleMovedInBtn}>
+            Move In
           </button>
-          <button className="btn-card-wth" onClick={this.handleWithdrawBtn}>
-            Withdraw
+          <button className="btn-card-wth" onClick={this.handleMovedOutBtn}>
+            Move Out
           </button>
-          <button className="btn-card-bal" onClick={this.handleBalanceBtn}>
-            Balance
+          <button className="btn-card-bal" onClick={this.handleHowBigBtn}>
+            How Big
           </button>
           <br />
-          <button className="btn-card-del" onClick={this.handleDeleteBtn}>
-            Delete
+          <button className="btn-card-del" onClick={this.handleRemoveBtn}>
+            Remove City
           </button>
           <br />
           <span className="para-left-card-output">
-            Balance: ${accountBalance}
+            Current Population: {cityPopulation}
           </span>
           <br />
           <span className="para-left-card-output">{this.state.cardResult}</span>
