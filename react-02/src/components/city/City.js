@@ -2,55 +2,67 @@ import React, { Fragment } from "react";
 import "./City.css";
 import InputForm from "./CityInputForm";
 import ResultsDisp from "./CityResultsDisp";
-import { AccountController } from "./CityController";
+import { Community } from "./CityController";
 import Cards from "./CityCards";
 
 class City extends React.Component {
   constructor() {
     super();
     this.state = {
-      lowest: "--",
-      highest: "--",
+      southernmost: "--",
+      northernmost: "--",
       total: 0
     };
-    this.accountController = new AccountController();
+    this.cityController = new Community();
   }
 
-  addReactAccount = params => {
-    const { counter, accountName, accountBalance } = params;
-    this.accountController.addAccount(counter, accountName, accountBalance);
-    console.log(this.accountController.accountNamesArr);
-    this.updateAccounts();
+  addReactCity = params => {
+    const {
+      counter,
+      cityName,
+      cityLatitude,
+      cityLongitude,
+      cityPopulation
+    } = params;
+    this.cityController.createCity(
+      counter,
+      cityName,
+      cityLatitude,
+      cityLongitude,
+      cityPopulation
+    );
+    console.log(this.cityController.cityNamesArr);
+    this.updateCities();
   };
 
-  deleteReactAccount = num => {
-    this.accountController.removeAccount(num);
-    console.log(this.accountController.accountNamesArr);
-    this.updateAccounts();
+  deleteReactCity = num => {
+    this.cityController.deleteCity(num);
+    console.log(this.cityController.cityNamesArr);
+    this.updateCities();
   };
 
-  updateAccounts = () => {
-    if (this.accountController.accountNamesArr.length < 1) {
-      this.setState({ lowest: 0, highest: 0, total: 0 });
+  updateCities = () => {
+    if (this.cityController.cityNamesArr.length < 1) {
+      this.setState({ southernmost: 0, northernmost: 0, total: 0 });
       return;
     }
     this.setState({
-      lowest: this.accountController.lowestBalance().accountName,
-      highest: this.accountController.highestBalance().accountName,
-      total: this.accountController.totalBalance()
+      southernmost: this.cityController.getMostSouthern().cityName,
+      northernmost: this.cityController.getMostNorthern().cityName,
+      total: this.cityController.getTotalPopulation()
     });
   };
 
   displayCards = () => {
-    return this.accountController.accountNamesArr.map(account => {
+    return this.cityController.cityNamesArr.map(city => {
       return (
         <Cards
-          key={account.key}
-          keyCard={account.key}
-          accountCard={account}
-          balanceCard={account.accountBalance}
-          deleteCard={this.deleteReactAccount}
-          updateCard={this.updateAccounts}
+          key={city.key}
+          keyCard={city.key}
+          cityCard={city}
+          populationCard={city.cityPopulation}
+          deleteCard={this.deleteReactCity}
+          updateCard={this.updateCities}
         />
       );
     });
@@ -68,12 +80,12 @@ class City extends React.Component {
             <div id="leftChild">{card}</div>
           </div>
           <div id="right">
-            <InputForm onSubmit={this.addReactAccount} />
+            <InputForm onSubmit={this.addReactCity} />
             <ResultsDisp
-              lowestBal={this.state.lowest.toString()}
-              highestBal={this.state.highest.toString()}
-              totalBal={this.state.total.toString()}
-              numberAcc={this.accountController.accountNamesArr.length.toString()}
+              southmostLatitude={this.state.southernmost.toString()}
+              northmostLatitude={this.state.northernmost.toString()}
+              totalPopulation={this.state.total.toString()}
+              numberOfCities={this.cityController.cityNamesArr.length.toString()}
             />
           </div>
         </div>
