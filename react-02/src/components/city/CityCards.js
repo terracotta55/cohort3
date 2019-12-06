@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import cityFetch from "./FetchFunctions";
 
 class Cards extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class Cards extends React.Component {
       return;
     }
     this.state.cityCard.movedIn(cardInputValue);
+    cityFetch.updateCityServer(this.state.cityCard);
     const cityCardUpdate = this.state.cityCard;
     this.setState({
       cityCard: cityCardUpdate,
@@ -60,6 +62,7 @@ class Cards extends React.Component {
       return;
     }
     this.state.cityCard.movedOut(cardInputValue);
+    cityFetch.updateCityServer(this.state.cityCard);
     const cityCardUpdate = this.state.cityCard;
     this.setState({
       cityCard: cityCardUpdate,
@@ -79,6 +82,7 @@ class Cards extends React.Component {
 
   handleRemoveBtn = () => {
     this.props.deleteCard(this.props.keyCard);
+    cityFetch.deleteCityServer(this.props.keyCard);
     const cityCardUpdate = this.state.cityCard;
     this.setState({
       cityCard: cityCardUpdate
