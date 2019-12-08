@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
+    </style>
+    <title>Get Started with Vumbula React</title>
+  </head>
+
+  <body style="font-family:ubuntu">
+    <div id="root">
+      Loading...
+    </div>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script type="text/babel">
+      // Add your brand new component here
+      const GreetingFunc = () => <h1>Hello from GreetingFunc!</h1>;
+      class GreetingClass extends React.Component {
+        render() {
+          return <h1>Hello from GreetingClass!</h1>;
+        }
+      }
+      ReactDOM.render(
+        <React.Fragment>
+          <GreetingFunc />
+          <GreetingClass />
+        </React.Fragment>,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>
