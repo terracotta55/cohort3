@@ -25,13 +25,6 @@ class InputForm extends React.Component {
   handleSubmitForm(e) {
     e.preventDefault(e);
     this.props.onSubmit(this.state);
-    /*
-    this.setState(newState => {
-      return {
-        counter: newState.counter + 1
-      };
-    });
-    */
     this.setState({
       cityName: "",
       cityPopulation: "",
