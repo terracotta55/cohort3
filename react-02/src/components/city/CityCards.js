@@ -29,6 +29,7 @@ class Cards extends React.Component {
 
   handleMovedInBtn = e => {
     e.preventDefault(e);
+    this.props.updateCard();
     let cardInputValue = this.formatCardInput(this.state.cardInput);
     if (!cardInputValue || cardInputValue <= 0) {
       this.setState({
@@ -36,6 +37,7 @@ class Cards extends React.Component {
       });
       return;
     }
+    this.props.updateCard();
     this.state.cityCard.movedIn(cardInputValue);
     cityFetch.updateCityServer(this.state.cityCard);
     const cityCardUpdate = this.state.cityCard;
@@ -44,11 +46,11 @@ class Cards extends React.Component {
       cardInput: "",
       cardResult: `${cardInputValue} People Moved In`
     });
-    this.props.updateCard();
   };
 
   handleMovedOutBtn = e => {
     e.preventDefault(e);
+    this.props.updateCard();
     let cardInputValue = this.formatCardInput(this.state.cardInput);
     if (!cardInputValue || cardInputValue <= 0) {
       this.setState({
@@ -69,7 +71,6 @@ class Cards extends React.Component {
       cardInput: "",
       cardResult: `${cardInputValue} People Moved Out`
     });
-    this.props.updateCard();
   };
 
   handleHowBigBtn = () => {
