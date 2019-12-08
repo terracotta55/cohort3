@@ -20,29 +20,16 @@ class City extends React.Component {
   }
 
   async componentDidMount() {
-    const newCommunity = new Community();
-    let keyCounter;
-    let lastKey = cityFetch.getAllCitiesServer(newCommunity);
-    lastKey.then(
-      result => {
-        if (newCommunity.cityNamesArr.length >= 1) {
-          keyCounter = result + 1;
-          this.setState({
-            serverMsg: `Success! Last Key Found`,
-            cityCounter: keyCounter
-          });
-          this.cityController = newCommunity;
-        } else {
-          this.setState({ serverMsg: `Good! Server Is Empty` });
-        }
-      },
-      reject => {
-        this.setState({ serverMsg: `Error! Something Went Wrong!` });
-      }
-    );
+    this.updateCities();
   }
 
-  addReactCity = async params => {
+  async serverData() {
+    let response = await fetch("http://localhost:5000/all");
+    let data = await response.json();
+    return data;
+  }
+
+  addReactCity = params => {
     let counterValue = this.state.cityCounter;
     const { cityName, cityLatitude, cityLongitude, cityPopulation } = params;
     this.cityController.createCity(
@@ -58,7 +45,7 @@ class City extends React.Component {
         cityCounter: newState.cityCounter + 1
       };
     });
-    await cityFetch.postNewToServer(
+    cityFetch.postNewToServer(
       this.cityController.cityNamesArr.filter(
         itm => itm.key === counterValue
       )[0]
@@ -84,7 +71,7 @@ class City extends React.Component {
     });
   };
 
-  displayCards = () => {
+  displayCards = async => {
     return this.cityController.cityNamesArr.map(city => {
       return (
         <Cards
@@ -100,7 +87,29 @@ class City extends React.Component {
   };
 
   render() {
+    const newCommunity = new Community();
+    let keyCounter;
+    let lastKey = cityFetch.getAllCitiesServer(newCommunity);
+    lastKey.then(
+      result => {
+        if (newCommunity.cityNamesArr.length >= 1) {
+          keyCounter = result + 1;
+          this.setState({
+            serverMsg: `Success! Last Key Found`,
+            cityCounter: keyCounter
+          });
+          this.cityController = newCommunity;
+        } else {
+          this.setState({ serverMsg: `Good! Server Is Empty` });
+        }
+      },
+      reject => {
+        this.setState({ serverMsg: `Error! Something Went Wrong!` });
+      }
+    );
+
     const card = this.displayCards();
+
     return (
       <Fragment>
         <div id="container">
