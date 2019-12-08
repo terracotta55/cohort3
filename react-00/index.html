@@ -17,6 +17,7 @@
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script type="text/babel">
       // Add your brand new component here
+      // Greeting Component
       const Greeting = props => (
         <h1>
           Hello, my name is {props.name}, I'm a {props.gender} and I am{" "}
@@ -29,19 +30,49 @@
         gender: "Person",
         age: "One Million"
       };
-
+      // Stateless functional component
       const FuncComponent = props => <h1>I'm a {props.name}</h1>;
+
+      // Class component
       class ClassComponent extends React.Component {
         render() {
           return <h1>I'm a {this.props.name}</h1>;
         }
       }
-      ReactDOM.render(
-        <React.Fragment>
+      const ComponentsIntro = () => (
+        <div>
           <Greeting />
           <Greeting name={"John"} gender={"boy"} age={5} />
-          <FuncComponent name={"Stateless Functional Component"} />
-          <ClassComponent name={"Class Component with State"} />
+          <FuncComponent name={"Stateless Functional Component (SFC)"} />
+          <ClassComponent name={"Class Component (CC) with State"} />
+        </div>
+      );
+
+      //Avatar component
+      const Avatar = () => <img src="http://i.pravatar.cc/300" />;
+      //Username component
+      const UserName = () => <h4>whoami</h4>;
+      //Bio component
+      const Bio = () => (
+        <p>
+          <strong>Bio: </strong>
+          Lorem ipsum dolor sit amet, justo a bibendum phasellus proodio ligula,
+          sit
+        </p>
+      );
+      // UserProfile component
+      const UserProfile = () => (
+        <div>
+          <Avatar />
+          <UserName />
+          <Bio />
+        </div>
+      );
+
+      ReactDOM.render(
+        <React.Fragment>
+          <ComponentsIntro />
+          <UserProfile />
         </React.Fragment>,
         document.getElementById("root")
       );
