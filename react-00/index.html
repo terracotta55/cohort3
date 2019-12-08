@@ -17,16 +17,31 @@
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script type="text/babel">
       // Add your brand new component here
-      const GreetingFunc = () => <h1>Hello from GreetingFunc!</h1>;
-      class GreetingClass extends React.Component {
+      const Greeting = props => (
+        <h1>
+          Hello, my name is {props.name}, I'm a {props.gender} and I am{" "}
+          {props.age} years old!
+        </h1>
+      );
+      // Default Props
+      Greeting.defaultProps = {
+        name: "User",
+        gender: "Person",
+        age: "One Million"
+      };
+
+      const FuncComponent = props => <h1>I'm a {props.name}</h1>;
+      class ClassComponent extends React.Component {
         render() {
-          return <h1>Hello from GreetingClass!</h1>;
+          return <h1>I'm a {this.props.name}</h1>;
         }
       }
       ReactDOM.render(
         <React.Fragment>
-          <GreetingFunc />
-          <GreetingClass />
+          <Greeting />
+          <Greeting name={"John"} gender={"boy"} age={5} />
+          <FuncComponent name={"Stateless Functional Component"} />
+          <ClassComponent name={"Class Component with State"} />
         </React.Fragment>,
         document.getElementById("root")
       );
