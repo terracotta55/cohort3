@@ -20,7 +20,24 @@ class City extends React.Component {
   }
 
   async componentDidMount() {
+    const newCommunity = new Community();
+    let keyCounter;
+    let lastKey = await cityFetch.getAllCitiesServer(newCommunity);
+    // newCommunity is mutated inside the getAllCitiesServer method
+    if (newCommunity.cityNamesArr.length >= 1) {
+      keyCounter = lastKey + 1;
+      this.cityController = newCommunity;
+      this.setState({
+        cityCounter: keyCounter,
+        serverMsg: `Success! Last Key Found`
+      });
+    } else if (newCommunity.cityNamesArr.length === 0) {
+      this.setState({ serverMsg: `Good! Server Is Empty` });
+    } else {
+      this.setState({ serverMsg: `Error! Something Went Wrong!` });
+    }
     this.updateCities();
+    console.log(this.cityController.cityNamesArr);
   }
 
   async serverData() {
@@ -71,7 +88,7 @@ class City extends React.Component {
     });
   };
 
-  displayCards = async => {
+  displayCards = () => {
     return this.cityController.cityNamesArr.map(city => {
       return (
         <Cards
@@ -87,29 +104,7 @@ class City extends React.Component {
   };
 
   render() {
-    const newCommunity = new Community();
-    let keyCounter;
-    let lastKey = cityFetch.getAllCitiesServer(newCommunity);
-    lastKey.then(
-      result => {
-        if (newCommunity.cityNamesArr.length >= 1) {
-          keyCounter = result + 1;
-          this.setState({
-            serverMsg: `Success! Last Key Found`,
-            cityCounter: keyCounter
-          });
-          this.cityController = newCommunity;
-        } else {
-          this.setState({ serverMsg: `Good! Server Is Empty` });
-        }
-      },
-      reject => {
-        this.setState({ serverMsg: `Error! Something Went Wrong!` });
-      }
-    );
-
     const card = this.displayCards();
-
     return (
       <Fragment>
         <div id="container">
