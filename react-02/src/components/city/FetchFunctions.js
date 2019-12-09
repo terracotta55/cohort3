@@ -23,6 +23,7 @@ const cityFetch = {
 
   async getAllCitiesServer(newCommunity) {
     let data = await cityFetch.postData(url + "all");
+    console.log(data);
     if (data.length !== 0) {
       newCommunity.cityNamesArr = data.map(
         itm =>
@@ -34,6 +35,7 @@ const cityFetch = {
             itm.cityPopulation
           )
       );
+      console.log(newCommunity.cityNamesArr);
       let keysArray = newCommunity.cityNamesArr.map(itm => itm.key);
       keysArray.sort((a, b) => b - a);
       let lastKey = keysArray[0];
