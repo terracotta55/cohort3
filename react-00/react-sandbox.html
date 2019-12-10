@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
+    </style>
+    <title>React Sandbox</title>
+  </head>
+
+  <body style="font-family:ubuntu">
+    <div id="root">
+      Wait...
+    </div>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script type="text/babel">
+      // Add your brand new component here
+      function Example() {
+        // Declare a new state variable, which we'll call "count"
+        const [count, setCount] = useState(0);
+
+        return (
+          <div>
+            <p>You clicked {count} times</p>
+            <button onClick={() => setCount(count + 1)}>Click me</button>
+          </div>
+        );
+      }
+      const Greeting = () => <h1>React Hooks Sandbox!</h1>;
+      ReactDOM.render(<Greeting />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
