@@ -1,9 +1,26 @@
 class ListNode {
-  constructor(data, next = null) {
-    this.data = data;
-    this.next = next;
+  constructor(subject, amount, forwardNode = null, backwardNode = null) {
+    this.subject = subject;
+    this.amount = amount;
+    this.forwardNode = forwardNode;
+    this.backwardNode = backwardNode;
   }
 
+  showNode() {
+    return `
+    subject is: ${subject}\namount is: ${amount}\nforward node: ${forwardNode}\nbackward node: ${backwardNode}`.trim();
+  }
+
+  deleteFromNode(newListItem) {
+    let indexForDelete = newListItem.findIndex(this);
+    newListItem.deleteListItem(indexForDelete);
+  }
+
+  insertAfterNode(newListItem, subject, amount) {
+    let indexForInsert = newListItem.findIndex(this);
+    newListItem.insertAfterIndex(indexForInsert, subject, amount);
+  }
+  /*
   iterate() {
     let node = this.head;
     while (node) {
@@ -22,21 +39,29 @@ class ListNode {
     }
     return -1;
   }
+  */
 }
-
+/*
 let ari = new ListNode("Ari");
 let malcolm = new ListNode("Malcolm", ari);
 let pete = new ListNode("Pete", malcolm);
 let ricky = new ListNode("Ricky", pete);
 let sean = new ListNode("Sean", ricky);
-
+*/
 class LinkedList {
   constructor() {
     // the head attribute stores a pointer to the first node in our linked list
     this.head = null;
     this.length = 0;
   }
-
+  /*
+  first ⇒ position to the first node
+  last ⇒ position to the last node
+  next ⇒ move to the next node
+  previous ⇒ backup one node (how are we going to do this?)
+  insert ⇒ inserts a new node after the current node (which node will be the current node after the insertion?)
+  delete ⇒ delete the current node (which node will be the current node after the deletion?)
+*/
   insert(data) {
     // inserts to the beginning of the linked list
     // what used to be  the head becomes the second element
