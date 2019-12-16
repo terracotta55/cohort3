@@ -22,7 +22,9 @@
       src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
     ></script>
     <script type="text/babel">
-      // Add your brand new component here
+      // Greeting component
+      const Greeting = () => <h1>React Hooks Sandbox!</h1>;
+      // Counter component
       function Example() {
         // Declare a new state variable, which we'll call "count"
         const [count, setCount] = React.useState(0);
@@ -38,8 +40,32 @@
           </div>
         );
       }
-      const Greeting = () => <h1>React Hooks Sandbox!</h1>;
-      ReactDOM.render(<Example />, document.getElementById("root"));
+      // Friend status
+      function FriendStatus(props) {
+        const [isOnline, setIsOnline] = React.useState(null);
+
+        React.useEffect(() => {
+          function handleStatusChange(status) {
+            setIsOnline(status.isOnline);
+          }
+
+          ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+          // Specify how to clean up after this effect:
+          return function cleanup() {
+            ChatAPI.unsubscribeFromFriendStatus(
+              props.friend.id,
+              handleStatusChange
+            );
+          };
+        });
+
+        if (isOnline === null) {
+          return "Loading...";
+        }
+        return isOnline ? "Online" : "Offline";
+      }
+
+      ReactDOM.render(<Greeting />, document.getElementById("root"));
     </script>
   </body>
 </html>
