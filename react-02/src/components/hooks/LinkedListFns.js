@@ -24,11 +24,11 @@ class ListNode {
   }
 }
 
-let ari = new Node("Ari");
-let malcolm = new Node("Malcolm", ari);
-let pete = new Node("Pete", malcolm);
-let ricky = new Node("Ricky", pete);
-let sean = new Node("Sean", ricky);
+let ari = new ListNode("Ari");
+let malcolm = new ListNode("Malcolm", ari);
+let pete = new ListNode("Pete", malcolm);
+let ricky = new ListNode("Ricky", pete);
+let sean = new ListNode("Sean", ricky);
 
 class LinkedList {
   constructor() {
