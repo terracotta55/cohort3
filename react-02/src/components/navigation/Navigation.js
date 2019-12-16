@@ -28,7 +28,7 @@ const Navigation = props => {
       </NavLink>
       <NavLink to="/hooks">
         <img alt="" src={Image_1} className="Images-svg"></img>
-        <p>Hooks</p>
+        <p>Linked List</p>
       </NavLink>
     </header>
   );
