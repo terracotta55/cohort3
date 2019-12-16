@@ -5,7 +5,7 @@ import Game from "../components/tictac/Game";
 import Navigation from "../components/navigation/Navigation";
 import City from "../components/city/City";
 import Account from "../components/account/Account";
-import Hooks from "../components/hooks/Hooks";
+import LinkedList from "../components/hooks/LinkedList";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ class App extends React.Component {
             <Route path="/game" component={Game} />
             <Route path="/account" component={Account} />
             <Route path="/city" component={City} />
-            <Route path="/hooks" component={Hooks} />
+            <Route path="/hooks" component={LinkedList} />
           </Switch>
         </div>
       </BrowserRouter>
