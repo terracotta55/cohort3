@@ -1,8 +1,9 @@
-import React from "react";
-import logo from "../logo.svg";
+import React, { Fragment } from "react";
 import "./LinkedList.css";
+import InputForm from "./InputForm";
+import ResultsDisp from "./ResultsDisp";
 
-class LinkedList extends React.Component {
+class LinkedListApp extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -11,25 +12,22 @@ class LinkedList extends React.Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>{this.state.pageStatus}</h1>
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Fragment>
+        <div id="container">
+          <div id="left">
+            <h2>
+              <strong>Linked Lists Display</strong>
+            </h2>
+            <div id="leftChild">
+              <br />
+              <InputForm onSubmit={this.addReactAccount} />
+              <ResultsDisp />
+            </div>
+          </div>
+        </div>
+      </Fragment>
     );
   }
 }
 
-export default LinkedList;
+export default LinkedListApp;
