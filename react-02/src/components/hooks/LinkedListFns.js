@@ -1,57 +1,32 @@
-class ListNode {
-  constructor(subject, amount, forwardNode = null, backwardNode = null) {
+export class ListNode {
+  constructor(subject, amount, forwardPointer = null, backwardPointer = null) {
     this.subject = subject;
     this.amount = amount;
-    this.forwardNode = forwardNode;
-    this.backwardNode = backwardNode;
+    this.forwardPointer = forwardPointer;
+    this.backwardPointer = backwardPointer;
   }
 
-  showNode() {
+  showDetails() {
     return `
-    subject is: ${subject}\namount is: ${amount}\nforward node: ${forwardNode}\nbackward node: ${backwardNode}`.trim();
+    subject is: ${subject}\namount is: ${amount}\nforward node: ${forwardPointer}\nbackward node: ${backwardPointer}`.trim();
   }
-
+  /*
   deleteFromNode(newListItem) {
-    let indexForDelete = newListItem.findIndex(this);
+    let indexForDelete = newListItem.indexOfListItem(this);
     newListItem.deleteListItem(indexForDelete);
   }
 
   insertAfterNode(newListItem, subject, amount) {
-    let indexForInsert = newListItem.findIndex(this);
+    let indexForInsert = newListItem.indexOfListItem(this);
     newListItem.insertAfterIndex(indexForInsert, subject, amount);
-  }
-  /*
-  iterate() {
-    let node = this.head;
-    while (node) {
-      console.log(node.data);
-      node = node.next;
-    }
-  }
-
-  search(data) {
-    let idx = 0;
-    let node = this.head;
-    while (node) {
-      if (node.data === data) return idx;
-      node = node.next;
-      idx += 1;
-    }
-    return -1;
   }
   */
 }
-/*
-let ari = new ListNode("Ari");
-let malcolm = new ListNode("Malcolm", ari);
-let pete = new ListNode("Pete", malcolm);
-let ricky = new ListNode("Ricky", pete);
-let sean = new ListNode("Sean", ricky);
-*/
-class LinkedList {
+
+export class LinkedList {
   constructor() {
     // the head attribute stores a pointer to the first node in our linked list
-    this.head = null;
+    this.first = null;
     this.length = 0;
   }
   /*
@@ -62,46 +37,113 @@ class LinkedList {
   insert ⇒ inserts a new node after the current node (which node will be the current node after the insertion?)
   delete ⇒ delete the current node (which node will be the current node after the deletion?)
 */
-  insert(data) {
-    // inserts to the beginning of the linked list
-    // what used to be  the head becomes the second element
-    this.head = new Node(data, this.head);
-    this.length++;
+  insertAtFirstNode(subject, amount) {
+    // A newNode object is created with property data and next = null
+    let newNode = new ListNode(subject, amount);
+    if (this.first !== null) {
+      // The pointer forwardPointer is assigned first pointer so that both pointers now point at the same node.
+      newNode.forwardPointer = this.first;
+      // Point backwards too for doubly linked list
+      this.first.backwardPointer = newNode;
+    }
+    // As we are inserting at the beginning, the first pointer needs to now point at the newNode.
+    this.first = newNode;
+    return;
   }
 
-  remove_value(value) {
-    // remove any data value from the linked list
+  insertAtLastNode(subject, amount) {
+    let newNode = new ListNode(subject, amount);
+    if (!this.first) {
+      this.first = newNode;
+      return;
+    }
+    let last = this.first;
+    while (last.forwardPointer !== null) {
+      last = last.forwardPointer;
+    }
+    last.forwardPointer = newNode;
+    newNode.forwardPointer = last;
+    return;
+  }
 
-    // we need to store a pointer to a node and it's predecessor
-    // so that when we remove the value we can just change the pointer!
-    let prevNode = null;
-    let currentNode = this.head;
+  insertAfterCurrent(index, subject, amount) {
+    let target = this.find(index);
+    if (target === "index not found") return "index not found";
+    let newNode = new ListNode(subject, amount, target.forwardPointer, target);
+    if (target.forwardPointer !== null)
+      target.forwardPointer.backwardPointer = newNode;
+    target.forwardPointer = newNode;
+    return;
+  }
 
-    while (currentNode) {
-      if (currentNode.data === value) {
-        if (prevNode) {
-          // Set the previous node's next value to the node we're deleting's next attribute
-          // effectively removing it from our sequence
-          prevNode.next = currentNode.next;
-        } else {
-          this.head = currentNode.next;
-        }
-        currentNode = null;
-        this.length--;
-        return true;
-      }
-      // move to the next nodes
-      prevNode = currentNode;
-      currentNode = currentNode.next;
+  find(index) {
+    let target = this.first;
+    for (let counter = 0; counter < index; counter++) {
+      if (target.forwardPointer === null) return "index not found";
+      target = target.forwardPointer;
+    }
+    if (target === null) return "index not found";
+    return target;
+  }
+
+  show() {
+    let show = [];
+    let last = this.first;
+    if (last === null) return null;
+    while (last !== null) {
+      show.push([last.subject, ": ", last.amount], ", ");
+      last = last.forwardPointer;
+    }
+    return show;
+  }
+
+  last() {
+    if (!this.first) return;
+    let last = this.first;
+    while (last.forwardPointer !== null) {
+      last = last.forwardPointer;
+    }
+    return last;
+  }
+
+  indexOfListItem(listItem) {
+    let last = this.first;
+    if (last === null) return null;
+    let counter = 0;
+    while (last !== null) {
+      if (last === listItem) return counter;
+      last = last.forwardPointer;
+      counter = counter + 1;
+    }
+    return counter;
+  }
+  /*
+  findAndShow(index) {
+    let target = this.find(index);
+    if (target === "index not found") return "index not found";
+    return target.show();
+  }
+  */
+  deleteListItem(index) {
+    let target = this.find(index);
+    if (target === "index not found") return "index not found";
+    if (target.forwardPointer && target.backwardPointer) {
+      target.backwardPointer.forwardPointer = target.forwardPointer;
+      target.forwardPointer.backwardPointer = target.backwardPointer;
+      return;
+    }
+    if (target.forwardPointer && !target.backwardPointer) {
+      target.forwardPointer.backwardPointer = null;
+      this.first = target.forwardPointer;
+      return;
+    }
+    if (!target.forwardPointer && target.backwardPointer) {
+      target.backwardPointer.forwardPointer = null;
+      return;
+    }
+    if (!target.forwardPointer && !target.backwardPointer) {
+      this.first = null;
+      return;
     }
   }
 }
-
-let thankUNext = new LinkedList();
-thankUNext.insert("Ari");
-thankUNext.insert("Malcolm");
-thankUNext.insert("Pete");
-thankUNext.insert("Ricky");
-thankUNext.insert("Sean");
-
-thankUNext.remove_value("Ricky");
