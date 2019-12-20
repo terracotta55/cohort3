@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu:400&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
 
 #container {
   display: flex;
@@ -7,7 +7,7 @@
   font-family: "Ubuntu", sans-serif;
   margin-top: 20px;
 }
-
+/*
 #left {
   display: flex;
   flex-direction: column;
@@ -18,7 +18,8 @@
   border-radius: 15px;
   margin-top: 20px;
 }
-
+*/
+/*
 #leftChild {
   width: 100%;
   background-color: whitesmoke;
@@ -28,7 +29,19 @@
   overflow: scroll;
   border-radius: 15px;
 }
-
+*/
+/*
+#leftChildsChild {
+  width: 30%;
+  background-color: whitesmoke;
+  text-align: center;
+  border: 0px;
+  height: 30%;
+  overflow: scroll;
+  border-radius: 15px;
+}
+*/
+/*
 #right {
   width: 35%;
   background-color: whitesmoke;
@@ -38,7 +51,7 @@
   color: gray;
   margin-top: 20px;
 }
-
+*/
 .card-div {
   box-sizing: border-box;
   display: inline-block;
@@ -118,7 +131,12 @@ form {
   margin: 0px;
 }
 
-#resultsContainer {
-  margin: 10px;
-  height: 100%;
+#resultsLinkedList {
+  margin: 30px 30px 30px 55px;
+  height: 50%;
+  width: 80%;
+  background-color: whitesmoke;
+  border: solid gray 3px;
+  border-radius: 15px;
+  justify-self: center;
 }
