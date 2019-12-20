@@ -10,17 +10,6 @@ export class ListNode {
     return `
     subject is: ${this.subject}\namount is: ${this.amount}\nforward node: ${this.forwardPointer}\nbackward node: ${this.backwardPointer}`.trim();
   }
-  /*
-  deleteFromNode(newListItem) {
-    let indexForDelete = newListItem.indexOfListItem(this);
-    newListItem.deleteListItem(indexForDelete);
-  }
-
-  insertAfterNode(newListItem, subject, amount) {
-    let indexForInsert = newListItem.indexOfListItem(this);
-    newListItem.insertAfterIndex(indexForInsert, subject, amount);
-  }
-  */
 }
 
 export class LinkedList {
@@ -62,27 +51,15 @@ export class LinkedList {
     if (!this.current) this.current = newNode;
     if (!this.first) this.first = newNode;
     return;
-
-    // let newNode = new ListNode(subject, amount);
-    // if (!this.first) {
-    //   this.first = newNode;
-    //   return;
-    // }
-    // let last = this.first;
-    // while (last.forwardPointer !== null) {
-    //   last = last.forwardPointer;
-    // }
-    // last.forwardPointer = newNode;
-    // newNode.forwardPointer = last;
-    // return;
   }
 
-  insertAfterCurrent(index, subject, amount) {
-    let target = this.find(index);
-    if (target === null) return "index not found";
+  insertAfterCurrent(subject, amount) {
+    let target = this.current;
+    if (target === null) return;
     let newNode = new ListNode(subject, amount, target.forwardPointer, target);
     if (target.forwardPointer !== null)
       target.forwardPointer.backwardPointer = newNode;
+    if (target.forwardPointer === null) this.last = newNode;
     target.forwardPointer = newNode;
     return;
   }
@@ -128,13 +105,7 @@ export class LinkedList {
     }
     return counter;
   }
-  /*
-  findAndShow(index) {
-    let target = this.find(index);
-    if (target === "index not found") return "index not found";
-    return target.show();
-  }
-  */
+
   deleteListItem(index) {
     let target = this.find(index);
     if (target === "index not found") return "index not found";
