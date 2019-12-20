@@ -8,7 +8,7 @@ export class ListNode {
 
   showDetails() {
     return `
-    subject is: ${subject}\namount is: ${amount}\nforward node: ${forwardPointer}\nbackward node: ${backwardPointer}`.trim();
+    subject is: ${this.subject}\namount is: ${this.amount}\nforward node: ${this.forwardPointer}\nbackward node: ${this.backwardPointer}`.trim();
   }
   /*
   deleteFromNode(newListItem) {
@@ -27,7 +27,8 @@ export class LinkedList {
   constructor() {
     // the head attribute stores a pointer to the first node in our linked list
     this.first = null;
-    this.length = 0;
+    this.current = null;
+    this.last = null;
   }
   /*
   first ⇒ position to the first node
@@ -53,22 +54,32 @@ export class LinkedList {
 
   insertAtLastNode(subject, amount) {
     let newNode = new ListNode(subject, amount);
-    if (!this.first) {
-      this.first = newNode;
-      return;
+    if (this.last !== null) {
+      newNode.backwardPointer = this.last;
+      this.last.forwardPointer = newNode;
     }
-    let last = this.first;
-    while (last.forwardPointer !== null) {
-      last = last.forwardPointer;
-    }
-    last.forwardPointer = newNode;
-    newNode.forwardPointer = last;
+    this.last = newNode;
+    if (!this.current) this.current = newNode;
+    if (!this.first) this.first = newNode;
     return;
+
+    // let newNode = new ListNode(subject, amount);
+    // if (!this.first) {
+    //   this.first = newNode;
+    //   return;
+    // }
+    // let last = this.first;
+    // while (last.forwardPointer !== null) {
+    //   last = last.forwardPointer;
+    // }
+    // last.forwardPointer = newNode;
+    // newNode.forwardPointer = last;
+    // return;
   }
 
   insertAfterCurrent(index, subject, amount) {
     let target = this.find(index);
-    if (target === "index not found") return "index not found";
+    if (target === null) return "index not found";
     let newNode = new ListNode(subject, amount, target.forwardPointer, target);
     if (target.forwardPointer !== null)
       target.forwardPointer.backwardPointer = newNode;
