@@ -8,6 +8,13 @@ const LinkedListApp = () => {
   const [subject, setSubject] = useState("");
   const [amount, setAmount] = useState("");
 
+  function pressEnter(e) {
+    if (e.key === `Enter`) {
+      insertLast();
+      console.log("enter pressed");
+    }
+  }
+
   function onSubjectInputChange(e) {
     setSubject(e.target.value);
   }
@@ -24,29 +31,28 @@ const LinkedListApp = () => {
     console.log("clicked insert at first");
   }
 
-  function InsertLast() {
+  function insertLast() {
     if (subject === "" || amount === "") return;
     list.insertAtLastNode(subject, amount);
     setSubject("");
     setAmount("");
-    console.log("clicked insert at end");
+    console.log("clicked insert at last");
   }
 
-  function Insert() {
+  function insertCurrent() {
     if (subject === "" || amount === "") return;
     if (list.current === null) return;
     list.insertAfterCurrent(subject, amount);
     setSubject("");
     setAmount("");
-    console.log("clicked insert");
+    console.log("clicked insert at current");
   }
 
-  const handleKeyPress = e => {
-    if (e.key === "Enter") {
-      InsertLast();
-      console.log("enter pressed");
-    }
-  };
+  function nextNode() {
+    if (list.current === null) return;
+    if (list.current.forwardNode === null) return;
+    list.current = current.forwardNode;
+  }
 
   return (
     <Fragment>
@@ -65,6 +71,7 @@ const LinkedListApp = () => {
               placeholder="enter subject"
               value={subject}
               onChange={onSubjectInputChange}
+              onKeyPress={pressEnter}
             />
             <br />
             <label className="left-input-label">Amount:</label>
@@ -77,6 +84,7 @@ const LinkedListApp = () => {
               step="0.01"
               value={amount}
               onChange={onAmountInputChange}
+              onKeyPress={pressEnter}
             />
             <br />
             <button className="list-btn" onClick={insertFirst}>
@@ -84,23 +92,19 @@ const LinkedListApp = () => {
             </button>
             <button className="list-btn">{"<<"}</button>
             <button className="list-btn">{"<"}</button>
-            <button className="list-btn" onClick={Insert}>
+            <button className="list-btn" onClick={insertCurrent}>
               (+) Node
             </button>
             <button className="list-btn">(-) Node</button>
-            <button className="list-btn">{">"}</button>
+            <button className="list-btn" onClick={nextNode}>
+              {">"}
+            </button>
             <button className="list-btn">{">>"}</button>
-            <button
-              className="list-btn"
-              onClick={InsertLast}
-              onKeyPress={handleKeyPress}
-            >
+            <button className="list-btn" onClick={insertLast}>
               Last
             </button>
             <div id="resultsLinkedList">
-              <span>
-                <strong style={{ color: "grey" }}>Nodes Listed Here:</strong>
-              </span>
+              <span style={{ color: "grey" }}>Nodes Listed Here:</span>
               <br />
               <span>{list.show()}</span>
             </div>
