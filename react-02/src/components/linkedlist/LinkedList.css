@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
+
+#container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.page-title,
+h2 {
+  text-align: center;
+  color: grey;
+}
+#right-btns {
+  border-radius: 5px;
+  width: auto;
+  align-self: center;
+  color: gray;
+}
+
+.left-input-label,
+.results-label {
+  float: center;
+  clear: left;
+  width: 150px;
+  text-align: left;
+}
+
+.left-input,
+.results-span {
+  float: center;
+  width: 200px;
+}
+
+form {
+  margin: 10px;
+}
+
+.para-left-card-name,
+.para-left-card-output {
+  margin: 0px;
+}
+
+#resultsLinkedList {
+  margin: 30px 30px 30px 55px;
+  height: 50%;
+  width: 80%;
+  background-color: whitesmoke;
+  border: solid gray 3px;
+  border-radius: 15px;
+  justify-self: center;
+}
