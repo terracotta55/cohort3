@@ -5,7 +5,7 @@ import ResultsDisp from "./ResultsDisp";
 import { AccountController } from "./Controller";
 import Cards from "./Cards";
 
-class Account extends React.Component {
+class AccountApp extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -82,4 +82,4 @@ class Account extends React.Component {
   }
 }
 
-export default Account;
+export default AccountApp;
