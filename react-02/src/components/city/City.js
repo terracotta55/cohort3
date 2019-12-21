@@ -6,7 +6,7 @@ import { Community } from "./CityController";
 import Cards from "./CityCards";
 import cityFetch from "./FetchFunctions";
 
-class City extends React.Component {
+class CityApp extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -133,4 +133,4 @@ class City extends React.Component {
   }
 }
 
-export default City;
+export default CityApp;
