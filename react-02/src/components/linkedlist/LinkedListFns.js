@@ -24,17 +24,6 @@ export class LinkedList {
   insert ⇒ inserts a new node after the current node (which node will be the current node after the insertion?)
   delete ⇒ delete the current node (which node will be the current node after the deletion?)
 */
-  show() {
-    let show = [];
-    let head = this.head;
-    if (head === null) return null;
-    while (head !== null) {
-      show.push([head.subject, ": ", head.amount], ", ");
-      head = head.forwardPointer;
-    }
-    return show;
-  }
-
   first() {
     this.current = this.head;
   }
@@ -88,7 +77,7 @@ export class LinkedList {
     let total = 0;
     let node = this.head;
     while (node) {
-      total += node.amount;
+      total += Number(node.amount);
       node = node.forwardPointer;
     }
     return total;
