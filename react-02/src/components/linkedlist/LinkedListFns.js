@@ -1,9 +1,8 @@
 export class ListNode {
-  constructor(subject, amount, forwardPointer = null, backwardPointer = null) {
+  constructor(subject, amount, forwardPointer = null) {
     this.subject = subject;
     this.amount = amount;
     this.forwardPointer = forwardPointer;
-    this.backwardPointer = backwardPointer;
   }
 
   showDetails() {
@@ -14,9 +13,8 @@ export class ListNode {
 export class LinkedList {
   constructor() {
     // the head attribute stores a pointer to the first node in our linked list
-    this.first = null;
+    this.head = null;
     this.current = null;
-    this.last = null;
   }
   /*
   first ⇒ position to the first node
@@ -26,105 +24,73 @@ export class LinkedList {
   insert ⇒ inserts a new node after the current node (which node will be the current node after the insertion?)
   delete ⇒ delete the current node (which node will be the current node after the deletion?)
 */
-  insertAtFirstNode(subject, amount) {
-    // A newNode object is created with property data and next = null
-    let newNode = new ListNode(subject, amount);
-    if (this.first !== null) {
-      // The pointer forwardPointer is assigned first pointer so that both pointers now point at the same node.
-      newNode.forwardPointer = this.first;
-      // Point backwards too for doubly linked list
-      this.first.backwardPointer = newNode;
-    }
-    // As we are inserting at the beginning, the first pointer needs to now point at the newNode.
-    this.first = newNode;
-    return;
-  }
-
-  insertAtLastNode(subject, amount) {
-    let newNode = new ListNode(subject, amount);
-    if (this.last !== null) {
-      newNode.backwardPointer = this.last;
-      this.last.forwardPointer = newNode;
-    }
-    this.last = newNode;
-    if (!this.current) this.current = newNode;
-    if (!this.first) this.first = newNode;
-    return;
-  }
-
-  insertAfterCurrent(subject, amount) {
-    let target = this.current;
-    if (target === null) return;
-    let newNode = new ListNode(subject, amount, target.forwardPointer, target);
-    if (target.forwardPointer !== null)
-      target.forwardPointer.backwardPointer = newNode;
-    if (target.forwardPointer === null) this.last = newNode;
-    target.forwardPointer = newNode;
-    return;
-  }
-
-  find(index) {
-    let target = this.first;
-    for (let counter = 0; counter < index; counter++) {
-      if (target.forwardPointer === null) return "index not found";
-      target = target.forwardPointer;
-    }
-    if (target === null) return "index not found";
-    return target;
-  }
-
   show() {
     let show = [];
-    let last = this.first;
-    if (last === null) return null;
-    while (last !== null) {
-      show.push([last.subject, ": ", last.amount], ", ");
-      last = last.forwardPointer;
+    let head = this.head;
+    if (head === null) return null;
+    while (head !== null) {
+      show.push([head.subject, ": ", head.amount], ", ");
+      head = head.forwardPointer;
     }
     return show;
   }
 
+  first() {
+    this.current = this.head;
+  }
+
   last() {
-    if (!this.first) return;
-    let last = this.first;
-    while (last.forwardPointer !== null) {
-      last = last.forwardPointer;
+    while (this.current.forwardPointer) {
+      this.next();
     }
-    return last;
   }
 
-  indexOfListItem(listItem) {
-    let last = this.first;
-    if (last === null) return null;
-    let counter = 0;
-    while (last !== null) {
-      if (last === listItem) return counter;
-      last = last.forwardPointer;
-      counter = counter + 1;
+  next() {
+    if (this.current.forwardPointer) {
+      this.current = this.current.forwardPointer;
     }
-    return counter;
   }
 
-  deleteListItem(index) {
-    let target = this.find(index);
-    if (target === "index not found") return "index not found";
-    if (target.forwardPointer && target.backwardPointer) {
-      target.backwardPointer.forwardPointer = target.forwardPointer;
-      target.forwardPointer.backwardPointer = target.backwardPointer;
-      return;
+  previous() {
+    let previousNode = this.head;
+    while (
+      this.current !== this.head &&
+      previousNode.forwardPointer !== this.current
+    ) {
+      previousNode = previousNode.forwardPointer;
     }
-    if (target.forwardPointer && !target.backwardPointer) {
-      target.forwardPointer.backwardPointer = null;
-      this.first = target.forwardPointer;
-      return;
+    this.current = previousNode;
+  }
+
+  insert(subject, amount) {
+    if (!this.head) {
+      this.head = new ListNode(subject, amount);
+      this.current = this.head;
+    } else {
+      const newNode = new ListNode(subject, amount);
+      newNode.forwardPointer = this.current.forwardPointer;
+      this.current.forwardPointer = newNode;
+      this.current = newNode;
     }
-    if (!target.forwardPointer && target.backwardPointer) {
-      target.backwardPointer.forwardPointer = null;
-      return;
+  }
+
+  delete() {
+    if (this.current === this.head) {
+      this.head = this.head.forwardPointer;
+      this.current = this.head;
+    } else {
+      this.previous();
+      this.current.forwardPointer = this.current.forwardPointer.forwardPointer;
     }
-    if (!target.forwardPointer && !target.backwardPointer) {
-      this.first = null;
-      return;
+  }
+
+  total() {
+    let total = 0;
+    let node = this.head;
+    while (node) {
+      total += node.amount;
+      node = node.forwardPointer;
     }
+    return total;
   }
 }
