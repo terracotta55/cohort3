@@ -5,7 +5,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   font-family: "Ubuntu", sans-serif;
-  margin-top: 20px;
+  background-color: #c0c0c0;
 }
 
 #left {
