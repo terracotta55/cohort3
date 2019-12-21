@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../logo.svg";
 import "./Home.css";
 
-class App extends React.Component {
+class HomeApp extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -32,4 +32,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default HomeApp;
