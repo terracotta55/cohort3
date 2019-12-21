@@ -7,8 +7,7 @@ export class ListNode {
   }
 
   showDetails() {
-    return `
-    subject is: ${this.subject}\namount is: ${this.amount}\nforward node: ${this.forwardPointer}\nbackward node: ${this.backwardPointer}`.trim();
+    return `subject: ${this.subject}\namount: ${this.amount}`.trim();
   }
 }
 
