@@ -1,4 +1,5 @@
 import { ListNode, LinkedList } from "./LinkedListFns.js";
+
 describe("testing LinkedList class methods", () => {
   test(".showDetails() returns subject and amount", () => {
     let newNode = new ListNode("One", 100);
