@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #c0c0c0;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -17,13 +17,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-h1 {
-  font-size: 2rem;
-  font-family: "Ubuntu", sans-serif;
 }
