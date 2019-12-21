@@ -1,29 +1,28 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400&display=swap");
 
-.App {
-  text-align: center;
+@keyframes imagesmove {
+  50% {
+    transform: rotate(180deg);
+  }
 }
 
-.App-logo {
-  height: 40vmin;
+.images-svg {
+  height: 8vmax;
+  width: auto;
+  animation: imagesmove 5s infinite;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 50vh;
+.images-svg:hover {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+    brightness(104%) contrast(97%);
+}
+
+.images-header {
+  max-height: 25vh;
+  height: 110px;
   display: flex;
-  flex-direction: column;
+  background-color: #c0c0c0;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-h1 {
-  font-size: 1.9rem;
-  font-family: "Ubuntu", sans-serif;
 }
