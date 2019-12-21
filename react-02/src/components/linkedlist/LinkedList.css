@@ -43,11 +43,38 @@ form {
 }
 
 #resultsLinkedList {
-  margin: 30px 30px 30px 55px;
+  margin: 30px 30px 30px 75px;
   height: 50%;
-  width: 80%;
+  width: 70%;
   background-color: whitesmoke;
   border: solid gray 3px;
   border-radius: 15px;
   justify-self: center;
+}
+
+#reset {
+  width: 50px;
+  outline: none !important;
+  margin: 0px !important;
+  border-radius: 0px;
+  border: solid #fff 1px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#node-list {
+  margin: 0px !important;
+}
+
+#resultsRender {
+  margin: 5px 5px 5px 145px;
+  height: 80%;
+  width: 30%;
+  background-color: whitesmoke;
+  border: solid transparent 0.5px;
+  border-radius: 15px;
+  justify-self: center;
+  text-align: left;
 }
