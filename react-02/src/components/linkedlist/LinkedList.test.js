@@ -1,87 +1,104 @@
 import { ListNode, LinkedList } from "./LinkedListFns.js";
+describe("testing LinkedList class methods", () => {
+  test(".showDetails() returns subject and amount", () => {
+    let newNode = new ListNode("One", 100);
+    expect(newNode.showDetails()).toEqual(`subject: One\namount: 100`);
+  });
 
-test("show details of subject and amount", () => {
-  let newNode = new LinkedList();
-  newNode.insertAtFirstNode("oneAccount", 100);
-  expect(newNode.showDetails()).toEqual(
-    `subject: oneAccount\namount: 100`.trim()
-  );
+  test(".insert() inserts new node after current", () => {
+    let newList = new LinkedList();
+    newList.insert("One", 100);
+    expect(newList.head.subject).toEqual("One");
+    expect(newList.current.forwardPointer).toEqual(null);
+    newList.insert("Two", 200);
+    expect(newList.head.subject).toEqual("One");
+    expect(newList.current.subject).toEqual("Two");
+    expect(newList.current.forwardPointer).toEqual(null);
+  });
 
-  expect(newNode.first.showDetails()).toEqual(
-    `subject is "b" and amount is "2"`
-  );
-  expect(newNode.current.showDetails()).toEqual(
-    `subject is "b" and amount is "2"`
-  );
-  expect(newNode.last.showDetails()).toEqual(
-    `subject is "b" and amount is "2"`
-  );
-  newNode.insertAtFirstNode("a", 1);
-  expect(newNode.first.showDetails()).toEqual(
-    `subject is "a" and amount is "1"`
-  );
-  expect(newNode.current.showDetails()).toEqual(
-    `subject is "b" and amount is "2"`
-  );
-  expect(newNode.last.showDetails()).toEqual(
-    `subject is "b" and amount is "2"`
-  );
-  expect(newNode.first.next.showDetails()).toEqual(
-    `subject is "b" and amount is "2"`
-  );
-  expect(newNode.last.prev.showDetails()).toEqual(
-    `subject is "a" and amount is "1"`
-  );
-  newNode.insertAtLastNode(`d`, 4);
-  expect(newNode.last.showDetails()).toEqual(
-    `subject is "d" and amount is "4"`
-  );
-  newNode.insertAtLastNode(`z`, 28);
-  expect(newNode.last.showDetails()).toEqual(
-    `subject is "z" and amount is "28"`
-  );
-  expect(newNode.last.prev.showDetails()).toEqual(
-    `subject is "d" and amount is "4"`
-  );
-  newNode.insertAfterCurrent(`c`, 3);
-  expect(newNode.current.next.showDetails()).toEqual(
-    `subject is "c" and amount is "3"`
-  );
-  newNode.deleteCurrent();
-  expect(newNode.current.showDetails()).toEqual(
-    `subject is "c" and amount is "3"`
-  );
-  expect(newNode.current.prev.showDetails()).toEqual(
-    `subject is "a" and amount is "1"`
-  );
-  expect(newNode.current.next.showDetails()).toEqual(
-    `subject is "d" and amount is "4"`
-  );
-  newNode.current = newNode.current.prev;
-  newNode.insertAfterCurrent(`b`, 2);
-  expect(newNode.first.showDetails()).toEqual(
-    `subject is "a" and amount is "1"`
-  );
-  expect(newNode.current.showDetails()).toEqual(
-    `subject is "a" and amount is "1"`
-  );
-  expect(newNode.last.showDetails()).toEqual(
-    `subject is "z" and amount is "28"`
-  );
-  newNode.deleteCurrent();
-  expect(newNode.first.showDetails()).toEqual(
-    `subject is "b" and amount is "2"`
-  );
-  expect(newNode.current.showDetails()).toEqual(
-    `subject is "b" and amount is "2"`
-  );
-  expect(newNode.current.next.showDetails()).toEqual(
-    `subject is "c" and amount is "3"`
-  );
-  newNode.insertAtFirstNode("a", 1);
-  newNode.current = newNode.last;
-  newNode.deleteCurrent();
-  expect(newNode.last.showDetails()).toEqual(
-    `subject is "d" and amount is "4"`
-  );
+  test(".first() moves current node to head", () => {
+    let newList = new LinkedList();
+    newList.insert("One", 100);
+    newList.insert("Two", 200);
+    newList.first();
+    expect(newList.current.subject).toEqual("One");
+    expect(newList.current.forwardPointer.subject).toEqual("Two");
+  });
+
+  test(".last() moves current node to tail", () => {
+    let newList = new LinkedList();
+    newList.insert("One", 100);
+    newList.insert("Two", 200);
+    newList.insert("Three", 300);
+    newList.last();
+    expect(newList.current.subject).toEqual("Three");
+    expect(newList.current.forwardPointer).toEqual(null);
+  });
+
+  test(".next() makes next node the current node", () => {
+    let newList = new LinkedList();
+    newList.insert("One", 100);
+    newList.insert("Two", 200);
+    newList.insert("Three", 300);
+    newList.first();
+    newList.next();
+    expect(newList.current.amount).toEqual(200);
+    expect(newList.current.forwardPointer.amount).toEqual(300);
+  });
+
+  test(".previous() makes previous node the current node", () => {
+    let newList = new LinkedList();
+    newList.insert("One", 100);
+    newList.insert("Two", 200);
+    newList.insert("Three", 300);
+    newList.insert("Four", 400);
+    newList.previous();
+    expect(newList.current.amount).toEqual(300);
+    expect(newList.current.forwardPointer.amount).toEqual(400);
+  });
+
+  test(".delete() deletes current, makes previous new current", () => {
+    let newList = new LinkedList();
+    newList.insert("One", 100);
+    newList.insert("Two", 200);
+    newList.insert("Three", 300);
+    newList.insert("Four", 400);
+    newList.previous();
+    newList.delete();
+    expect(newList.current.amount).toEqual(200);
+    expect(newList.current.forwardPointer.amount).toEqual(400);
+  });
+
+  test(".total() returns total amount in list", () => {
+    let newList = new LinkedList();
+    newList.insert("One", 100);
+    newList.insert("Two", 200);
+    newList.insert("Three", 300);
+    expect(newList.total()).toEqual(600);
+  });
+
+  test("final tests all methods", () => {
+    let newList = new LinkedList();
+    newList.insert("One", 100);
+    newList.insert("Two", 200);
+    newList.insert("Three", 300);
+    newList.last();
+    newList.next(); //no next since there's forwardpointer is null
+    expect(newList.current.amount).toEqual(300);
+    newList.insert("Four", 400);
+    newList.insert("Five", 500);
+    newList.previous();
+    expect(newList.current.amount).toEqual(400);
+    newList.delete();
+    expect(newList.current.amount).toEqual(300);
+    expect(newList.current.forwardPointer.subject).toEqual("Five");
+    expect(newList.current.forwardPointer.forwardPointer).toEqual(null);
+    newList.first();
+    newList.delete();
+    expect(newList.head.subject).toEqual("Two");
+    newList.last();
+    newList.insert("Six", 100);
+    newList.insert("Seven", 400);
+    expect(newList.total()).toEqual(1500);
+  });
 });
