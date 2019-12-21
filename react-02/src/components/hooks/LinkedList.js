@@ -51,7 +51,7 @@ const LinkedListApp = () => {
   function nextNode() {
     if (list.current === null) return;
     if (list.current.forwardNode === null) return;
-    list.current = current.forwardNode;
+    list.current = list.current.forwardNode;
   }
 
   return (
