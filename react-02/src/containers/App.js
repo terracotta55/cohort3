@@ -8,12 +8,14 @@ import AccountApp from "../components/account/Account";
 import CityApp from "../components/city/City";
 import LinkedListApp from "../components/linkedlist/LinkedList";
 import StackApp from "../components/stack/Stack";
+import ThemeApp from "../components/themecontext/Theme";
 import homeLogo from "./svg_images/001-home.svg";
 import gameLogo from "./svg_images/002-game.svg";
 import accountLogo from "./svg_images/003-account.svg";
 import cityLogo from "./svg_images/004-city.svg";
 import linkedListLogo from "./svg_images/005-link.svg";
 import stackLogo from "./svg_images/006-stack.svg";
+import themeLogo from "./svg_images/007-theme.svg";
 
 class App extends React.Component {
   constructor() {
@@ -27,7 +29,8 @@ class App extends React.Component {
       accountLogo,
       cityLogo,
       linkedListLogo,
-      stackLogo
+      stackLogo,
+      themeLogo
     ];
   }
 
@@ -52,6 +55,7 @@ class App extends React.Component {
     if (this.state.selected === cityLogo) return <CityApp />;
     if (this.state.selected === linkedListLogo) return <LinkedListApp />;
     if (this.state.selected === stackLogo) return <StackApp />;
+    if (this.state.selected === themeLogo) return <ThemeApp />;
   };
 
   render() {
