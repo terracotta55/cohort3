@@ -64,14 +64,15 @@ form {
   visibility: hidden;
 }
 
-#node-list {
+#node-list,
+#node-list-current {
   margin: 0px !important;
 }
 
 #resultsRender {
-  margin: 5px 5px 5px 145px;
+  margin: 5px 5px 5px 110px;
   height: 80%;
-  width: 30%;
+  width: 45%;
   background-color: whitesmoke;
   border: solid transparent 0.5px;
   border-radius: 15px;
