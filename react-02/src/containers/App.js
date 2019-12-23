@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Logo from "../components/Logo";
@@ -22,8 +22,45 @@ import {
   ThemeProvider
 } from "../components/themecontext/ThemeContext.js";
 
-class App extends React.Component {
+/*
+To use context themes effectively, put all child components in the
+app-header class so you can pass on the themes to them effortlessly.
+Here, I had to make do with access to only the menu items :)
+*/
+
+class ThemeHeader extends React.Component {
   static contextType = ThemeContext;
+  constructor() {
+    super();
+    this.texts = [
+      "Home",
+      "Game",
+      "Accounts",
+      "Cities",
+      "LinkedLists",
+      "Stacks",
+      "Themes"
+    ];
+  }
+  render() {
+    return this.texts.map(text => {
+      return (
+        <Fragment>
+          <div
+            key={text}
+            className={
+              this.context.fontColor === "Blue" ? "header-blue" : "header-red"
+            }
+          >
+            {text}
+          </div>
+        </Fragment>
+      );
+    });
+  }
+}
+
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -63,7 +100,7 @@ class App extends React.Component {
     if (this.state.selected === stackLogo) return <StackApp />;
     if (this.state.selected === themeLogo) return <ThemeApp />;
   };
-
+  static contextType = ThemeContext;
   render() {
     return (
       <ThemeProvider>
@@ -71,6 +108,9 @@ class App extends React.Component {
           <nav>
             <header className="images-header">{this.renderIcons()}</header>
           </nav>
+          <div id="menuContainer">
+            <ThemeHeader />
+          </div>
           {this.showPage()}
         </div>
       </ThemeProvider>
