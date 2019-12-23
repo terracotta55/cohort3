@@ -26,3 +26,20 @@
   justify-content: space-around;
   align-items: center;
 }
+.header-blue {
+  color: blue;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.header-red {
+  color: red;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+#menuContainer {
+  background-color: #c0c0c0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
