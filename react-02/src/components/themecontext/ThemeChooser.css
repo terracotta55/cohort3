@@ -8,13 +8,14 @@
   height: 60vmin;
 }
 
-.App-header {
+.App-header-theme {
   background-color: #c0c0c0;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  vertical-align: top;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding-top: 50px;
 }

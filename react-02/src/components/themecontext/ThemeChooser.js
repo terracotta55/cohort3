@@ -8,15 +8,15 @@ class ThemeApp extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="App-header-theme">
           <h1
             style={{
-              color: "#ffff00",
+              color: "Blue",
               fontFamily: "Ubuntu",
               fontSize: "2.5rem"
             }}
           >
-            <strong>Choose Font Color</strong>
+            <strong>Choose Menu Font Color</strong>
           </h1>
           <Form.Control
             as="select"
@@ -24,8 +24,8 @@ class ThemeApp extends React.Component {
             value={this.context.fontColor}
             onChange={this.context.changeFont}
           >
-            <option value="White">White</option>
-            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+            <option value="Red">Red</option>
           </Form.Control>
         </header>
       </div>

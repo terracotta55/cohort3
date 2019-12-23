@@ -1,12 +1,12 @@
 import React from "react";
 
-export const ThemeContext = React.createContext(null);
+export const ThemeContext = React.createContext();
 
 export class ThemeProvider extends React.Component {
   constructor() {
     super();
     this.state = {
-      fontColor: "White",
+      fontColor: "Blue",
       targetItem: null
     };
   }
