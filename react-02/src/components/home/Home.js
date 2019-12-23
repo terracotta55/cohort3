@@ -6,7 +6,7 @@ class HomeApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      pageStatus: `Comp-140B: Homepage!`
+      pageStatus: `Comp-140B: React Apps`
     };
   }
   render() {
@@ -15,7 +15,7 @@ class HomeApp extends React.Component {
         <header className="App-header">
           <h1
             style={{
-              color: "#ffff00",
+              color: "blue",
               fontFamily: "Ubuntu",
               fontSize: "2.5rem"
             }}
@@ -23,15 +23,6 @@ class HomeApp extends React.Component {
             <strong>{this.state.pageStatus}</strong>
           </h1>
           <img src={logo} className="App-logo" alt="logo" />
-          <p
-            style={{
-              color: "#ffff00",
-              fontFamily: "Ubuntu",
-              fontSize: "2.5rem"
-            }}
-          >
-            <strong>Have Fun!</strong>
-          </p>
         </header>
       </div>
     );
