@@ -71,16 +71,30 @@ const LinkedListApp = () => {
     let newNode = newList.head;
 
     while (newList.head && newNode) {
-      listDisplay.push(
-        <div
-          key={newNode.subject + newNode.amount}
-          id="node-list"
-          style={{ color: "#808080" }}
-        >
-          {newNode.subject}: {newNode.amount} {current === newNode ? " <-" : ""}
-        </div>
-      );
-      newNode = newNode.forwardPointer;
+      if (current === newNode) {
+        listDisplay.push(
+          <div
+            key={newNode.subject + newNode.amount}
+            id="node-list-current"
+            style={{ color: "green", fontWeight: "bold" }}
+          >
+            {newNode.subject}: {newNode.amount}
+            {" <-"}
+          </div>
+        );
+        newNode = newNode.forwardPointer;
+      } else {
+        listDisplay.push(
+          <div
+            key={newNode.subject + newNode.amount}
+            id="node-list"
+            style={{ color: "#808080" }}
+          >
+            {newNode.subject}: {newNode.amount}{" "}
+          </div>
+        );
+        newNode = newNode.forwardPointer;
+      }
     }
     return listDisplay;
   };
@@ -126,10 +140,10 @@ const LinkedListApp = () => {
               <b style={{ color: "white" }}>{"<<"}</b>
             </Button>
             <Button onClick={handleInsert} id="reset" variant="primary">
-              <b style={{ color: "white" }}>{"[+]"}</b>
+              <b style={{ color: "white" }}>{"[++]"}</b>
             </Button>
             <Button onClick={handleDelete} id="reset" variant="primary">
-              <b style={{ color: "white" }}>{"[-]"}</b>
+              <b style={{ color: "white" }}>{"[- -]"}</b>
             </Button>
             <Button onClick={handleNext} id="reset" variant="primary">
               <b style={{ color: "white" }}>{">>"}</b>
