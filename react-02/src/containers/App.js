@@ -8,7 +8,7 @@ import AccountApp from "../components/account/Account";
 import CityApp from "../components/city/City";
 import LinkedListApp from "../components/linkedlist/LinkedList";
 import StackApp from "../components/stack/Stack";
-import ThemeApp from "../components/themecontext/Theme";
+import ThemeApp from "../components/themecontext/ThemeChooser";
 import homeLogo from "./svg_images/001-home.svg";
 import gameLogo from "./svg_images/002-game.svg";
 import accountLogo from "./svg_images/003-account.svg";
@@ -17,7 +17,13 @@ import linkedListLogo from "./svg_images/005-link.svg";
 import stackLogo from "./svg_images/006-stack.svg";
 import themeLogo from "./svg_images/007-theme.svg";
 
+import {
+  ThemeContext,
+  ThemeProvider
+} from "../components/themecontext/ThemeContext.js";
+
 class App extends React.Component {
+  static contextType = ThemeContext;
   constructor() {
     super();
     this.state = {
@@ -60,12 +66,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <nav>
-          <header className="images-header">{this.renderIcons()}</header>
-        </nav>
-        {this.showPage()}
-      </div>
+      <ThemeProvider>
+        <div>
+          <nav>
+            <header className="images-header">{this.renderIcons()}</header>
+          </nav>
+          {this.showPage()}
+        </div>
+      </ThemeProvider>
     );
   }
 }
