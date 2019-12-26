@@ -70,3 +70,71 @@ FROM payment
 WHERE staff_id = 2
 GROUP BY customer_id
 HAVING SUM(amount) > 110;
+
+SELECT COUNT(title)
+FROM film
+WHERE title LIKE 'J%';
+
+SELECT first_name, last_name, customer_id FROM customer
+WHERE first_name LIKE 'E%'
+AND address_id <500
+ORDER BY customer_id DESC;
+
+SELECT customer_id AS c_id, SUM(amount) AS total_spent
+FROM payment
+GROUP BY c_id;
+
+SELECT 
+customer.customer_id,
+customer.first_name,
+customer.last_name,
+customer.email,
+payment.amount,
+payment.payment_date
+FROM customer
+INNER JOIN payment ON customer.customer_id = payment.customer_id
+WHERE customer.customer_id = 341;
+
+SELECT 
+payment.payment_id,
+payment.amount,
+staff.first_name,
+staff.last_name
+FROM payment
+INNER JOIN staff ON payment.staff_id = staff.staff_id
+WHERE payment.amount > 10;
+
+SELECT title, COUNT(title) AS total_in_store1
+FROM inventory
+INNER JOIN film ON film.film_id = inventory.film_id
+WHERE store_id = 1
+GROUP BY title
+ORDER BY title;
+
+SELECT 
+film.title, 
+language.name AS movie_language
+FROM film
+INNER JOIN language ON language.language_id = film.language_id
+WHERE language.name = 'English';
+
+SELECT film.film_id, film.title, inventory.inventory_id
+FROM film
+LEFT OUTER JOIN inventory ON inventory.film_id = film.film_id
+WHERE inventory.film_id IS NULL
+ORDER BY film.film_id;
+
+SELECT film.film_id, film.title, inventory.inventory_id
+FROM film
+LEFT OUTER JOIN inventory ON inventory.film_id = film.film_id
+WHERE inventory.inventory_id IS NULL
+ORDER BY film.title;
+
+SELECT SUM(amount), EXTRACT(month FROM payment_date) AS month 
+FROM payment
+GROUP BY month
+ORDER BY SUM(amount) DESC;
+
+SELECT rental_id * customer_id AS new_id
+FROM payment;
+
