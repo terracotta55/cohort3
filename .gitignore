@@ -5,6 +5,7 @@
 # these directories will be ignored
 
 /.DS_Store
+/sql-exercises/.DS_Store
 /coverage
 /node_modules
 src/.DS_Store
