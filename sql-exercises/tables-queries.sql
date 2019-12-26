@@ -110,11 +110,45 @@ CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
 	first_name VARCHAR(50) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
-	birth_date DATE CHECK (birth_date > '2001-12-26'),
+	birth_date DATE CHECK (birth_date < '2001-12-26'),
 	join_date DATE CHECK (join_date > birth_date),
-	salary NUMERIC(7,2) CHECK (salary > 0)
+	salary NUMERIC(9,2) CHECK (salary > 0)
 );
 
---Test to see if our checks work
+--Test CHECK constraint
+INSERT INTO users(first_name, last_name, birth_date, join_date, salary)
+VALUES ('Seth', 'Meyers', '1973-12-28','2013-08-31', 97875);
+/*sql posts detailed error messages whenever constraints are not met.
+you can rename constraints by replacing line 114 with:
+join_date DATE CONSTRAINT after_birthdate CHECK (join_date > birth_date),*/
 
+SELECT * FROM users;
 
+--Using the NOT NULL constraint
+CREATE TABLE learn_null(
+	first_name VARCHAR(50),
+	last_name VARCHAR(50),
+	sales_amount INTEGER NOT NULL
+);
+--Test NOT NULL constraint
+INSERT INTO learn_null(first_name, sales_amount)
+VALUES ('Seth', 12345);
+/*will return error if no insert for sales_amount
+but no error for null/empty last_name*/
+
+--Using the UNIQUE constraint
+CREATE TABLE learn_unique(
+	id serial PRIMARY KEY,
+	first_name VARCHAR(50),
+	last_name VARCHAR(50),
+	email VARCHAR(255) UNIQUE
+);
+
+--Test UNIQUE constraint
+INSERT INTO learn_unique(first_name, last_name, email)
+VALUES ('Seth', 'Meyers', 's.meyers@aol.com'),
+('Mary', 'Jane', 'm.jane@aol.com');
+/*will return error if no Seth's and Mary's
+email addresses are the same*/
+
+SELECT * FROM learn_unique;
