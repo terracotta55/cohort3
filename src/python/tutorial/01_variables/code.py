@@ -6,9 +6,10 @@ result = price * (1 - discount)
 print(result)
 
 # -- Strings --
-name = "Rolf"
-print(name)
-print(name * 2)
+first_name = "Rudolf"
+last_name = "Rednose"
+print(first_name + ' ' + last_name)
+print(first_name * 2)
 
 # -- Changing variables --
 # Variables are names for values.
