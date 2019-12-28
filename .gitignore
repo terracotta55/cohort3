@@ -12,9 +12,10 @@ src/python/.DS_Store
 src/.DS_Store
 .vscode/settings.json
 src/02-dom/.DS_Store
-src/gitignore
 src/02-dom/sandbox/.DS_Store
 src/02-dom/sandbox/scripts/.DS_Store
 src/02-dom/scripts/.DS_Store
 src/03-objects/scripts/sandbox/.vscode/
-
+src/python/api/flask/
+src/python/api/.vscode/
+src/python/api/.pytest_cache/
