@@ -9,3 +9,4 @@ user_movie = input("Enter something you've watched recently: ")
 print(user_movie in movies_watched)
 
 # The `in` keyword works in most sequences like lists, tuples, and sets.
+# also works in strings
