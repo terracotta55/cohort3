@@ -8,6 +8,7 @@ else:
 
 # --
 
+# notice use of "in" to check the set, we could also covert user_input to .lower()
 number = 7
 user_input = input("Enter 'y' if you would like to play: ")
 
@@ -23,7 +24,6 @@ if user_input in ("y", "Y"):
 # --
 
 # We could also do a transformation instead of checking multiple options.
-
 number = 7
 user_input = input("Enter 'y' if you would like to play: ")
 
