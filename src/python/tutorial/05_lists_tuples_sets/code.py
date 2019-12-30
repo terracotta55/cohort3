@@ -1,33 +1,31 @@
-l = ["Bob", "Rolf", "Anne"]
-t = ("Bob", "Rolf", "Anne")
-s = {"Bob", "Rolf", "Anne"}
+python_list = ["Bob", "Rolf", "Anne"]
+python_tuple = ("Bob", "Rolf", "Anne")
+python_set = {"Bob", "Rolf", "Anne"}
+# sets don"t keep the order and don't take duplicate elements
 
 # Access individual items in lists and tuples using the index.
 
-print(l[0])
-print(t[0])
-# print(s[0])  # This gives an error because sets are unordered, so accessing element 0 of something without order doesn't make sense.
+print(python_list[0])
+print(python_tuple[0])
+# print(python_set[0])  # This gives an error because sets are unordered, so accessing element 0 of something without order doesn't make sense.
 
 # Modify individual items in lists using the index.
 
-l[0] = "Smith"
-# t[0] = "Smith"  # This gives an error because tuples are "immutable".
+python_list[0] = "Smith"
+# python_tuple[0] = "Smith"  # This gives an error because tuples are "immutable".
 
-print(l)
-print(t)
+print(python_list)
+print(python_tuple)
 
 # Add to a list by using `.append`
-
-l.append("Jen")
-print(l)
+python_list.append("Jen")
+print(python_list)
 # Tuples cannot be appended to because they are immutable.
 
 # Add to sets by using `.add`
-
-s.add("Jen")
-print(s)
+python_set.add("Jen")
+print(python_set)
 
 # Sets can't have the same element twice.
-
-s.add("Bob")
-print(s)
+python_set.add("Bob")
+print(python_set)
