@@ -4,11 +4,12 @@ users = [
     (2, "Jose", "longp4assword"),
     (3, "username", "1234"),
 ]
-
+# choose your key using either the [0] or [1] item in each tuple
 username_mapping = {user[1]: user for user in users}
 userid_mapping = {user[0]: user for user in users}
 
 print(username_mapping)
+print(userid_mapping)
 
 print(username_mapping["Bob"])  # (0, "Bob", "password")
 
@@ -22,7 +23,7 @@ _, username, password = username_mapping[username_input]
 if password_input == password:
     print("Your details are correct!")
 else:
-    print("Your details are incorrect.")
+    print("Your details are NOT correct.")
 
 # If we didn't use the mapping, the code would require us to loop over all users.
 # Shown on the side, pause the video if you want to read it thoroughly.
