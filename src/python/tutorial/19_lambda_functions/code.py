@@ -6,14 +6,17 @@ print(add(5, 7))
 
 # -- Written as a lambda --
 
-add = lambda x, y: x + y
+
+def add(x, y): return x + y
+
+
 print(add(5, 7))
 
-# Four parts
+# -- Four parts of a lambda function: --
 # lambda
 # parameters
 # :
-# return value
+# return value without the return key word
 
 # Lambdas are meant to be short functions, often used without giving them a name.
 # For example, in conjunction with built-in function map
