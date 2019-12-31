@@ -1,7 +1,6 @@
 # -- While loop --
-
 number = 7
-play = input("Would you like to play? (Y/n) ")
+play = input("Would you like to play? (Y/N) ").lower()
 
 while play != "n":
     user_number = int(input("Guess our number: "))
@@ -12,13 +11,12 @@ while play != "n":
     else:
         print("Sorry, it's wrong!")
 
-    play = input("Would you like to play? (Y/n) ")
+    play = input("Would you like to play? (Y/N) ").lower()
 
 
 # -- The break keyword --
-
 while True:
-    play = input("Would you like to play? (Y/n) ")
+    play = input("Would you like to play? (Y/N) ").lower()
 
     if play == "n":
         break  # Exit the loop
@@ -33,13 +31,11 @@ while True:
 
 
 # -- For loop --
-
 friends = ["Rolf", "Jen", "Bob", "Anne"]
 for friend in friends:
     print(f"{friend} is my friend.")
 
 # -- For loop 2 -- Average
-
 grades = [35, 67, 98, 100, 100]
 total = 0
 amount = len(grades)
@@ -50,7 +46,6 @@ for grade in grades:
 print(total / amount)
 
 # -- Rewritten using sum() --
-
 grades = [35, 67, 98, 100, 100]
 total = sum(grades)
 amount = len(grades)
