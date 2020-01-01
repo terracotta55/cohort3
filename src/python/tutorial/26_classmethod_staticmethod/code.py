@@ -36,12 +36,12 @@ class Book:
         return f"<Book {self.name}, {self.book_type}, weighing {self.weight}g>"
 
     @classmethod
-    def hardcover(cls, name, page_weight):
-        return cls(name, cls.TYPES[0], page_weight + 100)
+    def hardcover(cls, name, book_weight):
+        return cls(name, cls.TYPES[0], book_weight + 100)
 
     @classmethod
-    def paperback(cls, name, page_weight):
-        return cls(name, cls.TYPES[1], page_weight)
+    def paperback(cls, name, book_weight):
+        return cls(name, cls.TYPES[1], book_weight)
 
 
 heavy = Book.hardcover("Harry Potter", 1500)
