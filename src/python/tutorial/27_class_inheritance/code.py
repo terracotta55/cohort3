@@ -27,17 +27,18 @@ class Printer(Device):
     def __str__(self):
         return f"{super().__str__()} ({self.remaining_pages} pages remaining)"
 
-    def print(self, pages):
+    def print_pages(self, pages):
         if not self.connected:
-            raise TypeError("Device is disconnected at this time, cannot print.")
+            raise TypeError(
+                "Device is disconnected at this time, cannot print.")
         print(f"Printing {pages} pages.")
         self.remaining_pages -= pages
 
 
 printer = Printer("Printer", "USB", 500)
-printer.print(20)
-print(printer)
-printer.print(50)
-print(printer)
+printer.print_pages(20)
+print(printer)  # 480 pages
+printer.print_pages(50)
+print(printer)  # 430 pages
 printer.disconnect()
-printer.print(30)  # Error
+printer.print_pages(30)  # Error, printer disconnected!
