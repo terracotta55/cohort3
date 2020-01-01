@@ -37,8 +37,10 @@ class Student:
         return sum(self.grades) / len(self.grades)
 
 
-student = Student("Bob", (36, 67, 90, 100, 100))
-print(student.average())
+student_1 = Student("Bob", (36, 67, 90, 100, 100))
+student_2 = Student("Bob", (23, 67, 94, 56, 80))
+print(student_1.average())
+print(student_2.average())
 
 # -- Remember *args ? --
 
@@ -52,5 +54,7 @@ class Student:
         return sum(self.grades) / len(self.grades)
 
 
-student = Student("Bob", 36, 67, 90, 100, 100)
-print(student.average())
+student_1 = Student("Bob", 36, 67, 90, 100, 100)
+student_2 = Student("Bob", 23, 67, 94, 56, 80)
+print(student_1.average())
+print(student_2.average())
