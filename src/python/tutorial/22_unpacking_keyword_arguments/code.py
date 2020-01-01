@@ -1,4 +1,7 @@
 # -- Unpacking kwargs --
+# kwargs = key word arguments
+
+
 def named(**kwargs):
     print(kwargs)
 
@@ -11,8 +14,6 @@ named(**{"name": "Bob", "age": 25})
 
 
 # -- Unpacking and repacking --
-def named(**kwargs):
-    print(kwargs)
 
 
 def print_nicely(**kwargs):
@@ -51,5 +52,8 @@ def myfunction(**kwargs):
     print(kwargs)
 
 
+'''
+# both will return errors
 myfunction(**"Bob")  # Error, must be mapping
 myfunction(**None)  # Error
+'''
