@@ -32,6 +32,9 @@ class Person:
         self.name = name
         self.age = age
 
+    def __str__(self):
+        return f"Person {self.name}, {self.age} years old"
+
     def __repr__(self):
         # I'm adding the < > just so it's clear that this is an object we're printing out!
         return (
@@ -40,4 +43,7 @@ class Person:
 
 
 bob = Person("Bob", 35)
-print(bob)  # Not as nice, but we could re-create "Bob" very easily.
+print(bob)  # will print __str__ method by default
+print(bob.__repr__())
+# Not as nice, but we could comment out the __str__ method to make
+# print(bob) work
