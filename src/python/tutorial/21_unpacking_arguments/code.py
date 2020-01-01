@@ -1,5 +1,5 @@
 def multiply(*args):
-    print(args)
+    print(args)  # will print a tuple
     total = 1
     for arg in args:
         total = total * arg
@@ -18,25 +18,24 @@ def add(x, y):
     return x + y
 
 
-nums = [3, 5]
-print(add(*nums))  # instead of add(nums[0], nums[1])
+nums_1 = [3, 5]
+print(add(*nums_1))  # instead of add(nums[0], nums[1])
 
 # -- Uses with keyword arguments --
 # Double asterisk packs or unpacks keyword arguments
 
 
-def add(x, y):
+def add_2(x, y):
     return x + y
 
 
-nums = {"x": 15, "y": 25}
-
-print(add(**nums))
+nums_2 = {"x": 15, "y": 25}
+print(add_2(**nums_2))
 
 # -- Forced named parameter --
 
 
-def multiply(*args):
+def multiply_1(*args):
     total = 1
     for arg in args:
         total = total * arg
@@ -46,7 +45,7 @@ def multiply(*args):
 
 def apply(*args, operator):
     if operator == "*":
-        return multiply(args)
+        return multiply_1(*args)  # this parameter has to be destructured
     elif operator == "+":
         return sum(args)
     else:
@@ -54,4 +53,5 @@ def apply(*args, operator):
 
 
 print(apply(1, 3, 6, 7, operator="+"))
-print(apply(1, 3, 5, "+"))  # Error
+print(apply(1, 3, 6, 7, operator="*"))
+# print(apply(1, 3, 5, "+"))  # will return an Error
