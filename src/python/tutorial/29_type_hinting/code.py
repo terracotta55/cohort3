@@ -1,7 +1,11 @@
-def list_avg(sequence: list) -> float:
+from typing import List  # , Tuple, Set, etc. What is this?
+
+
+def list_avg(sequence: list) -> float:  # type hinting
     return sum(sequence) / len(sequence)
 
 
+print(list_avg((1, 2, 3),))
 # -- Type hinting classes --
 
 
@@ -12,10 +16,6 @@ class Book:
 
 
 # -- Lists and collections --
-
-from typing import List  # , Tuple, Set, etc...
-
-
 class BookShelf:
     def __init__(self, books: List[Book]):
         self.books = books
@@ -25,7 +25,6 @@ class BookShelf:
 
 
 # Key benefit is now you'll get told if you pass in the wrong thing...
-
 book = Book(
     "Harry Potter", "352"
 )  # Suggests this is incorrect if you have a tool that will analyse your code (e.g. PyCharm or Pylint)
