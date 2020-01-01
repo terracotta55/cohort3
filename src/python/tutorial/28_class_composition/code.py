@@ -21,7 +21,7 @@ class Book(BookShelf):
 # This makes no sense, because now you need to pass `quantity` to a single book:
 
 book = Book("Harry Potter", 120)
-print(book)  # What?
+print(book)  # returns "Bookshelf with 120 books"
 
 # -- Composition over inheritance here --
 
@@ -45,4 +45,4 @@ class Book:
 book = Book("Harry Potter")
 book2 = Book("Python 101")
 shelf = BookShelf(book, book2)
-print(shelf)
+print(shelf)  # returns "Bookshelf with 2 books"
