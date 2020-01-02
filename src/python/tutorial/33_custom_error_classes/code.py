@@ -1,4 +1,4 @@
-class Book:
+class Book_1:
     def __init__(self, name: str, page_count: int):
         self.name = name
         self.page_count = page_count
@@ -11,12 +11,13 @@ class Book:
 
     def read(self, pages: int):
         self.pages_read += pages
-        print(f"You have now read {self.pages_read} pages out of {self.page_count}")
+        print(
+            f"You have now read {self.pages_read} pages out of {self.page_count}")
 
 
-python101 = Book("Python 101", 50)
+python101 = Book_1("Python 101", 50)
 python101.read(35)
-python101.read(50)  # Whaaaat
+python101.read(50)  # Whaaaat? We need to define an error for this
 
 # -- Errors used to prevent things from happening --
 
@@ -25,7 +26,7 @@ class TooManyPagesReadError(ValueError):
     pass
 
 
-class Book:
+class Book_2:
     def __init__(self, name: str, page_count: int):
         self.name = name
         self.page_count = page_count
@@ -42,11 +43,15 @@ class Book:
                 f"You tried to read {self.pages_read + pages} pages, but this book only has {self.page_count} pages."
             )
         self.pages_read += pages
-        print(f"You have now read {self.pages_read} pages out of {self.page_count}")
+        print(
+            f"You have now read {self.pages_read} pages out of {self.page_count}")
 
 
-python101 = Book("Python 101", 50)
-python101.read(35)
-python101.read(
-    50
-)  # This now raises an error, which has a helpful name and a helpful error message.
+python101 = Book_2("Python 101", 50)
+try:
+    python101.read(35)
+    python101.read(
+        50
+    )  # This now raises an error, which has a helpful name and a helpful error message.
+except TooManyPagesReadError as e:
+    print(e)
