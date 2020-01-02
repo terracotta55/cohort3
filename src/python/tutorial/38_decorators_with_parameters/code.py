@@ -26,11 +26,11 @@ def get_dashboard_password():
 
 # What if we wanted some passwords to be available to "user" and others to "admin" ?
 
-user = {"username": "anna", "access_level": "user"}
+user = {"username": "jose", "access_level": "user"}
 
 
-def make_secure(access_level):
-    def decorator(func):
+def make_secure(access_level):  # this is a facotry
+    def decorator(func):  # this is a decorator
         @functools.wraps(func)
         def secure_function(*args, **kwargs):
             if user["access_level"] == access_level:
