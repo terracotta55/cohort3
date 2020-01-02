@@ -1,3 +1,4 @@
+import functools  # note this.
 user = {"username": "jose", "access_level": "guest"}
 
 
@@ -15,16 +16,17 @@ def make_secure(func):
 def get_admin_password():
     return "1234"
 
+
+print(get_admin_password())
 
 # -- keeping function name and docstring --
-import functools
 
 
-user = {"username": "jose", "access_level": "guest"}
+user = {"username": "jose", "access_level": "admin"}
 
 
 def make_secure(func):
-    @functools.wraps(func)
+    @functools.wraps(func)  # to preserve the name of get_admin_password
     def secure_function():
         if user["access_level"] == "admin":
             return func()
@@ -34,6 +36,9 @@ def make_secure(func):
     return secure_function
 
 
-@make_secure
+@make_secure  # creates get_admin_password and runs make_secure at one go
 def get_admin_password():
     return "1234"
+
+
+print(get_admin_password())
