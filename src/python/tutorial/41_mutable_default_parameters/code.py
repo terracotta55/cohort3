@@ -24,8 +24,6 @@ print(rolf.grades)  # Whaaaaaat
 
 # Avoid it by not having mutable parameters. Instead, do what we did in prior lectures:
 
-from typing import List
-
 
 class Student:
     def __init__(self, name: str, grades: List[int] = None):
@@ -41,3 +39,4 @@ rolf = Student("Rolf")
 bob.take_exam(90)
 print(bob.grades)
 print(rolf.grades)  # Now it's empty.
+# finished python intro 02-Jan-2020!
