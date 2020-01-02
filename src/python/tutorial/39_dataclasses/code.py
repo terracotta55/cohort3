@@ -1,3 +1,4 @@
+from dataclasses import dataclass, field
 from typing import List
 
 
@@ -12,11 +13,13 @@ class Student:
 
 bob = Student("Bob")
 bob.take_exam(90)
-print(bob)
+bob.take_exam(85)
+bob.take_exam(92)
+bob.take_exam(100)
+print(bob.grades)
+print(bob)  # prints __main__.Student object
 
 # -- as dataclass --
-
-from dataclasses import dataclass, field
 
 
 @dataclass
@@ -30,8 +33,12 @@ class Student:
         self.grades.append(result)
 
 
-bob = Student("Bob")
+anna = Student("Anna")
 
-bob.take_exam(90)
-print(bob.grades)
-print(bob)
+anna.take_exam(91)
+anna.take_exam(92)
+anna.take_exam(93)
+anna.take_exam(95)
+anna.take_exam(100)
+print(anna.grades)
+print(anna)
