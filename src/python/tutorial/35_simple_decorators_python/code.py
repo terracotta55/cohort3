@@ -89,8 +89,8 @@ get_admin_password = make_secure(
     get_admin_password
 )  # `get_admin_password` is now `secure_func` from above
 
-user = {"username": "jose", "access_level": "guest"}
+user = {"username": "rolf", "access_level": "guest"}
 print(get_admin_password())  # Now we check access level
 
-user = {"username": "bob", "access_level": "admin"}
+user = {"username": "jose", "access_level": "admin"}
 print(get_admin_password())  # Now we check access level
