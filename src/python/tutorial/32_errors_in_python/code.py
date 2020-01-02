@@ -48,7 +48,7 @@ else:
 
 students = [
     {"name": "Bob", "grades": [75, 90]},
-    {"name": "Rolf", "grades": []},
+    {"name": "Rolf", "grades": [50, 79]},
     {"name": "Jen", "grades": [100, 90]},
 ]
 
