@@ -1,3 +1,5 @@
+from operator import itemgetter
+# itemgetter used in search function
 # A first class function just means that functions can be passed as arguments to functions.
 
 
@@ -45,43 +47,19 @@ def get_friend_name(friend):
     return friend["name"]
 
 
-print(search(friends, "Bob Smith", get_friend_name))
+try:
+    print(search(friends, "Bob Smith", get_friend_name))
+except RuntimeError as e:
+    print(e)
 
-# -- using lambdas since this can be simple enough --
+try:
+    # -- using lambdas since this can be simple enough --
+    print(search(friends, "Sarah Smith", lambda friend: friend["name"]))
+except RuntimeError as e:
+    print(e)
 
-
-def search(sequence, expected, finder):
-    for elem in sequence:
-        if finder(elem) == expected:
-            return elem
-    raise RuntimeError(f"Could not find an element with {expected}")
-
-
-friends = [
-    {"name": "Rolf Smith", "age": 24},
-    {"name": "Adam Wool", "age": 30},
-    {"name": "Anne Pun", "age": 27},
-]
-
-print(search(friends, "Bob Smith", lambda friend: friend["name"]))
-
-
-# -- or as an extra, using built-in functions --
-
-from operator import itemgetter
-
-
-def search(sequence, expected, finder):
-    for elem in sequence:
-        if finder(elem) == expected:
-            return elem
-    raise RuntimeError(f"Could not find an element with {expected}")
-
-
-friends = [
-    {"name": "Rolf Smith", "age": 24},
-    {"name": "Adam Wool", "age": 30},
-    {"name": "Anne Pun", "age": 27},
-]
-
-print(search(friends, "Rolf Smith", itemgetter("name")))
+try:
+    # -- or as an extra, using built-in functions --
+    print(search(friends, "Rolf Smith", itemgetter("name")))
+except RuntimeError as e:
+    print(e)
