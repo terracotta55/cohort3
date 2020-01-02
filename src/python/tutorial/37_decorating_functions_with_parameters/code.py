@@ -30,7 +30,7 @@ def get_password(panel):
 
 def make_secure(func):
     @functools.wraps(func)
-    def secure_function(*args, **kwargs):
+    def secure_function(*args, **kwargs):  # note this
         if user["access_level"] == "admin":
             return func(*args, **kwargs)
         else:
