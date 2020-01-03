@@ -14,12 +14,12 @@ def paramReturns(para1, para2):
 
 
 def listAddToFront(a_list, elem):
-    a_list = a_list.insert(0, elem)
+    a_list.insert(0, elem)
     return a_list
 
 
 def listAddToEnd(a_list, elem):
-    a_list = a_list.append(elem)
+    a_list.append(elem)
     return a_list
 
 
@@ -42,9 +42,9 @@ def reverseStrSlicing(a_str):
 
 
 def reverseStrJoin(a_str):
-    reversed = ''.join(reversed(a_str))
+    reversedStr = ''.join(reversed(a_str))
     # .join() method merges all of the characters resulting from the reversed iteration into a new string
-    return reversed  # print the reversed string
+    return reversedStr  # print the reversed string
 
 
 def forInDict(a_dict):
@@ -54,7 +54,14 @@ def forInDict(a_dict):
 
 
 def doubleNumberList(a_list):
-    doubled = map(lambda x: x * 2, a_list)
+    doubled = list(map(lambda x: x * 2, a_list))
+    return doubled
+
+
+def doubleNumberList_2(a_list):
+    doubled = []
+    for x in a_list:
+        doubled.append(x*2)
     return doubled
 
 
@@ -63,11 +70,12 @@ def whileLoopDemo(a_list):
     result = 0
     length = len(a_list)
     while i < length:
-        result += a_list[i]
+        result = result + a_list[i]
+        i = i+1
     return result
 
 
-def retrieveValue(a_dict, to_find):
+def dictValue(a_dict, to_find):
     for value in a_dict.values():
         if value == to_find:
             return "We found it!!!"
@@ -78,4 +86,14 @@ def retrieveValue(a_dict, to_find):
 print(checkType(3.142))
 print(ifElse("Jimmy"))
 print(paramReturns(45, "Jones"))
-print(listAddToFront([1, 3, 3, 7], 23))
+print(listAddToFront([1, 3, 5, 7], 23))
+print(listAddToEnd([1, 3, 5, 7], 23))
+print(listUpdate([1, 3, 5, 7, 9], 2, 105))
+print(forLoop(1, 10))
+print(reverseStrSlicing("python is cool"))
+print(reverseStrJoin("have fun learning"))
+print(forInDict({'apple': 1.50, 'orange': 2.00, 'banana': 3.50}))
+print(doubleNumberList([1, 3, 5, 7, 9]))
+print(doubleNumberList_2([2, 4, 6, 8, 10]))
+print(whileLoopDemo([2, 4, 6, 20, 91]))
+print(dictValue({'apple': 1.50, 'orange': 2.00, 'banana': "ball"}, "ball"))
