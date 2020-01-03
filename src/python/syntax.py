@@ -1,142 +1,81 @@
-const functions = {
-	checkType: inputValue => {
-		return typeof inputValue;
-	},
+def checkType(inputValue):
+    return type(inputValue)
 
-	ifElse: name => {
-		if (typeof name === "string") {
-			return `Hello ${name}`;
-		} else return "I don't know you";
-	},
 
-	paramReturns: (para1, para2) => {
-		return `${para1}, ${para2}`;
-	},
+def ifElse(name):
+    if type(name) is str:
+        return f"Hello {name}"
+    else:
+        return "I don't know you"
 
-	arrayAddToFront: (arr, elemAdd) => {
-		arr.unshift(elemAdd);
-		return arr;
-	},
-	arrayAddToEnd: (arr, elemAdd) => {
-		arr.push(elemAdd);
-		return arr;
-	},
 
-	arrayUpdate: (arr, index, value) => {
-		arr[index] = value;
-		return arr;
-	},
+def paramReturns(para1, para2):
+    return f"{para1}, {para2}"
 
-	forLoop: (smallNum, largeNum) => {
-		let sum = 0;
-		for (let i = smallNum; i <= largeNum; i++) {
-			sum += i;
-		}
-		return sum;
-	},
 
-	reverseStr: str => {
-		let newStr = "",
-			i = str.length;
-		while (i > 0) {
-			newStr += str.substring(i - 1, i);
-			i--;
-		}
-		return newStr;
-	},
+def listAddToFront(a_list, elem):
+    a_list = a_list.insert(0, elem)
+    return a_list
 
-	forInDemo: obj => {
-		let propList = [];
-		for (let prop in obj) {
-			propList.push(obj[prop]);
-		}
-		// console.log(propList);
-		return propList;
-	},
 
-	forEachDemo: arr => {
-		let elemList = [];
-		arr.forEach(function(arrElem) {
-			elemList.push(arrElem);
-		});
-		// console.log(arrElem);
-		return elemList;
-	},
+def listAddToEnd(a_list, elem):
+    a_list = a_list.append(elem)
+    return a_list
 
-	doWhileDemo: countUpTo => {
-		let countArr = [];
-		let i = 1;
-		do {
-			countArr.push(i);
-			i++;
-		} while (i <= countUpTo);
-		// console.log(countArr);
-		return countArr;
-	},
 
-	retrieveValue: (obj, value) => {
-		return Object.keys(obj).find(key => obj[key] === value);
-	}
-};
+def listUpdate(a_list, index, value):
+    a_list[index] = value
+    return a_list
 
-export default functions;
 
-/*
-========================Some functions and variables================================
-const num1 = 15,
-  num2 = 25,
-  num3 = 35;
-const str1 = "hello",
-  str2 = "howdy",
-  str3 = "hiya";
-const bool1 = true,
-  bool2 = false;
-const arr1 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-  arr2 = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-const arr3 = [
-  "toyota",
-  "volvo",
-  "tesla",
-  "honda",
-  "ford",
-  "nissan",
-  "hyundai",
-  "volkswagen",
-  "audi",
-  "bmw"
-];
-const obj1 = {
-    shape: "circle",
-    radius: 1,
-    area: function() {
-      const circleArea = Math.PI * this.radius ** 2;
-      return circleArea;
-    }
-  },
-  obj2 = {
-    shape: "square",
-    sideLength: 10,
-    area: function() {
-      const squareArea = this.sideLength ** 2;
-      return squareArea;
-    }
-  },
-  obj3 = {
-    shape: "rectangle",
-    sideLength: 10,
-    sideWidth: 5,
-    area: function() {
-      const rectArea = this.sideLength * this.sideWidth;
-      return rectArea;
-    }
-  };
-  
-function sumNum(smallNum, largeNum) {
-  let sum = 0;
-  for (i = smallNum; i <= largeNum; i++) {
-    sum += i;
-  }
-  console.log(`sum of numbers from ${smallNum} to ${largeNum} is - `, sum);
-  return sum;
-}
-*/
+def forLoop(smallNum, largeNum):
+    result = 0
+    for i in range(smallNum, largeNum+1):
+        result += i
+    return result
+
+
+def reverseStrSlicing(a_str):
+    stringlength = len(a_str)  # calculate length of the list
+    slicedString = a_str[stringlength::-1]  # slicing
+    return slicedString  # print the reversed string
+
+
+def reverseStrJoin(a_str):
+    reversed = ''.join(reversed(a_str))
+    # .join() method merges all of the characters resulting from the reversed iteration into a new string
+    return reversed  # print the reversed string
+
+
+def forInDict(a_dict):
+    for key, value in a_dict.items():
+        a_dict[key] = round(value * 0.9, 2)  # Apply a 10% discount
+    return a_dict
+
+
+def doubleNumberList(a_list):
+    doubled = map(lambda x: x * 2, a_list)
+    return doubled
+
+
+def whileLoopDemo(a_list):
+    i = 0
+    result = 0
+    length = len(a_list)
+    while i < length:
+        result += a_list[i]
+    return result
+
+
+def retrieveValue(a_dict, to_find):
+    for value in a_dict.values():
+        if value == to_find:
+            return "We found it!!!"
+        else:
+            return "Not here :("
+
+
+print(checkType(3.142))
+print(ifElse("Jimmy"))
+print(paramReturns(45, "Jones"))
+print(listAddToFront([1, 3, 3, 7], 23))
