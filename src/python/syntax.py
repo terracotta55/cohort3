@@ -1,5 +1,5 @@
 def checkType(inputValue):
-    return type(inputValue)
+    return type(inputValue).__name__
 
 
 def ifElse(name):
@@ -79,21 +79,22 @@ def dictValue(a_dict, to_find):
     for value in a_dict.values():
         if value == to_find:
             return "We found it!!!"
-        else:
-            return "Not here :("
+
+    else:
+        return "Not here!!!"
 
 
-print(checkType(3.142))
-print(ifElse("Jimmy"))
-print(paramReturns(45, "Jones"))
-print(listAddToFront([1, 3, 5, 7], 23))
-print(listAddToEnd([1, 3, 5, 7], 23))
-print(listUpdate([1, 3, 5, 7, 9], 2, 105))
-print(forLoop(1, 10))
+# print(checkType(3.142))
+# print(ifElse("Jimmy"))
+# print(paramReturns(45, "Jones"))
+# print(listAddToFront([1, 3, 5, 7], 23))
+# print(listAddToEnd([1, 3, 5, 7], 23))
+# print(listUpdate([1, 3, 5, 7, 9], 2, 105))
+# print(forLoop(31, 40))
 print(reverseStrSlicing("python is cool"))
 print(reverseStrJoin("have fun learning"))
 print(forInDict({'apple': 1.50, 'orange': 2.00, 'banana': 3.50}))
 print(doubleNumberList([1, 3, 5, 7, 9]))
 print(doubleNumberList_2([2, 4, 6, 8, 10]))
 print(whileLoopDemo([2, 4, 6, 20, 91]))
-print(dictValue({'apple': 1.50, 'orange': 2.00, 'banana': "ball"}, "ball"))
+print(dictValue({'apple': 1.55, 'orange': 2.05, 'banana': "ball"}, 2.05))
