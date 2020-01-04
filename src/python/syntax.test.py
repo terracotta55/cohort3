@@ -61,45 +61,47 @@ class TestSyntax(unittest.TestCase):
 
     def test_08_reverseStrSlicing(self):
         # Test that it can check the data type of the parameter
-        self.assertEqual("float", syntax.checkType(3.142))
-        self.assertEqual("str", syntax.checkType("hello"))
-        self.assertEqual("int", syntax.checkType(15))
+        self.assertEqual("12345", syntax.reverseStrSlicing("54321"))
+        self.assertEqual("nohtyp", syntax.reverseStrSlicing("python"))
+        self.assertEqual(
+            "sgninnur looc", syntax.reverseStrSlicing("cool runnings"))
 
     def test_09_reverseStrJoin(self):
         # Test that it can check the data type of the parameter
-        self.assertEqual("float", syntax.checkType(3.142))
-        self.assertEqual("str", syntax.checkType("hello"))
-        self.assertEqual("int", syntax.checkType(15))
+        self.assertEqual("12345", syntax.reverseStrJoin("54321"))
+        self.assertEqual("nohtyp", syntax.reverseStrJoin("python"))
+        self.assertEqual(
+            "sgninnur looc", syntax.reverseStrJoin("cool runnings"))
 
     def test_10_forInDict(self):
         # Test that it can check the data type of the parameter
-        self.assertEqual("float", syntax.checkType(3.142))
-        self.assertEqual("str", syntax.checkType("hello"))
-        self.assertEqual("int", syntax.checkType(15))
+        self.assertEqual({'apple': 1.35, 'orange': 1.8, 'banana': 3.15}, syntax.forInDict(
+            {'apple': 1.50, 'orange': 2.00, 'banana': 3.50}))
 
     def test_11_doubleNumberList(self):
         # Test that it can check the data type of the parameter
-        self.assertEqual("float", syntax.checkType(3.142))
-        self.assertEqual("str", syntax.checkType("hello"))
-        self.assertEqual("int", syntax.checkType(15))
+        self.assertEqual([2, 6, 10, 14, 18],
+                         syntax.doubleNumberList([1, 3, 5, 7, 9]))
+        self.assertEqual([4, 8, 12, 16, 20],
+                         syntax.doubleNumberList([2, 4, 6, 8, 10]))
 
     def test_12_doubleNumberList_2(self):
         # Test that it can check the data type of the parameter
-        self.assertEqual("float", syntax.checkType(3.142))
-        self.assertEqual("str", syntax.checkType("hello"))
-        self.assertEqual("int", syntax.checkType(15))
+        self.assertEqual([2, 6, 10, 14, 18],
+                         syntax.doubleNumberList_2([1, 3, 5, 7, 9]))
+        self.assertEqual([4, 8, 12, 16, 20],
+                         syntax.doubleNumberList_2([2, 4, 6, 8, 10]))
 
     def test_13_whileLoopDemo(self):
         # Test that it can check the data type of the parameter
-        self.assertEqual("float", syntax.checkType(3.142))
-        self.assertEqual("str", syntax.checkType("hello"))
-        self.assertEqual("int", syntax.checkType(15))
+        self.assertEqual(123, syntax.whileLoopDemo([2, 4, 6, 20, 91]))
+        self.assertEqual(25, syntax.whileLoopDemo([1, 3, 5, 7, 9]))
+        self.assertEqual(30, syntax.whileLoopDemo([2, 4, 6, 8, 10]))
 
     def test_14_dictValue(self):
         # Test that it can check the data type of the parameter
-        self.assertEqual("float", syntax.checkType(3.142))
-        self.assertEqual("str", syntax.checkType("hello"))
-        self.assertEqual("int", syntax.checkType(15))
+        self.assertEqual("We found it!!!", syntax.dictValue(
+            {'apple': 1.55, 'orange': 2.05, 'banana': "ball"}, 2.05))
 
 
 if __name__ == '__main__':
