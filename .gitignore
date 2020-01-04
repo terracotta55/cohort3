@@ -3,7 +3,7 @@
 #
 
 # these directories will be ignored
-
+src/python/__pycache__/
 src/python/.DS_Store
 /.DS_Store
 /sql-exercises/.DS_Store
