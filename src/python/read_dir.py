@@ -15,7 +15,7 @@ def read_dir_files():
         total_size += dirDict[item].st_size
         print("File/Folder: {0:25s} Size: {1:5.3f} kB".format(
             item, dirDict[item].st_size/1024))
-    print("there are {0} files and folders in the path '{1}' with a total size of {2:5.3f} kB".format(
+    print("SUMMARY: There are {0} files and folders in the path '{1}' with a total size of {2:5.3f} kB.".format(
         len(dirDict), dirPath, total_size/1024))
 
 
