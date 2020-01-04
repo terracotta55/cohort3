@@ -35,7 +35,8 @@ def read_file_characters(fname):
 
 def read_file_summary(fname, word):
     print(
-        f"The file '{fname}' contains {read_file_characters(fname)} characters in {read_file_lines(fname)} lines of code and with {read_file_word(fname, word)} occurrence(s) of the word '{word}")
+        f"SUMMARY: The file '{fname}' contains {read_file_characters(fname)} characters in {read_file_lines(fname)} lines of code and with {read_file_word(fname, word)} occurrence(s) of the word '{word}'.")
 
 
 read_file_summary('syntax_js.txt', 'else')
+read_file_summary('syntax_js.txt', 'arr')
