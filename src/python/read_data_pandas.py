@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 # Convert the csv into DataFrame
-census_data = pd.read_csv('Community_Census_2018.csv')
+census_data = pd.read_csv('census_data.csv')
 
 print('Number of Rows:\t', census_data.NAME.count())
 print("======================================================")
