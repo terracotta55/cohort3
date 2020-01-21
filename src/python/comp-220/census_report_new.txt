@@ -1,0 +1,22 @@
+CLASS			RES_CNT
+============================
+Residential: 1263734.0
+Industrial: 922.0
+Major Park: 0.0
+Residual Sub Area: 0.0
+
+SECTOR			RES_CNT
+============================
+CENTRE: 199977.0
+SOUTH: 227345.0
+NORTHEAST: 185534.0
+NORTHWEST: 174126.0
+NORTH: 160502.0
+SOUTHEAST: 135009.0
+EAST: 57666.0
+WEST: 124497.0
+
+TOTAL POPULATION
+============================
+Total Population: 1264656.0
+Number of Rows: 303
