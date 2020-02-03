@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 from invoice_functions import *
 
 # load the excel file sheets
-my_invoice_data = load_workbook('./invoice_data.xlsx')
+my_invoice_data = load_workbook('invoice_data.xlsx')
 my_customers = my_invoice_data['customers']
 my_invoices = my_invoice_data['invoices']
 my_line_items = my_invoice_data['line_items']
