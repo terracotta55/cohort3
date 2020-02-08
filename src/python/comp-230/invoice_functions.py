@@ -8,7 +8,7 @@ def sheet_to_dict(sheet):
             rowDict[header[index].value] = cell.value
             index = index+1
         newDict[row[0].value] = rowDict
-    newDict.pop(sheet['A2'])
+    newDict.pop('id')
     return newDict
 
 
